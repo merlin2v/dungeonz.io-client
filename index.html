@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dungeonz.io</title>
+
+    <!--<script src="src/lib/phaser.min.js"></script>-->
+    <script src="src/lib/phaser.js"></script>
+
+    <script src="dist/main.js"></script>
+
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+
+</head>
+<body style="margin: 0; overflow:hidden;">
+    <img id="background_img" src="assets/img/main-background.png">
+    <div id="game_container">
+        <div id="gui">
+            <img id="defence_icon"      class="icon" src="assets/img/gui/defence-icon.png">
+            <img id="hitpoint_icon"     class="icon" src="assets/img/gui/hitpoint-icon.png">
+            <img id="energy_icon"       class="icon" src="assets/img/gui/energy-icon.png">
+            <img id="glory_icon"        class="icon" src="assets/img/gui/glory-icon.png">
+            <img id="coins_icon"        class="icon" src="assets/img/gui/coins-icon.png">
+            <img id="bounty_icon"       class="icon" src="assets/img/gui/bounty-icon.png">
+            <img id="watch_ad_icon"     class="icon" src="assets/img/gui/watch-ad-icon.png">
+            <img id="avatar_icon"       class="icon" src="assets/img/gui/avatar-icon.png">
+            <img id="inventory_icon"    class="icon" src="assets/img/gui/inventory-icon.png">
+            <img id="exit_icon"         class="icon" src="assets/img/gui/exit-icon.png">
+            <img id="respawns_icon"     class="icon" src="assets/img/gui/respawns-icon.png">
+            <img id="settings_icon"     class="icon" src="assets/img/gui/settings-icon.png">
+            <img id="quick_turn_icon"   class="icon" src="assets/img/gui/turn-icon.png">
+            <div id="defence_tooltip"   class="counter_tooltip"></div>
+            <div id="hitpoint_tooltip"  class="counter_tooltip"></div>
+            <div id="energy_tooltip"    class="counter_tooltip"></div>
+            <div id="glory_tooltip"     class="counter_tooltip"></div>
+            <div id="coins_tooltip"     class="counter_tooltip"></div>
+            <div id="bounty_tooltip"    class="counter_tooltip"></div>
+            <div id="watch_ad_tooltip"  class="counter_tooltip"></div>
+            <div id="avatar_tooltip"    class="counter_tooltip"></div>
+            <div id="inventory_tooltip" class="counter_tooltip"></div>
+            <div id="exit_tooltip"      class="counter_tooltip"></div>
+            <div id="respawns_tooltip"  class="counter_tooltip"></div>
+            <div id="settings_tooltip"  class="counter_tooltip"></div>
+            <div id="quick_turn_tooltip" class="counter_tooltip"></div>
+            <div id="glory_counter"     class="counter"><p><p/></div>
+            <div id="coin_counter"      class="counter"><p><p/></div>
+            <div id="respawns_counter"  class="counter"><p><p/></div>
+
+            <div id="watch_ad_prompt">
+                <div id="watch_ad_message"></div>
+                <span id="watch_ad_accept"></span>
+                <span id="watch_ad_decline"></span>
+            </div>
+
+            <div id="dungeon_prompt">
+                <div id="dungeon_prompt_top">
+                <span id="dungeon_prompt_info">
+                    <p id="dungeon_prompt_name_header"          class="dungeon_prompt_header"></p>
+                    <p id="dungeon_prompt_name_value"           class="dungeon_prompt_value"></p>
+                    <p id="dungeon_prompt_difficulty_header"    class="dungeon_prompt_header"></p>
+                    <p id="dungeon_prompt_difficulty_value"     class="dungeon_prompt_value"></p>
+                    <p id="dungeon_prompt_glory_cost_header"    class="dungeon_prompt_header"></p>
+                    <p id="dungeon_prompt_glory_cost_value"     class="dungeon_prompt_value"></p>
+                </span>
+                    <span id="dungeon_prompt_warning">
+                    <p id="dungeon_prompt_warning_header"       class="dungeon_prompt_header"></p>
+                    <p id="dungeon_prompt_warning_value"        class="dungeon_prompt_value"></p>
+                </span>
+                </div>
+                <div id="dungeon_prompt_bottom">
+                    <div id="dungeon_prompt_accept"></div>
+                    <div id="dungeon_prompt_decline"></div>
+                </div>
+            </div>
+
+        </div>
+        <div id="inventory">
+            <div id="item_tooltip_container">
+                <div id="item_name"></div>
+                <div id="item_description"></div>
+                <div id="item_durability"></div>
+            </div>
+            <div id="icon_container"></div>
+            <div id="durability_meter_container"></div>
+            <div id="border_container"></div>
+        </div>
+        <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
+
+
+    </div>
+
+    <div id="menu_container">
+        <img id="title_img" src="assets/img/dungeonzio-title.png" alt="Dungeonz.io title">
+        <p id="warning_message">Could not connect to game server. Probably updating...</p>
+        <input id="name_input" type="text" maxlength="20" autofocus>
+        <button id="play_button" type="button" onclick="connect()"></button>
+        <div id="language_select"></div>
+        <ul id="language_list">
+            <li id="language_english"       class="language_option">English</li>
+            <li id="language_french"        class="language_option">Français</li>
+            <li id="language_spanish"       class="language_option">Español</li>
+            <li id="language_portuguese"    class="language_option">Português do Brasil</li>
+            <li id="language_turkish"       class="language_option">Türkçe</li>
+            <li id="language_german"        class="language_option">Deutsch</li>
+            <li id="language_russian"       class="language_option">русский язык</li>
+            <li id="add_translation"        class="language_option" onclick="window.open('https://docs.google.com/spreadsheets/d/1n6jSigPBWrubNQMTz00GsLIh3U8CMtfZH8wMFYmfHaA/edit#gid=0', '_blank');"></li>
+        </ul>
+
+        <div id="community_links">
+            <h2 id="community_header" class="instruction_heading"></h2>
+            <div id="wikia_link" class="community_link" onclick="window.open('https://dungeonz.wikia.com', '_blank');">
+                <img id="wikia_button"      class="community_button" src="assets/img/wikia_logo.png">
+                <span id="community_wikia" class="community_text"></span>
+            </div>
+            <div id="discord_link" class="community_link" onclick="window.open('https://discord.gg/7wjyU7B', '_blank');">
+                <img id="discord_button"    class="community_button" src="assets/img/discord-logo-color.png">
+                <span id="community_discord" class="community_text"></span>
+            </div>
+            <div id="facebook_link" class="community_link" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');">
+                <img id="facebook_button"   class="community_button" src="assets/img/facebook-logo.png">
+                <span id="community_facebook" class="community_text"></span>
+            </div>
+        </div>
+        <div id="instructions">
+            <h2 id="how_to_play_header" class="instruction_heading"></h2>
+            <div id="how_to_play" class="instructions_border">
+                <p id="how_to_play_value"></p>
+            </div>
+            <h2 id="controls_header" class="instruction_heading"></h2>
+            <div id="controls" class="instructions_border">
+                <p id="controls_move"></p>
+                <p id="controls_run"></p>
+                <p id="controls_pick_up_item"></p>
+                <p id="controls_use_item"></p>
+                <p id="controls_drop_item"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function connect () {
+            window.connectToGameServer();
+            // Only attempt to connect if the connection is ready to communicate.
+            if(ws.readyState === 1){
+                ws.sendEvent('join_world', {displayName: document.getElementById('name_input').value});
+            }
+        }
+
+        document.getElementById('name_input').onkeydown = function(event) {
+            // If the Enter key is pressed, attempt to connect.
+            if (event.keyCode === 13) {
+                connect();
+            }
+        };
+
+        document.getElementById('language_select').onclick = function (event) {
+            if(document.getElementById('language_list').style.visibility === "visible"){
+                document.getElementById('language_list').style.visibility = "hidden";
+            }
+            else {
+                document.getElementById('language_list').style.visibility = "visible";
+            }
+        };
+
+        function changeLanguage (language) {
+            dungeonz.language = language;
+
+            // Update the DOM elements that have text with the values for the selected language.
+            document.getElementById('language_select').innerText =      dungeonz.getTextDef('Language');
+            document.getElementById('add_translation').innerText =      dungeonz.getTextDef('Add translation');
+            document.getElementById('name_input').placeholder =         dungeonz.getTextDef('Name input');
+            document.getElementById('play_button').innerText =          dungeonz.getTextDef('Play');
+            document.getElementById('how_to_play_header').innerText =   dungeonz.getTextDef('How to play header');
+            document.getElementById('how_to_play_value').innerText =    dungeonz.getTextDef('How to play message');
+            document.getElementById('controls_header').innerText =      dungeonz.getTextDef('Controls header');
+            document.getElementById('controls_move').innerText =        dungeonz.getTextDef('Controls: move');
+            document.getElementById('controls_run').innerText =         dungeonz.getTextDef('Controls: run');
+            document.getElementById('controls_pick_up_item').innerText =dungeonz.getTextDef('Controls: pick up item');
+            document.getElementById('controls_use_item').innerText =    dungeonz.getTextDef('Controls: use item');
+            document.getElementById('controls_drop_item').innerText =   dungeonz.getTextDef('Controls: drop item');
+            document.getElementById('community_header').innerText =     dungeonz.getTextDef('Community header');
+            document.getElementById('community_wikia').innerText =      dungeonz.getTextDef('Community: Wikia');
+            document.getElementById('community_discord').innerText =    dungeonz.getTextDef('Community: Discord');
+            document.getElementById('community_facebook').innerText =   dungeonz.getTextDef('Community: Facebook');
+            document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');
+            document.getElementById('hitpoint_tooltip').innerText =     dungeonz.getTextDef('Hitpoint tooltip');
+            document.getElementById('energy_tooltip').innerText =       dungeonz.getTextDef('Energy tooltip');
+            document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
+            document.getElementById('coins_tooltip').innerText =        dungeonz.getTextDef('Coins tooltip');
+            document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
+            document.getElementById('watch_ad_tooltip').innerText =     dungeonz.getTextDef('Watch ad tooltip');
+            document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
+            document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
+            document.getElementById('exit_tooltip').innerHTML =         dungeonz.getTextDef('Exit tooltip');
+            document.getElementById('respawns_tooltip').innerHTML =     dungeonz.getTextDef('Respawns tooltip');
+            document.getElementById('settings_tooltip').innerHTML =     dungeonz.getTextDef('Settings tooltip');
+            document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
+            document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
+            document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
+            document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');
+            document.getElementById('dungeon_prompt_name_header').innerText =       dungeonz.getTextDef('Dungeon') + ":";
+            document.getElementById('dungeon_prompt_difficulty_header').innerText = dungeonz.getTextDef('Difficulty') + ":";
+            document.getElementById('dungeon_prompt_glory_cost_header').innerText = dungeonz.getTextDef('Glory cost') + ":";
+            document.getElementById('dungeon_prompt_warning_header').innerText =    dungeonz.getTextDef('Enter dungeon warning header');
+            document.getElementById('dungeon_prompt_warning_value').innerText =     dungeonz.getTextDef('Enter dungeon warning message');
+            document.getElementById('dungeon_prompt_accept').innerText =            dungeonz.getTextDef('Enter');
+            document.getElementById('dungeon_prompt_decline').innerText =           dungeonz.getTextDef('Cancel');
+        }
+
+        // Load the default language.
+        changeLanguage(dungeonz.language);
+
+        function hideLanguageList () {document.getElementById('language_list').style.visibility = "hidden"}
+
+        document.getElementById('language_english').onclick =       function () { changeLanguage('English');                hideLanguageList(); };
+        document.getElementById('language_french').onclick =        function () { changeLanguage('French');                 hideLanguageList(); };
+        document.getElementById('language_spanish').onclick =       function () { changeLanguage('Spanish');                hideLanguageList(); };
+        document.getElementById('language_portuguese').onclick =    function () { changeLanguage('Portuguese (Brazil)');    hideLanguageList(); };
+        document.getElementById('language_turkish').onclick =       function () { changeLanguage('Turkish');                hideLanguageList(); };
+        document.getElementById('language_german').onclick =        function () { changeLanguage('German');                 hideLanguageList(); };
+        document.getElementById('language_russian').onclick =       function () { changeLanguage('Russian');                hideLanguageList(); };
+
+        document.getElementById('watch_ad_accept').onclick = function (event) {
+            // Play an ad.
+            console.log("play ad pressed");
+
+            // Hide the prompt.
+            document.getElementById('watch_ad_prompt').style.visibility = "hidden";
+        };
+        document.getElementById('watch_ad_decline').onclick = function (event) {
+            // Hide the prompt.
+            document.getElementById('watch_ad_prompt').style.visibility = "hidden";
+        };
+
+        document.getElementById('dungeon_prompt_accept').onclick = function (event) {
+            // Check if the player has enough glory.
+            if(_this.player.glory < dungeonz.DungeonPrompts[_this.adjacentDungeonID].gloryCost){
+                _this.chat(undefined, dungeonz.getTextDef("Not enough glory warning"), "#ffa54f");
+            }
+            else {
+                // Attempt to enter the dungeon. Send the server the ID of the dungeon instance.
+                window.ws.sendEvent("enter_dungeon", _this.adjacentDungeonID);
+            }
+
+            // Hide the prompt.
+            document.getElementById('dungeon_prompt').style.visibility = "hidden";
+        };
+        document.getElementById('dungeon_prompt_decline').onclick = function (event) {
+            // Hide the prompt.
+            document.getElementById('dungeon_prompt').style.visibility = "hidden";
+        };
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,711 @@
+:root {
+
+    --colourTransparentBlack: rgba(0, 0, 0, 0.44);
+
+
+    --colourElemHoverGrey: rgba(240, 255, 246, 0.95);
+    --colourTextContentBlack: black;
+    --colourTextContentWhite: white;
+    --colourTextHeading: white;
+    --colourContentBackgroundGrey: rgba(240, 255, 246, 0.7);
+    --colourContentBackgroundBlack: rgba(0, 0, 0, 0.4);
+    --colourDB32DarkPurple: #222034;
+}
+
+#game_container {
+}
+
+#play_button {
+    position: absolute;
+    width: 20%;
+    height: 60px;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--colourTransparentBlack);
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--colourContentBackgroundGrey);
+    border-width: 3px;
+
+    text-align: center;
+    color: whitesmoke;
+    font-family: Consolas;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#play_button:hover {
+    background-color: var(--colourElemHoverGrey);
+    color: var(--colourTextContentBlack);
+    border-width: 4px;
+}
+
+#warning_message {
+    position: absolute;
+    top: 40%;
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    color: darkorange;
+    font-family: Consolas;
+    font-size: 24px;
+    font-weight: bold;
+
+    visibility: hidden;
+}
+
+#name_input {
+    position: absolute;
+    width: 30%;
+    height: 40px;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: var(--colourContentBackgroundGrey);
+    border-width: 3px;
+    background-color: var(--colourContentBackgroundGrey);
+    cursor: pointer;
+
+    text-align: center;
+    color: var(--colourTextContentBlack);
+    font-family: Consolas;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#name_input:hover {
+    background-color: var(--colourElemHoverGrey);
+}
+
+#title_img {
+    position: absolute;
+    width: 50%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#background_img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -1;
+}
+
+#language_select {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    color: var(--colourTextContentBlack);
+    background-color: var(--colourContentBackgroundGrey);
+    font-family: Consolas;
+    border-style: solid;
+    border-color: var(--colourContentBackgroundGrey);
+    border-width: 3px;
+    font-weight: bold;
+    padding: 0px;
+    cursor: pointer;
+}
+
+#language_select:hover {
+    background-color: var(--colourElemHoverGrey);
+}
+
+#language_list {
+    position: absolute;
+    right: 10px;
+    top: 62px;
+
+    text-align: center;
+    color: var(--colourTextContentWhite);
+    background-color: var(--colourContentBackgroundBlack);
+    font-family: Consolas;
+    border-style: solid;
+    border-color: var(--colourContentBackgroundGrey);
+    border-width: 3px;
+    font-size: 12px;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 140px;
+
+    visibility: hidden;
+}
+
+.language_option {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.language_option:hover {
+    background-color: var(--colourElemHoverGrey);
+    color: var(--colourTextContentBlack);
+    font-weight: bold;
+}
+
+#instructions {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    background-color: var(--colourContentBackgroundBlack);
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgba(255, 255, 255, 0.52);
+
+    font-size: 15px;
+}
+
+.instruction_heading {
+    color: var(--colourTextHeading);
+    font-family: Consolas;
+    text-align: center;
+    margin: 2px;
+}
+
+#how_to_play {
+    color: white;
+    font-family: Consolas;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#controls {
+    color: white;
+    font-family: Consolas;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.instructions_border {
+    margin: 10px;
+    padding: 5px;
+}
+
+#community_links {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.44);
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgba(255, 255, 255, 0.52);
+
+    color: black;
+    font-family: Consolas;
+    font-size: 12px;
+}
+
+.community_link {
+    display: flex;
+    justify-content: left; /* align horizontal */
+    align-items: center; /* align vertical */
+    margin: 10px;
+    padding: 5px;
+    background-color: rgba(240, 255, 246, 0.67);
+    cursor: pointer;
+}
+
+.community_link:hover {
+    background-color: rgba(240, 255, 246, 0.95);
+}
+
+.community_button {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.community_text {
+    text-align: center;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+#gui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+#inventory {
+}
+
+#item_tooltip_container {
+    position: absolute;
+    visibility: hidden;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgba(75, 75, 75, 0.8);
+    font-family: Consolas;
+    border-style: solid;
+    border-color: #222034;
+    border-width: 3px;
+    padding: 8px;
+}
+
+#item_name {
+    font-weight: bold;
+}
+
+#border_container {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -100px;
+    margin-right: -100px;
+    transform: translateX(-50%);
+}
+
+#icon_container {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -100px;
+    margin-right: -100px;
+    transform: translateX(-50%);
+}
+
+#durability_meter_container {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -100px;
+    margin-right: -100px;
+    transform: translateX(-50%);
+}
+
+.inventory_slot_border {
+    left: 100px;
+    position: relative;
+    padding: 2px;
+    width: 48px;
+    height: 48px;
+}
+
+.inventory_slot_border:hover {
+    -webkit-filter: brightness(150%);
+}
+
+.inventory_slot_icon {
+    left: 100px;
+    position: relative;
+    padding: 2px;
+    width: 48px;
+    height: 48px;
+}
+
+.inventory_slot_durability_meter {
+    left: 100px;
+    top: 16px;
+    position: relative;
+    padding: 2px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.icon {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 10px;
+}
+
+.icon:hover {
+    -webkit-filter: brightness(150%);
+}
+
+#defence_icon {
+    top: 10px;
+}
+
+#hitpoint_icon {
+    top: 50px;
+}
+
+#energy_icon {
+    top: 90px;
+}
+
+#glory_icon {
+    top: 130px;
+}
+
+#coins_icon {
+    top: 170px;
+}
+
+#bounty_icon {
+    top: 210px;
+}
+
+#watch_ad_icon {
+    top: 250px;
+    cursor: pointer;
+}
+
+#avatar_icon {
+    top: 290px;
+    cursor: pointer;
+}
+
+#inventory_icon {
+    bottom: 10px;
+}
+
+#exit_icon {
+    top: 10px;
+    right: 10px;
+    left: auto;
+}
+
+#respawns_icon {
+    top: 50px;
+    right: 10px;
+    left: auto;
+}
+
+#settings_icon {
+    bottom: 10px;
+    right: 10px;
+    left: auto;
+}
+
+#quick_turn_icon {
+    bottom: 50px;
+    right: 10px;
+    left: auto;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
+#defence_tooltip {
+    top: 30px;
+}
+
+#hitpoint_tooltip {
+    top: 70px;
+}
+
+#energy_tooltip {
+    top: 110px;
+}
+
+#glory_tooltip {
+    top: 150px;
+}
+
+#coins_tooltip {
+    top: 190px;
+}
+
+#bounty_tooltip {
+    top: 230px;
+}
+
+#watch_ad_tooltip {
+    top: 270px;
+}
+
+#avatar_tooltip {
+    top: 310px;
+}
+
+#inventory_tooltip {
+    width: 50%;
+    bottom: 100px;
+    border-radius: 6px 6px 6px 0px;
+}
+
+#exit_tooltip {
+    width: 50%;
+    top: 30px;
+    right: 50px;
+    left: auto;
+    border-radius: 6px 0px 6px 6px;
+}
+
+#respawns_tooltip {
+    width: 50%;
+    top: 70px;
+    right: 50px;
+    left: auto;
+    border-radius: 6px 0px 6px 6px;
+}
+
+#settings_tooltip {
+    left: auto;
+    right: 50px;
+    width: 50%;
+    bottom: 100px;
+    border-radius: 6px 6px 0px 6px;
+}
+
+#quick_turn_tooltip {
+    left: auto;
+    right: 50px;
+    width: 50%;
+    bottom: 100px;
+    border-radius: 6px 6px 0px 6px;
+}
+
+.counter_tooltip {
+    position: absolute;
+    width: 200px;
+    color: whitesmoke;
+    text-align: center;
+    background-color: rgba(75, 75, 75, 0.8);
+    font-family: Consolas;
+    border-style: solid;
+    border-color: #222034;
+    border-width: 3px;
+    border-radius: 0 6px 6px 6px;
+    padding: 8px;
+    z-index: 1000;
+    left: 50px;
+
+    visibility: hidden;
+}
+
+.counter {
+    position: absolute;
+    left: 40px;
+    width: 100px;
+    height: 30px;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+
+    font-size: 26px;
+    font-family: Consolas;
+    font-weight: bold;
+    color: var(--colourTextContentWhite);
+
+    text-shadow:
+            -3px 0  var(--colourDB32DarkPurple),
+            0 3px   var(--colourDB32DarkPurple),
+            3px 0   var(--colourDB32DarkPurple),
+            0 -3px  var(--colourDB32DarkPurple);
+
+}
+
+#glory_counter {
+    top: 130px;
+}
+
+#coin_counter {
+    top: 170px;
+}
+
+#respawns_counter {
+    top: 50px;
+    left: auto;
+    width: auto;
+    right: 50px;
+}
+
+#chat_input {
+    position: absolute;
+    width: 30%;
+    height: 40px;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: whitesmoke;
+    background-color: var(--colourTextContentBlack);
+    font-family: Consolas;
+    font-size: 20px;
+    border-radius: 4px;
+    border-color: black;
+    text-align: center;
+    visibility: hidden;
+}
+
+#watch_ad_prompt {
+    position: absolute;
+    width: 50%;
+    background-color: grey;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #222034;
+    margin: auto;
+
+    text-align: center;
+    font-family: Consolas;
+    font-size: 20px;
+    font-weight: bold;
+    color: whitesmoke;
+    padding: 10px;
+    visibility: hidden;
+}
+
+#watch_ad_message {
+    padding-bottom: 30px;
+}
+
+#watch_ad_accept {
+    display: inline-block;
+    background-color: green;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #222034;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+#watch_ad_accept:hover {
+    background-color: #00ad00;
+}
+
+#watch_ad_decline {
+    display: inline-block;
+    background-color: red;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #222034;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+}
+#watch_ad_decline:hover {
+    background-color: #ff6600;
+}
+
+::placeholder {
+    color: dimgray;
+}
+
+#dungeon_prompt {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgba(75, 75, 75, 0.8);
+    font-family: Consolas;
+    border-style: solid;
+    border-color: #222034;
+    border-width: 3px;
+    padding: 8px;
+    visibility: hidden;
+}
+
+#dungeon_prompt_top {
+    width: 100%;
+    display: inline-block;
+}
+
+#dungeon_prompt_info {
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: #418470;
+    border-width: 3px;
+    background-color: rgba(48, 97, 80, 0.5);
+}
+
+#dungeon_prompt_warning {
+    width: 45%;
+    height: 100%;
+    float: right;
+    margin: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: #844126;
+    border-width: 3px;
+    background-color: rgba(132, 22, 0, 0.5);
+}
+
+#dungeon_prompt_bottom {
+    width: 100%;
+    height: 30px;
+    margin: 4px 4px 4px 4px;
+    display: inline-block;
+}
+
+#dungeon_prompt_accept {
+    width: 45%;
+    float: left;
+    background-color: green;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #222034;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    white-space: nowrap;
+}
+#dungeon_prompt_accept:hover {
+    background-color: #00ad00;
+}
+
+#dungeon_prompt_decline {
+    width: 45%;
+    float: right;
+    background-color: red;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #222034;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    white-space: nowrap;
+}
+#dungeon_prompt_decline:hover {
+    background-color: #ff6600;
+}
+
+.dungeon_prompt_header {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.dungeon_prompt_value {
+    margin-top: 0;
+    padding-top: 0;
+}

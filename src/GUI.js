@@ -21,6 +21,7 @@ class GUI {
         this.respawnsIcon =             document.getElementById('respawns_icon');
         this.settingsIcon =             document.getElementById('settings_icon');
         this.quickTurnIcon =            document.getElementById('quick_turn_icon');
+        this.audioIcon =                document.getElementById('audio_icon');
 
         this.defenceTooltip =           document.getElementById('defence_tooltip');
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
@@ -35,6 +36,7 @@ class GUI {
         this.respawnsTooltip =          document.getElementById('respawns_tooltip');
         this.settingsTooltip =          document.getElementById('settings_tooltip');
         this.quickTurnTooltip =         document.getElementById('quick_turn_tooltip');
+        this.audioTooltip =             document.getElementById('audio_tooltip');
 
         this.gloryCounter =             document.getElementById('glory_counter');
         this.coinsCounter =             document.getElementById('coin_counter');
@@ -99,10 +101,12 @@ class GUI {
             if(game.GUI.settingsIcon.style.opacity === '0.5'){
                 game.GUI.settingsIcon.style.opacity = '1';
                 game.GUI.quickTurnIcon.style.visibility = "hidden";
+                game.GUI.audioIcon.style.visibility = "hidden";
             }
             else {
                 game.GUI.settingsIcon.style.opacity = '0.5';
                 game.GUI.quickTurnIcon.style.visibility = "visible";
+                game.GUI.audioIcon.style.visibility = "visible";
             }
         };
 
@@ -116,6 +120,19 @@ class GUI {
             else {
                 dungeonz.quickTurnEnabled = true;
                 game.GUI.quickTurnIcon.style.opacity = '1';
+            }
+        };
+
+        this.audioIcon.onmouseover =    function(){ game.GUI.audioTooltip.style.visibility = "visible" };
+        this.audioIcon.onmouseout =     function(){ game.GUI.audioTooltip.style.visibility = "hidden" };
+        this.audioIcon.onclick =    function(){
+            if(dungeonz.audioEnabled === true){
+                dungeonz.audioEnabled = false;
+                game.GUI.audioIcon.style.opacity = '0.5';
+            }
+            else {
+                dungeonz.audioEnabled = true;
+                game.GUI.audioIcon.style.opacity = '1';
             }
         };
 

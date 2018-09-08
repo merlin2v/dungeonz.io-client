@@ -1,8 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Dungeonz.io</title>
+
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="assets/img/favicon.png">
+    <link rel="shortcut icon" href="assets/img/home-icon.png">
+    <link rel="apple-touch-icon" href="assets/img/home-icon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
+    <meta name="description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
+    <meta name="keywords" content="game,io,multiplayer,roguelike,MMO,dungeon,online,games,gaming">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Dungeonz.io">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+
+    <meta property="og:title" content="Dungeonz.io">
+    <meta property="og:url" content="http://waywardworlds.com/games/dungeonz/">
+    <meta property="og:type" content="game">
+    <meta property="og:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
+    <meta property="og:image" content="http://waywardworlds.com/games/dungeonz/assets/img/share-banner.png">
+    <meta property="og:image:width" content="1032">
+    <meta property="og:image:height" content="679">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@waywardworlds">
+    <meta property="twitter:creator" content="@waywardworlds">
+    <meta property="twitter:url" content="http://waywardworlds.com/games/dungeonz/">
+    <meta property="twitter:title" content="Dungeonz.io">
+    <meta property="twitter:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
+    <meta property="twitter:image" content="http://waywardworlds.com/games/dungeonz/assets/img/share-banner.png">
+    <meta property="twitter:image:alt" content="A scene from the game with a player character standing in a town.">
 
     <!--<script src="src/lib/phaser.min.js"></script>-->
     <script src="src/lib/phaser.js"></script>
@@ -29,7 +62,7 @@
             <img id="respawns_icon"     class="icon" src="assets/img/gui/respawns-icon.png">
             <img id="settings_icon"     class="icon" src="assets/img/gui/settings-icon.png">
             <img id="quick_turn_icon"   class="icon" src="assets/img/gui/turn-icon.png">
-            <img id="audio_icon"        class="icon" src="assets/img/gui/turn-icon.png">
+            <img id="audio_icon"        class="icon" src="assets/img/gui/audio-icon.png">
             <div id="defence_tooltip"   class="counter_tooltip"></div>
             <div id="hitpoint_tooltip"  class="counter_tooltip"></div>
             <div id="energy_tooltip"    class="counter_tooltip"></div>
@@ -43,6 +76,7 @@
             <div id="respawns_tooltip"  class="counter_tooltip"></div>
             <div id="settings_tooltip"  class="counter_tooltip"></div>
             <div id="quick_turn_tooltip" class="counter_tooltip"></div>
+            <div id="audio_tooltip"     class="counter_tooltip"></div>
             <div id="glory_counter"     class="counter"><p><p/></div>
             <div id="coin_counter"      class="counter"><p><p/></div>
             <div id="respawns_counter"  class="counter"><p><p/></div>
@@ -196,6 +230,7 @@
             document.getElementById('respawns_tooltip').innerHTML =     dungeonz.getTextDef('Respawns tooltip');
             document.getElementById('settings_tooltip').innerHTML =     dungeonz.getTextDef('Settings tooltip');
             document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
+            document.getElementById('audio_tooltip').innerHTML =        dungeonz.getTextDef('Audio tooltip');
             document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
             document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
             document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');

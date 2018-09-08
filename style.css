@@ -410,6 +410,14 @@ img {
     visibility: hidden;
 }
 
+#audio_icon {
+    bottom: 90px;
+    right: 10px;
+    left: auto;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
 #defence_tooltip {
     top: 30px;
 }
@@ -473,6 +481,14 @@ img {
 }
 
 #quick_turn_tooltip {
+    left: auto;
+    right: 50px;
+    width: 50%;
+    bottom: 100px;
+    border-radius: 6px 6px 0px 6px;
+}
+
+#audio_tooltip {
     left: auto;
     right: 50px;
     width: 50%;

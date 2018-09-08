@@ -20,6 +20,7 @@ window.dungeonz = {
     language: 'English',
 
     quickTurnEnabled: false,
+    audioEnabled: false,
 
     TextDefs: TextDefs,
 

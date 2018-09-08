@@ -22,6 +22,11 @@ class GUI {
         this.settingsIcon =             document.getElementById('settings_icon');
         this.quickTurnIcon =            document.getElementById('quick_turn_icon');
         this.audioIcon =                document.getElementById('audio_icon');
+        this.audioMinusIcon =           document.getElementById('audio_minus_icon');
+        this.audioPlusIcon =            document.getElementById('audio_plus_icon');
+        this.guiZoomIcon =              document.getElementById('gui_zoom_icon');
+        this.guiZoomMinusIcon =         document.getElementById('gui_zoom_minus_icon');
+        this.guiZoomPlusIcon =          document.getElementById('gui_zoom_plus_icon');
 
         this.defenceTooltip =           document.getElementById('defence_tooltip');
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
@@ -37,10 +42,13 @@ class GUI {
         this.settingsTooltip =          document.getElementById('settings_tooltip');
         this.quickTurnTooltip =         document.getElementById('quick_turn_tooltip');
         this.audioTooltip =             document.getElementById('audio_tooltip');
+        this.guiZoomTooltip =           document.getElementById('gui_zoom_tooltip');
 
         this.gloryCounter =             document.getElementById('glory_counter');
         this.coinsCounter =             document.getElementById('coin_counter');
         this.respawnsCounter =          document.getElementById('respawns_counter');
+        this.audioCounter =             document.getElementById('audio_counter');
+        this.guiZoomCounter =           document.getElementById('gui_zoom_counter');
         this.playAdButton =             document.getElementById('play_ad_button');
         this.dungeonPrompt =            document.getElementById('dungeon_prompt');
         this.inventory =                document.getElementById('inventory');
@@ -102,11 +110,25 @@ class GUI {
                 game.GUI.settingsIcon.style.opacity = '1';
                 game.GUI.quickTurnIcon.style.visibility = "hidden";
                 game.GUI.audioIcon.style.visibility = "hidden";
+                game.GUI.audioMinusIcon.style.visibility = "hidden";
+                game.GUI.audioPlusIcon.style.visibility = "hidden";
+                game.GUI.audioCounter.style.visibility = "hidden";
+                game.GUI.guiZoomIcon.style.visibility = "hidden";
+                game.GUI.guiZoomMinusIcon.style.visibility = "hidden";
+                game.GUI.guiZoomPlusIcon.style.visibility = "hidden";
+                game.GUI.guiZoomCounter.style.visibility = "hidden";
             }
             else {
                 game.GUI.settingsIcon.style.opacity = '0.5';
                 game.GUI.quickTurnIcon.style.visibility = "visible";
                 game.GUI.audioIcon.style.visibility = "visible";
+                game.GUI.audioMinusIcon.style.visibility = "visible";
+                game.GUI.audioPlusIcon.style.visibility = "visible";
+                game.GUI.audioCounter.style.visibility = "visible";
+                game.GUI.guiZoomIcon.style.visibility = "visible";
+                game.GUI.guiZoomMinusIcon.style.visibility = "visible";
+                game.GUI.guiZoomPlusIcon.style.visibility = "visible";
+                game.GUI.guiZoomCounter.style.visibility = "visible";
             }
         };
 
@@ -125,15 +147,74 @@ class GUI {
 
         this.audioIcon.onmouseover =    function(){ game.GUI.audioTooltip.style.visibility = "visible" };
         this.audioIcon.onmouseout =     function(){ game.GUI.audioTooltip.style.visibility = "hidden" };
-        this.audioIcon.onclick =    function(){
+        this.audioIcon.onclick =        function(){
             if(dungeonz.audioEnabled === true){
                 dungeonz.audioEnabled = false;
+                game.GUI.audioCounter.innerText = "0%";
                 game.GUI.audioIcon.style.opacity = '0.5';
+                game.GUI.audioCounter.style.opacity = '0.5';
+                game.GUI.audioMinusIcon.style.opacity = '0.5';
+                game.GUI.audioPlusIcon.style.opacity = '0.5';
             }
             else {
                 dungeonz.audioEnabled = true;
+                game.GUI.audioCounter.innerText = dungeonz.audioLevel + "%";
                 game.GUI.audioIcon.style.opacity = '1';
+                game.GUI.audioCounter.style.opacity = '1';
+                game.GUI.audioMinusIcon.style.opacity = '1';
+                game.GUI.audioPlusIcon.style.opacity = '1';
             }
+        };
+
+        this.audioMinusIcon.onclick =   function(){
+            // Don't go below 0 volume.
+            if(dungeonz.audioLevel <= 0) return;
+
+            dungeonz.audioLevel -= 10;
+            dungeonz.audioEnabled = true;
+            game.GUI.audioCounter.innerText = dungeonz.audioLevel + "%";
+            game.GUI.audioIcon.style.opacity = '1';
+            game.GUI.audioCounter.style.opacity = '1';
+            game.GUI.audioMinusIcon.style.opacity = '1';
+            game.GUI.audioPlusIcon.style.opacity = '1';
+        };
+
+        this.audioPlusIcon.onclick =    function(){
+            // Don't go above 1 volume.
+            if(dungeonz.audioLevel >= 100) return;
+
+            dungeonz.audioLevel += 10;
+            dungeonz.audioEnabled = true;
+            game.GUI.audioCounter.innerText = dungeonz.audioLevel + "%";
+            game.GUI.audioIcon.style.opacity = '1';
+            game.GUI.audioCounter.style.opacity = '1';
+            game.GUI.audioMinusIcon.style.opacity = '1';
+            game.GUI.audioPlusIcon.style.opacity = '1';
+        };
+
+        this.guiZoomIcon.onmouseover =  function(){ game.GUI.guiZoomTooltip.style.visibility = "visible" };
+        this.guiZoomIcon.onmouseout =   function(){ game.GUI.guiZoomTooltip.style.visibility = "hidden" };
+
+        this.guiZoomMinusIcon.onclick = function(){
+            // Don't go below 10 zoom.
+            if(dungeonz.GUIZoom <= 10) return;
+
+            dungeonz.GUIZoom -= 10;
+            game.GUI.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
+            //var zoomables = document.getElementsByClassName("zoom");
+            const style = document.styleSheets[0].rules[1].style;
+            style.zoom = dungeonz.GUIZoom / 100;
+        };
+
+        this.guiZoomPlusIcon.onclick = function(){
+            // Don't go above 400 zoom.
+            if(dungeonz.GUIZoom >= 400) return;
+
+            dungeonz.GUIZoom += 10;
+            game.GUI.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
+            //var zoomables = document.getElementsByClassName("zoom");
+            const style = document.styleSheets[0].rules[1].style;
+            style.zoom = dungeonz.GUIZoom / 100;
         };
 
         // References to the DOM elements for the variable things.
@@ -158,6 +239,8 @@ class GUI {
         this.gloryCounter.innerText = this.game.player.glory;
         this.coinsCounter.innerText = this.game.player.coins;
         this.respawnsCounter.innerText = this.game.player.respawns;
+        this.audioCounter.innerText = dungeonz.audioLevel + "%";
+        this.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
 
     }
 
@@ -185,11 +268,15 @@ class GUI {
             const element = document.createElement('img');
 
             element.src = 'assets/img/gui/' + imageName + '.png';
-            element.style.position = 'absolute';
+
+            element.className = "icon_counter gui_zoom";
+
+            //element.style.position = 'absolute';
             element.style.top = (halfIconHeight - halfCounterHeight) + iconTop + 'px';
             element.style.left = (46 + (18 * i)) + 'px';
-            element.style.width = "16px";
-            element.style.height = "16px";
+            //element.style.width = "16px";
+            //element.style.height = "16px";
+
 
             groupArray.push(element);
 
@@ -275,7 +362,7 @@ class GUI {
             const element = document.createElement('img');
 
             element.src = 'assets/img/gui/inventory-slot-border.png';
-            element.className = 'inventory_slot_border';
+            element.className = 'inventory_slot_border zoom';
             // Use the item in this slot when pressed.
             element.onclick = function () {
                 //console.log('invent slot pressed: ' + slotKeysByIndex[i]);
@@ -326,7 +413,7 @@ class GUI {
             const element = document.createElement('img');
 
             element.src = 'assets/img/gui/icons/icon-gold.png';
-            element.className = 'inventory_slot_icon';
+            element.className = 'inventory_slot_icon zoom';
             element.style.visibility = "hidden";
 
             this.inventorySlotIcons[this.slotKeysByIndex[i]] = element;
@@ -347,7 +434,7 @@ class GUI {
             const element = document.createElement('img');
 
             element.src = 'assets/img/gui/durability-meter-10.png';
-            element.className = 'inventory_slot_durability_meter';
+            element.className = 'inventory_slot_durability_meter zoom';
             element.style.visibility = "hidden";
 
             this.inventorySlotDurabilityMeters[this.slotKeysByIndex[i]] = element;

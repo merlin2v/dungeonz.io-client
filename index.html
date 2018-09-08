@@ -3,10 +3,10 @@
 <head>
     <title>Dungeonz.io</title>
 
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="assets/img/favicon.png">
-    <link rel="shortcut icon" href="assets/img/home-icon.png">
-    <link rel="apple-touch-icon" href="assets/img/home-icon.png">
+    <link rel="shortcut icon" type="image/png" href="assets/img/misc/favicon.png">
+    <link rel="icon" sizes="192x192" href="assets/img/misc/favicon.png">
+    <link rel="shortcut icon" href="assets/img/misc/home-icon.png">
+    <link rel="apple-touch-icon" href="assets/img/misc/home-icon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
     <meta name="description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
@@ -18,13 +18,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Dungeonz.io">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+    <meta name="viewport" content="width=device-width initial-scale=0.5 maximum-scale=1 user-scalable=yes minimal-ui" />
 
     <meta property="og:title" content="Dungeonz.io">
     <meta property="og:url" content="http://waywardworlds.com/games/dungeonz/">
     <meta property="og:type" content="game">
     <meta property="og:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
-    <meta property="og:image" content="http://waywardworlds.com/games/dungeonz/assets/img/share-banner.png">
+    <meta property="og:image" content="http://waywardworlds.com/games/dungeonz/assets/img/misc/share-banner.png">
     <meta property="og:image:width" content="1032">
     <meta property="og:image:height" content="679">
 
@@ -34,7 +34,7 @@
     <meta property="twitter:url" content="http://waywardworlds.com/games/dungeonz/">
     <meta property="twitter:title" content="Dungeonz.io">
     <meta property="twitter:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
-    <meta property="twitter:image" content="http://waywardworlds.com/games/dungeonz/assets/img/share-banner.png">
+    <meta property="twitter:image" content="http://waywardworlds.com/games/dungeonz/assets/img/misc/share-banner.png">
     <meta property="twitter:image:alt" content="A scene from the game with a player character standing in a town.">
 
     <!--<script src="src/lib/phaser.min.js"></script>-->
@@ -46,40 +46,48 @@
 
 </head>
 <body style="margin: 0; overflow:hidden;">
-    <img id="background_img" src="assets/img/main-background.png">
+    <img id="background_img" src="assets/img/misc/main-background.png">
     <div id="game_container">
         <div id="gui">
-            <img id="defence_icon"      class="icon" src="assets/img/gui/defence-icon.png">
-            <img id="hitpoint_icon"     class="icon" src="assets/img/gui/hitpoint-icon.png">
-            <img id="energy_icon"       class="icon" src="assets/img/gui/energy-icon.png">
-            <img id="glory_icon"        class="icon" src="assets/img/gui/glory-icon.png">
-            <img id="coins_icon"        class="icon" src="assets/img/gui/coins-icon.png">
-            <img id="bounty_icon"       class="icon" src="assets/img/gui/bounty-icon.png">
-            <img id="watch_ad_icon"     class="icon" src="assets/img/gui/watch-ad-icon.png">
-            <img id="avatar_icon"       class="icon" src="assets/img/gui/avatar-icon.png">
-            <img id="inventory_icon"    class="icon" src="assets/img/gui/inventory-icon.png">
-            <img id="exit_icon"         class="icon" src="assets/img/gui/exit-icon.png">
-            <img id="respawns_icon"     class="icon" src="assets/img/gui/respawns-icon.png">
-            <img id="settings_icon"     class="icon" src="assets/img/gui/settings-icon.png">
-            <img id="quick_turn_icon"   class="icon" src="assets/img/gui/turn-icon.png">
-            <img id="audio_icon"        class="icon" src="assets/img/gui/audio-icon.png">
-            <div id="defence_tooltip"   class="counter_tooltip"></div>
-            <div id="hitpoint_tooltip"  class="counter_tooltip"></div>
-            <div id="energy_tooltip"    class="counter_tooltip"></div>
-            <div id="glory_tooltip"     class="counter_tooltip"></div>
-            <div id="coins_tooltip"     class="counter_tooltip"></div>
-            <div id="bounty_tooltip"    class="counter_tooltip"></div>
-            <div id="watch_ad_tooltip"  class="counter_tooltip"></div>
-            <div id="avatar_tooltip"    class="counter_tooltip"></div>
-            <div id="inventory_tooltip" class="counter_tooltip"></div>
-            <div id="exit_tooltip"      class="counter_tooltip"></div>
-            <div id="respawns_tooltip"  class="counter_tooltip"></div>
-            <div id="settings_tooltip"  class="counter_tooltip"></div>
-            <div id="quick_turn_tooltip" class="counter_tooltip"></div>
-            <div id="audio_tooltip"     class="counter_tooltip"></div>
-            <div id="glory_counter"     class="counter"><p><p/></div>
-            <div id="coin_counter"      class="counter"><p><p/></div>
-            <div id="respawns_counter"  class="counter"><p><p/></div>
+            <img id="defence_icon"      class="icon gui_zoom" src="assets/img/gui/defence-icon.png">
+            <img id="hitpoint_icon"     class="icon gui_zoom" src="assets/img/gui/hitpoint-icon.png">
+            <img id="energy_icon"       class="icon gui_zoom" src="assets/img/gui/energy-icon.png">
+            <img id="glory_icon"        class="icon gui_zoom" src="assets/img/gui/glory-icon.png">
+            <img id="coins_icon"        class="icon gui_zoom" src="assets/img/gui/coins-icon.png">
+            <img id="bounty_icon"       class="icon gui_zoom" src="assets/img/gui/bounty-icon.png">
+            <img id="watch_ad_icon"     class="icon gui_zoom" src="assets/img/gui/watch-ad-icon.png">
+            <img id="avatar_icon"       class="icon gui_zoom" src="assets/img/gui/avatar-icon.png">
+            <img id="inventory_icon"    class="icon gui_zoom" src="assets/img/gui/inventory-icon.png">
+            <img id="exit_icon"         class="icon gui_zoom" src="assets/img/gui/exit-icon.png">
+            <img id="respawns_icon"     class="icon gui_zoom" src="assets/img/gui/respawns-icon.png">
+            <img id="settings_icon"     class="icon gui_zoom" src="assets/img/gui/settings-icon.png">
+            <img id="quick_turn_icon"   class="icon gui_zoom" src="assets/img/gui/turn-icon.png">
+            <div id="audio_counter"     class="text_counter gui_zoom"><p></p></div>
+            <img id="audio_icon"        class="icon gui_zoom" src="assets/img/gui/audio-icon.png">
+            <img id="audio_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
+            <img id="audio_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
+            <div id="gui_zoom_counter"  class="text_counter gui_zoom"><p></p></div>
+            <img id="gui_zoom_icon"     class="icon gui_zoom" src="assets/img/gui/zoom-icon.png">
+            <img id="gui_zoom_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
+            <img id="gui_zoom_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
+            <div id="defence_tooltip"   class="counter_tooltip  gui_zoom"></div>
+            <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="energy_tooltip"    class="counter_tooltip  gui_zoom"></div>
+            <div id="glory_tooltip"     class="counter_tooltip  gui_zoom"></div>
+            <div id="coins_tooltip"     class="counter_tooltip  gui_zoom"></div>
+            <div id="bounty_tooltip"    class="counter_tooltip  gui_zoom"></div>
+            <div id="watch_ad_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="avatar_tooltip"    class="counter_tooltip  gui_zoom"></div>
+            <div id="inventory_tooltip" class="counter_tooltip  gui_zoom"></div>
+            <div id="exit_tooltip"      class="counter_tooltip  gui_zoom"></div>
+            <div id="respawns_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="settings_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="quick_turn_tooltip" class="counter_tooltip gui_zoom"></div>
+            <div id="audio_tooltip"     class="counter_tooltip  gui_zoom"></div>
+            <div id="gui_zoom_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="glory_counter"     class="text_counter gui_zoom"><p><p/></div>
+            <div id="coin_counter"      class="text_counter gui_zoom"><p><p/></div>
+            <div id="respawns_counter"  class="text_counter gui_zoom"><p><p/></div>
 
             <div id="watch_ad_prompt">
                 <div id="watch_ad_message"></div>
@@ -109,7 +117,7 @@
             </div>
 
         </div>
-        <div id="inventory">
+        <div id="inventory" class="gui_zoom">
             <div id="item_tooltip_container">
                 <div id="item_name"></div>
                 <div id="item_description"></div>
@@ -125,7 +133,7 @@
     </div>
 
     <div id="menu_container">
-        <img id="title_img" src="assets/img/dungeonzio-title.png" alt="Dungeonz.io title">
+        <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
         <p id="warning_message">Could not connect to game server. Probably updating...</p>
         <input id="name_input" type="text" maxlength="20" autofocus>
         <button id="play_button" type="button" onclick="connect()"></button>
@@ -144,15 +152,15 @@
         <div id="community_links">
             <h2 id="community_header" class="instruction_heading"></h2>
             <div id="wikia_link" class="community_link" onclick="window.open('https://dungeonz.wikia.com', '_blank');">
-                <img id="wikia_button"      class="community_button" src="assets/img/wikia_logo.png">
+                <img id="wikia_button"      class="community_button" src="assets/img/misc/wikia-logo.png">
                 <span id="community_wikia" class="community_text"></span>
             </div>
             <div id="discord_link" class="community_link" onclick="window.open('https://discord.gg/7wjyU7B', '_blank');">
-                <img id="discord_button"    class="community_button" src="assets/img/discord-logo-color.png">
+                <img id="discord_button"    class="community_button" src="assets/img/misc/discord-logo-color.png">
                 <span id="community_discord" class="community_text"></span>
             </div>
             <div id="facebook_link" class="community_link" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');">
-                <img id="facebook_button"   class="community_button" src="assets/img/facebook-logo.png">
+                <img id="facebook_button"   class="community_button" src="assets/img/misc/facebook-logo.png">
                 <span id="community_facebook" class="community_text"></span>
             </div>
         </div>
@@ -231,6 +239,7 @@
             document.getElementById('settings_tooltip').innerHTML =     dungeonz.getTextDef('Settings tooltip');
             document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
             document.getElementById('audio_tooltip').innerHTML =        dungeonz.getTextDef('Audio tooltip');
+            document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
             document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
             document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');

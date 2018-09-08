@@ -20,7 +20,11 @@ window.dungeonz = {
     language: 'English',
 
     quickTurnEnabled: false,
-    audioEnabled: false,
+    audioEnabled: true,
+    // The volume of the audio. 0 is no audio, 100 is full volume. Can't use floats due to imperfect decimal precision.
+    audioLevel: 50,
+
+    GUIZoom: 100,
 
     TextDefs: TextDefs,
 

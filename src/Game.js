@@ -137,6 +137,16 @@ dungeonz.Game.prototype = {
 
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
+        this.GUI.settingsIcon.style.opacity = "1";
+        this.GUI.quickTurnIcon.style.visibility = "hidden";
+        this.GUI.audioIcon.style.visibility = "hidden";
+        this.GUI.audioCounter.style.visibility = "hidden";
+        this.GUI.audioMinusIcon.style.visibility = "hidden";
+        this.GUI.audioPlusIcon.style.visibility = "hidden";
+        this.GUI.guiZoomIcon.style.visibility = "hidden";
+        this.GUI.guiZoomCounter.style.visibility = "hidden";
+        this.GUI.guiZoomMinusIcon.style.visibility = "hidden";
+        this.GUI.guiZoomPlusIcon.style.visibility = "hidden";
     },
 
     inventorySlotPressed (slotNumber) {

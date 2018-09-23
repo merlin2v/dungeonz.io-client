@@ -1,12 +1,10 @@
 
 const Sprite = function (x, y, config) {
-
-    //console.log("creating iron hatchet");
-
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'pickup-wood');
 
     this.scale.setTo(GAME_SCALE);
 
+    this.tweenPickupFromCenter();
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

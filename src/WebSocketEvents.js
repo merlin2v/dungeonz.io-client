@@ -3,8 +3,8 @@
 window.ws = false;
 
 const eventResponses = {};
-const serverIPAddress = '104.248.48.75';
-//const serverIPAddress = '127.0.0.4';
+//const serverIPAddress = '104.248.48.75';
+const serverIPAddress = '127.0.0.4';
 
 import EventNames from '../src/catalogues/EventNames'
 import ItemTypes from '../src/catalogues/ItemTypes'
@@ -102,11 +102,13 @@ eventResponses.world_full = function () {
 eventResponses.moved = function (data) {
     //console.log("moved: ", data);
 
-    // Check the entity id is valid.
     const dynamic = _this.dynamics[data.id];
+
+    // Check the entity id is valid.
+    if(dynamic === undefined) return;
+
     const dynamicSprite = dynamic.sprite;
 
-    if(dynamic === undefined) return;
     // The client player moved.
     if(data.id === _this.player.entityId){
 
@@ -200,35 +202,45 @@ eventResponses.change_board = function (data) {
 };
 
 eventResponses.dungeon_prompt = function (data) {
-
-    console.log("dungeon_prompt, data:", data);
-
+    //console.log("dungeon_prompt, data:", data);
     _this.adjacentDungeonID = data;
-
     _this.GUI.updateDungeonPrompt();
     _this.GUI.dungeonPrompt.style.visibility = "visible";
 };
 
 eventResponses.hit_point_value = function (data) {
     _this.player.hitPoints = data;
+    if(_this.player.hitPoints <= 0){
+        console.log("this player entity has died");
+        // If the player has any respawns left, show the respawn prompt.
+        if(_this.player.respawns > 0){
+            console.log("  they have some respawns left");
+            _this.GUI.respawnPrompt.style.visibility = "visible";
+        }
+        // No respawns left. Game over...
+        else {
+            console.log("  Game over...");
+            _this.GUI.gameOverPrompt.style.visibility = "visible";
+        }
 
+
+    }
     _this.GUI.updateHitPointCounters();
 };
 
 eventResponses.energy_value = function (data) {
     _this.player.energy = data;
-
     _this.GUI.updateEnergyCounters();
 };
 
 eventResponses.glory_value = function (data) {
-    _this.GUI.gloryCounter.innerText = data;
     _this.player.glory = data;
+    _this.GUI.gloryCounter.innerText = data;
 };
 
 eventResponses.coins_value = function (data) {
-    _this.GUI.coinsCounter.innerText = data;
     _this.player.coins = data;
+    _this.GUI.coinsCounter.innerText = data;
 };
 
 eventResponses.durability_value = function (data) {
@@ -244,6 +256,16 @@ eventResponses.damage = function (data) {
     _this.chat(data.id, data.amount, "#ff6700");
 };
 
+eventResponses.player_respawn = function (data) {
+    _this.player.respawns -= 1;
+    _this.GUI.respawnsRemainingValue.innerText = _this.player.respawns;
+    _this.GUI.respawnsCounter.innerText = _this.player.respawns;
+    _this.player.hitPoints = _this.player.maxHitPoints;
+    _this.player.energy = _this.player.maxEnergy;
+    _this.GUI.respawnPrompt.style.visibility = "hidden";
+    _this.GUI.updateHitPointCounters();
+};
+
 eventResponses.add_entity = function (data) {
     //console.log("add entity event:", data);
     _this.addEntity(data);
@@ -257,9 +279,7 @@ eventResponses.remove_entity = function (data) {
 eventResponses.add_entities = function (data) {
     //console.log("add entities event");
     for(let i=0; i<data.length; i+=1){
-
         _this.addEntity(data[i]);
-
     }
 };
 
@@ -321,9 +341,16 @@ eventResponses.change_direction = function (data) {
     const dynamic = _this.dynamics[data.id];
     if(dynamic === undefined) return;
 
-    dynamic.sprite.frameName = dynamic.sprite.directionFrames[data.direction];
-    dynamic.sprite.direction = data.direction;
-    dynamic.sprite.animations.stop();
+    const sprite = dynamic.sprite;
+    // Some sprites show their direction by having different frames, others by rotating.
+    if(sprite.directionFrames !== undefined){
+        sprite.frameName = sprite.directionFrames[data.direction];
+    }
+    if(sprite.directionAngles !== undefined){
+        sprite.angle = sprite.directionAngles[data.direction];
+    }
+    sprite.direction = data.direction;
+    sprite.animations.stop();
 };
 
 eventResponses.chat = function (data) {

@@ -4,8 +4,7 @@ const moveAnimCompleted = function () {
 };
 
 const Sprite = function (x, y, config) {
-
-    console.log("player const: ", x, y, config);
+    //console.log("player const: ", x, y, config);
 
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.directionFrames[config.direction] || this.directionFrames.d);
 
@@ -34,7 +33,6 @@ const Sprite = function (x, y, config) {
     this.animations.add('d',    ['human-down-1',    'human-down-2',     'human-down-1',     'human-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('l',    ['human-left-1',    'human-left-2',     'human-left-1',     'human-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('r',    ['human-right-1',   'human-right-2',    'human-right-1',    'human-right-3'],   10).onComplete.add(moveAnimCompleted, this);
-
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

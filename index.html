@@ -70,6 +70,7 @@
             <img id="gui_zoom_icon"     class="icon gui_zoom" src="assets/img/gui/zoom-icon.png">
             <img id="gui_zoom_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
             <img id="gui_zoom_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
+            <img id="virtual_dpad_icon" class="icon gui_zoom" src="assets/img/gui/virtual-dpad-icon.png">
             <div id="defence_tooltip"   class="counter_tooltip  gui_zoom"></div>
             <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoom"></div>
             <div id="energy_tooltip"    class="counter_tooltip  gui_zoom"></div>
@@ -82,9 +83,10 @@
             <div id="exit_tooltip"      class="counter_tooltip  gui_zoom"></div>
             <div id="respawns_tooltip"  class="counter_tooltip  gui_zoom"></div>
             <div id="settings_tooltip"  class="counter_tooltip  gui_zoom"></div>
-            <div id="quick_turn_tooltip" class="counter_tooltip gui_zoom"></div>
-            <div id="audio_tooltip"     class="counter_tooltip  gui_zoom"></div>
-            <div id="gui_zoom_tooltip"  class="counter_tooltip  gui_zoom"></div>
+            <div id="quick_turn_tooltip"    class="counter_tooltip gui_zoom"></div>
+            <div id="audio_tooltip"         class="counter_tooltip gui_zoom"></div>
+            <div id="gui_zoom_tooltip"      class="counter_tooltip gui_zoom"></div>
+            <div id="virtual_dpad_tooltip"  class="counter_tooltip gui_zoom"></div>
             <div id="glory_counter"     class="text_counter gui_zoom"><p><p/></div>
             <div id="coin_counter"      class="text_counter gui_zoom"><p><p/></div>
             <div id="respawns_counter"  class="text_counter gui_zoom"><p><p/></div>
@@ -114,6 +116,26 @@
                     <div id="dungeon_prompt_accept"></div>
                     <div id="dungeon_prompt_decline"></div>
                 </div>
+            </div>
+            
+            <div id="virtual_dpad">
+                <img id="virtual_dpad_up"       src="assets/img/gui/virtual-dpad-up-icon.png">
+                <img id="virtual_dpad_down"     src="assets/img/gui/virtual-dpad-down-icon.png">
+                <img id="virtual_dpad_left"     src="assets/img/gui/virtual-dpad-left-icon.png">
+                <img id="virtual_dpad_right"    src="assets/img/gui/virtual-dpad-right-icon.png">
+            </div>
+
+            <div id="respawn_prompt">
+                <div id="you_died"></div>
+                <span id="respawns_remaining"></span>
+                <span id="respawns_remaining_value"></span>
+                <div id="respawn_button"></div>
+            </div>
+
+            <div id="game_over_prompt">
+                <div id="game_over"></div>
+                <span id="game_over_message"></span>
+                <div id="play_again_button"></div>
             </div>
 
         </div>
@@ -240,6 +262,7 @@
             document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
             document.getElementById('audio_tooltip').innerHTML =        dungeonz.getTextDef('Audio tooltip');
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
+            document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
             document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
             document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
             document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');
@@ -250,6 +273,12 @@
             document.getElementById('dungeon_prompt_warning_value').innerText =     dungeonz.getTextDef('Enter dungeon warning message');
             document.getElementById('dungeon_prompt_accept').innerText =            dungeonz.getTextDef('Enter');
             document.getElementById('dungeon_prompt_decline').innerText =           dungeonz.getTextDef('Cancel');
+            document.getElementById('you_died').innerText =             dungeonz.getTextDef('You died');
+            document.getElementById('respawns_remaining').innerText =   dungeonz.getTextDef('Respawns remaining');
+            document.getElementById('respawn_button').innerText =       dungeonz.getTextDef('Respawn');
+            document.getElementById('game_over').innerText =            dungeonz.getTextDef('Game over');
+            document.getElementById('game_over_message').innerText =    dungeonz.getTextDef('Game over message');
+            document.getElementById('play_again_button').innerText =    dungeonz.getTextDef('Play again');
         }
 
         // Load the default language.
@@ -275,24 +304,6 @@
         document.getElementById('watch_ad_decline').onclick = function (event) {
             // Hide the prompt.
             document.getElementById('watch_ad_prompt').style.visibility = "hidden";
-        };
-
-        document.getElementById('dungeon_prompt_accept').onclick = function (event) {
-            // Check if the player has enough glory.
-            if(_this.player.glory < dungeonz.DungeonPrompts[_this.adjacentDungeonID].gloryCost){
-                _this.chat(undefined, dungeonz.getTextDef("Not enough glory warning"), "#ffa54f");
-            }
-            else {
-                // Attempt to enter the dungeon. Send the server the ID of the dungeon instance.
-                window.ws.sendEvent("enter_dungeon", _this.adjacentDungeonID);
-            }
-
-            // Hide the prompt.
-            document.getElementById('dungeon_prompt').style.visibility = "hidden";
-        };
-        document.getElementById('dungeon_prompt_decline').onclick = function (event) {
-            // Hide the prompt.
-            document.getElementById('dungeon_prompt').style.visibility = "hidden";
         };
 
     </script>

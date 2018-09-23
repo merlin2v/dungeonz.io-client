@@ -4,9 +4,6 @@ const moveAnimCompleted = function () {
 };
 
 const Sprite = function (x, y, config) {
-
-    console.log("bandit leader const: ", x, y, config);
-
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.directionFrames[config.direction] || 'bandit-down-1');
 
     this.entityId = config.id;
@@ -34,7 +31,6 @@ const Sprite = function (x, y, config) {
     this.animations.add('d',    ['bandit-down-1',    'bandit-down-2',     'bandit-down-1',     'bandit-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('l',    ['bandit-left-1',    'bandit-left-2',     'bandit-left-1',     'bandit-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('r',    ['bandit-right-1',   'bandit-right-2',    'bandit-right-1',    'bandit-right-3'],   10).onComplete.add(moveAnimCompleted, this);
-
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

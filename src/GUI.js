@@ -27,6 +27,7 @@ class GUI {
         this.guiZoomIcon =              document.getElementById('gui_zoom_icon');
         this.guiZoomMinusIcon =         document.getElementById('gui_zoom_minus_icon');
         this.guiZoomPlusIcon =          document.getElementById('gui_zoom_plus_icon');
+        this.virtualDPadIcon =          document.getElementById('virtual_dpad_icon');
 
         this.defenceTooltip =           document.getElementById('defence_tooltip');
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
@@ -43,14 +44,25 @@ class GUI {
         this.quickTurnTooltip =         document.getElementById('quick_turn_tooltip');
         this.audioTooltip =             document.getElementById('audio_tooltip');
         this.guiZoomTooltip =           document.getElementById('gui_zoom_tooltip');
+        this.virtualDPadTooltip =       document.getElementById('virtual_dpad_tooltip');
 
         this.gloryCounter =             document.getElementById('glory_counter');
         this.coinsCounter =             document.getElementById('coin_counter');
         this.respawnsCounter =          document.getElementById('respawns_counter');
         this.audioCounter =             document.getElementById('audio_counter');
         this.guiZoomCounter =           document.getElementById('gui_zoom_counter');
+        this.virtualDPad =              document.getElementById('virtual_dpad');
+        this.virtualDPadUp =            document.getElementById('virtual_dpad_up');
+        this.virtualDPadDown =          document.getElementById('virtual_dpad_down');
+        this.virtualDPadLeft =          document.getElementById('virtual_dpad_left');
+        this.virtualDPadRight =         document.getElementById('virtual_dpad_right');
         this.playAdButton =             document.getElementById('play_ad_button');
         this.dungeonPrompt =            document.getElementById('dungeon_prompt');
+        this.respawnPrompt =            document.getElementById('respawn_prompt');
+        this.respawnsRemainingValue =   document.getElementById('respawns_remaining_value');
+        this.respawnButton =            document.getElementById('respawn_button');
+        this.gameOverPrompt =           document.getElementById('game_over_prompt');
+        this.playAgainButton =          document.getElementById('play_again_button');
         this.inventory =                document.getElementById('inventory');
         this.borderContainer =          document.getElementById('border_container');
         this.iconContainer =            document.getElementById('icon_container');
@@ -67,6 +79,13 @@ class GUI {
         // Hide the chat input at the start.
         this.chatInput.isActive = false;
         this.chatInput.style.visibility = "hidden";
+
+        // Check if the virtual D-pad should be shown at the start.
+        if(dungeonz.virtualDPadEnabled === true) this.virtualDPad.style.visibility = "visible";
+
+        // Check if the quick turn setting is on. Show faded if it isn't.
+        if(dungeonz.quickTurnEnabled === true) this.quickTurnIcon.style.opacity = '1';
+        else this.quickTurnIcon.style.opacity = '0.5';
 
         // Attach the events so the tooltips appear when the icons are hovered over.
         this.defenceIcon.onmouseover =  function(){ game.GUI.defenceTooltip.style.visibility = "visible" };
@@ -96,6 +115,7 @@ class GUI {
 
         this.inventoryIcon.onmouseover =function(){ game.GUI.inventoryTooltip.style.visibility = "visible" };
         this.inventoryIcon.onmouseout = function(){ game.GUI.inventoryTooltip.style.visibility = "hidden" };
+        this.inventoryIcon.onclick =    function(){ window.ws.sendEvent('pick_up_item'); };
 
         this.exitIcon.onmouseover =     function(){ game.GUI.exitTooltip.style.visibility = "visible" };
         this.exitIcon.onmouseout =      function(){ game.GUI.exitTooltip.style.visibility = "hidden" };
@@ -117,6 +137,7 @@ class GUI {
                 game.GUI.guiZoomMinusIcon.style.visibility = "hidden";
                 game.GUI.guiZoomPlusIcon.style.visibility = "hidden";
                 game.GUI.guiZoomCounter.style.visibility = "hidden";
+                game.GUI.virtualDPadIcon.style.visibility = "hidden";
             }
             else {
                 game.GUI.settingsIcon.style.opacity = '0.5';
@@ -129,6 +150,7 @@ class GUI {
                 game.GUI.guiZoomMinusIcon.style.visibility = "visible";
                 game.GUI.guiZoomPlusIcon.style.visibility = "visible";
                 game.GUI.guiZoomCounter.style.visibility = "visible";
+                game.GUI.virtualDPadIcon.style.visibility = "visible";
             }
         };
 
@@ -204,9 +226,10 @@ class GUI {
             //var zoomables = document.getElementsByClassName("zoom");
             const style = document.styleSheets[0].rules[1].style;
             style.zoom = dungeonz.GUIZoom / 100;
+            style['-moz-transform'] = 'scale(' + dungeonz.GUIZoom / 100 + ')';
         };
 
-        this.guiZoomPlusIcon.onclick = function(){
+        this.guiZoomPlusIcon.onclick =  function(){
             // Don't go above 400 zoom.
             if(dungeonz.GUIZoom >= 400) return;
 
@@ -215,6 +238,62 @@ class GUI {
             //var zoomables = document.getElementsByClassName("zoom");
             const style = document.styleSheets[0].rules[1].style;
             style.zoom = dungeonz.GUIZoom / 100;
+            style['-moz-transform'] = 'scale(' + dungeonz.GUIZoom / 100 + ')';
+        };
+
+        this.virtualDPadIcon.onmouseover =  function(){ game.GUI.virtualDPadTooltip.style.visibility = "visible" };
+        this.virtualDPadIcon.onmouseout =   function(){ game.GUI.virtualDPadTooltip.style.visibility = "hidden" };
+        this.virtualDPadIcon.onclick =  function(){
+            if(dungeonz.virtualDPadEnabled === true){
+                dungeonz.virtualDPadEnabled = false;
+                game.GUI.virtualDPad.style.visibility = "hidden";
+                game.GUI.virtualDPadIcon.style.opacity = "0.5";
+            }
+            else {
+                dungeonz.virtualDPadEnabled = true;
+                game.GUI.virtualDPad.style.visibility = "visible";
+                game.GUI.virtualDPadIcon.style.opacity = "1";
+            }
+        };
+
+        this.virtualDPadUp.onclick =        function(){
+            window.ws.sendEvent('move_up');
+        };
+        this.virtualDPadDown.onclick =      function(){
+            window.ws.sendEvent('move_down');
+        };
+        this.virtualDPadLeft.onclick =      function(){
+            window.ws.sendEvent('move_left');
+        };
+        this.virtualDPadRight.onclick =     function(){
+            window.ws.sendEvent('move_right');
+        };
+
+        document.getElementById('dungeon_prompt_accept').onclick = function (event) {
+            // Check if the player has enough glory.
+            if(_this.player.glory < dungeonz.DungeonPrompts[_this.adjacentDungeonID].gloryCost){
+                _this.chat(undefined, dungeonz.getTextDef("Not enough glory warning"), "#ffa54f");
+            }
+            else {
+                // Attempt to enter the dungeon. Send the server the ID of the dungeon instance.
+                window.ws.sendEvent("enter_dungeon", _this.adjacentDungeonID);
+            }
+
+            // Hide the prompt.
+            game.GUI.dungeonPrompt.style.visibility = "hidden";
+        };
+        document.getElementById('dungeon_prompt_decline').onclick = function (event) {
+            // Hide the prompt.
+            game.GUI.dungeonPrompt.style.visibility = "hidden";
+        };
+
+        this.respawnButton.onclick = function (event) {
+            window.ws.sendEvent("respawn");
+        };
+
+        this.playAgainButton.onclick = function (event) {
+            // Refresh the page.
+            location.reload();
         };
 
         // References to the DOM elements for the variable things.
@@ -241,6 +320,7 @@ class GUI {
         this.respawnsCounter.innerText = this.game.player.respawns;
         this.audioCounter.innerText = dungeonz.audioLevel + "%";
         this.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
+        this.respawnsRemainingValue.innerText = this.game.player.respawns;
 
     }
 
@@ -443,12 +523,6 @@ class GUI {
 
             i+=1;
         }
-    }
-
-    changeInventorySlotIconFrame (slotKey) { //TODO: redundant?
-
-        this.inventorySlotIcons[slotKey].src = 'assets/img/gui/icons/icon-metal-sword.png'
-
     }
 
     updateDungeonPrompt () {

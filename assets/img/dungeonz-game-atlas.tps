@@ -208,8 +208,10 @@
             <key type="filename">entities/pickups/pickup-iron-hatchet.png</key>
             <key type="filename">entities/pickups/pickup-iron-pickaxe.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
+            <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood.png</key>
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
+            <key type="filename">entities/projectiles/proj-wind.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle-inactive.png</key>

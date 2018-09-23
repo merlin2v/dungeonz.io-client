@@ -14,7 +14,7 @@
 
 .gui_zoom {
     zoom: 1;
-    -moz-transform: scale(2);
+    -moz-transform: scale(1);
     -moz-transform-origin: 0 0;
 }
 
@@ -466,6 +466,14 @@ img {
     visibility: hidden;
 }
 
+#virtual_dpad_icon {
+    bottom: 170px;
+    right: 10px;
+    left: auto;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
 #gui_zoom_counter {
     bottom: 133px;
     right: 23px;
@@ -553,6 +561,14 @@ img {
 }
 
 #gui_zoom_tooltip {
+    left: auto;
+    right: 50px;
+    width: 50%;
+    bottom: 100px;
+    border-radius: 6px 6px 0px 6px;
+}
+
+#virtual_dpad_tooltip {
     left: auto;
     right: 50px;
     width: 50%;
@@ -794,4 +810,140 @@ img {
 .dungeon_prompt_value {
     margin-top: 0;
     padding-top: 0;
+}
+
+#virtual_dpad {
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+#virtual_dpad_up {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    height: 10%;
+    max-width: 20%;
+    transform: translateX(-50%);
+}
+#virtual_dpad_up:hover {
+    -webkit-filter: brightness(150%);
+}
+
+#virtual_dpad_down {
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+    height: 10%;
+    max-width: 20%;
+    transform: translateX(-50%);
+}
+#virtual_dpad_down:hover {
+    -webkit-filter: brightness(150%);
+}
+
+#virtual_dpad_left {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    width: 10%;
+    max-height: 20%;
+    transform: translateY(-50%);
+}
+#virtual_dpad_left:hover {
+    -webkit-filter: brightness(150%);
+}
+
+#virtual_dpad_right {
+    position: absolute;
+    right: 25%;
+    top: 50%;
+    width: 10%;
+    max-height: 20%;
+    transform: translateY(-50%);
+}
+#virtual_dpad_right:hover {
+    -webkit-filter: brightness(150%);
+}
+
+#respawn_prompt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(105, 106, 106, 0.9);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #222034;
+    text-align: center;
+    font-family: Consolas;
+    color: #222034;
+    padding: 10px;
+    visibility: hidden;
+}
+
+#you_died {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#respawn_button {
+    background-color: #ac3232;
+    left: 50%;
+    margin: 8px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #222034;
+}
+#respawn_button:hover {
+    background-color: lightcoral;
+}
+
+#game_over_prompt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(172, 50, 50, 0.9);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #222034;
+    text-align: center;
+    font-family: Consolas;
+    color: #222034;
+    padding: 10px;
+    visibility: hidden;
+}
+
+#game_over {
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+#game_over_message {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#play_again_button {
+    background-color: #37946e;
+    left: 50%;
+    margin: 16px;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+    border-style: solid;
+    border-width: 10px;
+    font-weight: bolder;
+    font-size: 40px;
+    color: #ffffff;
+}
+#play_again_button:hover {
+    background-color: mediumaquamarine;
 }

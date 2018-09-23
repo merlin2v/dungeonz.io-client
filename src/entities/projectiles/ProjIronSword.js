@@ -1,15 +1,11 @@
 
 const Sprite = function (x, y, config) {
-
-    //console.log("creating proj iron sword");
-
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'proj-iron-sword');
 
     this.centered = true;
 
     this.angle = this.directionAngles[config.direction] || this.directionAngles.l;
     this.scale.setTo(GAME_SCALE);
-
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

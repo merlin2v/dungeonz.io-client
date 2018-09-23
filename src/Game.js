@@ -137,6 +137,7 @@ dungeonz.Game.prototype = {
 
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
+        this.GUI.respawnPrompt.style.visibility = "hidden";
         this.GUI.settingsIcon.style.opacity = "1";
         this.GUI.quickTurnIcon.style.visibility = "hidden";
         this.GUI.audioIcon.style.visibility = "hidden";
@@ -147,6 +148,8 @@ dungeonz.Game.prototype = {
         this.GUI.guiZoomCounter.style.visibility = "hidden";
         this.GUI.guiZoomMinusIcon.style.visibility = "hidden";
         this.GUI.guiZoomPlusIcon.style.visibility = "hidden";
+        this.GUI.virtualDPadIcon.style.visibility = "hidden";
+        this.GUI.virtualDPad.style.visibility = "hidden";
     },
 
     inventorySlotPressed (slotNumber) {
@@ -209,6 +212,7 @@ dungeonz.Game.prototype = {
         );
 
         this.keyboardKeys.arrowUp.onDown.add(function () {
+            if(this.player.hitPoints <= 0) return;
             ws.sendEvent('move_up');
             if(dungeonz.quickTurnEnabled === true){
                 if(this.dynamics[this.player.entityId].sprite.direction !== 'u'){
@@ -218,6 +222,7 @@ dungeonz.Game.prototype = {
             this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
         }, this);
         this.keyboardKeys.arrowDown.onDown.add(function () {
+            if(this.player.hitPoints <= 0) return;
             ws.sendEvent('move_down');
             if(dungeonz.quickTurnEnabled === true){
                 if(this.dynamics[this.player.entityId].sprite.direction !== 'd'){
@@ -227,6 +232,7 @@ dungeonz.Game.prototype = {
             this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
         }, this);
         this.keyboardKeys.arrowLeft.onDown.add(function () {
+            if(this.player.hitPoints <= 0) return;
             ws.sendEvent('move_left');
             if(dungeonz.quickTurnEnabled === true){
                 if(this.dynamics[this.player.entityId].sprite.direction !== 'l'){
@@ -236,6 +242,7 @@ dungeonz.Game.prototype = {
             this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
         }, this);
         this.keyboardKeys.arrowRight.onDown.add(function () {
+            if(this.player.hitPoints <= 0) return;
             ws.sendEvent('move_right');
             if(dungeonz.quickTurnEnabled === true){
                 if(this.dynamics[this.player.entityId].sprite.direction !== 'r'){
@@ -246,6 +253,13 @@ dungeonz.Game.prototype = {
         }, this);
 
         this.keyboardKeys.enterChat.onDown.add(function () {
+            if(this.player.hitPoints <= 0){
+                // Close the box. Can't chat while dead.
+                this.GUI.chatInput.isActive = false;
+                this.GUI.chatInput.style.visibility = "hidden";
+                this.GUI.chatInput.value = "";
+                return;
+            }
             // Check if the chat input box is open.
             if(this.GUI.chatInput.isActive === true){
                 // Close the box, and submit the message.
@@ -288,7 +302,7 @@ dungeonz.Game.prototype = {
 
         // Don't add another entity if the one with this ID already exists.
         if(this.dynamics[id] !== undefined) {
-            console.log("* * * * * skipping add entity, already exists:", id);
+            //console.log("* * * * * skipping add entity, already exists:", id);
             return;
         }
 
@@ -378,6 +392,7 @@ dungeonz.Game.prototype = {
      * @param {String} [fillColour="#f5f5f5"]
      */
     chat (entityID, message, fillColour) {
+        //console.log("chat");
         // Check an entity ID was given. If not, use this player.
         entityID = entityID || _this.player.entityId;
 

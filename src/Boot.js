@@ -19,12 +19,14 @@ window.dungeonz = {
     // What language to use from the text defs.
     language: 'English',
 
-    quickTurnEnabled: false,
+    quickTurnEnabled: true,
     audioEnabled: true,
     // The volume of the audio. 0 is no audio, 100 is full volume. Can't use floats due to imperfect decimal precision.
     audioLevel: 50,
 
     GUIZoom: 100,
+
+    virtualDPadEnabled: false,
 
     TextDefs: TextDefs,
 
@@ -110,6 +112,8 @@ dungeonz.Boot.prototype = {
 
         this.scale.scaleMode = Phaser.ScaleManager.RESIZE;
         //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+        dungeonz.virtualDPadEnabled = !_this.game.device.desktop;
 
     },
 

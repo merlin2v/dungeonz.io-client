@@ -1,7 +1,5 @@
 :root {
-
     --colourTransparentBlack: rgba(0, 0, 0, 0.44);
-
 
     --colourElemHoverGrey: rgba(240, 255, 246, 0.95);
     --colourTextContentBlack: black;
@@ -9,7 +7,42 @@
     --colourTextHeading: white;
     --colourContentBackgroundGrey: rgba(240, 255, 246, 0.7);
     --colourContentBackgroundBlack: rgba(0, 0, 0, 0.4);
-    --colourDB32DarkPurple: #222034;
+
+    --colourDB32Black: #000000;
+    --colourDB32VeryDarkPurple: #222034;
+    --colourDB32DarkPurple: #45283c;
+    --colourDB32DarkBrown: #663931;
+    --colourDB32LightBrown: #8f563b;
+    --colourDB32Orange: #df7126;
+    --colourDB32DarkTan: #d9a066;
+    --colourDB32LightTan: #eec39a;
+    --colourDB32Yellow: #fbf236;
+    --colourDB32LimeGreen: #99e550;
+    --colourDB32Green: #6abe30;
+    --colourDB32Teal: #37946e;
+    --colourDB32MurkyGreen: #4b692f;
+    --colourDB32DarkMurkyGreen: #524b24;
+    --colourDB32DarkTurquoise: #323c39;
+    --colourDB32DarkBlurple: #3f3f74;
+    --colourDB32PrussianBlue: #306082;
+    --colourDB32Blurple: #5b6ee1;
+    --colourDB32LightBlue: #639bff;
+    --colourDB32Cyan: #5fcde4;
+    --colourDB32SkyBlue: #cbdbfc;
+    --colourDB32White: #ffffff;
+    --colourDB32SteelGrey: #9badb7;
+    --colourDB32IronGrey: #847e87;
+    --colourDB32Grey: #696a6a;
+    --colourDB32DarkGrey: #595652;
+    --colourDB32Purple: #76428a;
+    --colourDB32Red: #ac3232;
+    --colourDB32Rose: #d95763;
+    --colourDB32Pink: #d77bba;
+    --colourDB32LightKhaki: #8f974a;
+    --colourDB32DarkKhaki: #8a6f30;
+
+    --colourDB32WhiteOpacity80: rgba(255, 255, 255, 0.8);
+
 }
 
 .gui_zoom {
@@ -30,23 +63,23 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    background-color: var(--colourTransparentBlack);
+    background-color: var(--colourDB32Red);
     cursor: pointer;
     border-style: solid;
-    border-color: var(--colourContentBackgroundGrey);
+    border-color: var(--colourDB32White);
     border-width: 3px;
 
     text-align: center;
-    color: whitesmoke;
+    color: var(--colourDB32White);
     font-family: Consolas;
     font-size: 24px;
     font-weight: bold;
 }
 
 #play_button:hover {
-    background-color: var(--colourElemHoverGrey);
-    color: var(--colourTextContentBlack);
-    border-width: 4px;
+    background-color: var(--colourDB32Rose);
+    color: var(--colourDB32SkyBlue);
+    border-width: 6px;
 }
 
 #warning_message {
@@ -59,7 +92,7 @@
     margin-right: auto;
 
     text-align: center;
-    color: darkorange;
+    color: var(--colourDB32Orange);
     font-family: Consolas;
     font-size: 24px;
     font-weight: bold;
@@ -77,20 +110,20 @@
     margin-left: auto;
     margin-right: auto;
     border-style: solid;
-    border-color: var(--colourContentBackgroundGrey);
+    border-color: var(--colourDB32White);
     border-width: 3px;
-    background-color: var(--colourContentBackgroundGrey);
+    background-color: var(--colourDB32White);
     cursor: pointer;
 
     text-align: center;
-    color: var(--colourTextContentBlack);
+    color: var(--colourDB32Red);
     font-family: Consolas;
     font-size: 24px;
     font-weight: bold;
 }
 
 #name_input:hover {
-    background-color: var(--colourElemHoverGrey);
+    border-width: 6px;
 }
 
 #title_img {
@@ -114,18 +147,18 @@
 
 #language_select {
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 10px;
-    width: 140px;
+    width: 150px;
     height: 40px;
     line-height: 40px;
     vertical-align: middle;
     text-align: center;
-    color: var(--colourTextContentBlack);
-    background-color: var(--colourContentBackgroundGrey);
+    color: var(--colourDB32DarkBlurple);
+    background-color: var(--colourDB32White);
     font-family: Consolas;
     border-style: solid;
-    border-color: var(--colourContentBackgroundGrey);
+    border-color: var(--colourDB32White);
     border-width: 3px;
     font-weight: bold;
     padding: 0px;
@@ -133,32 +166,32 @@
 }
 
 #language_select:hover {
-    background-color: var(--colourElemHoverGrey);
+    font-size: 18px;
+    color: var(--colourDB32White);
+    background-color: var(--colourDB32Blurple);
 }
 
 #language_list {
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 62px;
-
+    width: 150px;
     text-align: center;
-    color: var(--colourTextContentWhite);
-    background-color: var(--colourContentBackgroundBlack);
+    color: var(--colourDB32DarkBlurple);
+    background-color: var(--colourDB32White);
     font-family: Consolas;
     border-style: solid;
-    border-color: var(--colourContentBackgroundGrey);
+    border-color: var(--colourDB32White);
     border-width: 3px;
     font-size: 12px;
-
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 140px;
-
     visibility: hidden;
 }
 
 .language_option {
+    cursor: pointer;
     display: block;
     height: 30px;
     line-height: 30px;
@@ -166,33 +199,33 @@
 }
 
 .language_option:hover {
-    background-color: var(--colourElemHoverGrey);
-    color: var(--colourTextContentBlack);
+    background-color: var(--colourDB32Blurple);
+    color: var(--colourDB32White);
     font-weight: bold;
+    font-size: 14px;
 }
 
 #instructions {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 0px;
     width: 200px;
-    background-color: var(--colourContentBackgroundBlack);
-    border-style: solid;
-    border-width: 4px;
-    border-color: rgba(255, 255, 255, 0.52);
-
+    background-color: var(--colourDB32WhiteOpacity80);
     font-size: 15px;
+    padding-top: 10px;
 }
 
 .instruction_heading {
-    color: var(--colourTextHeading);
+    color: var(--colourDB32DarkBlurple);
     font-family: Consolas;
     text-align: center;
+    font-size: 26px;
+    font-weight: bold;
     margin: 2px;
 }
 
 #how_to_play {
-    color: white;
+    color: var(--colourDB32DarkBlurple);
     font-family: Consolas;
     font-size: 12px;
     text-align: center;
@@ -200,7 +233,7 @@
 }
 
 #controls {
-    color: white;
+    color: var(--colourDB32DarkBlurple);
     font-family: Consolas;
     font-size: 12px;
     font-weight: bold;
@@ -214,16 +247,13 @@
 #community_links {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 0px;
     width: 200px;
-    background-color: rgba(0, 0, 0, 0.44);
-    border-style: solid;
-    border-width: 4px;
-    border-color: rgba(255, 255, 255, 0.52);
-
-    color: black;
+    background-color: var(--colourDB32WhiteOpacity80);
+    color: var(--colourDB32DarkBlurple);
     font-family: Consolas;
     font-size: 12px;
+    padding-top: 10px;
 }
 
 .community_link {
@@ -232,12 +262,18 @@
     align-items: center; /* align vertical */
     margin: 10px;
     padding: 5px;
-    background-color: rgba(240, 255, 246, 0.67);
+    border-width: 3px;
+    border-style: solid;
+    border-color: var(--colourDB32Blurple);
+    background-color: transparent;
     cursor: pointer;
 }
 
 .community_link:hover {
-    background-color: rgba(240, 255, 246, 0.95);
+    background-color: var(--colourDB32Blurple);
+    font-weight: bold;
+    border-color: var(--colourDB32WhiteOpacity80);
+    color: var(--colourDB32White);
 }
 
 .community_button {
@@ -271,12 +307,9 @@ img {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: whitesmoke;
-    background-color: rgba(75, 75, 75, 0.8);
+    color: var(--colourDB32DarkBlurple);
+    background-color: var(--colourDB32WhiteOpacity80);
     font-family: Consolas;
-    border-style: solid;
-    border-color: #222034;
-    border-width: 3px;
     padding: 8px;
 }
 
@@ -517,7 +550,6 @@ img {
 #inventory_tooltip {
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 6px 0px;
 }
 
 #exit_tooltip {
@@ -525,7 +557,6 @@ img {
     top: 30px;
     right: 50px;
     left: auto;
-    border-radius: 6px 0px 6px 6px;
 }
 
 #respawns_tooltip {
@@ -533,7 +564,6 @@ img {
     top: 70px;
     right: 50px;
     left: auto;
-    border-radius: 6px 0px 6px 6px;
 }
 
 #settings_tooltip {
@@ -541,7 +571,6 @@ img {
     right: 50px;
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 0px 6px;
 }
 
 #quick_turn_tooltip {
@@ -549,7 +578,6 @@ img {
     right: 50px;
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 0px 6px;
 }
 
 #audio_tooltip {
@@ -557,7 +585,6 @@ img {
     right: 50px;
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 0px 6px;
 }
 
 #gui_zoom_tooltip {
@@ -565,7 +592,6 @@ img {
     right: 50px;
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 0px 6px;
 }
 
 #virtual_dpad_tooltip {
@@ -573,20 +599,16 @@ img {
     right: 50px;
     width: 50%;
     bottom: 100px;
-    border-radius: 6px 6px 0px 6px;
 }
 
 .counter_tooltip {
     position: absolute;
     width: 200px;
-    color: whitesmoke;
+    color: var(--colourDB32DarkBlurple);
     text-align: center;
-    background-color: rgba(75, 75, 75, 0.8);
+    background-color: var(--colourDB32WhiteOpacity80);
     font-family: Consolas;
-    border-style: solid;
-    border-color: #222034;
-    border-width: 3px;
-    border-radius: 0 6px 6px 6px;
+    font-weight: bold;
     padding: 8px;
     z-index: 1000;
     left: 50px;
@@ -648,12 +670,11 @@ img {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    color: whitesmoke;
-    background-color: var(--colourTextContentBlack);
+    color: var(--colourDB32DarkBlurple);
+    background-color: var(--colourDB32WhiteOpacity80);
     font-family: Consolas;
     font-size: 20px;
-    border-radius: 4px;
-    border-color: black;
+    font-weight: bold;
     text-align: center;
     visibility: hidden;
 }
@@ -718,7 +739,7 @@ img {
 }
 
 ::placeholder {
-    color: dimgray;
+    color: var(--colourDB32IronGrey);
 }
 
 #dungeon_prompt {
@@ -726,13 +747,11 @@ img {
     left: 50%;
     transform: translate(-50%, 50%);
     text-align: center;
-    color: whitesmoke;
-    background-color: rgba(75, 75, 75, 0.8);
+    color: var(--colourDB32White);
+    background-color: var(--colourDB32WhiteOpacity80);
     font-family: Consolas;
-    border-style: solid;
-    border-color: #222034;
-    border-width: 3px;
     padding: 8px;
+    padding-bottom: 16px;
     visibility: hidden;
 }
 
@@ -746,10 +765,8 @@ img {
     height: 100%;
     float: left;
     margin: 4px 4px 4px 4px;
-    border-style: solid;
-    border-color: #418470;
-    border-width: 3px;
-    background-color: rgba(48, 97, 80, 0.5);
+    background-color: var(--colourDB32Teal);
+    padding-top: 8px;
 }
 
 #dungeon_prompt_warning {
@@ -757,10 +774,8 @@ img {
     height: 100%;
     float: right;
     margin: 4px 4px 4px 4px;
-    border-style: solid;
-    border-color: #844126;
-    border-width: 3px;
-    background-color: rgba(132, 22, 0, 0.5);
+    background-color: var(--colourDB32Rose);
+    padding-top: 8px;
 }
 
 #dungeon_prompt_bottom {
@@ -773,33 +788,27 @@ img {
 #dungeon_prompt_accept {
     width: 45%;
     float: left;
-    background-color: green;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #222034;
+    background-color: var(--colourDB32Teal);
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: bolder;
     white-space: nowrap;
 }
 #dungeon_prompt_accept:hover {
-    background-color: #00ad00;
+    background-color: var(--colourDB32Green);
 }
 
 #dungeon_prompt_decline {
     width: 45%;
     float: right;
-    background-color: red;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #222034;
+    background-color: var(--colourDB32Rose);
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: bolder;
     white-space: nowrap;
 }
 #dungeon_prompt_decline:hover {
-    background-color: #ff6600;
+    background-color: var(--colourDB32Red);
 }
 
 .dungeon_prompt_header {
@@ -871,13 +880,10 @@ img {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(105, 106, 106, 0.9);
-    border-width: 8px;
-    border-style: solid;
-    border-color: #222034;
+    background-color: var(--colourDB32WhiteOpacity80);
     text-align: center;
     font-family: Consolas;
-    color: #222034;
+    color: var(--colourDB32DarkBlurple);
     padding: 10px;
     visibility: hidden;
 }
@@ -888,18 +894,16 @@ img {
 }
 
 #respawn_button {
-    background-color: #ac3232;
+    background-color: var(--colourDB32Rose);
     left: 50%;
     margin: 8px;
     padding: 20px;
-    border-style: solid;
-    border-width: 10px;
     font-weight: bolder;
     font-size: 20px;
-    color: #222034;
+    color: var(--colourDB32White);
 }
 #respawn_button:hover {
-    background-color: lightcoral;
+    background-color: var(--colourDB32Red);
 }
 
 #game_over_prompt {
@@ -907,13 +911,10 @@ img {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(172, 50, 50, 0.9);
-    border-width: 8px;
-    border-style: solid;
-    border-color: #222034;
+    background-color: var(--colourDB32WhiteOpacity80);
     text-align: center;
     font-family: Consolas;
-    color: #222034;
+    color: var(--colourDB32DarkBlurple);
     padding: 10px;
     visibility: hidden;
 }
@@ -932,18 +933,16 @@ img {
 }
 
 #play_again_button {
-    background-color: #37946e;
+    background-color: var(--colourDB32Teal);
     left: 50%;
     margin: 16px;
     margin-left: 20%;
     margin-right: 20%;
     padding: 20px;
-    border-style: solid;
-    border-width: 10px;
     font-weight: bolder;
     font-size: 40px;
     color: #ffffff;
 }
 #play_again_button:hover {
-    background-color: mediumaquamarine;
+    background-color: var(--colourDB32Green);
 }

@@ -211,19 +211,14 @@ eventResponses.dungeon_prompt = function (data) {
 eventResponses.hit_point_value = function (data) {
     _this.player.hitPoints = data;
     if(_this.player.hitPoints <= 0){
-        console.log("this player entity has died");
         // If the player has any respawns left, show the respawn prompt.
         if(_this.player.respawns > 0){
-            console.log("  they have some respawns left");
             _this.GUI.respawnPrompt.style.visibility = "visible";
         }
         // No respawns left. Game over...
         else {
-            console.log("  Game over...");
             _this.GUI.gameOverPrompt.style.visibility = "visible";
         }
-
-
     }
     _this.GUI.updateHitPointCounters();
 };

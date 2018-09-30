@@ -18,11 +18,15 @@ import DungeonPortal        from './entities/DungeonPortal'
 import OverworldPortal      from './entities/OverworldPortal'
 import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
 import PickupIronPickaxe    from './entities/pickups/PickupIronPickaxe'
+import PickupIronDagger     from './entities/pickups/PickupIronDagger'
 import PickupIronSword      from './entities/pickups/PickupIronSword'
+import PickupFireStaff      from './entities/pickups/PickupFireStaff'
 import PickupWindStaff      from './entities/pickups/PickupWindStaff'
 import PickupWood           from './entities/pickups/PickupWood'
 import PickupGold           from './entities/pickups/PickupGold'
+import ProjIronDagger       from './entities/projectiles/ProjIronDagger'
 import ProjIronSword        from './entities/projectiles/ProjIronSword'
+import ProjFire             from './entities/projectiles/ProjFire'
 import ProjWind             from './entities/projectiles/ProjWind'
 
 const EntitiesList = {
@@ -36,11 +40,15 @@ const EntitiesList = {
     SmallIronCandle:    SmallIronCandle,
     PickupIronHatchet:  PickupIronHatchet,
     PickupIronPickaxe:  PickupIronPickaxe,
+    PickupIronDagger:   PickupIronDagger,
     PickupIronSword:    PickupIronSword,
+    PickupFireStaff:    PickupFireStaff,
     PickupWindStaff:    PickupWindStaff,
     PickupWood:         PickupWood,
     PickupGold:         PickupGold,
+    ProjIronDagger:     ProjIronDagger,
     ProjIronSword:      ProjIronSword,
+    ProjFire:           ProjFire,
     ProjWind:           ProjWind,
     Exit:               Exit,
     DungeonPortal:      DungeonPortal,

@@ -188,30 +188,42 @@
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
-            <key type="filename">entities/human/bandit-down-1.png</key>
-            <key type="filename">entities/human/bandit-down-2.png</key>
-            <key type="filename">entities/human/bandit-down-3.png</key>
-            <key type="filename">entities/human/bandit-left-1.png</key>
-            <key type="filename">entities/human/bandit-left-2.png</key>
-            <key type="filename">entities/human/bandit-left-3.png</key>
-            <key type="filename">entities/human/bandit-right-1.png</key>
-            <key type="filename">entities/human/bandit-right-2.png</key>
-            <key type="filename">entities/human/bandit-right-3.png</key>
-            <key type="filename">entities/human/bandit-up-1.png</key>
-            <key type="filename">entities/human/bandit-up-2.png</key>
-            <key type="filename">entities/human/bandit-up-3.png</key>
-            <key type="filename">entities/human/human-down-1.png</key>
-            <key type="filename">entities/human/human-down-2.png</key>
-            <key type="filename">entities/human/human-down-3.png</key>
-            <key type="filename">entities/human/human-left-1.png</key>
-            <key type="filename">entities/human/human-left-2.png</key>
-            <key type="filename">entities/human/human-left-3.png</key>
-            <key type="filename">entities/human/human-right-1.png</key>
-            <key type="filename">entities/human/human-right-2.png</key>
-            <key type="filename">entities/human/human-right-3.png</key>
-            <key type="filename">entities/human/human-up-1.png</key>
-            <key type="filename">entities/human/human-up-2.png</key>
-            <key type="filename">entities/human/human-up-3.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-down-1.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-down-2.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-down-3.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-left-1.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-left-2.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-left-3.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-right-1.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-right-2.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-right-3.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-up-1.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-up-2.png</key>
+            <key type="filename">entities/human/cloak clothes/bandit-up-3.png</key>
+            <key type="filename">entities/human/human base/human-down-1.png</key>
+            <key type="filename">entities/human/human base/human-down-2.png</key>
+            <key type="filename">entities/human/human base/human-down-3.png</key>
+            <key type="filename">entities/human/human base/human-left-1.png</key>
+            <key type="filename">entities/human/human base/human-left-2.png</key>
+            <key type="filename">entities/human/human base/human-left-3.png</key>
+            <key type="filename">entities/human/human base/human-right-1.png</key>
+            <key type="filename">entities/human/human base/human-right-2.png</key>
+            <key type="filename">entities/human/human base/human-right-3.png</key>
+            <key type="filename">entities/human/human base/human-up-1.png</key>
+            <key type="filename">entities/human/human base/human-up-2.png</key>
+            <key type="filename">entities/human/human base/human-up-3.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-down-1.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-down-2.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-down-3.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-left-1.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-left-2.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-left-3.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-right-1.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-right-2.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-right-3.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-up-1.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-up-2.png</key>
+            <key type="filename">entities/human/mage robe/mage-robe-up-3.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
@@ -242,14 +254,31 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-mage-robe.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,5,9,9</rect>
+                <key>scale9Paddings</key>
+                <rect>5,5,9,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
             <filename>entities/buildings</filename>
-            <filename>entities/human</filename>
             <filename>entities/resource nodes</filename>
-            <filename>entities/pickups</filename>
             <filename>entities/projectiles</filename>
+            <filename>entities/pickups</filename>
+            <filename>entities/human/cloak clothes</filename>
+            <filename>entities/human/crystal armour clothes</filename>
+            <filename>entities/human/human base</filename>
+            <filename>entities/human/iron armour clothes</filename>
+            <filename>entities/human/mage robe</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

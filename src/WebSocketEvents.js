@@ -224,6 +224,7 @@ eventResponses.hit_point_value = function (data) {
 };
 
 eventResponses.energy_value = function (data) {
+    console.log("energy value:", data);
     _this.player.energy = data;
     _this.GUI.updateEnergyCounters();
 };
@@ -313,6 +314,17 @@ eventResponses.remove_item = function (data) {
     _this.player.inventory[data].empty();
 };
 
+eventResponses.equip_clothes = function (data) {
+    const clothes = _this.dynamics[data.id].sprite.clothes;
+    clothes.visible = true;
+    clothes.clothesName = ItemTypes[data.typeNumber].idName;
+    clothes.frameName = clothes.clothesFrames[clothes.clothesName][clothes.parent.direction];
+};
+
+eventResponses.unequip_clothes = function (data) {
+    _this.dynamics[data].sprite.clothes.visible = false;
+};
+
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
     // Check the entity id is valid.
@@ -338,11 +350,15 @@ eventResponses.change_direction = function (data) {
 
     const sprite = dynamic.sprite;
     // Some sprites show their direction by having different frames, others by rotating.
-    if(sprite.directionFrames !== undefined){
-        sprite.frameName = sprite.directionFrames[data.direction];
+    if(sprite.baseFrames !== undefined){
+        sprite.frameName = sprite.baseFrames[data.direction];
     }
     if(sprite.directionAngles !== undefined){
         sprite.angle = sprite.directionAngles[data.direction];
+    }
+    if(sprite.clothes !== undefined){
+        sprite.clothes.frameName = sprite.clothes.clothesFrames[sprite.clothes.clothesName][data.direction];
+        sprite.clothes.animations.stop();
     }
     sprite.direction = data.direction;
     sprite.animations.stop();

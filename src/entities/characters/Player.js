@@ -1,17 +1,22 @@
+import Clothes from './Clothes'
 
 const moveAnimCompleted = function () {
-    this.frameName = this.directionFrames[this.direction];
+    this.frameName = this.humanBaseFrames[this.direction];
 };
 
 const Sprite = function (x, y, config) {
     //console.log("player const: ", x, y, config);
 
-    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.directionFrames[config.direction] || this.directionFrames.d);
+    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.humanBaseFrames[config.direction] || this.humanBaseFrames.d);
 
     this.entityId = config.id;
     this.direction = config.direction;
+    this.baseFrames = this.humanBaseFrames;
 
     this.scale.setTo(GAME_SCALE);
+
+    this.clothes = new Clothes(config);
+    this.addChild(this.clothes);
 
     const style = {
         font: "20px Consolas",
@@ -48,16 +53,10 @@ Sprite.prototype.onMove = function (playMoveAnim) {
     if(playMoveAnim === true){
         if(this.animations.currentAnim.isPlaying === false){
             this.animations.play(this.direction);
+            this.clothes.animations.play(this.clothes.clothesName + "-" + this.direction);
         }
     }
 
-};
-
-Sprite.prototype.directionFrames = {
-    u: 'human-up-1',
-    d: 'human-down-1',
-    l: 'human-left-1',
-    r: 'human-right-1'
 };
 
 export default Sprite;

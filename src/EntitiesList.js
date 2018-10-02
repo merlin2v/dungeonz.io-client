@@ -6,6 +6,13 @@ Phaser.Sprite.prototype.tweenPickupFromCenter = function () {
     _this.add.tween(this.scale).to({x: GAME_SCALE * 0.8, y: GAME_SCALE * 0.8}, 1000, "Linear", true, 0, -1, true);
 };
 
+Phaser.Sprite.prototype.humanBaseFrames = {
+    u: 'human-up-1',
+    d: 'human-down-1',
+    l: 'human-left-1',
+    r: 'human-right-1'
+};
+
 import Player               from './entities/characters/Player'
 import Bandit               from './entities/characters/Bandit'
 import BanditLeader         from './entities/characters/BanditLeader'
@@ -16,6 +23,7 @@ import SmallIronCandle      from './entities/SmallIronCandle'
 import Exit                 from './entities/Exit'
 import DungeonPortal        from './entities/DungeonPortal'
 import OverworldPortal      from './entities/OverworldPortal'
+import PickupMageRobe       from './entities/pickups/PickupMageRobe'
 import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
 import PickupIronPickaxe    from './entities/pickups/PickupIronPickaxe'
 import PickupIronDagger     from './entities/pickups/PickupIronDagger'
@@ -38,6 +46,7 @@ const EntitiesList = {
     Tree:               Tree,
     WoodDoor:           WoodDoor,
     SmallIronCandle:    SmallIronCandle,
+    PickupMageRobe:     PickupMageRobe,
     PickupIronHatchet:  PickupIronHatchet,
     PickupIronPickaxe:  PickupIronPickaxe,
     PickupIronDagger:   PickupIronDagger,

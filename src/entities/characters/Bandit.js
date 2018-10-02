@@ -1,10 +1,10 @@
 
 const moveAnimCompleted = function () {
-    this.frameName = this.directionFrames[this.direction];
+    this.frameName = this.directionBaseFrames[this.direction];
 };
 
 const Sprite = function (x, y, config) {
-    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.directionFrames[config.direction] || 'bandit-down-1');
+    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.directionBaseFrames[config.direction] || 'bandit-down-1');
 
     this.entityId = config.id;
     this.direction = config.direction;
@@ -51,7 +51,7 @@ Sprite.prototype.onMove = function (playMoveAnim) {
 
 };
 
-Sprite.prototype.directionFrames = {
+Sprite.prototype.directionBaseFrames = {
     u: 'bandit-up-1',
     d: 'bandit-down-1',
     l: 'bandit-left-1',

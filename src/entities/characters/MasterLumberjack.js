@@ -60,7 +60,7 @@ Sprite.prototype.onMove = function () {
     }
 };
 
-Sprite.prototype.directionFrames = {
+Sprite.prototype.directionBaseFrames = {
     u: 'human-up-1',
     d: 'human-down-1',
     l: 'human-left-1',

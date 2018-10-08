@@ -326,6 +326,7 @@ class GUI {
 
     addDefenceCounters (amount) {
         this.addCounters(amount, this.defenceIcon, 'defence-counter', this.defenceCounters);
+        this.updateDefenceCounters();
     }
 
     addHitPointCounters (amount) {
@@ -398,7 +399,18 @@ class GUI {
     }
 
     updateDefenceCounters () {
+        // Defence might be in 0.5s as well as whole numbers, so round down to only count each full defence counter.
+        let defence = Math.floor(this.game.player.defence);
+        let maxDefence = this.game.player.maxDefence;
 
+        for(let i=0; i<maxDefence; i+=1){
+            if(i < defence){
+                this.defenceCounters[i].src = "./assets/img/gui/defence-counter.png";
+            }
+            else {
+                this.defenceCounters[i].src = "./assets/img/gui/empty-counter.png";
+            }
+        }
     }
 
     updateHitPointCounters () {

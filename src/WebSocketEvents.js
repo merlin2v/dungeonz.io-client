@@ -3,6 +3,7 @@
 window.ws = false;
 
 const eventResponses = {};
+// 1vCPU 1GB server.
 //const serverIPAddress = '104.248.48.75';
 const serverIPAddress = '127.0.0.4';
 
@@ -224,9 +225,13 @@ eventResponses.hit_point_value = function (data) {
 };
 
 eventResponses.energy_value = function (data) {
-    console.log("energy value:", data);
     _this.player.energy = data;
     _this.GUI.updateEnergyCounters();
+};
+
+eventResponses.defence_value = function (data) {
+    _this.player.defence = data;
+    _this.GUI.updateDefenceCounters();
 };
 
 eventResponses.glory_value = function (data) {
@@ -322,6 +327,7 @@ eventResponses.equip_clothes = function (data) {
 };
 
 eventResponses.unequip_clothes = function (data) {
+    //console.log("unequip clothes:", data);
     _this.dynamics[data].sprite.clothes.visible = false;
 };
 

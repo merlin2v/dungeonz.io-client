@@ -181,6 +181,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">entities/buildings/counter-flap-inactive.png</key>
+            <key type="filename">entities/buildings/counter-flap.png</key>
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>
             <key type="filename">entities/buildings/dungeon-portal.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
@@ -188,42 +190,54 @@
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-down-1.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-down-2.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-down-3.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-left-1.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-left-2.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-left-3.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-right-1.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-right-2.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-right-3.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-up-1.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-up-2.png</key>
-            <key type="filename">entities/human/cloak clothes/bandit-up-3.png</key>
-            <key type="filename">entities/human/human base/human-down-1.png</key>
-            <key type="filename">entities/human/human base/human-down-2.png</key>
-            <key type="filename">entities/human/human base/human-down-3.png</key>
-            <key type="filename">entities/human/human base/human-left-1.png</key>
-            <key type="filename">entities/human/human base/human-left-2.png</key>
-            <key type="filename">entities/human/human base/human-left-3.png</key>
-            <key type="filename">entities/human/human base/human-right-1.png</key>
-            <key type="filename">entities/human/human base/human-right-2.png</key>
-            <key type="filename">entities/human/human base/human-right-3.png</key>
-            <key type="filename">entities/human/human base/human-up-1.png</key>
-            <key type="filename">entities/human/human base/human-up-2.png</key>
-            <key type="filename">entities/human/human base/human-up-3.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-down-1.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-down-2.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-down-3.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-left-1.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-left-2.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-left-3.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-right-1.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-right-2.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-right-3.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-up-1.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-up-2.png</key>
-            <key type="filename">entities/human/mage robe/mage-robe-up-3.png</key>
+            <key type="filename">entities/characters/human base/human-down-1.png</key>
+            <key type="filename">entities/characters/human base/human-down-2.png</key>
+            <key type="filename">entities/characters/human base/human-down-3.png</key>
+            <key type="filename">entities/characters/human base/human-left-1.png</key>
+            <key type="filename">entities/characters/human base/human-left-2.png</key>
+            <key type="filename">entities/characters/human base/human-left-3.png</key>
+            <key type="filename">entities/characters/human base/human-right-1.png</key>
+            <key type="filename">entities/characters/human base/human-right-2.png</key>
+            <key type="filename">entities/characters/human base/human-right-3.png</key>
+            <key type="filename">entities/characters/human base/human-up-1.png</key>
+            <key type="filename">entities/characters/human base/human-up-2.png</key>
+            <key type="filename">entities/characters/human base/human-up-3.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-down-1.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-down-2.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-down-3.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-left-1.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-left-2.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-left-3.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-right-1.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-right-2.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-right-3.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-up-1.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-up-2.png</key>
+            <key type="filename">entities/clothes/cloak/cloak-up-3.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-down-1.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-down-2.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-down-3.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-left-1.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-left-2.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-left-3.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-right-1.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-right-2.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-right-3.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-up-1.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-up-2.png</key>
+            <key type="filename">entities/clothes/mage robe/mage-robe-up-3.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-1.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-2.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-3.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-1.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-2.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-3.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-1.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-2.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-3.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-1.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
+            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
@@ -254,6 +268,30 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/characters/bat/bat-down-1.png</key>
+            <key type="filename">entities/characters/bat/bat-down-2.png</key>
+            <key type="filename">entities/characters/bat/bat-down-3.png</key>
+            <key type="filename">entities/characters/bat/bat-left-1.png</key>
+            <key type="filename">entities/characters/bat/bat-left-2.png</key>
+            <key type="filename">entities/characters/bat/bat-left-3.png</key>
+            <key type="filename">entities/characters/bat/bat-right-1.png</key>
+            <key type="filename">entities/characters/bat/bat-right-2.png</key>
+            <key type="filename">entities/characters/bat/bat-right-3.png</key>
+            <key type="filename">entities/characters/bat/bat-up-1.png</key>
+            <key type="filename">entities/characters/bat/bat-up-2.png</key>
+            <key type="filename">entities/characters/bat/bat-up-3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9Paddings</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -274,11 +312,11 @@
             <filename>entities/resource nodes</filename>
             <filename>entities/projectiles</filename>
             <filename>entities/pickups</filename>
-            <filename>entities/human/cloak clothes</filename>
-            <filename>entities/human/crystal armour clothes</filename>
-            <filename>entities/human/human base</filename>
-            <filename>entities/human/iron armour clothes</filename>
-            <filename>entities/human/mage robe</filename>
+            <filename>entities/clothes/mage robe</filename>
+            <filename>entities/characters/human base</filename>
+            <filename>entities/characters/bat</filename>
+            <filename>entities/clothes/cloak</filename>
+            <filename>entities/clothes/paladin armour</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

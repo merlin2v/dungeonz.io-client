@@ -14,6 +14,7 @@ Phaser.Sprite.prototype.humanBaseFrames = {
 };
 
 import Player               from './entities/characters/Player'
+import Citizen              from './entities/characters/Citizen'
 import Bandit               from './entities/characters/Bandit'
 import BanditLeader         from './entities/characters/BanditLeader'
 import GoldOre              from './entities/GoldOre'
@@ -40,6 +41,7 @@ import ProjWind             from './entities/projectiles/ProjWind'
 const EntitiesList = {
 
     Player:             Player,
+    Citizen:            Citizen,
     Bandit:             Bandit,
     BanditLeader:       BanditLeader,
     GoldOre:            GoldOre,

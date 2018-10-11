@@ -19,4 +19,11 @@ Sprite.prototype.directionAngles = {
     r: 360
 };
 
+Sprite.prototype.onMove = function () {
+    _this.tilemap.updateDarknessGrid();
+};
+
+Sprite.prototype.defaultLightDistance = 5;
+Sprite.prototype.lightDistance = 5;
+
 export default Sprite;

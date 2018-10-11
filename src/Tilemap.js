@@ -7,6 +7,7 @@ class Tilemap {
 
         this.createTileGrid();
         this.createStaticsGrid();
+        this.createDarknessGrid();
 
         this.loadMap(this.game.currentBoardName);
     }
@@ -62,55 +63,144 @@ class Tilemap {
         this.staticsGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
     }
 
+    createDarknessGrid () {
+        this.darknessGrid = [];
+        this.darknessGridGroup = this.game.add.group();
+
+        let row,
+            col,
+            tile;
+
+        for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
+
+            this.darknessGrid.push([]);
+
+            for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
+                tile = this.game.add.sprite(16 * GAME_SCALE * col, 16 * GAME_SCALE * row, 'ground-tileset', this.blackFrame);
+                tile.scale.setTo(GAME_SCALE);
+                //tile.alpha = 0.8;
+                this.darknessGrid[row][col] = tile;
+                this.darknessGridGroup.add(tile);
+            }
+        }
+        this.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
+        this.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
+    }
+
     updateTileGrid () {
-        let i,
-            j;
+        let row,
+            col,
+            playerRow = this.game.player.row,
+            playerCol = this.game.player.col,
+            tileGrid = this.tileGrid,
+            currentMapGroundGrid = this.currentMapGroundGrid;
 
         // Change the frames of the ground tiles for each tile within the player's view diameter.
-        for(i=0; i<dungeonz.VIEW_DIAMETER; i+=1){
+        for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
 
-            for(j=0; j<dungeonz.VIEW_DIAMETER; j+=1){
+            for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
                 // Check the cell to view is in the current map bounds.
-                if(this.currentMapGroundGrid[this.game.player.row + i - dungeonz.VIEW_RANGE] !== undefined){
-                    if(this.currentMapGroundGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE] !== undefined){
-                        this.tileGrid[i][j].frame = this.currentMapGroundGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE];
+                if(currentMapGroundGrid[playerRow + row - dungeonz.VIEW_RANGE] !== undefined){
+                    if(currentMapGroundGrid[playerRow + row - dungeonz.VIEW_RANGE][playerCol + col - dungeonz.VIEW_RANGE] !== undefined){
+                        tileGrid[row][col].frame = currentMapGroundGrid[playerRow + row - dungeonz.VIEW_RANGE][playerCol + col - dungeonz.VIEW_RANGE];
                         continue;
                     }
                 }
                 // If the cell to view is out of the current map bounds, show a black frame for that tile.
-                this.tileGrid[i][j].frame = this.blackFrame;
+                tileGrid[row][col].frame = this.blackFrame;
             }
-
         }
     }
 
     updateStaticsGrid () {
         //console.log("update statics grid: ", this.currentMapStaticsGrid);
-        let i,
-            j;
+        let row,
+            col,
+            playerRow = this.game.player.row,
+            playerCol = this.game.player.col,
+            staticsGrid = this.staticsGrid,
+            currentMapStaticsGrid = this.currentMapStaticsGrid;
 
         // Change the frames of the static entities for each tile within the player's view diameter.
-        for(i=0; i<dungeonz.VIEW_DIAMETER; i+=1){
+        for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
 
-            for(j=0; j<dungeonz.VIEW_DIAMETER; j+=1){
+            for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
                 // Hide all static tiles, and update and show only the relevant ones.
-                this.staticsGrid[i][j].visible = false;
+                staticsGrid[row][col].visible = false;
 
                 // Check the cell row to view is in the current map bounds.
-                if(this.currentMapStaticsGrid[this.game.player.row + i - dungeonz.VIEW_RANGE] !== undefined){
+                if(currentMapStaticsGrid[playerRow + row - dungeonz.VIEW_RANGE] !== undefined){
                     // Check the cell column to view is in the current map bounds.
-                    if(this.currentMapStaticsGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE] !== undefined){
+                    if(currentMapStaticsGrid[playerRow + row - dungeonz.VIEW_RANGE][playerCol + col - dungeonz.VIEW_RANGE] !== undefined){
                         // Check it isn't an empty tile. i.e. no static entity there.
-                        if(this.currentMapStaticsGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE] !== 0){
-                            //console.log("id: ", this.currentMapStaticsGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE]);
+                        if(currentMapStaticsGrid[playerRow + row - dungeonz.VIEW_RANGE][playerCol + col - dungeonz.VIEW_RANGE] !== 0){
                             // Show the sprite at this tile position.
-                            this.staticsGrid[i][j].visible = true;
-                            this.staticsGrid[i][j].frame = this.currentMapStaticsGrid[this.game.player.row + i - dungeonz.VIEW_RANGE][this.game.player.col + j - dungeonz.VIEW_RANGE];
+                            staticsGrid[row][col].visible = true;
+                            staticsGrid[row][col].frame = currentMapStaticsGrid[playerRow + row - dungeonz.VIEW_RANGE][playerCol + col - dungeonz.VIEW_RANGE];
                         }
                     }
                 }
             }
+        }
+    }
 
+    updateDarknessGrid () {//TODO :DD find something else to do
+        //console.log("update darkness grid");
+        let row,
+            col,
+            playerSprite = this.game.dynamics[this.game.player.entityId].sprite,
+            lightSources = this.game.lightSources,
+            darknessGrid = this.darknessGrid;
+
+        // Make the whole thing completely dark.
+        for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
+            for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
+                darknessGrid[row][col].alpha = 1;
+            }
+        }
+
+        this.revealDarkness(playerSprite.x, playerSprite.y, 9);
+
+        let key;
+        let lightSource;
+        // Lighten the area around each light source.
+        for(key in lightSources){
+            if(lightSources.hasOwnProperty(key)){
+                lightSource = lightSources[key];
+                this.revealDarkness(lightSource.x, lightSource.y, lightSource.lightDistance);
+            }
+        }
+    }
+
+    revealDarkness (x, y, radius) {
+        const radiusPlusOne = radius + 1;
+        let rowOffset = -radius,
+            colOffset = -radius,
+            row = Math.floor(y / (dungeonz.TILE_SIZE*GAME_SCALE)),
+            col = Math.floor(x / (dungeonz.TILE_SIZE*GAME_SCALE)),
+            darknessGrid = this.darknessGrid,
+            tile,
+            rowDist,
+            colDist,
+            distFromCenter;
+
+        for(; rowOffset<radiusPlusOne; rowOffset+=1){
+            for(colOffset=-radius; colOffset<radiusPlusOne; colOffset+=1){
+                if(darknessGrid[row + rowOffset] ===  undefined) continue;
+                tile = darknessGrid[row + rowOffset][col + colOffset];
+                if(tile ===  undefined) continue;
+
+                rowDist = Math.abs(row - (row + rowOffset));
+                colDist = Math.abs(col - (col + colOffset));
+                distFromCenter = rowDist + colDist;
+
+                if(1 - (distFromCenter / radius) > 0){
+                    tile.alpha -= 1 - (distFromCenter / radius);
+                    if(tile.alpha < 0){
+                        tile.alpha = 0;
+                    }
+                }
+            }
         }
     }
 

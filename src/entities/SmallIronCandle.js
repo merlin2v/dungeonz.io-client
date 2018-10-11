@@ -11,6 +11,7 @@ const Sprite = function (x, y, config) {
     }
     else {
         this.frameName = this.inactiveStateFrame;
+        this.lightDistance = 0;
     }
 
     this.scale.setTo(GAME_SCALE);
@@ -19,5 +20,12 @@ const Sprite = function (x, y, config) {
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
+
+Sprite.prototype.onMove = function () {
+    _this.tilemap.updateDarknessGrid();
+};
+
+Sprite.prototype.defaultLightDistance = 8;
+Sprite.prototype.lightDistance = 8;
 
 export default Sprite;

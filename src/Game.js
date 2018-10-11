@@ -72,6 +72,8 @@ dungeonz.Game.prototype = {
         this.keyDownDelay = 500;
         this.nextMoveTime = 0;
 
+        this.lightSources = {};
+
         this.tilemap = new Tilemap(this);
 
         this.GUI = new GUI(this);
@@ -86,6 +88,10 @@ dungeonz.Game.prototype = {
         for(let i=0; i<this.dynamicsData.length; i+=1){
             this.addEntity(this.dynamicsData[i]);
         }
+
+        this.game.world.bringToTop(this.tilemap.darknessGridGroup);
+
+        this.tilemap.updateDarknessGrid();
 
         this.setupKeyboardControls();
 
@@ -328,6 +334,11 @@ dungeonz.Game.prototype = {
             dynamicSprite.y += dynamicSprite.height / GAME_SCALE;
         }
 
+        if(dynamicSprite.lightDistance !== undefined){
+            this.lightSources[id] = dynamicSprite;
+            this.tilemap.updateDarknessGrid();
+        }
+
         this.dynamicsGroup.add(dynamicSprite);
     },
 
@@ -339,6 +350,11 @@ dungeonz.Game.prototype = {
         if(this.dynamics[id] === undefined) {
             //console.log("skipping remove entity, doesn't exist:", id);
             return;
+        }
+
+        if(this.lightSources[id] !== undefined){
+            delete this.lightSources[id];
+            this.tilemap.updateDarknessGrid();
         }
 
         this.dynamics[id].sprite.destroy();
@@ -374,6 +390,10 @@ dungeonz.Game.prototype = {
                 // Out of view range. Remove it.
                 dynamic.sprite.destroy();
                 delete this.dynamics[key];
+                if(dynamic.sprite.lightDistance !== undefined){
+                    delete this.lightSources[key];
+                    this.tilemap.updateDarknessGrid();
+                }
                 continue;
             }
 

@@ -338,12 +338,18 @@ eventResponses.active_state = function (data) {
     if(dynamic === undefined) return;
 
     if(data.activeState === true){
-        //console.log(dynamic.sprite.frame);
-        //console.log(dynamic.sprite.frameName);
         dynamic.sprite.frameName = dynamic.sprite.activeStateFrame;
+        if(dynamic.sprite.lightDistance !== undefined){
+            dynamic.sprite.lightDistance = dynamic.sprite.defaultLightDistance;
+            _this.tilemap.updateDarknessGrid();
+        }
     }
     else {
         dynamic.sprite.frameName = dynamic.sprite.inactiveStateFrame;
+        if(dynamic.sprite.lightDistance !== undefined){
+            dynamic.sprite.lightDistance = 0;
+            _this.tilemap.updateDarknessGrid();
+        }
     }
 
 };

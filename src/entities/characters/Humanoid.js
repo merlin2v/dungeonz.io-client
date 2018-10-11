@@ -8,7 +8,7 @@ const moveAnimCompleted = function () {
 const Sprite = function (x, y, config) {
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.humanBaseFrames[config.direction] || this.humanBaseFrames.d);
 
-    this.entityId = config.id;
+    //this.entityId = config.id;
     this.direction = config.direction;
     this.baseFrames = this.humanBaseFrames;
     this.clothes = new Clothes(config);

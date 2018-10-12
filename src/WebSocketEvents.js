@@ -183,6 +183,7 @@ eventResponses.moved = function (data) {
 
 eventResponses.change_board = function (data) {
     _this.dynamicsData = data.dynamicsData;
+    _this.boardIsDungeon = data.boardIsDungeon;
     _this.player.row = data.playerRow;
     _this.player.col = data.playerCol;
 
@@ -200,6 +201,28 @@ eventResponses.change_board = function (data) {
     for(let i=0; i<dynamicsData.length; i+=1){
         _this.addEntity(dynamicsData[i]);
     }
+};
+
+eventResponses.change_day_phase = function (data) {
+    console.log("changing day phase:", data);
+    _this.dayPhase = data;
+
+    if(_this.boardIsDungeon === false){
+        // Make the darkness layer invisible during day time.
+        if(_this.dayPhase === _this.DayPhases.Day){
+            let row,
+                col,
+                darknessGrid = _this.tilemap.darknessGrid;
+
+            for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
+                for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
+                    darknessGrid[row][col].alpha = 0;
+                }
+            }
+        }
+    }
+
+    _this.tilemap.updateDarknessGrid();
 };
 
 eventResponses.dungeon_prompt = function (data) {

@@ -69,7 +69,14 @@ class Tilemap {
 
         let row,
             col,
-            tile;
+            tile,
+            darknessValue = 1;
+
+        if(this.game.boardIsDungeon === false){
+            if(this.game.dayPhase === this.game.DayPhases.Day) darknessValue = 0;
+            if(this.game.dayPhase === this.game.DayPhases.Dawn) darknessValue = 0.5;
+            if(this.game.dayPhase === this.game.DayPhases.Dusk) darknessValue = 0.5;
+        }
 
         for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
 
@@ -78,7 +85,7 @@ class Tilemap {
             for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
                 tile = this.game.add.sprite(16 * GAME_SCALE * col, 16 * GAME_SCALE * row, 'ground-tileset', this.blackFrame);
                 tile.scale.setTo(GAME_SCALE);
-                //tile.alpha = 0.8;
+                tile.alpha = darknessValue;
                 this.darknessGrid[row][col] = tile;
                 this.darknessGridGroup.add(tile);
             }
@@ -144,22 +151,36 @@ class Tilemap {
         }
     }
 
-    updateDarknessGrid () {//TODO :DD find something else to do
+    updateDarknessGrid () {
         //console.log("update darkness grid");
         let row,
             col,
-            playerSprite = this.game.dynamics[this.game.player.entityId].sprite,
+            player = this.game.dynamics[this.game.player.entityId],
             lightSources = this.game.lightSources,
-            darknessGrid = this.darknessGrid;
+            darknessGrid = this.darknessGrid,
+            darknessValue = 0;
+
+        if(this.game.boardIsDungeon === true){
+            darknessValue = 1;
+        }
+        else {
+            // Don't bother doing the rest if it is day.
+            if(this.game.dayPhase === this.game.DayPhases.Day) return;
+            else if(this.game.dayPhase === this.game.DayPhases.Dawn) darknessValue = 0.5;
+            else if(this.game.dayPhase === this.game.DayPhases.Dusk) darknessValue = 0.5;
+            else darknessValue = 1;
+        }
 
         // Make the whole thing completely dark.
         for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
             for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
-                darknessGrid[row][col].alpha = 1;
+                darknessGrid[row][col].alpha = darknessValue;
             }
         }
 
-        this.revealDarkness(playerSprite.x, playerSprite.y, 9);
+        if(player !== undefined){
+            this.revealDarkness(player.sprite.x, player.sprite.y, 10);
+        }
 
         let key;
         let lightSource;

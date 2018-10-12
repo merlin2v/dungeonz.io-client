@@ -19,6 +19,8 @@ dungeonz.Game.prototype = {
          */
         this.currentBoardName = data.boardName;
 
+        this.boardIsDungeon = data.boardIsDungeon;
+
         /**
          * The ID number of the dungeon that this player is standing next to the entrance of. Each dungeon instance has a unique id, as well as a separate unique name.
          * @type {Number}
@@ -53,6 +55,15 @@ dungeonz.Game.prototype = {
         };
 
         this.dynamicsData = data.dynamicsData;
+
+        this.dayPhase = data.dayPhase;
+        console.log("day phase:", data.dayPhase);
+        this.DayPhases = {
+            Dawn: 1,
+            Day: 2,
+            Dusk: 3,
+            Night: 4
+        };
 
         //console.log("nearby dynamics: data", this.dynamicsData);
 

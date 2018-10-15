@@ -54,6 +54,15 @@
 #game_container {
 }
 
+#game_canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(-50%, -50%);
+}
+
 #play_button {
     position: absolute;
     width: 20%;
@@ -297,14 +306,55 @@ img {
     visibility: hidden;
 }
 
-#inventory {
+#inventory_slot_container {
+    position: absolute;
+    display: inline-flex;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.inventory_slot {
+    margin: 4px;
+    width: 48px;
+    height: 48px;
+}
+
+.inventory_slot_border {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+}
+
+.inventory_slot_equipped {
+    position: absolute;
+    bottom: 47px;
+    width: 48px;
+    object-fit: contain;
+    visibility: hidden;
+}
+
+.inventory_slot_durability {
+    position: absolute;
+    bottom: 10px;
+    width: 48px;
+    object-fit: contain;
+    visibility: hidden;
+}
+
+.inventory_slot_icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    visibility: hidden;
 }
 
 #item_tooltip_container {
     position: absolute;
     visibility: hidden;
-    bottom: 20%;
+    bottom: 100px;
     left: 50%;
+    width: 75%;
     transform: translateX(-50%);
     text-align: center;
     color: var(--colourDB32DarkBlurple);
@@ -315,63 +365,6 @@ img {
 
 #item_name {
     font-weight: bold;
-}
-
-#border_container {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    margin-left: -100px;
-    margin-right: -100px;
-    transform: translateX(-50%);
-}
-
-#icon_container {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    margin-left: -100px;
-    margin-right: -100px;
-    transform: translateX(-50%);
-}
-
-#durability_meter_container {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    margin-left: -100px;
-    margin-right: -100px;
-    transform: translateX(-50%);
-}
-
-.inventory_slot_border {
-    left: 100px;
-    position: relative;
-    padding: 2px;
-    width: 48px;
-    height: 48px;
-}
-
-.inventory_slot_border:hover {
-    -webkit-filter: brightness(150%);
-}
-
-.inventory_slot_icon {
-    left: 100px;
-    position: relative;
-    padding: 2px;
-    width: 48px;
-    height: 48px;
-}
-
-.inventory_slot_durability_meter {
-    left: 100px;
-    top: 16px;
-    position: relative;
-    padding: 2px;
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
 }
 
 .icon {
@@ -507,6 +500,14 @@ img {
     visibility: hidden;
 }
 
+#fullscreen_icon {
+    bottom: 210px;
+    right: 10px;
+    left: auto;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
 #gui_zoom_counter {
     bottom: 133px;
     right: 23px;
@@ -570,35 +571,42 @@ img {
     left: auto;
     right: 50px;
     width: 50%;
-    bottom: 100px;
+    bottom: 27px;
 }
 
 #quick_turn_tooltip {
     left: auto;
     right: 50px;
     width: 50%;
-    bottom: 100px;
+    bottom: 67px;
 }
 
 #audio_tooltip {
     left: auto;
     right: 50px;
     width: 50%;
-    bottom: 100px;
+    bottom: 107px;
 }
 
 #gui_zoom_tooltip {
     left: auto;
     right: 50px;
     width: 50%;
-    bottom: 100px;
+    bottom: 147px;
 }
 
 #virtual_dpad_tooltip {
     left: auto;
     right: 50px;
     width: 50%;
-    bottom: 100px;
+    bottom: 187px;
+}
+
+#fullscreen_tooltip {
+    left: auto;
+    right: 50px;
+    width: 50%;
+    bottom: 227px;
 }
 
 .counter_tooltip {
@@ -646,19 +654,47 @@ img {
 
 }
 
+@keyframes fadeOut {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
 #glory_counter {
     top: 130px;
+}
+#glory_counter_transition {
+    top: 130px;
+    left: 120px;
+    opacity: 0;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
 }
 
 #coin_counter {
     top: 170px;
 }
+#coin_counter_transition {
+    top: 170px;
+    left: 120px;
+    opacity: 0;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+}
 
 #respawns_counter {
     top: 50px;
+    right: 50px;
     left: auto;
     width: auto;
-    right: 50px;
+}
+#respawns_counter_transition {
+    top: 50px;
+    right: 90px;
+    left: auto;
+    width: auto;
+    opacity: 0;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
 }
 
 #chat_input {

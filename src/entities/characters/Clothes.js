@@ -28,10 +28,10 @@ const Sprite = function (config) {
     this.animations.add('Mage robe-l',    ['mage-robe-left-1',    'mage-robe-left-2',     'mage-robe-left-1',     'mage-robe-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Mage robe-r',    ['mage-robe-right-1',   'mage-robe-right-2',    'mage-robe-right-1',    'mage-robe-right-3'],   10).onComplete.add(moveAnimCompleted, this);
 
-    this.animations.add('cloak-clothes-u',    ['cloak-clothes-up-1',      'cloak-clothes-up-2',       'cloak-clothes-up-1',       'cloak-clothes-up-3'],      10).onComplete.add(moveAnimCompleted, this);
-    this.animations.add('cloak-clothes-d',    ['cloak-clothes-down-1',    'cloak-clothes-down-2',     'cloak-clothes-down-1',     'cloak-clothes-down-3'],    10).onComplete.add(moveAnimCompleted, this);
-    this.animations.add('cloak-clothes-l',    ['cloak-clothes-left-1',    'cloak-clothes-left-2',     'cloak-clothes-left-1',     'cloak-clothes-left-3'],    10).onComplete.add(moveAnimCompleted, this);
-    this.animations.add('cloak-clothes-r',    ['cloak-clothes-right-1',   'cloak-clothes-right-2',    'cloak-clothes-right-1',    'cloak-clothes-right-3'],   10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Cloak-u',    ['cloak-up-1',      'cloak-up-2',       'cloak-up-1',       'cloak-up-3'],      10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Cloak-d',    ['cloak-down-1',    'cloak-down-2',     'cloak-down-1',     'cloak-down-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Cloak-l',    ['cloak-left-1',    'cloak-left-2',     'cloak-left-1',     'cloak-left-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Cloak-r',    ['cloak-right-1',   'cloak-right-2',    'cloak-right-1',    'cloak-right-3'],   10).onComplete.add(moveAnimCompleted, this);
 
 };
 
@@ -44,6 +44,12 @@ Sprite.prototype.clothesFrames = {
         d: 'mage-robe-down-1',
         l: 'mage-robe-left-1',
         r: 'mage-robe-right-1'
+    },
+    ['Cloak']: {
+        u: 'cloak-up-1',
+        d: 'cloak-down-1',
+        l: 'cloak-left-1',
+        r: 'cloak-right-1'
     }
 };
 

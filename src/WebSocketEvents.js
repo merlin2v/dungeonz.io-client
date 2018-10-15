@@ -87,8 +87,8 @@ window.connectToGameServer = function () {
 };
 
 eventResponses.join_world_success = function (data) {
-    //console.log("join world success, data:");
-    //console.log(data);
+    console.log("join world success, data:");
+    console.log(data);
 
     document.getElementById("menu_container").style.display = "none";
 
@@ -187,6 +187,21 @@ eventResponses.change_board = function (data) {
     _this.player.row = data.playerRow;
     _this.player.col = data.playerCol;
 
+    if(_this.boardIsDungeon === false){
+        // Make the darkness layer invisible during day time.
+        if(_this.dayPhase === _this.DayPhases.Day){
+            let row,
+                col,
+                darknessGrid = _this.tilemap.darknessGrid;
+
+            for(row=0; row<dungeonz.VIEW_DIAMETER; row+=1){
+                for(col=0; col<dungeonz.VIEW_DIAMETER; col+=1){
+                    darknessGrid[row][col].alpha = 0;
+                }
+            }
+        }
+    }
+
     _this.tilemap.loadMap(data.boardName);
 
     // Remove the old entities.
@@ -258,13 +273,11 @@ eventResponses.defence_value = function (data) {
 };
 
 eventResponses.glory_value = function (data) {
-    _this.player.glory = data;
-    _this.GUI.gloryCounter.innerText = data;
+    _this.GUI.updateGloryCounter(data);
 };
 
 eventResponses.coins_value = function (data) {
-    _this.player.coins = data;
-    _this.GUI.coinsCounter.innerText = data;
+    _this.GUI.updateCoinsCounter(data);
 };
 
 eventResponses.durability_value = function (data) {
@@ -280,10 +293,8 @@ eventResponses.damage = function (data) {
     _this.chat(data.id, data.amount, "#ff6700");
 };
 
-eventResponses.player_respawn = function (data) {
-    _this.player.respawns -= 1;
-    _this.GUI.respawnsRemainingValue.innerText = _this.player.respawns;
-    _this.GUI.respawnsCounter.innerText = _this.player.respawns;
+eventResponses.player_respawn = function () {
+    _this.GUI.updateRespawnsCounter(_this.player.respawns - 1);
     _this.player.hitPoints = _this.player.maxHitPoints;
     _this.player.energy = _this.player.maxEnergy;
     _this.GUI.respawnPrompt.style.visibility = "hidden";
@@ -317,22 +328,22 @@ eventResponses.add_item = function (data) {
     _this.player.inventory[slotKey].durability = data.durability;
     _this.player.inventory[slotKey].maxDurability = data.maxDurability;
 
+    const guiSlot = _this.GUI.inventorySlots[slotKey];
     // Change the source image for the icon.
-    _this.GUI.inventorySlotIcons[slotKey].src = "assets/img/gui/icons/" + catalogueEntry.iconSource + ".png";
+    guiSlot.icon.src = "assets/img/gui/icons/" + catalogueEntry.iconSource + ".png";
 
     // Show the icon.
-    _this.GUI.inventorySlotIcons[slotKey].style.visibility = "visible";
+    guiSlot.icon.style.visibility = "visible";
 
     // If there is a durability, show and fill the durability meter for this item.
     if(data.durability){
-        _this.GUI.inventorySlotDurabilityMeters[slotKey].style.visibility = "visible";
+        guiSlot.durability.style.visibility = "visible";
         // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
         const meterNumber = Math.floor((data.durability / data.maxDurability) * 10);
-        //console.log("meter num:", meterNumber);
-        _this.GUI.inventorySlotDurabilityMeters[slotKey].src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+        guiSlot.durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
     }
     else {
-        _this.GUI.inventorySlotDurabilityMeters[slotKey].style.visibility = "hidden";
+        guiSlot.durability.style.visibility = "hidden";
     }
 
 };
@@ -352,6 +363,30 @@ eventResponses.equip_clothes = function (data) {
 eventResponses.unequip_clothes = function (data) {
     //console.log("unequip clothes:", data);
     _this.dynamics[data].sprite.clothes.visible = false;
+};
+
+eventResponses.activate_clothing = function (data) {
+    // Show the clothing icon on the inventory slot.
+    _this.GUI.inventorySlots[data].equipped.src = 'assets/img/gui/clothing-icon.png';
+    _this.GUI.inventorySlots[data].equipped.style.visibility = "visible";
+};
+
+eventResponses.deactivate_clothing = function (data) {
+    // Hide the equipped icon on the inventory slot.
+    _this.GUI.inventorySlots[data].equipped.style.visibility = "hidden";
+};
+
+eventResponses.activate_holding = function (data) {
+    _this.player.holdingItem = true;
+    // Show the holding icon on the inventory slot.
+    _this.GUI.inventorySlots[data].equipped.src = 'assets/img/gui/holding-icon.png';
+    _this.GUI.inventorySlots[data].equipped.style.visibility = "visible";
+};
+
+eventResponses.deactivate_holding = function (data) {
+    _this.player.holdingItem = false;
+    // Hide the equipped icon on the inventory slot.
+    _this.GUI.inventorySlots[data].equipped.style.visibility = "hidden";
 };
 
 eventResponses.active_state = function (data) {

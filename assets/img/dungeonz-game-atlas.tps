@@ -292,6 +292,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-cloak.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

@@ -24,6 +24,7 @@ import SmallIronCandle      from './entities/SmallIronCandle'
 import Exit                 from './entities/Exit'
 import DungeonPortal        from './entities/DungeonPortal'
 import OverworldPortal      from './entities/OverworldPortal'
+import PickupCloak          from './entities/pickups/PickupCloak'
 import PickupMageRobe       from './entities/pickups/PickupMageRobe'
 import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
 import PickupIronPickaxe    from './entities/pickups/PickupIronPickaxe'
@@ -48,6 +49,7 @@ const EntitiesList = {
     Tree:               Tree,
     WoodDoor:           WoodDoor,
     SmallIronCandle:    SmallIronCandle,
+    PickupCloak:        PickupCloak,
     PickupMageRobe:     PickupMageRobe,
     PickupIronHatchet:  PickupIronHatchet,
     PickupIronPickaxe:  PickupIronPickaxe,

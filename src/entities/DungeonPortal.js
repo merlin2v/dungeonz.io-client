@@ -20,4 +20,7 @@ const Sprite = function (x, y, config) {
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
+Sprite.prototype.defaultLightDistance = 6;
+Sprite.prototype.lightDistance = 6;
+
 export default Sprite;

@@ -51,13 +51,14 @@ dungeonz.Game.prototype = {
                 slot8: new InventorySlot("slot8"),
                 slot9: new InventorySlot("slot9"),
                 slot0: new InventorySlot("slot0")
-            }
+            },
+            holdingItem: false
         };
 
         this.dynamicsData = data.dynamicsData;
 
         this.dayPhase = data.dayPhase;
-        console.log("day phase:", data.dayPhase);
+
         this.DayPhases = {
             Dawn: 1,
             Day: 2,
@@ -75,7 +76,13 @@ dungeonz.Game.prototype = {
 
     create: function () {
 
+        console.log("* In game create");
+
         window._this = this;
+
+        document.getElementById("game_canvas").appendChild(this.game.canvas);
+
+        this.scale.fullScreenTarget = document.getElementById("game_container");
 
         window.addEventListener('resize', window.windowResize);
 
@@ -106,6 +113,8 @@ dungeonz.Game.prototype = {
 
         this.setupKeyboardControls();
 
+        window.addEventListener('mousedown', this.pointerDownHandler);
+
         //console.log("dynamics: ", this.dynamics);
     },
 
@@ -133,10 +142,6 @@ dungeonz.Game.prototype = {
 
     },
 
-    render: function () {
-
-    },
-
     shutdown: function () {
         // Remove the handler for resize events, so it doesn't try to resize the sprite container groups that have been removed.
         window.removeEventListener('resize', window.windowResize);
@@ -144,13 +149,16 @@ dungeonz.Game.prototype = {
         // Remove the handler for keyboard events, so it doesn't try to do gameplay stuff while on the landing screen.
         document.removeEventListener('keydown', this.keyDownHandler);
 
+        window.removeEventListener('mousedown', this.pointerDownHandler);
+
         // Remove some of the DOM GUI elements so they aren't stacked when the game state starts again.
         this.GUI.removeExistingDOMElements(this.GUI.defenceCounters);
         this.GUI.removeExistingDOMElements(this.GUI.hitPointCounters);
         this.GUI.removeExistingDOMElements(this.GUI.energyCounters);
-        this.GUI.removeExistingDOMElements(this.GUI.inventorySlotBorders);
-        this.GUI.removeExistingDOMElements(this.GUI.inventorySlotIcons);
-        this.GUI.removeExistingDOMElements(this.GUI.inventorySlotDurabilityMeters);
+
+        for(let elemKey in this.GUI.inventorySlots){
+            this.GUI.inventorySlots[elemKey].slot.remove();
+        }
 
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
@@ -167,9 +175,21 @@ dungeonz.Game.prototype = {
         this.GUI.guiZoomPlusIcon.style.visibility = "hidden";
         this.GUI.virtualDPadIcon.style.visibility = "hidden";
         this.GUI.virtualDPad.style.visibility = "hidden";
+        this.GUI.fullscreenIcon.style.visibility = "hidden";
     },
 
-    inventorySlotPressed (slotNumber) {
+    useHeldItem (direction) {
+        if(direction === undefined){
+            // Tell the game server this player wants to use this item.
+            ws.sendEvent('use_item');
+        }
+        else {
+            // Tell the game server this player wants to use this item in a direction.
+            ws.sendEvent('use_item', direction);
+        }
+    },
+
+    equipItem (slotNumber) {
         // Check there is an item in that inventory slot.
         if(this.player.inventory[slotNumber].catalogueEntry === null){
             //console.log("no invent item at that slot");
@@ -185,9 +205,33 @@ dungeonz.Game.prototype = {
 
         // Check if they want to move this item to another slot.
 
+        // Tell the game server this player wants to equip this item.
+        ws.sendEvent('equip_item', slotNumber);
+    },
 
-        // Tell the game server this player wants to use this item.
-        ws.sendEvent('use_item', slotNumber);
+    pointerDownHandler (event) {
+        // Stop double clicking from highlighting text elements.
+        event.preventDefault();
+        // Only use the selected item if the input wasn't over any other GUI element.
+        if(event.target === _this.GUI.gui){
+            // Don't try to use the held item if one isn't selected.
+            if(_this.player.holdingItem === false) return;
+
+            const midX = window.innerWidth / 2;
+            const midY = window.innerHeight / 2;
+            const targetX = event.clientX - midX;
+            const targetY = event.clientY - midY;
+
+            if(Math.abs(targetX) > Math.abs(targetY)){
+                if(targetX > 0) _this.useHeldItem('r');
+                else            _this.useHeldItem('l');
+            }
+            else {
+                if(targetY > 0) _this.useHeldItem('d');
+                else            _this.useHeldItem('u');
+            }
+        }
+
     },
 
     keyDownHandler (event) {
@@ -202,7 +246,7 @@ dungeonz.Game.prototype = {
             && codeNumber < 10){
                 //console.log("num key pressed:", codeNumber);
                 // Add the "slot" part of the key to the inventory slot number.
-                _this.inventorySlotPressed("slot" + codeNumber);
+                _this.equipItem("slot" + codeNumber);
             }
 
             if(event.code === 'KeyE'){

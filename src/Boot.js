@@ -54,9 +54,9 @@ window.dungeonz = {
 window.GAME_SCALE = 2;
 
 window.windowResize = function () {
-    //console.log("resized");
-    //console.log("w: " + window.innerWidth);
-    //console.log("h: " + window.innerHeight);
+    /*console.log("resized");
+    console.log("w: " + window.innerWidth);
+    console.log("h: " + window.innerHeight);*/
 
     _this.tilemap.tileGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
     _this.tilemap.tileGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
@@ -89,7 +89,7 @@ dungeonz.Boot.prototype = {
 
     create: function () {
 
-        console.log("in boot create");
+        console.log("* In boot create");
 
         window._this = this;
 
@@ -114,6 +114,7 @@ dungeonz.Boot.prototype = {
         //console.log(dungeonz.mapsData);
 
         this.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+        this.scale.fullScreenScaleMode = Phaser.ScaleManager.RESIZE;
         //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         dungeonz.virtualDPadEnabled = !_this.game.device.desktop;

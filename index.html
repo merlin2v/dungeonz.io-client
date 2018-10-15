@@ -48,6 +48,7 @@
 <body style="margin: 0; overflow:hidden;">
     <img id="background_img" src="assets/img/misc/main-background.png">
     <div id="game_container">
+        <div id="game_canvas"></div>
         <div id="gui">
             <img id="defence_icon"      class="icon gui_zoom" src="assets/img/gui/defence-icon.png">
             <img id="hitpoint_icon"     class="icon gui_zoom" src="assets/img/gui/hitpoint-icon.png">
@@ -71,6 +72,7 @@
             <img id="gui_zoom_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
             <img id="gui_zoom_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
             <img id="virtual_dpad_icon" class="icon gui_zoom" src="assets/img/gui/virtual-dpad-icon.png">
+            <img id="fullscreen_icon"   class="icon gui_zoom" src="assets/img/gui/fullscreen-icon.png">
             <div id="defence_tooltip"   class="counter_tooltip  gui_zoom"></div>
             <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoom"></div>
             <div id="energy_tooltip"    class="counter_tooltip  gui_zoom"></div>
@@ -87,9 +89,13 @@
             <div id="audio_tooltip"         class="counter_tooltip gui_zoom"></div>
             <div id="gui_zoom_tooltip"      class="counter_tooltip gui_zoom"></div>
             <div id="virtual_dpad_tooltip"  class="counter_tooltip gui_zoom"></div>
+            <div id="fullscreen_tooltip"    class="counter_tooltip gui_zoom"></div>
             <div id="glory_counter"     class="text_counter gui_zoom"><p><p/></div>
+            <div id="glory_counter_transition"  class="text_counter gui_zoom">+888<p><p/></div>
             <div id="coin_counter"      class="text_counter gui_zoom"><p><p/></div>
+            <div id="coin_counter_transition"   class="text_counter gui_zoom"><p>+1234<p/></div>
             <div id="respawns_counter"  class="text_counter gui_zoom"><p><p/></div>
+            <div id="respawns_counter_transition"   class="text_counter gui_zoom">+20<p><p/></div>
 
             <div id="watch_ad_prompt">
                 <div id="watch_ad_message"></div>
@@ -139,18 +145,14 @@
             </div>
 
         </div>
-        <div id="inventory" class="gui_zoom">
+        <span id="inventory_slot_container" class="gui_zoom">
             <div id="item_tooltip_container">
                 <div id="item_name"></div>
                 <div id="item_description"></div>
                 <div id="item_durability"></div>
             </div>
-            <div id="icon_container"></div>
-            <div id="durability_meter_container"></div>
-            <div id="border_container"></div>
-        </div>
+        </span>
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
-
 
     </div>
 
@@ -263,6 +265,7 @@
             document.getElementById('audio_tooltip').innerHTML =        dungeonz.getTextDef('Audio tooltip');
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
+            document.getElementById('fullscreen_tooltip').innerHTML =   dungeonz.getTextDef('Fullscreen tooltip');
             document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
             document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
             document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');

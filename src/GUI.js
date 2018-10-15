@@ -28,6 +28,7 @@ class GUI {
         this.guiZoomMinusIcon =         document.getElementById('gui_zoom_minus_icon');
         this.guiZoomPlusIcon =          document.getElementById('gui_zoom_plus_icon');
         this.virtualDPadIcon =          document.getElementById('virtual_dpad_icon');
+        this.fullscreenIcon =           document.getElementById('fullscreen_icon');
 
         this.defenceTooltip =           document.getElementById('defence_tooltip');
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
@@ -45,10 +46,14 @@ class GUI {
         this.audioTooltip =             document.getElementById('audio_tooltip');
         this.guiZoomTooltip =           document.getElementById('gui_zoom_tooltip');
         this.virtualDPadTooltip =       document.getElementById('virtual_dpad_tooltip');
+        this.fullscreenTooltip =        document.getElementById('fullscreen_tooltip');
 
         this.gloryCounter =             document.getElementById('glory_counter');
+        this.gloryCounterTransition =   document.getElementById('glory_counter_transition');
         this.coinsCounter =             document.getElementById('coin_counter');
+        this.coinsCounterTransition =   document.getElementById('coin_counter_transition');
         this.respawnsCounter =          document.getElementById('respawns_counter');
+        this.respawnsCounterTransition =document.getElementById('respawns_counter_transition');
         this.audioCounter =             document.getElementById('audio_counter');
         this.guiZoomCounter =           document.getElementById('gui_zoom_counter');
         this.virtualDPad =              document.getElementById('virtual_dpad');
@@ -63,10 +68,7 @@ class GUI {
         this.respawnButton =            document.getElementById('respawn_button');
         this.gameOverPrompt =           document.getElementById('game_over_prompt');
         this.playAgainButton =          document.getElementById('play_again_button');
-        this.inventory =                document.getElementById('inventory');
-        this.borderContainer =          document.getElementById('border_container');
-        this.iconContainer =            document.getElementById('icon_container');
-        this.durabilityMeterContainer = document.getElementById('durability_meter_container');
+        this.inventorySlotContainer =   document.getElementById('inventory_slot_container');
         this.itemTooltipContainer =     document.getElementById('item_tooltip_container');
         this.itemTooltipName =          document.getElementById('item_name');
         this.itemTooltipDescription =   document.getElementById('item_description');
@@ -75,6 +77,8 @@ class GUI {
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
+
+        //game.game.canvas.fullScreenTarget = document.getElementById('game_container');
 
         // Hide the chat input at the start.
         this.chatInput.isActive = false;
@@ -138,6 +142,7 @@ class GUI {
                 game.GUI.guiZoomPlusIcon.style.visibility = "hidden";
                 game.GUI.guiZoomCounter.style.visibility = "hidden";
                 game.GUI.virtualDPadIcon.style.visibility = "hidden";
+                game.GUI.fullscreenIcon.style.visibility = "hidden";
             }
             else {
                 game.GUI.settingsIcon.style.opacity = '0.5';
@@ -151,6 +156,7 @@ class GUI {
                 game.GUI.guiZoomPlusIcon.style.visibility = "visible";
                 game.GUI.guiZoomCounter.style.visibility = "visible";
                 game.GUI.virtualDPadIcon.style.visibility = "visible";
+                game.GUI.fullscreenIcon.style.visibility = "visible";
             }
         };
 
@@ -269,6 +275,20 @@ class GUI {
             window.ws.sendEvent('move_right');
         };
 
+        this.fullscreenIcon.onmouseover =  function(){ game.GUI.fullscreenTooltip.style.visibility = "visible" };
+        this.fullscreenIcon.onmouseout =   function(){ game.GUI.fullscreenTooltip.style.visibility = "hidden" };
+        this.fullscreenIcon.onclick =  function(){
+            if(game.game.scale.isFullScreen === true){
+
+                game.game.scale.stopFullScreen();
+                game.GUI.fullscreenIcon.style.opacity = "0.5";
+            }
+            else {
+                game.game.scale.startFullScreen(true);
+                game.GUI.fullscreenIcon.style.opacity = "1";
+            }
+        };
+
         document.getElementById('dungeon_prompt_accept').onclick = function (event) {
             // Check if the player has enough glory.
             if(_this.player.glory < dungeonz.DungeonPrompts[_this.adjacentDungeonID].gloryCost){
@@ -303,21 +323,26 @@ class GUI {
 
         // Rearrange the order of the slot numbers, as the 0 key is at the right end of keyboards.
         this.slotKeysByIndex = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot0"];
-        this.inventorySlotBorders = {};
-        this.inventorySlotIcons = {};
-        this.inventorySlotDurabilityMeters = {};
+        this.inventorySlots = {};
+        //this.inventorySlotBorders = {};
+        //this.inventorySlotIcons = {};
+        //this.inventorySlotDurabilityMeters = {};
 
         this.addDefenceCounters(this.game.player.maxDefence);
         this.addHitPointCounters(this.game.player.maxHitPoints);
         this.addEnergyCounters(this.game.player.maxEnergy);
-        this.addInventorySlotBorders();
-        this.addInventorySlotIcons();
-        this.addInventorySlotDurabilityMeters();
+        this.addInventorySlots();
+        //this.addInventorySlotBorders();
+        //this.addInventorySlotIcons();
+        //this.addInventorySlotDurabilityMeters();
 
         // Set the values for the text based counters (glory, coins).
         this.gloryCounter.innerText = this.game.player.glory;
+        this.gloryCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.coinsCounter.innerText = this.game.player.coins;
+        this.coinsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.respawnsCounter.innerText = this.game.player.respawns;
+        this.respawnsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.audioCounter.innerText = dungeonz.audioLevel + "%";
         this.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
         this.respawnsRemainingValue.innerText = this.game.player.respawns;
@@ -335,6 +360,10 @@ class GUI {
 
     addEnergyCounters (amount) {
         this.addCounters(amount, this.energyIcon, 'energy-counter', this.energyCounters);
+    }
+
+    textCounterWebkitAnimationEnd () {
+        this.style.webkitAnimationName = '';
     }
 
     addCounters (amount, icon, imageName, groupArray) {
@@ -443,33 +472,65 @@ class GUI {
         }
     }
 
-    addInventorySlotBorders () {
-        this.removeExistingDOMElements(this.inventorySlotBorders);
+    updateGloryCounter (value) {
+        const difference = value - _this.player.glory;
+        if(difference > 0){
+            this.gloryCounterTransition.innerText = "+" + difference;
+        }
+        else {
+            this.gloryCounterTransition.innerText = difference;
+        }
+        this.gloryCounterTransition.style.webkitAnimationName = 'fadeOut';
+        this.game.player.glory = value;
+        this.gloryCounter.innerText = value;
+    }
 
+    updateCoinsCounter (value) {
+        const difference = value - _this.player.coins;
+        if(difference > 0){
+            this.coinsCounterTransition.innerText = "+" + difference;
+        }
+        else {
+            this.coinsCounterTransition.innerText = difference;
+        }
+        this.coinsCounterTransition.style.webkitAnimationName = 'fadeOut';
+        this.game.player.coins = value;
+        this.coinsCounter.innerText = value;
+    }
+
+    updateRespawnsCounter (value) {
+        const difference = value - _this.player.respawns;
+        if(difference > 0){
+            this.respawnsCounterTransition.innerText = "+" + difference;
+        }
+        else {
+            this.respawnsCounterTransition.innerText = difference;
+        }
+        this.respawnsCounterTransition.style.webkitAnimationName = 'fadeOut';
+        this.game.player.respawns = value;
+        this.respawnsCounter.innerText = value;
+        this.respawnsRemainingValue.innerText = value;
+    }
+
+    addInventorySlots () {
         const slotKeysByIndex = this.slotKeysByIndex;
 
         // Create 10 slots.
         for(let i=0; i<10; i+=1){
-            //console.log("loop:", i, " slot num:", this.slotKeysByIndex[i]);
-            const element = document.createElement('img');
-
-            element.src = 'assets/img/gui/inventory-slot-border.png';
-            element.className = 'inventory_slot_border zoom';
+            const div = document.createElement('div');
+            div.className = 'inventory_slot zoom';
             // Use the item in this slot when pressed.
-            element.onclick = function () {
+            div.onclick = function () {
                 //console.log('invent slot pressed: ' + slotKeysByIndex[i]);
-                _this.inventorySlotPressed(slotKeysByIndex[i]);
+                _this.equipItem(slotKeysByIndex[i]);
             };
             // Show and update the item tooltip info text when mouse is over a slot.
-            element.onmouseover = function () {
-
+            div.onmouseover = function () {
                 //console.log("on border mouse over, this:", slotKeysByIndex[i]);
 
                 const inventorySlot = _this.player.inventory[slotKeysByIndex[i]];
                 // Skip empty inventory slots.
                 if(inventorySlot.catalogueEntry === null) return;
-
-                //console.log(inventorySlot);
 
                 // Show the container.
                 _this.GUI.itemTooltipContainer.style.visibility = "visible";
@@ -477,63 +538,60 @@ class GUI {
                 _this.GUI.itemTooltipName.innerHTML = dungeonz.getTextDef("Item name: " + inventorySlot.catalogueEntry.idName);
                 _this.GUI.itemTooltipDescription.innerHTML = dungeonz.getTextDef("Item description: " + inventorySlot.catalogueEntry.idName);
 
-                if(inventorySlot.durability === null)
-                    _this.GUI.itemTooltipDurability.innerHTML = "";
-                else
-                    _this.GUI.itemTooltipDurability.innerHTML = "(" + inventorySlot.durability + "/" + inventorySlot.maxDurability + ")";
+                if(inventorySlot.durability === null)   _this.GUI.itemTooltipDurability.innerHTML = "";
+                else                                    _this.GUI.itemTooltipDurability.innerHTML = "(" + inventorySlot.durability + "/" + inventorySlot.maxDurability + ")";
 
+                /* Bug fix hack, brightness changes position when used on parent. :S */
+                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
+                guiSlot.icon.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.durability.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.equipped.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.border.style["-webkit-filter"] = "brightness(150%)";
             };
             // Hide the item tooltip when mouse is not over a slot.
-            element.onmouseout = function () {
+            div.onmouseout = function () {
                 //console.log("on border mouse out, this:", slotKeysByIndex[i]);
+
                 _this.GUI.itemTooltipContainer.style.visibility = "hidden";
+
+                /* Bug fix hack, brightness changes position when used on parent. :S */
+                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
+                guiSlot.icon.style["-webkit-filter"] = null;
+                guiSlot.durability.style["-webkit-filter"] = null;
+                guiSlot.equipped.style["-webkit-filter"] = null;
+                guiSlot.border.style["-webkit-filter"] = null;
             };
 
-            this.inventorySlotBorders[slotKeysByIndex[i]] = element;
+            // Add the contents of the slot.
+            const icon = document.createElement('img');
+            icon.src = 'assets/img/gui/icons/icon-gold.png';
+            icon.className = 'inventory_slot_icon zoom';
 
-            this.borderContainer.appendChild(element);
-        }
-    }
+            const durability = document.createElement('img');
+            durability.src = 'assets/img/gui/durability-meter-10.png';
+            durability.className = 'inventory_slot_durability zoom';
 
-    addInventorySlotIcons () {
-        this.removeExistingDOMElements(this.inventorySlotIcons);
+            const equipped = document.createElement('img');
+            equipped.src = 'assets/img/gui/clothing-icon.png';
+            equipped.className = 'inventory_slot_equipped zoom';
 
-        let i=0;
-        for(let key in this.inventorySlotBorders){
-            if(this.inventorySlotBorders.hasOwnProperty(key) === false) continue;
+            const border = document.createElement('img');
+            border.src = 'assets/img/gui/inventory-slot-border.png';
+            border.className = 'inventory_slot_border zoom';
 
-            const element = document.createElement('img');
+            div.appendChild(icon);
+            div.appendChild(durability);
+            div.appendChild(equipped);
+            div.appendChild(border);
 
-            element.src = 'assets/img/gui/icons/icon-gold.png';
-            element.className = 'inventory_slot_icon zoom';
-            element.style.visibility = "hidden";
-
-            this.inventorySlotIcons[this.slotKeysByIndex[i]] = element;
-
-            this.iconContainer.appendChild(element);
-
-            i+=1;
-        }
-    }
-
-    addInventorySlotDurabilityMeters () {
-        this.removeExistingDOMElements(this.inventorySlotDurabilityMeters);
-
-        let i=0;
-        for(let key in this.inventorySlotBorders){
-            if(this.inventorySlotBorders.hasOwnProperty(key) === false) continue;
-
-            const element = document.createElement('img');
-
-            element.src = 'assets/img/gui/durability-meter-10.png';
-            element.className = 'inventory_slot_durability_meter zoom';
-            element.style.visibility = "hidden";
-
-            this.inventorySlotDurabilityMeters[this.slotKeysByIndex[i]] = element;
-
-            this.durabilityMeterContainer.appendChild(element);
-
-            i+=1;
+            this.inventorySlots[slotKeysByIndex[i]] = {
+                slot: div,
+                border: border,
+                equipped: equipped,
+                durability: durability,
+                icon: icon
+            };
+            this.inventorySlotContainer.appendChild(div);
         }
     }
 

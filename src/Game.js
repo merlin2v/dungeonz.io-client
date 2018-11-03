@@ -3,6 +3,7 @@ import EntityList from '../src/EntitiesList';
 import Tilemap from './Tilemap'
 import GUI from './GUI'
 import InventorySlot from './InventorySlot'
+import CraftingManager from "./CraftingManager";
 
 dungeonz.Game = function () {
 
@@ -82,7 +83,7 @@ dungeonz.Game.prototype = {
 
         document.getElementById("game_canvas").appendChild(this.game.canvas);
 
-        this.scale.fullScreenTarget = document.getElementById("game_container");
+        this.scale.fullScreenTarget = document.getElementById("game_cont");
 
         window.addEventListener('resize', window.windowResize);
 
@@ -92,9 +93,13 @@ dungeonz.Game.prototype = {
 
         this.lightSources = {};
 
+        this.pseudoInteractables = {};
+
         this.tilemap = new Tilemap(this);
 
         this.GUI = new GUI(this);
+
+        this.craftingManager = new CraftingManager();
 
         this.dynamics = {};
 
@@ -123,16 +128,16 @@ dungeonz.Game.prototype = {
             this.nextMoveTime = Date.now() + this.moveDelay;
 
             if(this.keyboardKeys.arrowUp.isDown){
-                ws.sendEvent('move_up');
+                ws.sendEvent('mv_u');
             }
             if(this.keyboardKeys.arrowDown.isDown){
-                ws.sendEvent('move_down');
+                ws.sendEvent('mv_d');
             }
             if(this.keyboardKeys.arrowLeft.isDown){
-                ws.sendEvent('move_left');
+                ws.sendEvent('mv_l');
             }
             if(this.keyboardKeys.arrowRight.isDown){
-                ws.sendEvent('move_right');
+                ws.sendEvent('mv_r');
             }
 
         }
@@ -160,6 +165,8 @@ dungeonz.Game.prototype = {
             this.GUI.inventorySlots[elemKey].slot.remove();
         }
 
+        this.GUI.hideCraftingPanel();
+
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
         this.GUI.respawnPrompt.style.visibility = "hidden";
@@ -176,6 +183,91 @@ dungeonz.Game.prototype = {
         this.GUI.virtualDPadIcon.style.visibility = "hidden";
         this.GUI.virtualDPad.style.visibility = "hidden";
         this.GUI.fullscreenIcon.style.visibility = "hidden";
+        this.GUI.craftingPanel.style.visibility = "hidden";
+    },
+
+    move (key, direction) {
+        //console.log("move dir:", direction);
+
+        // Hide the crafting panel, in case they are just moving away from a station.
+        this.GUI.hideCraftingPanel();
+
+        this.checkPseudoInteractables(direction);
+
+        if(this.player.hitPoints <= 0) return;
+        ws.sendEvent('mv_' + direction);
+        if(dungeonz.quickTurnEnabled === true){
+            if(this.dynamics[this.player.entityId].sprite.direction !== direction){
+                ws.sendEvent('mv_' + direction);
+            }
+        }
+        this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
+    },
+
+    checkPseudoInteractables (direction) {
+        // Check if any interactables that cause this client only to do something are about
+        // to be walked into, such as showing the crafting panel for crafting stations.
+        if(direction === 'u'){
+            const playerNextRow = this.player.row - 1;
+            let key,
+                dynamic;
+            for(key in this.pseudoInteractables){
+                if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
+                dynamic = this.pseudoInteractables[key];
+                if(dynamic.row === playerNextRow){
+                    if(dynamic.col === this.player.col){
+                        dynamic.sprite.interactedByPlayer();
+                        return;
+                    }
+                }
+            }
+        }
+        else if(direction === 'd'){
+            const playerNextRow = this.player.row + 1;
+            let key,
+                dynamic;
+            for(key in this.pseudoInteractables){
+                if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
+                dynamic = this.pseudoInteractables[key];
+                if(dynamic.row === playerNextRow){
+                    if(dynamic.col === this.player.col){
+                        dynamic.sprite.interactedByPlayer();
+                        return;
+                    }
+                }
+            }
+        }
+        else if(direction === 'l'){
+            const playerNextCol = this.player.col - 1;
+            let key,
+                dynamic;
+            for(key in this.pseudoInteractables){
+                if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
+                dynamic = this.pseudoInteractables[key];
+                if(dynamic.row === this.player.row){
+                    if(dynamic.col === playerNextCol){
+                        dynamic.sprite.interactedByPlayer();
+                        return;
+                    }
+                }
+            }
+        }
+        else {
+            const playerNextCol = this.player.col + 1;
+            let key,
+                dynamic;
+            for(key in this.pseudoInteractables){
+                if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
+                dynamic = this.pseudoInteractables[key];
+                if(dynamic.row === this.player.row){
+                    if(dynamic.col === playerNextCol){
+                        dynamic.sprite.interactedByPlayer();
+                        return;
+                    }
+                }
+            }
+        }
+
     },
 
     useHeldItem (direction) {
@@ -211,7 +303,7 @@ dungeonz.Game.prototype = {
 
     pointerDownHandler (event) {
         // Stop double clicking from highlighting text elements.
-        event.preventDefault();
+        //event.preventDefault();
         // Only use the selected item if the input wasn't over any other GUI element.
         if(event.target === _this.GUI.gui){
             // Don't try to use the held item if one isn't selected.
@@ -272,46 +364,10 @@ dungeonz.Game.prototype = {
             }
         );
 
-        this.keyboardKeys.arrowUp.onDown.add(function () {
-            if(this.player.hitPoints <= 0) return;
-            ws.sendEvent('move_up');
-            if(dungeonz.quickTurnEnabled === true){
-                if(this.dynamics[this.player.entityId].sprite.direction !== 'u'){
-                    ws.sendEvent('move_up');
-                }
-            }
-            this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
-        }, this);
-        this.keyboardKeys.arrowDown.onDown.add(function () {
-            if(this.player.hitPoints <= 0) return;
-            ws.sendEvent('move_down');
-            if(dungeonz.quickTurnEnabled === true){
-                if(this.dynamics[this.player.entityId].sprite.direction !== 'd'){
-                    ws.sendEvent('move_down');
-                }
-            }
-            this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
-        }, this);
-        this.keyboardKeys.arrowLeft.onDown.add(function () {
-            if(this.player.hitPoints <= 0) return;
-            ws.sendEvent('move_left');
-            if(dungeonz.quickTurnEnabled === true){
-                if(this.dynamics[this.player.entityId].sprite.direction !== 'l'){
-                    ws.sendEvent('move_left');
-                }
-            }
-            this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
-        }, this);
-        this.keyboardKeys.arrowRight.onDown.add(function () {
-            if(this.player.hitPoints <= 0) return;
-            ws.sendEvent('move_right');
-            if(dungeonz.quickTurnEnabled === true){
-                if(this.dynamics[this.player.entityId].sprite.direction !== 'r'){
-                    ws.sendEvent('move_right');
-                }
-            }
-            this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
-        }, this);
+        this.keyboardKeys.arrowUp.onDown.add(this.move, this, 0, 'u');
+        this.keyboardKeys.arrowDown.onDown.add(this.move, this, 0, 'd');
+        this.keyboardKeys.arrowLeft.onDown.add(this.move, this, 0, 'l');
+        this.keyboardKeys.arrowRight.onDown.add(this.move, this, 0, 'r');
 
         this.keyboardKeys.enterChat.onDown.add(function () {
             if(this.player.hitPoints <= 0){
@@ -394,6 +450,10 @@ dungeonz.Game.prototype = {
             this.tilemap.updateDarknessGrid();
         }
 
+        if(dynamicSprite.pseudoInteractable !== undefined){
+            this.pseudoInteractables[id] = this.dynamics[id];
+        }
+
         this.dynamicsGroup.add(dynamicSprite);
     },
 
@@ -410,6 +470,10 @@ dungeonz.Game.prototype = {
         if(this.lightSources[id] !== undefined){
             delete this.lightSources[id];
             this.tilemap.updateDarknessGrid();
+        }
+
+        if(this.pseudoInteractables[id] !== undefined){
+            delete this.pseudoInteractables[id];
         }
 
         this.dynamics[id].sprite.destroy();

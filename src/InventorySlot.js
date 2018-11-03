@@ -9,6 +9,12 @@ class InventorySlot {
         this.catalogueEntry = null;
 
         /**
+         * The component in the crafting panel that this item is being used in, otherwise null.
+         * @type {Boolean}
+         */
+        this.craftingComponent = null;
+
+        /**
          * How much durability this item has.
          * @type {Number|null}
          */
@@ -28,9 +34,15 @@ class InventorySlot {
         _this.GUI.inventorySlots[this.slotKey].icon.style.visibility = "hidden";
         _this.GUI.inventorySlots[this.slotKey].durability.style.visibility = "hidden";
         _this.GUI.inventorySlots[this.slotKey].equipped.style.visibility = "hidden";
+        _this.GUI.inventorySlots[this.slotKey].addComponent.style.visibility = "hidden";
 
         // Reset the catalogue entry so it doesn't show up in the tooltip.
         this.catalogueEntry = null;
+
+        // If this item was being used in crafting when removed, update the crafting panel.
+        if(this.craftingComponent !== null){
+            _this.craftingManager.removeComponent(this.craftingComponent.number);
+        }
     }
 
     updateDurability (value) {

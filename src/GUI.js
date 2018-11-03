@@ -6,7 +6,7 @@ class GUI {
         this.game = game;
 
         // References to the DOM elements for the icons and parents.
-        this.gui =                      document.getElementById('gui');
+        this.gui =                      document.getElementById('gui_cont');
 
         this.defenceIcon =              document.getElementById('defence_icon');
         this.hitPointIcon =             document.getElementById('hitpoint_icon');
@@ -61,7 +61,22 @@ class GUI {
         this.virtualDPadDown =          document.getElementById('virtual_dpad_down');
         this.virtualDPadLeft =          document.getElementById('virtual_dpad_left');
         this.virtualDPadRight =         document.getElementById('virtual_dpad_right');
-        this.playAdButton =             document.getElementById('play_ad_button');
+        this.playAdButton =             document.getElementById('play_ad_button'); //TODO not needed any more
+        this.statsContainer =           document.getElementById('stats_container');
+        this.statTooltipContainer =     document.getElementById('stat_tooltip_container');
+        this.statName =                 document.getElementById('stat_name');
+        this.statDescription =          document.getElementById('stat_description');
+        this.statCounters = {
+            melee:                      document.getElementById('stat_melee_counter'),
+            ranged:                     document.getElementById('stat_ranged_counter'),
+            magic:                      document.getElementById('stat_magic_counter'),
+            gathering:                  document.getElementById('stat_gathering_counter'),
+            weaponry:                   document.getElementById('stat_weaponry_counter'),
+            armoury:                    document.getElementById('stat_armour_counter'),
+            toolery:                    document.getElementById('stat_toolery_counter'),
+            cookery:                    document.getElementById('stat_cookery_counter'),
+            potionry:                   document.getElementById('stat_potionry_counter')
+        };
         this.dungeonPrompt =            document.getElementById('dungeon_prompt');
         this.respawnPrompt =            document.getElementById('respawn_prompt');
         this.respawnsRemainingValue =   document.getElementById('respawns_remaining_value');
@@ -73,12 +88,12 @@ class GUI {
         this.itemTooltipName =          document.getElementById('item_name');
         this.itemTooltipDescription =   document.getElementById('item_description');
         this.itemTooltipDurability =    document.getElementById('item_durability');
+        this.craftingPanel =            document.getElementById('crafting_panel');
+        this.craftingStationName =      document.getElementById('crafting_station_name');
         this.chatInput =                document.getElementById('chat_input');
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
-
-        //game.game.canvas.fullScreenTarget = document.getElementById('game_container');
 
         // Hide the chat input at the start.
         this.chatInput.isActive = false;
@@ -116,6 +131,47 @@ class GUI {
 
         this.avatarIcon.onmouseover =   function(){ game.GUI.avatarTooltip.style.visibility = "visible" };
         this.avatarIcon.onmouseout =    function(){ game.GUI.avatarTooltip.style.visibility = "hidden" };
+        this.avatarIcon.onclick =       function(){
+            if(game.GUI.statsContainer.style.visibility === "visible"){
+                game.GUI.statsContainer.style.visibility = "hidden"
+            }
+            else {
+                game.GUI.statsContainer.style.visibility = "visible"
+            }
+        };
+
+        function changeStatTooltip (statName) {
+            game.GUI.statTooltipContainer.style.visibility = "visible";
+            game.GUI.statName.innerText = dungeonz.getTextDef("Stat name: " + statName);
+            game.GUI.statDescription.innerText = dungeonz.getTextDef("Stat description: " + statName);
+        }
+
+        document.getElementById('stat_melee_icon').onmouseover =  function(){ changeStatTooltip("Melee") };
+        document.getElementById('stat_melee_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_ranged_icon').onmouseover =  function(){ changeStatTooltip("Ranged") };
+        document.getElementById('stat_ranged_icon').onmouseout = function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_magic_icon').onmouseover =  function(){ changeStatTooltip("Magic") };
+        document.getElementById('stat_magic_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_gathering_icon').onmouseover =  function(){ changeStatTooltip("Gathering") };
+        document.getElementById('stat_gathering_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_weaponry_icon').onmouseover =  function(){ changeStatTooltip("Weaponry") };
+        document.getElementById('stat_weaponry_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_armoury_icon').onmouseover =  function(){ changeStatTooltip("Armoury") };
+        document.getElementById('stat_armoury_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_toolery_icon').onmouseover =  function(){ changeStatTooltip("Toolery") };
+        document.getElementById('stat_toolery_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_cookery_icon').onmouseover =  function(){ changeStatTooltip("Cookery") };
+        document.getElementById('stat_cookery_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
+
+        document.getElementById('stat_potionry_icon').onmouseover =  function(){ changeStatTooltip("Potionry") };
+        document.getElementById('stat_potionry_icon').onmouseout =  function(){ game.GUI.statTooltipContainer.style.visibility = "hidden" };
 
         this.inventoryIcon.onmouseover =function(){ game.GUI.inventoryTooltip.style.visibility = "visible" };
         this.inventoryIcon.onmouseout = function(){ game.GUI.inventoryTooltip.style.visibility = "hidden" };
@@ -324,17 +380,11 @@ class GUI {
         // Rearrange the order of the slot numbers, as the 0 key is at the right end of keyboards.
         this.slotKeysByIndex = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot0"];
         this.inventorySlots = {};
-        //this.inventorySlotBorders = {};
-        //this.inventorySlotIcons = {};
-        //this.inventorySlotDurabilityMeters = {};
 
         this.addDefenceCounters(this.game.player.maxDefence);
         this.addHitPointCounters(this.game.player.maxHitPoints);
         this.addEnergyCounters(this.game.player.maxEnergy);
         this.addInventorySlots();
-        //this.addInventorySlotBorders();
-        //this.addInventorySlotIcons();
-        //this.addInventorySlotDurabilityMeters();
 
         // Set the values for the text based counters (glory, coins).
         this.gloryCounter.innerText = this.game.player.glory;
@@ -517,8 +567,32 @@ class GUI {
 
         // Create 10 slots.
         for(let i=0; i<10; i+=1){
+
+            // Add the contents of the slot.
+            const addComponent = document.createElement('img');
+            addComponent.src = 'assets/img/gui/add-component-icon.png';
+            addComponent.className = 'component_slot_add zoom';
+
+            const icon = document.createElement('img');
+            icon.src = 'assets/img/gui/items/icon-gold-ore.png';
+            icon.className = 'inventory_slot_icon zoom';
+
+            const durability = document.createElement('img');
+            durability.src = 'assets/img/gui/durability-meter-10.png';
+            durability.className = 'inventory_slot_durability zoom';
+
+            const equipped = document.createElement('img');
+            equipped.src = 'assets/img/gui/clothing-icon.png';
+            equipped.className = 'inventory_slot_equipped zoom';
+
+            const border = document.createElement('img');
+            border.src = 'assets/img/gui/inventory-slot-border.png';
+            border.className = 'inventory_slot_border zoom';
+
             const div = document.createElement('div');
             div.className = 'inventory_slot zoom';
+            div.draggable = true;
+
             // Use the item in this slot when pressed.
             div.onclick = function () {
                 //console.log('invent slot pressed: ' + slotKeysByIndex[i]);
@@ -561,24 +635,34 @@ class GUI {
                 guiSlot.equipped.style["-webkit-filter"] = null;
                 guiSlot.border.style["-webkit-filter"] = null;
             };
+            div.ondragenter = function () {
+                console.log("drag enter");
+                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
+                guiSlot.icon.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.durability.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.equipped.style["-webkit-filter"] = "brightness(150%)";
+                guiSlot.border.style["-webkit-filter"] = "brightness(150%)";
+            };
+            div.ondragleave = function () {
+                console.log("drag leave");
+                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
+                guiSlot.icon.style["-webkit-filter"] = null;
+                guiSlot.durability.style["-webkit-filter"] = null;
+                guiSlot.equipped.style["-webkit-filter"] = null;
+                guiSlot.border.style["-webkit-filter"] = null;
+            };
+            div.ondragstart = function () {
+                console.log("drag started");
+            };
+            div.ondragend = function () {
+                console.log("drag ended");
+            };
 
-            // Add the contents of the slot.
-            const icon = document.createElement('img');
-            icon.src = 'assets/img/gui/icons/icon-gold.png';
-            icon.className = 'inventory_slot_icon zoom';
+            addComponent.onclick = function () {
+                _this.craftingManager.addComponent(slotKeysByIndex[i]);
+            };
 
-            const durability = document.createElement('img');
-            durability.src = 'assets/img/gui/durability-meter-10.png';
-            durability.className = 'inventory_slot_durability zoom';
-
-            const equipped = document.createElement('img');
-            equipped.src = 'assets/img/gui/clothing-icon.png';
-            equipped.className = 'inventory_slot_equipped zoom';
-
-            const border = document.createElement('img');
-            border.src = 'assets/img/gui/inventory-slot-border.png';
-            border.className = 'inventory_slot_border zoom';
-
+            div.appendChild(addComponent);
             div.appendChild(icon);
             div.appendChild(durability);
             div.appendChild(equipped);
@@ -589,7 +673,8 @@ class GUI {
                 border: border,
                 equipped: equipped,
                 durability: durability,
-                icon: icon
+                icon: icon,
+                addComponent: addComponent
             };
             this.inventorySlotContainer.appendChild(div);
         }
@@ -600,6 +685,49 @@ class GUI {
         document.getElementById('dungeon_prompt_name_value').innerText = dungeonz.getTextDef(prompt.nameDefinitionID);
         document.getElementById('dungeon_prompt_difficulty_value').innerText = dungeonz.getTextDef(prompt.difficulty);
         document.getElementById('dungeon_prompt_glory_cost_value').innerText = prompt.gloryCost;
+    }
+
+    showCraftingPanel (stationName) {
+        // Show the crafting panel and change the station name.
+        _this.GUI.craftingPanel.style.visibility = "visible";
+        _this.GUI.craftingStationName.innerText = stationName;
+
+        // Clear any existing recipe code.
+        _this.craftingManager.recipeCode = '';
+
+        // Show the buttons to add components from the inventory bar, for each item the player has.
+        const inventory = this.game.player.inventory;
+        for(let slotKey in inventory){
+            if(inventory.hasOwnProperty(slotKey) === false) continue;
+            if(inventory[slotKey].catalogueEntry === null) continue;
+            inventory[slotKey].craftingComponent = null;
+            this.inventorySlots[slotKey].addComponent.style.visibility = "visible";
+            this.inventorySlots[slotKey].addComponent.style.opacity = 1;
+        }
+    }
+
+    hideCraftingPanel () {
+        // Hide the crafting panel.
+        _this.GUI.craftingPanel.style.visibility = "hidden";
+
+        // Hide the buttons to add components from the inventory bar, and all of the crafting panel elements.
+        const inventory = this.game.player.inventory;
+        for(let slotKey in inventory){
+            if(inventory.hasOwnProperty(slotKey) === false) continue;
+            this.inventorySlots[slotKey].addComponent.style.visibility = "hidden";
+        }
+
+        const components = this.game.craftingManager.components;
+        for(let slotKey in components){
+            if(components.hasOwnProperty(slotKey) === false) continue;
+            components[slotKey].occupiedBy = null;
+            components[slotKey].DOMRemove.style.visibility = "hidden";
+            components[slotKey].DOMIcon.style.visibility = "hidden";
+        }
+
+        const craftingManager = this.game.craftingManager;
+        craftingManager.resultDOMIcon.style.visibility = "hidden";
+        craftingManager.resultDOMAccept.style.visibility = "hidden";
     }
 
 }

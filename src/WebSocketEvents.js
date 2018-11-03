@@ -90,7 +90,7 @@ eventResponses.join_world_success = function (data) {
     console.log("join world success, data:");
     console.log(data);
 
-    document.getElementById("menu_container").style.display = "none";
+    document.getElementById("home_container").style.display = "none";
 
     _this.state.start('Game', true, false, data);
 
@@ -219,7 +219,7 @@ eventResponses.change_board = function (data) {
 };
 
 eventResponses.change_day_phase = function (data) {
-    console.log("changing day phase:", data);
+    //console.log("changing day phase:", data);
     _this.dayPhase = data;
 
     if(_this.boardIsDungeon === false){
@@ -330,7 +330,7 @@ eventResponses.add_item = function (data) {
 
     const guiSlot = _this.GUI.inventorySlots[slotKey];
     // Change the source image for the icon.
-    guiSlot.icon.src = "assets/img/gui/icons/" + catalogueEntry.iconSource + ".png";
+    guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
 
     // Show the icon.
     guiSlot.icon.style.visibility = "visible";
@@ -441,4 +441,11 @@ eventResponses.chat = function (data) {
 
 eventResponses.chat_warning = function (data) {
     _this.chat(undefined, dungeonz.getTextDef(ChatWarnings[data]), "#ffa54f");
+};
+
+eventResponses.stat_levelled = function (data) {
+    console.log("stat levelled, data:", data);
+    _this.GUI.statCounters[data.statName].innerText = data.level;
+    const upperCaseStatName = data.statName.charAt(0).toUpperCase() + data.statName.slice(1);
+    _this.chat(undefined, dungeonz.getTextDef("Stat name: " + upperCaseStatName) + " level gained!", '#73ff66');
 };

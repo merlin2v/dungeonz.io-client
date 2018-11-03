@@ -17,13 +17,15 @@ import Player               from './entities/characters/Player'
 import Citizen              from './entities/characters/Citizen'
 import Bandit               from './entities/characters/Bandit'
 import BanditLeader         from './entities/characters/BanditLeader'
-import GoldOre              from './entities/GoldOre'
-import Tree                 from './entities/Tree'
-import WoodDoor             from './entities/WoodDoor'
-import SmallIronCandle      from './entities/SmallIronCandle'
-import Exit                 from './entities/Exit'
-import DungeonPortal        from './entities/DungeonPortal'
-import OverworldPortal      from './entities/OverworldPortal'
+import Anvil                from './entities/interactables/Anvil'
+import Furnace              from './entities/interactables/Furnace'
+import GoldOre              from './entities/interactables/GoldOre'
+import Tree                 from './entities/interactables/Tree'
+import WoodDoor             from './entities/interactables/WoodDoor'
+import SmallIronCandle      from './entities/interactables/SmallIronCandle'
+import Exit                 from './entities/interactables/Exit'
+import DungeonPortal        from './entities/interactables/DungeonPortal'
+import OverworldPortal      from './entities/interactables/OverworldPortal'
 import PickupCloak          from './entities/pickups/PickupCloak'
 import PickupMageRobe       from './entities/pickups/PickupMageRobe'
 import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
@@ -33,7 +35,8 @@ import PickupIronSword      from './entities/pickups/PickupIronSword'
 import PickupFireStaff      from './entities/pickups/PickupFireStaff'
 import PickupWindStaff      from './entities/pickups/PickupWindStaff'
 import PickupWood           from './entities/pickups/PickupWood'
-import PickupGold           from './entities/pickups/PickupGold'
+import PickupGoldOre        from './entities/pickups/PickupGoldOre'
+import PickupGoldBar        from './entities/pickups/PickupGoldBar'
 import ProjIronDagger       from './entities/projectiles/ProjIronDagger'
 import ProjIronSword        from './entities/projectiles/ProjIronSword'
 import ProjFire             from './entities/projectiles/ProjFire'
@@ -45,6 +48,8 @@ const EntitiesList = {
     Citizen:            Citizen,
     Bandit:             Bandit,
     BanditLeader:       BanditLeader,
+    Anvil:              Anvil,
+    Furnace:            Furnace,
     GoldOre:            GoldOre,
     Tree:               Tree,
     WoodDoor:           WoodDoor,
@@ -58,7 +63,8 @@ const EntitiesList = {
     PickupFireStaff:    PickupFireStaff,
     PickupWindStaff:    PickupWindStaff,
     PickupWood:         PickupWood,
-    PickupGold:         PickupGold,
+    PickupGoldOre:      PickupGoldOre,
+    PickupGoldBar:      PickupGoldBar,
     ProjIronDagger:     ProjIronDagger,
     ProjIronSword:      ProjIronSword,
     ProjFire:           ProjFire,

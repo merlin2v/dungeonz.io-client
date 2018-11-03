@@ -93,7 +93,7 @@ dungeonz.Boot.prototype = {
 
         window._this = this;
 
-        document.getElementById("menu_container").style.display = "block";
+        document.getElementById("home_container").style.display = "block";
 
         // Keep the game running even when the window loses focus.
         this.stage.disableVisibilityChange = true;

@@ -42,60 +42,103 @@
 
     <script src="dist/main.js"></script>
 
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="main.css" type="text/css"/>
 
 </head>
 <body style="margin: 0; overflow:hidden;">
     <img id="background_img" src="assets/img/misc/main-background.png">
-    <div id="game_container">
+    <div id="game_cont">
         <div id="game_canvas"></div>
-        <div id="gui">
-            <img id="defence_icon"      class="icon gui_zoom" src="assets/img/gui/defence-icon.png">
-            <img id="hitpoint_icon"     class="icon gui_zoom" src="assets/img/gui/hitpoint-icon.png">
-            <img id="energy_icon"       class="icon gui_zoom" src="assets/img/gui/energy-icon.png">
-            <img id="glory_icon"        class="icon gui_zoom" src="assets/img/gui/glory-icon.png">
-            <img id="coins_icon"        class="icon gui_zoom" src="assets/img/gui/coins-icon.png">
-            <img id="bounty_icon"       class="icon gui_zoom" src="assets/img/gui/bounty-icon.png">
-            <img id="watch_ad_icon"     class="icon gui_zoom" src="assets/img/gui/watch-ad-icon.png">
-            <img id="avatar_icon"       class="icon gui_zoom" src="assets/img/gui/avatar-icon.png">
-            <img id="inventory_icon"    class="icon gui_zoom" src="assets/img/gui/inventory-icon.png">
-            <img id="exit_icon"         class="icon gui_zoom" src="assets/img/gui/exit-icon.png">
-            <img id="respawns_icon"     class="icon gui_zoom" src="assets/img/gui/respawns-icon.png">
-            <img id="settings_icon"     class="icon gui_zoom" src="assets/img/gui/settings-icon.png">
-            <img id="quick_turn_icon"   class="icon gui_zoom" src="assets/img/gui/turn-icon.png">
-            <div id="audio_counter"     class="text_counter gui_zoom"><p></p></div>
-            <img id="audio_icon"        class="icon gui_zoom" src="assets/img/gui/audio-icon.png">
-            <img id="audio_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
-            <img id="audio_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
-            <div id="gui_zoom_counter"  class="text_counter gui_zoom"><p></p></div>
-            <img id="gui_zoom_icon"     class="icon gui_zoom" src="assets/img/gui/zoom-icon.png">
-            <img id="gui_zoom_minus_icon"  class="icon gui_zoom" src="assets/img/gui/minus-icon.png">
-            <img id="gui_zoom_plus_icon"   class="icon gui_zoom" src="assets/img/gui/plus-icon.png">
-            <img id="virtual_dpad_icon" class="icon gui_zoom" src="assets/img/gui/virtual-dpad-icon.png">
-            <img id="fullscreen_icon"   class="icon gui_zoom" src="assets/img/gui/fullscreen-icon.png">
-            <div id="defence_tooltip"   class="counter_tooltip  gui_zoom"></div>
-            <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoom"></div>
-            <div id="energy_tooltip"    class="counter_tooltip  gui_zoom"></div>
-            <div id="glory_tooltip"     class="counter_tooltip  gui_zoom"></div>
-            <div id="coins_tooltip"     class="counter_tooltip  gui_zoom"></div>
-            <div id="bounty_tooltip"    class="counter_tooltip  gui_zoom"></div>
-            <div id="watch_ad_tooltip"  class="counter_tooltip  gui_zoom"></div>
-            <div id="avatar_tooltip"    class="counter_tooltip  gui_zoom"></div>
-            <div id="inventory_tooltip" class="counter_tooltip  gui_zoom"></div>
-            <div id="exit_tooltip"      class="counter_tooltip  gui_zoom"></div>
-            <div id="respawns_tooltip"  class="counter_tooltip  gui_zoom"></div>
-            <div id="settings_tooltip"  class="counter_tooltip  gui_zoom"></div>
-            <div id="quick_turn_tooltip"    class="counter_tooltip gui_zoom"></div>
-            <div id="audio_tooltip"         class="counter_tooltip gui_zoom"></div>
-            <div id="gui_zoom_tooltip"      class="counter_tooltip gui_zoom"></div>
-            <div id="virtual_dpad_tooltip"  class="counter_tooltip gui_zoom"></div>
-            <div id="fullscreen_tooltip"    class="counter_tooltip gui_zoom"></div>
-            <div id="glory_counter"     class="text_counter gui_zoom"><p><p/></div>
-            <div id="glory_counter_transition"  class="text_counter gui_zoom">+888<p><p/></div>
-            <div id="coin_counter"      class="text_counter gui_zoom"><p><p/></div>
-            <div id="coin_counter_transition"   class="text_counter gui_zoom"><p>+1234<p/></div>
-            <div id="respawns_counter"  class="text_counter gui_zoom"><p><p/></div>
-            <div id="respawns_counter_transition"   class="text_counter gui_zoom">+20<p><p/></div>
+        <div id="gui_cont">
+            <img id="defence_icon" class="icon gui_zoomable" src="assets/img/gui/defence-icon.png">
+            <img id="hitpoint_icon" class="icon gui_zoomable" src="assets/img/gui/hitpoint-icon.png">
+            <img id="energy_icon" class="icon gui_zoomable" src="assets/img/gui/energy-icon.png">
+            <img id="glory_icon" class="icon gui_zoomable" src="assets/img/gui/glory-icon.png">
+            <img id="coins_icon" class="icon gui_zoomable" src="assets/img/gui/coins-icon.png">
+            <img id="bounty_icon" class="icon gui_zoomable" src="assets/img/gui/bounty-icon.png">
+            <img id="watch_ad_icon" class="icon gui_zoomable" src="assets/img/gui/watch-ad-icon.png">
+            <img id="avatar_icon" class="icon gui_zoomable" src="assets/img/gui/avatar-icon.png">
+            <img id="inventory_icon" class="icon gui_zoomable" src="assets/img/gui/inventory-icon.png">
+            <img id="exit_icon" class="icon gui_zoomable" src="assets/img/gui/exit-icon.png">
+            <img id="respawns_icon" class="icon gui_zoomable" src="assets/img/gui/respawns-icon.png">
+            <img id="settings_icon" class="icon gui_zoomable" src="assets/img/gui/settings-icon.png">
+            <img id="quick_turn_icon" class="icon gui_zoomable" src="assets/img/gui/turn-icon.png">
+            <div id="audio_counter"     class="text_counter gui_zoomable"><p></p></div>
+            <img id="audio_icon" class="icon gui_zoomable" src="assets/img/gui/audio-icon.png">
+            <img id="audio_minus_icon" class="icon gui_zoomable" src="assets/img/gui/minus-icon.png">
+            <img id="audio_plus_icon" class="icon gui_zoomable" src="assets/img/gui/plus-icon.png">
+            <div id="gui_zoom_counter"  class="text_counter gui_zoomable"><p></p></div>
+            <img id="gui_zoom_icon" class="icon gui_zoomable" src="assets/img/gui/zoom-icon.png">
+            <img id="gui_zoom_minus_icon" class="icon gui_zoomable" src="assets/img/gui/minus-icon.png">
+            <img id="gui_zoom_plus_icon" class="icon gui_zoomable" src="assets/img/gui/plus-icon.png">
+            <img id="virtual_dpad_icon" class="icon gui_zoomable" src="assets/img/gui/virtual-dpad-icon.png">
+            <img id="fullscreen_icon" class="icon gui_zoomable" src="assets/img/gui/fullscreen-icon.png">
+            <div id="defence_tooltip"   class="counter_tooltip  gui_zoomable"></div>
+            <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoomable"></div>
+            <div id="energy_tooltip"    class="counter_tooltip  gui_zoomable"></div>
+            <div id="glory_tooltip"     class="counter_tooltip  gui_zoomable"></div>
+            <div id="coins_tooltip"     class="counter_tooltip  gui_zoomable"></div>
+            <div id="bounty_tooltip"    class="counter_tooltip  gui_zoomable"></div>
+            <div id="watch_ad_tooltip"  class="counter_tooltip  gui_zoomable"></div>
+            <div id="avatar_tooltip"    class="counter_tooltip  gui_zoomable"></div>
+            <div id="inventory_tooltip" class="counter_tooltip  gui_zoomable"></div>
+            <div id="exit_tooltip"      class="counter_tooltip  gui_zoomable"></div>
+            <div id="respawns_tooltip"  class="counter_tooltip  gui_zoomable"></div>
+            <div id="settings_tooltip"  class="counter_tooltip  gui_zoomable"></div>
+            <div id="quick_turn_tooltip"    class="counter_tooltip gui_zoomable"></div>
+            <div id="audio_tooltip"         class="counter_tooltip gui_zoomable"></div>
+            <div id="gui_zoom_tooltip"      class="counter_tooltip gui_zoomable"></div>
+            <div id="virtual_dpad_tooltip"  class="counter_tooltip gui_zoomable"></div>
+            <div id="fullscreen_tooltip"    class="counter_tooltip gui_zoomable"></div>
+            <div id="glory_counter"     class="text_counter gui_zoomable"><p><p/></div>
+            <div id="glory_counter_transition"  class="text_counter gui_zoomable"><p><p/></div>
+            <div id="coin_counter"      class="text_counter gui_zoomable"><p><p/></div>
+            <div id="coin_counter_transition"   class="text_counter gui_zoomable"><p><p/></div>
+            <div id="respawns_counter"  class="text_counter gui_zoomable"><p><p/></div>
+            <div id="respawns_counter_transition"   class="text_counter gui_zoomable"><p><p/></div>
+
+            <div id="stats_container" class="gui_zoomable">
+                <div id="stat_melee">
+                    <img id="stat_melee_icon" src="assets/img/gui/melee-icon.png" class="stat_icon">
+                    <p id="stat_melee_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_ranged">
+                    <img id="stat_ranged_icon" src="assets/img/gui/ranged-icon.png" class="stat_icon">
+                    <p id="stat_ranged_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_magic">
+                    <img id="stat_magic_icon" src="assets/img/gui/magic-icon.png" class="stat_icon">
+                    <p id="stat_magic_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_gathering">
+                    <img id="stat_gathering_icon" src="assets/img/gui/gathering-icon.png" class="stat_icon">
+                    <p id="stat_gathering_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_weaponry">
+                    <img id="stat_weaponry_icon" src="assets/img/gui/weaponry-icon.png" class="stat_icon">
+                    <p id="stat_weaponry_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_armoury">
+                    <img id="stat_armoury_icon" src="assets/img/gui/armoury-icon.png" class="stat_icon">
+                    <p id="stat_armoury_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_toolery">
+                    <img id="stat_toolery_icon" src="assets/img/gui/toolery-icon.png" class="stat_icon">
+                    <p id="stat_toolery_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_cookery">
+                    <img id="stat_cookery_icon" src="assets/img/gui/cookery-icon.png" class="stat_icon">
+                    <p id="stat_cookery_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_potionry">
+                    <img id="stat_potionry_icon" src="assets/img/gui/potionry-icon.png" class="stat_icon">
+                    <p id="stat_potionry_counter" class="stat_counter">1</p>
+                </div>
+                <div id="stat_tooltip_container">
+                    <div id="stat_name"></div>
+                    <div id="stat_description"></div>
+                </div>
+            </div>
 
             <div id="watch_ad_prompt">
                 <div id="watch_ad_message"></div>
@@ -144,19 +187,91 @@
                 <div id="play_again_button"></div>
             </div>
 
-        </div>
-        <span id="inventory_slot_container" class="gui_zoom">
+            <div id="shop_panel_container">
+                <div id="shop_panel_name">
+                    Timo's tool shop
+                </div>
+                <div id="shop_contents_container">
+                    <div id="shop_item_1">
+                        <img id="shop_item_1_icon" src="assets/img/gui/items/icon-mage-robe.png">
+                        <p id="shop_item_1_price">123</p>
+                    </div>
+                    <div id="shop_item_2">
+                        <img id="shop_item_2_icon" src="assets/img/gui/items/icon-iron-sword.png">
+                        <p id="shop_item_2_price">4100</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gold_ex_container">
+                <div id="gold_ex_name">Gold exchange</div>
+                <div id="gold_ex_rate_text">Exchange rate:</div>
+                <div id="gold_ex_rate_container">
+                    <img src="assets/img/gui/items/icon-gold-bar.png">
+                    <p>=</p>
+                    <img src="assets/img/gui/coins-icon.png">
+                    <p id="gold_ex_rate_value">9876</p>
+                </div>
+                <div id="gold_ex_accept">Exchange</div>
+            </div>
+
+            <div id="bank_container">
+                
+            </div>
+
+            <div id="crafting_panel">
+                <div id="crafting_station_name">Workbench</div>
+                <div id="crafting_panel_container">
+                    <div id="crafting_components_bar">
+                        <div id="component_slot_1" class="inventory_slot">
+                            <img id="component_slot_1_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
+                            <img id="component_slot_1_icon"     class="inventory_slot_icon"     src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="component_slot_1_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
+                        <div id="component_slot_2" class="inventory_slot">
+                            <img id="component_slot_2_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
+                            <img id="component_slot_2_icon"     class="inventory_slot_icon"     src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="component_slot_2_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
+                        <div id="component_slot_3" class="inventory_slot">
+                            <img id="component_slot_3_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
+                            <img id="component_slot_3_icon"     class="inventory_slot_icon"     src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="component_slot_3_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
+                        <div id="component_slot_4" class="inventory_slot">
+                            <img id="component_slot_4_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
+                            <img id="component_slot_4_icon"     class="inventory_slot_icon"     src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="component_slot_4_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
+                        <div id="component_slot_5" class="inventory_slot">
+                            <img id="component_slot_5_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
+                            <img id="component_slot_5_icon"     class="inventory_slot_icon"     src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="component_slot_5_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
+                    </div>
+                    <div id="crafting_spacer"></div>
+                    <div id="craft_result_container">
+                    <div id="craft_result" class="inventory_slot">
+                        <img id="craft_result_accept"   class="component_slot_remove"   src="assets/img/gui/accept-craft-icon.png">
+                        <img id="craft_result_icon"     class="inventory_slot_icon"   src="assets/img/gui/items/icon-gold-ore.png">
+                        <img id="craft_result_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <span id="inventory_slot_container" class="gui_zoomable">
             <div id="item_tooltip_container">
                 <div id="item_name"></div>
                 <div id="item_description"></div>
                 <div id="item_durability"></div>
             </div>
         </span>
+        </div>
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
-
     </div>
 
-    <div id="menu_container">
+    <div id="home_container">
         <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
         <p id="warning_message">Could not connect to game server. Probably updating...</p>
         <input id="name_input" type="text" maxlength="20" autofocus>
@@ -174,18 +289,26 @@
         </ul>
 
         <div id="community_links">
-            <h2 id="community_header" class="instruction_heading"></h2>
-            <div id="wikia_link" class="community_link" onclick="window.open('https://dungeonz.wikia.com', '_blank');">
-                <img id="wikia_button"      class="community_button" src="assets/img/misc/wikia-logo.png">
-                <span id="community_wikia" class="community_text"></span>
+            <div class="community_link_cont">
+                <img id="wikia_button"      class="community_button" src="assets/img/misc/wikia-logo.png"
+                     onclick="window.open('https://dungeonz.wikia.com', '_blank');"
+                     onmouseover="document.getElementById('wikia_tooltip').style.visibility = 'visible'"
+                     onmouseleave="document.getElementById('wikia_tooltip').style.visibility = 'hidden'">
+                <span id="wikia_tooltip"    class="community_text"></span>
             </div>
-            <div id="discord_link" class="community_link" onclick="window.open('https://discord.gg/7wjyU7B', '_blank');">
-                <img id="discord_button"    class="community_button" src="assets/img/misc/discord-logo-color.png">
-                <span id="community_discord" class="community_text"></span>
+            <div class="community_link_cont">
+                <img id="discord_button"    class="community_button" src="assets/img/misc/discord-logo-color.png"
+                     onclick="window.open('https://discord.gg/7wjyU7B', '_blank');"
+                     onmouseover="document.getElementById('discord_tooltip').style.visibility = 'visible'"
+                     onmouseleave="document.getElementById('discord_tooltip').style.visibility = 'hidden'">
+                <span id="discord_tooltip"  class="community_text"></span>
             </div>
-            <div id="facebook_link" class="community_link" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');">
-                <img id="facebook_button"   class="community_button" src="assets/img/misc/facebook-logo.png">
-                <span id="community_facebook" class="community_text"></span>
+            <div class="community_link_cont">
+                <img id="facebook_button"   class="community_button" src="assets/img/misc/facebook-logo.png"
+                     onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');"
+                     onmouseover="document.getElementById('facebook_tooltip').style.visibility = 'visible'"
+                     onmouseleave="document.getElementById('facebook_tooltip').style.visibility = 'hidden'">
+                <span id="facebook_tooltip" class="community_text"></span>
             </div>
         </div>
         <div id="instructions">
@@ -245,10 +368,9 @@
             document.getElementById('controls_pick_up_item').innerText =dungeonz.getTextDef('Controls: pick up item');
             document.getElementById('controls_use_item').innerText =    dungeonz.getTextDef('Controls: use item');
             document.getElementById('controls_drop_item').innerText =   dungeonz.getTextDef('Controls: drop item');
-            document.getElementById('community_header').innerText =     dungeonz.getTextDef('Community header');
-            document.getElementById('community_wikia').innerText =      dungeonz.getTextDef('Community: Wikia');
-            document.getElementById('community_discord').innerText =    dungeonz.getTextDef('Community: Discord');
-            document.getElementById('community_facebook').innerText =   dungeonz.getTextDef('Community: Facebook');
+            document.getElementById('wikia_tooltip').innerText =        dungeonz.getTextDef('Community: Wikia');
+            document.getElementById('discord_tooltip').innerText =      dungeonz.getTextDef('Community: Discord');
+            document.getElementById('facebook_tooltip').innerText =     dungeonz.getTextDef('Community: Facebook');
             document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');
             document.getElementById('hitpoint_tooltip').innerText =     dungeonz.getTextDef('Hitpoint tooltip');
             document.getElementById('energy_tooltip').innerText =       dungeonz.getTextDef('Energy tooltip');

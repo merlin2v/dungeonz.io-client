@@ -2,7 +2,7 @@ import EntityTypes from '../src/catalogues/EntityTypes'
 import EntityList from '../src/EntitiesList';
 import Tilemap from './Tilemap'
 import GUI from './GUI'
-import InventorySlot from './InventorySlot'
+import Inventory from './Inventory'
 import CraftingManager from "./CraftingManager";
 
 dungeonz.Game = function () {
@@ -41,18 +41,7 @@ dungeonz.Game.prototype = {
             glory: data.playerGlory,
             coins: data.playerCoins,
             respawns: data.playerRespawns,
-            inventory: {
-                slot1: new InventorySlot("slot1"),
-                slot2: new InventorySlot("slot2"),
-                slot3: new InventorySlot("slot3"),
-                slot4: new InventorySlot("slot4"),
-                slot5: new InventorySlot("slot5"),
-                slot6: new InventorySlot("slot6"),
-                slot7: new InventorySlot("slot7"),
-                slot8: new InventorySlot("slot8"),
-                slot9: new InventorySlot("slot9"),
-                slot0: new InventorySlot("slot0")
-            },
+            inventory: new Inventory(),
             holdingItem: false
         };
 
@@ -116,6 +105,11 @@ dungeonz.Game.prototype = {
 
         this.tilemap.updateDarknessGrid();
 
+        this.moveUpIsDown = false;
+        this.moveDownIsDown = false;
+        this.moveLeftIsDown = false;
+        this.moveRightIsDown = false;
+
         this.setupKeyboardControls();
 
         window.addEventListener('mousedown', this.pointerDownHandler);
@@ -127,16 +121,16 @@ dungeonz.Game.prototype = {
         if(this.nextMoveTime < Date.now()){
             this.nextMoveTime = Date.now() + this.moveDelay;
 
-            if(this.keyboardKeys.arrowUp.isDown){
+            if(this.moveUpIsDown === true){
                 ws.sendEvent('mv_u');
             }
-            if(this.keyboardKeys.arrowDown.isDown){
+            if(this.moveDownIsDown === true){
                 ws.sendEvent('mv_d');
             }
-            if(this.keyboardKeys.arrowLeft.isDown){
+            if(this.moveLeftIsDown === true){
                 ws.sendEvent('mv_l');
             }
-            if(this.keyboardKeys.arrowRight.isDown){
+            if(this.moveRightIsDown === true){
                 ws.sendEvent('mv_r');
             }
 
@@ -186,7 +180,7 @@ dungeonz.Game.prototype = {
         this.GUI.craftingPanel.style.visibility = "hidden";
     },
 
-    move (key, direction) {
+    move (direction) {
         //console.log("move dir:", direction);
 
         // Hide the crafting panel, in case they are just moving away from a station.
@@ -326,6 +320,42 @@ dungeonz.Game.prototype = {
 
     },
 
+    moveUpPressed () {
+        _this.move('u');
+        _this.moveUpIsDown = true;
+    },
+
+    moveDownPressed () {
+        _this.move('d');
+        _this.moveDownIsDown = true;
+    },
+
+    moveLeftPressed () {
+        _this.move('l');
+        _this.moveLeftIsDown = true;
+    },
+
+    moveRightPressed () {
+        _this.move('r');
+        _this.moveRightIsDown = true;
+    },
+
+    moveUpReleased () {
+        _this.moveUpIsDown = false;
+    },
+
+    moveDownReleased () {
+        _this.moveDownIsDown = false;
+    },
+
+    moveLeftReleased () {
+        _this.moveLeftIsDown = false;
+    },
+
+    moveRightReleased () {
+        _this.moveRightIsDown = false;
+    },
+
     keyDownHandler (event) {
         //console.log("key event:", event);
 
@@ -364,10 +394,15 @@ dungeonz.Game.prototype = {
             }
         );
 
-        this.keyboardKeys.arrowUp.onDown.add(this.move, this, 0, 'u');
-        this.keyboardKeys.arrowDown.onDown.add(this.move, this, 0, 'd');
-        this.keyboardKeys.arrowLeft.onDown.add(this.move, this, 0, 'l');
-        this.keyboardKeys.arrowRight.onDown.add(this.move, this, 0, 'r');
+        this.keyboardKeys.arrowUp.onDown.add(this.moveUpPressed, this, 0);
+        this.keyboardKeys.arrowDown.onDown.add(this.moveDownPressed, this, 0);
+        this.keyboardKeys.arrowLeft.onDown.add(this.moveLeftPressed, this, 0);
+        this.keyboardKeys.arrowRight.onDown.add(this.moveRightPressed, this, 0);
+
+        this.keyboardKeys.arrowUp.onUp.add(this.moveUpReleased, this, 0);
+        this.keyboardKeys.arrowDown.onUp.add(this.moveDownReleased, this, 0);
+        this.keyboardKeys.arrowLeft.onUp.add(this.moveLeftReleased, this, 0);
+        this.keyboardKeys.arrowRight.onUp.add(this.moveRightReleased, this, 0);
 
         this.keyboardKeys.enterChat.onDown.add(function () {
             if(this.player.hitPoints <= 0){

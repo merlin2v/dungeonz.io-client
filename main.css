@@ -1,499 +1,3 @@
-.gui_zoomable {
-  zoom: 1;
-  -moz-transform: scale(1);
-  -moz-transform-origin: 0 0;
-}
-
-#gui_cont {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-
-#inventory_slot_container {
-  position: absolute;
-  display: inline-flex;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.inventory_slot {
-  margin: 4px;
-  width: 48px;
-  height: 48px;
-}
-
-.inventory_slot_border {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-}
-
-.inventory_slot_equipped {
-  position: absolute;
-  bottom: 47px;
-  width: 48px;
-  object-fit: contain;
-  visibility: hidden;
-}
-
-.inventory_slot_durability {
-  position: absolute;
-  bottom: 10px;
-  width: 48px;
-  object-fit: contain;
-  visibility: hidden;
-}
-
-.inventory_slot_icon {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  visibility: hidden;
-}
-
-#item_tooltip_container {
-  position: absolute;
-  visibility: hidden;
-  bottom: 100px;
-  left: 50%;
-  width: 75%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: #3f3f74;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
-  padding: 8px;
-}
-
-#item_name {
-  font-weight: bold;
-}
-
-#crafting_panel {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  visibility: hidden;
-}
-
-#crafting_station_name {
-  height: 20px;
-  width: 50%;
-  text-align: center;
-  font-size: 26px;
-  padding: 4px 4px 12px 4px;
-  font-weight: bold;
-  font-family: Consolas;
-  color: #222034;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#crafting_panel_container {
-  display: inline-flex;
-}
-
-#crafting_components_bar {
-  display: inline-flex;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#craft_result_container {
-  display: inline-flex;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.component_slot_add {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  bottom: 47px;
-  visibility: hidden;
-}
-
-.component_slot_add:hover {
-  -webkit-filter: brightness(150%);
-}
-
-.component_slot_remove {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  top: 93px;
-  visibility: hidden;
-}
-
-.component_slot_remove:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#crafting_spacer {
-  width: 40px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  top: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-#craft_result {
-  padding: 10px;
-}
-
-.icon {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  left: 10px;
-}
-
-.icon:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#defence_icon {
-  top: 10px;
-}
-
-#hitpoint_icon {
-  top: 50px;
-}
-
-#energy_icon {
-  top: 90px;
-}
-
-#glory_icon {
-  top: 130px;
-}
-
-#coins_icon {
-  top: 170px;
-}
-
-#bounty_icon {
-  top: 210px;
-}
-
-#watch_ad_icon {
-  top: 250px;
-  cursor: pointer;
-}
-
-#avatar_icon {
-  top: 290px;
-  cursor: pointer;
-}
-
-#inventory_icon {
-  bottom: 10px;
-}
-
-#exit_icon {
-  top: 10px;
-  right: 10px;
-  left: auto;
-}
-
-#respawns_icon {
-  top: 50px;
-  right: 10px;
-  left: auto;
-}
-
-#settings_icon {
-  bottom: 10px;
-  right: 10px;
-  left: auto;
-}
-
-#quick_turn_icon {
-  bottom: 50px;
-  right: 10px;
-  left: auto;
-  opacity: 0.5;
-  visibility: hidden;
-}
-
-#audio_icon {
-  bottom: 90px;
-  right: 10px;
-  left: auto;
-  visibility: hidden;
-}
-
-#audio_minus_icon {
-  bottom: 90px;
-  right: 130px;
-  left: auto;
-  visibility: hidden;
-}
-
-#audio_plus_icon {
-  bottom: 90px;
-  right: 50px;
-  left: auto;
-  visibility: hidden;
-}
-
-#audio_counter {
-  bottom: 93px;
-  right: 23px;
-  left: auto;
-  visibility: hidden;
-  font-size: 16px;
-}
-
-#gui_zoom_icon {
-  bottom: 130px;
-  right: 10px;
-  left: auto;
-  visibility: hidden;
-}
-
-#gui_zoom_minus_icon {
-  bottom: 130px;
-  right: 130px;
-  left: auto;
-  visibility: hidden;
-}
-
-#gui_zoom_plus_icon {
-  bottom: 130px;
-  right: 50px;
-  left: auto;
-  visibility: hidden;
-}
-
-#virtual_dpad_icon {
-  bottom: 170px;
-  right: 10px;
-  left: auto;
-  opacity: 0.5;
-  visibility: hidden;
-}
-
-#fullscreen_icon {
-  bottom: 210px;
-  right: 10px;
-  left: auto;
-  opacity: 0.5;
-  visibility: hidden;
-}
-
-#gui_zoom_counter {
-  bottom: 133px;
-  right: 23px;
-  left: auto;
-  visibility: hidden;
-  font-size: 16px;
-}
-
-.icon_counter {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-}
-
-.text_counter {
-  position: absolute;
-  left: 40px;
-  width: 100px;
-  height: 30px;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding-left: 10px;
-  font-size: 26px;
-  font-family: Consolas;
-  font-weight: bold;
-  color: white;
-  text-shadow: -3px 0 #45283c, 0 3px #45283c, 3px 0 #45283c, 0 -3px #45283c;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-#glory_counter {
-  top: 130px;
-  user-select: none;
-}
-
-#glory_counter_transition {
-  top: 130px;
-  left: 120px;
-  opacity: 0;
-  animation-duration: 2s;
-  animation-timing-function: ease-in;
-}
-
-#coin_counter {
-  top: 170px;
-  user-select: none;
-}
-
-#coin_counter_transition {
-  top: 170px;
-  left: 120px;
-  opacity: 0;
-  animation-duration: 2s;
-  animation-timing-function: ease-in;
-}
-
-#respawns_counter {
-  top: 50px;
-  right: 50px;
-  left: auto;
-  width: auto;
-  user-select: none;
-}
-
-#respawns_counter_transition {
-  top: 50px;
-  right: 90px;
-  left: auto;
-  width: auto;
-  opacity: 0;
-  animation-duration: 2s;
-  animation-timing-function: ease-in;
-}
-
-#chat_input {
-  position: absolute;
-  width: 30%;
-  height: 40px;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  color: #3f3f74;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  visibility: hidden;
-}
-
-::placeholder {
-  color: #847e87;
-}
-
-#stat_tooltip_container {
-  position: absolute;
-  width: 100%;
-  top: 100%;
-  text-align: center;
-  color: #3f3f74;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
-  margin-top: -20px;
-  padding: 8px 16px 8px 16px;
-  box-sizing: border-box;
-  visibility: hidden;
-}
-
-#stat_name {
-  font-weight: bold;
-}
-
-#stats_container {
-  position: absolute;
-  display: inline-flex;
-  top: 290px;
-  left: 50px;
-  visibility: hidden;
-}
-
-.stat_icon {
-  margin-left: 4px;
-  margin-right: 4px;
-  width: 34px;
-  height: 34px;
-}
-
-.stat_icon:hover {
-  -webkit-filter: brightness(150%);
-}
-
-.stat_counter {
-  text-align: center;
-  color: #ffffff;
-  font-family: Consolas;
-  font-weight: bolder;
-  font-size: 24px;
-  margin-top: 0px;
-  -webkit-text-stroke: 1px #222034;
-}
-
-#virtual_dpad {
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-
-#virtual_dpad_up {
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  height: 10%;
-  max-width: 20%;
-  transform: translateX(-50%);
-}
-
-#virtual_dpad_up:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#virtual_dpad_down {
-  position: absolute;
-  left: 50%;
-  bottom: 25%;
-  height: 10%;
-  max-width: 20%;
-  transform: translateX(-50%);
-}
-
-#virtual_dpad_down:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#virtual_dpad_left {
-  position: absolute;
-  left: 25%;
-  top: 50%;
-  width: 10%;
-  max-height: 20%;
-  transform: translateY(-50%);
-}
-
-#virtual_dpad_left:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#virtual_dpad_right {
-  position: absolute;
-  right: 25%;
-  top: 50%;
-  width: 10%;
-  max-height: 20%;
-  transform: translateY(-50%);
-}
-
-#virtual_dpad_right:hover {
-  -webkit-filter: brightness(150%);
-}
-
 #play_button {
   position: absolute;
   width: 20%;
@@ -738,6 +242,581 @@
   visibility: hidden;
 }
 
+.gui_zoomable {
+  zoom: 1;
+  -moz-transform: scale(1);
+  -moz-transform-origin: 0 0;
+}
+
+#gui_cont {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+#chat_input {
+  position: absolute;
+  width: 30%;
+  height: 40px;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: #3f3f74;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: Consolas;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  visibility: hidden;
+}
+
+.gui_icon {
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  pointer-events: auto;
+}
+.gui_icon:hover {
+  -webkit-filter: brightness(150%);
+}
+
+.inline_cont {
+  display: flex;
+}
+
+.text_counter {
+  left: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+  user-select: none;
+  font-size: 26px;
+  font-family: Consolas;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 1.5px #222034;
+}
+
+.text_counter_transition {
+  opacity: 0;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+#top_left_corner_cont {
+  position: absolute;
+  display: block;
+  top: 10px;
+  left: 10px;
+  pointer-events: none;
+}
+
+.gui_counter_icon {
+  width: 16px;
+  height: 16px;
+  padding: 1px;
+  margin-top: 12px;
+  pointer-events: auto;
+}
+
+#top_right_corner_cont {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  top: 10px;
+  right: 10px;
+  float: right;
+  pointer-events: none;
+}
+
+#bottom_left_corner_cont {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  left: 10px;
+  pointer-events: none;
+}
+
+#bottom_right_corner_cont {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  bottom: 10px;
+  right: 10px;
+  float: right;
+  pointer-events: none;
+}
+
+#audio_counter, #gui_zoom_counter {
+  position: relative;
+  top: 4px;
+  left: 0;
+  width: 60px;
+  visibility: hidden;
+}
+
+#quick_turn_icon, #fullscreen_icon, #virtual_dpad_icon {
+  opacity: 0.5;
+  visibility: hidden;
+}
+
+#stat_name {
+  font-weight: bold;
+}
+
+#stats_cont {
+  display: inline-flex;
+  visibility: hidden;
+  position: relative;
+  top: -2px;
+}
+
+.stat_icon {
+  margin-left: 4px;
+  margin-right: 4px;
+  width: 34px;
+  height: 34px;
+  pointer-events: auto;
+}
+.stat_icon:hover {
+  -webkit-filter: brightness(150%);
+}
+
+.stat_counter {
+  text-align: center;
+  color: #ffffff;
+  font-family: Consolas;
+  font-weight: bolder;
+  font-size: 24px;
+  margin-top: 0px;
+  -webkit-text-stroke: 1px #222034;
+}
+
+#stat_tooltip_cont {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  text-align: center;
+  color: #3f3f74;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: Consolas;
+  margin-top: -20px;
+  padding: 8px 16px 8px 16px;
+  box-sizing: border-box;
+  visibility: hidden;
+}
+
+.generic_tooltip {
+  color: #3f3f74;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: Consolas;
+  font-weight: bold;
+  padding: 8px;
+  z-index: 1000;
+  visibility: hidden;
+}
+
+.top_left_tooltip {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 40px;
+  width: 400px;
+}
+
+.top_right_tooltip {
+  position: absolute;
+  margin-top: 20px;
+  margin-right: 40px;
+  width: 400px;
+  right: 0px;
+}
+
+.bottom_right_tooltip {
+  position: absolute;
+  margin-top: 20px;
+  margin-right: 40px;
+  width: 400px;
+  right: 0px;
+  transform: translateY(-100%);
+}
+
+#inventory_tooltip {
+  width: 100%;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+#respawn_prompt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: Consolas;
+  color: #3f3f74;
+  padding: 10px;
+  visibility: hidden;
+}
+
+#you_died {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+#respawn_button {
+  background-color: #d95763;
+  left: 50%;
+  margin: 8px;
+  padding: 20px;
+  font-weight: bolder;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+#respawn_button:hover {
+  background-color: #ac3232;
+}
+
+#game_over_prompt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: Consolas;
+  color: #3f3f74;
+  padding: 10px;
+  visibility: hidden;
+}
+
+#game_over {
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+#game_over_message {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#play_again_button {
+  background-color: #37946e;
+  left: 50%;
+  margin: 16px;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 20px;
+  font-weight: bolder;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+#play_again_button:hover {
+  background-color: #6abe30;
+}
+
+#dungeon_prompt {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: Consolas;
+  padding: 8px;
+  padding-bottom: 16px;
+  visibility: hidden;
+}
+
+#dungeon_prompt_top {
+  width: 100%;
+  display: inline-block;
+}
+
+#dungeon_prompt_info {
+  width: 45%;
+  height: 100%;
+  float: left;
+  margin: 4px 4px 4px 4px;
+  background-color: #37946e;
+  padding-top: 8px;
+}
+
+#dungeon_prompt_warning {
+  width: 45%;
+  height: 100%;
+  float: right;
+  margin: 4px 4px 4px 4px;
+  background-color: #d95763;
+  padding-top: 8px;
+}
+
+#dungeon_prompt_bottom {
+  width: 100%;
+  height: 30px;
+  margin: 4px 4px 4px 4px;
+  display: inline-block;
+}
+
+#dungeon_prompt_accept {
+  width: 45%;
+  float: left;
+  background-color: #37946e;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bolder;
+  white-space: nowrap;
+}
+
+#dungeon_prompt_accept:hover {
+  background-color: #6abe30;
+}
+
+#dungeon_prompt_decline {
+  width: 45%;
+  float: right;
+  background-color: #d95763;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bolder;
+  white-space: nowrap;
+}
+
+#dungeon_prompt_decline:hover {
+  background-color: #ac3232;
+}
+
+.dungeon_prompt_header {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.dungeon_prompt_value {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#inventory_slot_cont {
+  position: absolute;
+  display: inline-flex;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.inventory_slot {
+  margin: 4px;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+}
+
+.inventory_slot_border {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+}
+
+.inventory_slot_equipped {
+  position: absolute;
+  bottom: 47px;
+  width: 48px;
+  object-fit: contain;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inventory_slot_durability {
+  position: absolute;
+  bottom: 10px;
+  width: 48px;
+  object-fit: contain;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inventory_slot_icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#item_tooltip_cont {
+  position: absolute;
+  visibility: hidden;
+  bottom: 100px;
+  left: 50%;
+  width: 75%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #3f3f74;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: Consolas;
+  padding: 8px;
+}
+
+#item_name {
+  font-weight: bold;
+}
+
+#virtual_dpad {
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+#virtual_dpad_up {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  height: 10%;
+  max-width: 20%;
+  transform: translateX(-50%);
+}
+
+#virtual_dpad_down {
+  position: absolute;
+  left: 50%;
+  bottom: 25%;
+  height: 10%;
+  max-width: 20%;
+  transform: translateX(-50%);
+}
+
+#virtual_dpad_left {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 10%;
+  max-height: 20%;
+  transform: translateY(-50%);
+}
+
+#virtual_dpad_right {
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  width: 10%;
+  max-height: 20%;
+  transform: translateY(-50%);
+}
+
+.virtual_dpad_hover:hover {
+  -webkit-filter: brightness(150%);
+}
+
+#crafting_panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+#crafting_station_name {
+  height: 20px;
+  width: 50%;
+  float: left;
+  text-align: center;
+  font-size: 26px;
+  padding: 4px 4px 12px 4px;
+  font-weight: bold;
+  font-family: Consolas;
+  color: #222034;
+  background-color: rgba(255, 255, 255, 0.8);
+  user-select: none;
+}
+
+#crafting_tooltip {
+  position: absolute;
+  left: 270px;
+  bottom: 80px;
+  text-align: center;
+  font-size: 26px;
+  padding: 4px 12px 4px 12px;
+  margin-bottom: 10px;
+  font-family: Consolas;
+  color: #222034;
+  background-color: rgba(255, 255, 255, 0.8);
+  user-select: none;
+  visibility: hidden;
+}
+
+#crafting_panel_main {
+  display: inline-flex;
+}
+
+#crafting_components_bar {
+  display: inline-flex;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#craft_result_cont {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.component_slot_add {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  bottom: 47px;
+  visibility: hidden;
+}
+.component_slot_add:hover {
+  -webkit-filter: brightness(150%);
+}
+
+.component_slot_remove {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 93px;
+  visibility: hidden;
+}
+.component_slot_remove:hover {
+  -webkit-filter: brightness(150%);
+}
+
+#crafting_spacer {
+  width: 40px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#craft_result {
+  padding: 10px;
+}
+
 #game_canvas {
   position: absolute;
   left: 50%;
@@ -749,6 +828,10 @@
 
 img {
   image-rendering: pixelated;
+}
+
+::placeholder {
+  color: #847e87;
 }
 
 /*# sourceMappingURL=main.css.map */

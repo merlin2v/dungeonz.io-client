@@ -14,7 +14,6 @@ class GUI {
         this.gloryIcon =                document.getElementById('glory_icon');
         this.coinsIcon =                document.getElementById('coins_icon');
         this.bountyIcon =               document.getElementById('bounty_icon');
-        this.watchAdIcon =              document.getElementById('watch_ad_icon');
         this.avatarIcon =               document.getElementById('avatar_icon');
         this.inventoryIcon =            document.getElementById('inventory_icon');
         this.exitIcon =                 document.getElementById('exit_icon');
@@ -36,7 +35,6 @@ class GUI {
         this.gloryTooltip =             document.getElementById('glory_tooltip');
         this.coinsTooltip =             document.getElementById('coins_tooltip');
         this.bountyTooltip =            document.getElementById('bounty_tooltip');
-        this.watchAdTooltip =           document.getElementById('watch_ad_tooltip');
         this.avatarTooltip =            document.getElementById('avatar_tooltip');
         this.inventoryTooltip =         document.getElementById('inventory_tooltip');
         this.exitTooltip =              document.getElementById('exit_tooltip');
@@ -52,7 +50,7 @@ class GUI {
         this.gloryCounterTransition =   document.getElementById('glory_counter_transition');
         this.coinsCounter =             document.getElementById('coin_counter');
         this.coinsCounterTransition =   document.getElementById('coin_counter_transition');
-        this.respawnsCounter =          document.getElementById('respawns_counter');
+        this.respawnsCounter =          document.getElementById('respawns_counter_value');
         this.respawnsCounterTransition =document.getElementById('respawns_counter_transition');
         this.audioCounter =             document.getElementById('audio_counter');
         this.guiZoomCounter =           document.getElementById('gui_zoom_counter');
@@ -61,9 +59,8 @@ class GUI {
         this.virtualDPadDown =          document.getElementById('virtual_dpad_down');
         this.virtualDPadLeft =          document.getElementById('virtual_dpad_left');
         this.virtualDPadRight =         document.getElementById('virtual_dpad_right');
-        this.playAdButton =             document.getElementById('play_ad_button'); //TODO not needed any more
-        this.statsContainer =           document.getElementById('stats_container');
-        this.statTooltipContainer =     document.getElementById('stat_tooltip_container');
+        this.statsContainer =           document.getElementById('stats_cont');
+        this.statTooltipContainer =     document.getElementById('stat_tooltip_cont');
         this.statName =                 document.getElementById('stat_name');
         this.statDescription =          document.getElementById('stat_description');
         this.statCounters = {
@@ -83,8 +80,8 @@ class GUI {
         this.respawnButton =            document.getElementById('respawn_button');
         this.gameOverPrompt =           document.getElementById('game_over_prompt');
         this.playAgainButton =          document.getElementById('play_again_button');
-        this.inventorySlotContainer =   document.getElementById('inventory_slot_container');
-        this.itemTooltipContainer =     document.getElementById('item_tooltip_container');
+        this.inventorySlotContainer =   document.getElementById('inventory_slot_cont');
+        this.itemTooltipContainer =     document.getElementById('item_tooltip_cont');
         this.itemTooltipName =          document.getElementById('item_name');
         this.itemTooltipDescription =   document.getElementById('item_description');
         this.itemTooltipDurability =    document.getElementById('item_durability');
@@ -98,6 +95,20 @@ class GUI {
         // Hide the chat input at the start.
         this.chatInput.isActive = false;
         this.chatInput.style.visibility = "hidden";
+
+        // Make sure the collapsible settings are hidden.
+        this.settingsIcon.style.opacity = '1';
+        this.quickTurnIcon.style.visibility = "hidden";
+        this.audioIcon.style.visibility = "hidden";
+        this.audioMinusIcon.style.visibility = "hidden";
+        this.audioPlusIcon.style.visibility = "hidden";
+        this.audioCounter.style.visibility = "hidden";
+        this.guiZoomIcon.style.visibility = "hidden";
+        this.guiZoomMinusIcon.style.visibility = "hidden";
+        this.guiZoomPlusIcon.style.visibility = "hidden";
+        this.guiZoomCounter.style.visibility = "hidden";
+        this.virtualDPadIcon.style.visibility = "hidden";
+        this.fullscreenIcon.style.visibility = "hidden";
 
         // Check if the virtual D-pad should be shown at the start.
         if(dungeonz.virtualDPadEnabled === true) this.virtualDPad.style.visibility = "visible";
@@ -124,10 +135,6 @@ class GUI {
 
         this.bountyIcon.onmouseover =   function(){ game.GUI.bountyTooltip.style.visibility = "visible" };
         this.bountyIcon.onmouseout =    function(){ game.GUI.bountyTooltip.style.visibility = "hidden" };
-
-        this.watchAdIcon.onmouseover =  function(){ game.GUI.watchAdTooltip.style.visibility = "visible" };
-        this.watchAdIcon.onmouseout =   function(){ game.GUI.watchAdTooltip.style.visibility = "hidden" };
-        this.watchAdIcon.onclick =      function(){ document.getElementById('watch_ad_prompt').style.visibility = "visible"};
 
         this.avatarIcon.onmouseover =   function(){ game.GUI.avatarTooltip.style.visibility = "visible" };
         this.avatarIcon.onmouseout =    function(){ game.GUI.avatarTooltip.style.visibility = "hidden" };
@@ -279,14 +286,23 @@ class GUI {
         this.guiZoomIcon.onmouseover =  function(){ game.GUI.guiZoomTooltip.style.visibility = "visible" };
         this.guiZoomIcon.onmouseout =   function(){ game.GUI.guiZoomTooltip.style.visibility = "hidden" };
 
+        let getStyle = function(className){
+            let classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+            for (let x = 0; x < classes.length; x++) {
+                if (classes[x].selectorText === className) {
+                    return classes[x].style;
+                }
+            }
+        };
+
         this.guiZoomMinusIcon.onclick = function(){
             // Don't go below 10 zoom.
             if(dungeonz.GUIZoom <= 10) return;
 
             dungeonz.GUIZoom -= 10;
             game.GUI.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
-            //var zoomables = document.getElementsByClassName("zoom");
-            const style = document.styleSheets[0].rules[1].style;
+
+            const style = getStyle('.gui_zoomable');
             style.zoom = dungeonz.GUIZoom / 100;
             style['-moz-transform'] = 'scale(' + dungeonz.GUIZoom / 100 + ')';
         };
@@ -297,8 +313,8 @@ class GUI {
 
             dungeonz.GUIZoom += 10;
             game.GUI.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
-            //var zoomables = document.getElementsByClassName("zoom");
-            const style = document.styleSheets[0].rules[1].style;
+
+            const style = getStyle('.gui_zoomable');
             style.zoom = dungeonz.GUIZoom / 100;
             style['-moz-transform'] = 'scale(' + dungeonz.GUIZoom / 100 + ')';
         };
@@ -318,18 +334,21 @@ class GUI {
             }
         };
 
-        this.virtualDPadUp.onclick =        function(){
-            window.ws.sendEvent('move_up');
-        };
-        this.virtualDPadDown.onclick =      function(){
-            window.ws.sendEvent('move_down');
-        };
-        this.virtualDPadLeft.onclick =      function(){
-            window.ws.sendEvent('move_left');
-        };
-        this.virtualDPadRight.onclick =     function(){
-            window.ws.sendEvent('move_right');
-        };
+        this.virtualDPadUp.onmousedown =    game.moveUpPressed;
+        this.virtualDPadUp.onmouseup =      game.moveUpReleased;
+        this.virtualDPadUp.onmouseout =     game.moveUpReleased;
+
+        this.virtualDPadDown.onmousedown =  game.moveDownPressed;
+        this.virtualDPadDown.onmouseup =    game.moveDownReleased;
+        this.virtualDPadDown.onmouseout =   game.moveDownReleased;
+
+        this.virtualDPadLeft.onmousedown =  game.moveLeftPressed;
+        this.virtualDPadLeft.onmouseup =    game.moveLeftReleased;
+        this.virtualDPadLeft.onmouseout =   game.moveLeftReleased;
+
+        this.virtualDPadRight.onmousedown = game.moveRightPressed;
+        this.virtualDPadRight.onmouseup =   game.moveRightReleased;
+        this.virtualDPadRight.onmouseout =  game.moveRightReleased;
 
         this.fullscreenIcon.onmouseover =  function(){ game.GUI.fullscreenTooltip.style.visibility = "visible" };
         this.fullscreenIcon.onmouseout =   function(){ game.GUI.fullscreenTooltip.style.visibility = "hidden" };
@@ -397,50 +416,53 @@ class GUI {
         this.guiZoomCounter.innerText = dungeonz.GUIZoom + "%";
         this.respawnsRemainingValue.innerText = this.game.player.respawns;
 
+        this.dragData = null;
+
+        // Make the various panels draggable.
+        this.makeElementDraggable(document.getElementById('crafting_station_name'), this.craftingPanel);
+
+
     }
 
     addDefenceCounters (amount) {
-        this.addCounters(amount, this.defenceIcon, 'defence-counter', this.defenceCounters);
+        this.addCounters(amount, this.defenceIcon, 'defence', this.defenceCounters);
         this.updateDefenceCounters();
     }
 
     addHitPointCounters (amount) {
-        this.addCounters(amount, this.hitPointIcon, 'hitpoint-counter', this.hitPointCounters);
+        this.addCounters(amount, this.hitPointIcon, 'hitpoint', this.hitPointCounters);
     }
 
     addEnergyCounters (amount) {
-        this.addCounters(amount, this.energyIcon, 'energy-counter', this.energyCounters);
+        this.addCounters(amount, this.energyIcon, 'energy', this.energyCounters);
     }
 
     textCounterWebkitAnimationEnd () {
         this.style.webkitAnimationName = '';
     }
 
-    addCounters (amount, icon, imageName, groupArray) {
+    addCounters (amount, icon, type, groupArray) {
 
         this.removeExistingDOMElements(groupArray);
 
         const iconTop = icon.offsetTop;
         const halfIconHeight = icon.clientHeight / 2;
         const halfCounterHeight = 8;
+        const container = document.getElementById(type + "_counters");
 
         for(let i=0; i<amount; i+=1){
             const element = document.createElement('img');
 
-            element.src = 'assets/img/gui/' + imageName + '.png';
+            element.src = 'assets/img/gui/' + type + '-counter.png';
 
-            element.className = "icon_counter gui_zoom";
+            element.className = "gui_counter_icon";
 
-            //element.style.position = 'absolute';
             element.style.top = (halfIconHeight - halfCounterHeight) + iconTop + 'px';
             element.style.left = (46 + (18 * i)) + 'px';
-            //element.style.width = "16px";
-            //element.style.height = "16px";
-
 
             groupArray.push(element);
 
-            this.gui.appendChild(element);
+            container.appendChild(element);
         }
     }
 
@@ -571,26 +593,33 @@ class GUI {
             // Add the contents of the slot.
             const addComponent = document.createElement('img');
             addComponent.src = 'assets/img/gui/add-component-icon.png';
-            addComponent.className = 'component_slot_add zoom';
+            addComponent.className = 'component_slot_add';
 
             const icon = document.createElement('img');
             icon.src = 'assets/img/gui/items/icon-gold-ore.png';
-            icon.className = 'inventory_slot_icon zoom';
+            icon.className = 'inventory_slot_icon';
+            icon.draggable = false;
+
+            const iconGhost = document.createElement('div');
+            iconGhost.appendChild(icon);
 
             const durability = document.createElement('img');
             durability.src = 'assets/img/gui/durability-meter-10.png';
-            durability.className = 'inventory_slot_durability zoom';
+            durability.className = 'inventory_slot_durability';
+            durability.draggable = false;
 
             const equipped = document.createElement('img');
             equipped.src = 'assets/img/gui/clothing-icon.png';
-            equipped.className = 'inventory_slot_equipped zoom';
+            equipped.className = 'inventory_slot_equipped';
+            equipped.draggable = false;
 
             const border = document.createElement('img');
             border.src = 'assets/img/gui/inventory-slot-border.png';
-            border.className = 'inventory_slot_border zoom';
+            border.className = 'inventory_slot_border';
+            border.draggable = false;
 
             const div = document.createElement('div');
-            div.className = 'inventory_slot zoom';
+            div.className = 'inventory_slot';
             div.draggable = true;
 
             // Use the item in this slot when pressed.
@@ -635,35 +664,22 @@ class GUI {
                 guiSlot.equipped.style["-webkit-filter"] = null;
                 guiSlot.border.style["-webkit-filter"] = null;
             };
-            div.ondragenter = function () {
-                console.log("drag enter");
-                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
-                guiSlot.icon.style["-webkit-filter"] = "brightness(150%)";
-                guiSlot.durability.style["-webkit-filter"] = "brightness(150%)";
-                guiSlot.equipped.style["-webkit-filter"] = "brightness(150%)";
-                guiSlot.border.style["-webkit-filter"] = "brightness(150%)";
-            };
-            div.ondragleave = function () {
-                console.log("drag leave");
-                const guiSlot = _this.GUI.inventorySlots[slotKeysByIndex[i]];
-                guiSlot.icon.style["-webkit-filter"] = null;
-                guiSlot.durability.style["-webkit-filter"] = null;
-                guiSlot.equipped.style["-webkit-filter"] = null;
-                guiSlot.border.style["-webkit-filter"] = null;
-            };
-            div.ondragstart = function () {
-                console.log("drag started");
-            };
-            div.ondragend = function () {
-                console.log("drag ended");
-            };
+            // Drag and drop.
+            div.ondragstart = this.inventorySlotDragStart;
+            div.ondragend = this.inventorySlotDragEnd;
+            div.ondragenter = this.inventorySlotDragEnter;
+            div.ondragleave = this.inventorySlotDragLeave;
+            div.ondragover = this.inventorySlotDragOver;
+            div.ondrop = this.inventorySlotDrop;
+
+            div.setAttribute('slotKey', slotKeysByIndex[i]);
 
             addComponent.onclick = function () {
                 _this.craftingManager.addComponent(slotKeysByIndex[i]);
             };
 
-            div.appendChild(addComponent);
-            div.appendChild(icon);
+            div.appendChild(addComponent); GET RID OF THE ADDCOMPONENT ICON SHIT AND PLAN THE OTHER PANELS FOR DRAG DROP
+            div.appendChild(iconGhost);
             div.appendChild(durability);
             div.appendChild(equipped);
             div.appendChild(border);
@@ -678,6 +694,63 @@ class GUI {
             };
             this.inventorySlotContainer.appendChild(div);
         }
+    }
+
+    inventorySlotDragStart (event) {
+        console.log("drag started, this:", this);
+        const slotKey = this.getAttribute('slotKey');
+        const icon = _this.GUI.inventorySlots[slotKey].icon;
+        event.dataTransfer.setData('text', 'anything');
+        _this.dragData = {
+            dragOrigin: _this.GUI.inventorySlotContainer,
+            inventorySlot: _this.player.inventory[slotKey]
+        };
+        event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
+        this.style.backgroundColor = "rgba(255, 171, 0, 0.5)";
+    }
+    inventorySlotDragEnter () {
+        console.log("drag enter");
+        event.preventDefault();
+        const slotKey = this.getAttribute('slotKey');
+        const guiSlot = _this.GUI.inventorySlots[slotKey];
+        guiSlot.icon.style["-webkit-filter"] = "brightness(150%)";
+        guiSlot.durability.style["-webkit-filter"] = "brightness(150%)";
+        guiSlot.equipped.style["-webkit-filter"] = "brightness(150%)";
+        guiSlot.border.style["-webkit-filter"] = "brightness(150%)";
+        if(_this.dragData.inventorySlot.slotKey !== slotKey){
+            guiSlot.slot.style.backgroundColor = "rgba(146, 255, 236, 0.25)";
+        }
+    }
+    inventorySlotDragLeave () {
+        console.log("drag leave");
+        const slotKey = this.getAttribute('slotKey');
+        const guiSlot = _this.GUI.inventorySlots[slotKey];
+        guiSlot.icon.style["-webkit-filter"] = null;
+        guiSlot.durability.style["-webkit-filter"] = null;
+        guiSlot.equipped.style["-webkit-filter"] = null;
+        guiSlot.border.style["-webkit-filter"] = null;
+        // Don't change the colour if the element being left is the start element.
+        // Want to keep the orange background for the start.
+        if(_this.dragData.inventorySlot.slotKey !== slotKey){
+            guiSlot.slot.style.backgroundColor = "transparent";
+        }
+    }
+    inventorySlotDragOver (event) {
+        event.preventDefault();
+    }
+    inventorySlotDrop () {
+        console.log("drag drop, drag data:", _this.dragData);
+        const slotKey = this.getAttribute('slotKey');
+        console.log("drag drop, slot keyyy:", slotKey);
+        // If it was from the inventory bar, swap the slots.
+        if(_this.dragData.dragOrigin === _this.GUI.inventorySlotContainer){
+            console.log("invent slot dropped over another inventory slot");
+            _this.player.inventory.swapInventorySlots(_this.dragData.inventorySlot.slotKey, slotKey);
+        }
+        this.style.backgroundColor = "transparent";
+    }
+    inventorySlotDragEnd () {
+        this.style.backgroundColor = "transparent";
     }
 
     updateDungeonPrompt () {
@@ -728,6 +801,42 @@ class GUI {
         const craftingManager = this.game.craftingManager;
         craftingManager.resultDOMIcon.style.visibility = "hidden";
         craftingManager.resultDOMAccept.style.visibility = "hidden";
+    }
+
+    makeElementDraggable(handle, container){
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        handle.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            container.style.top = (container.offsetTop - pos2) + "px";
+            container.style.left = (container.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
     }
 
 }

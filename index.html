@@ -50,101 +50,134 @@
     <div id="game_cont">
         <div id="game_canvas"></div>
         <div id="gui_cont">
-            <img id="defence_icon" class="icon gui_zoomable" src="assets/img/gui/defence-icon.png">
-            <img id="hitpoint_icon" class="icon gui_zoomable" src="assets/img/gui/hitpoint-icon.png">
-            <img id="energy_icon" class="icon gui_zoomable" src="assets/img/gui/energy-icon.png">
-            <img id="glory_icon" class="icon gui_zoomable" src="assets/img/gui/glory-icon.png">
-            <img id="coins_icon" class="icon gui_zoomable" src="assets/img/gui/coins-icon.png">
-            <img id="bounty_icon" class="icon gui_zoomable" src="assets/img/gui/bounty-icon.png">
-            <img id="watch_ad_icon" class="icon gui_zoomable" src="assets/img/gui/watch-ad-icon.png">
-            <img id="avatar_icon" class="icon gui_zoomable" src="assets/img/gui/avatar-icon.png">
-            <img id="inventory_icon" class="icon gui_zoomable" src="assets/img/gui/inventory-icon.png">
-            <img id="exit_icon" class="icon gui_zoomable" src="assets/img/gui/exit-icon.png">
-            <img id="respawns_icon" class="icon gui_zoomable" src="assets/img/gui/respawns-icon.png">
-            <img id="settings_icon" class="icon gui_zoomable" src="assets/img/gui/settings-icon.png">
-            <img id="quick_turn_icon" class="icon gui_zoomable" src="assets/img/gui/turn-icon.png">
-            <div id="audio_counter"     class="text_counter gui_zoomable"><p></p></div>
-            <img id="audio_icon" class="icon gui_zoomable" src="assets/img/gui/audio-icon.png">
-            <img id="audio_minus_icon" class="icon gui_zoomable" src="assets/img/gui/minus-icon.png">
-            <img id="audio_plus_icon" class="icon gui_zoomable" src="assets/img/gui/plus-icon.png">
-            <div id="gui_zoom_counter"  class="text_counter gui_zoomable"><p></p></div>
-            <img id="gui_zoom_icon" class="icon gui_zoomable" src="assets/img/gui/zoom-icon.png">
-            <img id="gui_zoom_minus_icon" class="icon gui_zoomable" src="assets/img/gui/minus-icon.png">
-            <img id="gui_zoom_plus_icon" class="icon gui_zoomable" src="assets/img/gui/plus-icon.png">
-            <img id="virtual_dpad_icon" class="icon gui_zoomable" src="assets/img/gui/virtual-dpad-icon.png">
-            <img id="fullscreen_icon" class="icon gui_zoomable" src="assets/img/gui/fullscreen-icon.png">
-            <div id="defence_tooltip"   class="counter_tooltip  gui_zoomable"></div>
-            <div id="hitpoint_tooltip"  class="counter_tooltip  gui_zoomable"></div>
-            <div id="energy_tooltip"    class="counter_tooltip  gui_zoomable"></div>
-            <div id="glory_tooltip"     class="counter_tooltip  gui_zoomable"></div>
-            <div id="coins_tooltip"     class="counter_tooltip  gui_zoomable"></div>
-            <div id="bounty_tooltip"    class="counter_tooltip  gui_zoomable"></div>
-            <div id="watch_ad_tooltip"  class="counter_tooltip  gui_zoomable"></div>
-            <div id="avatar_tooltip"    class="counter_tooltip  gui_zoomable"></div>
-            <div id="inventory_tooltip" class="counter_tooltip  gui_zoomable"></div>
-            <div id="exit_tooltip"      class="counter_tooltip  gui_zoomable"></div>
-            <div id="respawns_tooltip"  class="counter_tooltip  gui_zoomable"></div>
-            <div id="settings_tooltip"  class="counter_tooltip  gui_zoomable"></div>
-            <div id="quick_turn_tooltip"    class="counter_tooltip gui_zoomable"></div>
-            <div id="audio_tooltip"         class="counter_tooltip gui_zoomable"></div>
-            <div id="gui_zoom_tooltip"      class="counter_tooltip gui_zoomable"></div>
-            <div id="virtual_dpad_tooltip"  class="counter_tooltip gui_zoomable"></div>
-            <div id="fullscreen_tooltip"    class="counter_tooltip gui_zoomable"></div>
-            <div id="glory_counter"     class="text_counter gui_zoomable"><p><p/></div>
-            <div id="glory_counter_transition"  class="text_counter gui_zoomable"><p><p/></div>
-            <div id="coin_counter"      class="text_counter gui_zoomable"><p><p/></div>
-            <div id="coin_counter_transition"   class="text_counter gui_zoomable"><p><p/></div>
-            <div id="respawns_counter"  class="text_counter gui_zoomable"><p><p/></div>
-            <div id="respawns_counter_transition"   class="text_counter gui_zoomable"><p><p/></div>
-
-            <div id="stats_container" class="gui_zoomable">
-                <div id="stat_melee">
-                    <img id="stat_melee_icon" src="assets/img/gui/melee-icon.png" class="stat_icon">
-                    <p id="stat_melee_counter" class="stat_counter">1</p>
+            <div id="top_left_corner_cont" class="gui_zoomable">
+                <div id="defence_cont" class="inline_cont">
+                    <img id="defence_icon" class="gui_icon" src="assets/img/gui/defence-icon.png">
+                    <div id="defence_counters"></div>
+                    <div id="defence_tooltip"   class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_ranged">
-                    <img id="stat_ranged_icon" src="assets/img/gui/ranged-icon.png" class="stat_icon">
-                    <p id="stat_ranged_counter" class="stat_counter">1</p>
+                <div id="hitpoint_cont" class="inline_cont">
+                    <img id="hitpoint_icon" class="gui_icon" src="assets/img/gui/hitpoint-icon.png">
+                    <div id="hitpoint_counters"></div>
+                    <div id="hitpoint_tooltip"  class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_magic">
-                    <img id="stat_magic_icon" src="assets/img/gui/magic-icon.png" class="stat_icon">
-                    <p id="stat_magic_counter" class="stat_counter">1</p>
+                <div id="energy_cont" class="inline_cont">
+                    <img id="energy_icon" class="gui_icon" src="assets/img/gui/energy-icon.png">
+                    <div id="energy_counters"></div>
+                    <div id="energy_tooltip"    class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_gathering">
-                    <img id="stat_gathering_icon" src="assets/img/gui/gathering-icon.png" class="stat_icon">
-                    <p id="stat_gathering_counter" class="stat_counter">1</p>
+                <div id="glory_cont" class="inline_cont">
+                    <img id="glory_icon"                class="gui_icon" src="assets/img/gui/glory-icon.png">
+                    <div id="glory_counter"             class="text_counter"></div>
+                    <div id="glory_counter_transition"  class="text_counter text_counter_transition"><p><p/></div>
+                    <div id="glory_tooltip"     class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_weaponry">
-                    <img id="stat_weaponry_icon" src="assets/img/gui/weaponry-icon.png" class="stat_icon">
-                    <p id="stat_weaponry_counter" class="stat_counter">1</p>
+                <div id="coins_cont" class="inline_cont">
+                    <img id="coins_icon"                class="gui_icon" src="assets/img/gui/coins-icon.png">
+                    <div id="coin_counter"              class="text_counter"></div>
+                    <div id="coin_counter_transition"   class="text_counter text_counter_transition"><p><p/></div>
+                    <div id="coins_tooltip"     class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_armoury">
-                    <img id="stat_armoury_icon" src="assets/img/gui/armoury-icon.png" class="stat_icon">
-                    <p id="stat_armoury_counter" class="stat_counter">1</p>
+                <div id="bounty_cont" class="inline_cont">
+                    <img id="bounty_icon" class="gui_icon" src="assets/img/gui/bounty-icon.png">
+                    <div id="bounty_tooltip"    class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_toolery">
-                    <img id="stat_toolery_icon" src="assets/img/gui/toolery-icon.png" class="stat_icon">
-                    <p id="stat_toolery_counter" class="stat_counter">1</p>
+                <div id="avatar_cont" class="inline_cont">
+                    <img id="avatar_icon" class="gui_icon" src="assets/img/gui/avatar-icon.png">
+                    <div id="stats_cont">
+                        <div id="stat_melee">
+                            <img id="stat_melee_icon" src="assets/img/gui/melee-icon.png" class="stat_icon">
+                            <p id="stat_melee_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_ranged">
+                            <img id="stat_ranged_icon" src="assets/img/gui/ranged-icon.png" class="stat_icon">
+                            <p id="stat_ranged_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_magic">
+                            <img id="stat_magic_icon" src="assets/img/gui/magic-icon.png" class="stat_icon">
+                            <p id="stat_magic_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_gathering">
+                            <img id="stat_gathering_icon" src="assets/img/gui/gathering-icon.png" class="stat_icon">
+                            <p id="stat_gathering_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_weaponry">
+                            <img id="stat_weaponry_icon" src="assets/img/gui/weaponry-icon.png" class="stat_icon">
+                            <p id="stat_weaponry_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_armoury">
+                            <img id="stat_armoury_icon" src="assets/img/gui/armoury-icon.png" class="stat_icon">
+                            <p id="stat_armoury_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_toolery">
+                            <img id="stat_toolery_icon" src="assets/img/gui/toolery-icon.png" class="stat_icon">
+                            <p id="stat_toolery_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_cookery">
+                            <img id="stat_cookery_icon" src="assets/img/gui/cookery-icon.png" class="stat_icon">
+                            <p id="stat_cookery_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_potionry">
+                            <img id="stat_potionry_icon" src="assets/img/gui/potionry-icon.png" class="stat_icon">
+                            <p id="stat_potionry_counter" class="stat_counter">1</p>
+                        </div>
+                        <div id="stat_tooltip_cont">
+                            <div id="stat_name"></div>
+                            <div id="stat_description"></div>
+                        </div>
+                    </div>
+                    <div id="avatar_tooltip"    class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="stat_cookery">
-                    <img id="stat_cookery_icon" src="assets/img/gui/cookery-icon.png" class="stat_icon">
-                    <p id="stat_cookery_counter" class="stat_counter">1</p>
+            </div>
+            <div id="top_right_corner_cont" class="gui_zoomable">
+                <div id="exit_cont" class="inline_cont">
+                    <div id="exit_tooltip"      class="top_right_tooltip generic_tooltip"></div>
+                    <img id="exit_icon" class="gui_icon" src="assets/img/gui/exit-icon.png">
                 </div>
-                <div id="stat_potionry">
-                    <img id="stat_potionry_icon" src="assets/img/gui/potionry-icon.png" class="stat_icon">
-                    <p id="stat_potionry_counter" class="stat_counter">1</p>
+                <div id="respawns_cont" class="inline_cont">
+                    <div id="respawns_counter_transition"   class="text_counter text_counter_transition"><p>100<p/></div>
+                    <div id="respawns_counter_value"  class="text_counter"><p>100<p/></div>
+                    <div id="respawns_tooltip"  class="top_right_tooltip generic_tooltip"></div>
+                    <img id="respawns_icon" class="gui_icon" src="assets/img/gui/respawns-icon.png">
                 </div>
-                <div id="stat_tooltip_container">
-                    <div id="stat_name"></div>
-                    <div id="stat_description"></div>
+            </div>
+            <div id="bottom_left_corner_cont" class="gui_zoomable">
+                <div id="inventory_tooltip" class="counter_tooltip generic_tooltip"></div>
+                <img id="inventory_icon" class="gui_icon" src="assets/img/gui/inventory-icon.png">
+            </div>
+            <div id="bottom_right_corner_cont" class="gui_zoomable">
+                <div class="inline_cont">
+                    <div id="audio_tooltip"         class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="audio_minus_icon"      class="gui_icon" src="assets/img/gui/minus-icon.png">
+                    <div id="audio_counter"         class="text_counter"></div>
+                    <img id="audio_plus_icon"       class="gui_icon" src="assets/img/gui/plus-icon.png">
+                    <img id="audio_icon"            class="gui_icon" src="assets/img/gui/audio-icon.png">
+                </div>
+                <div class="inline_cont">
+                    <div id="gui_zoom_tooltip"      class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="gui_zoom_minus_icon"   class="gui_icon" src="assets/img/gui/minus-icon.png">
+                    <div id="gui_zoom_counter"      class="text_counter"></div>
+                    <img id="gui_zoom_plus_icon"    class="gui_icon" src="assets/img/gui/plus-icon.png">
+                    <img id="gui_zoom_icon"         class="gui_icon" src="assets/img/gui/zoom-icon.png">
+                </div>
+                <div class="inline_cont">
+                    <div id="virtual_dpad_tooltip"  class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="virtual_dpad_icon"     class="gui_icon" src="assets/img/gui/virtual-dpad-icon.png">
+                </div>
+                <div class="inline_cont">
+                    <div id="fullscreen_tooltip"    class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="fullscreen_icon"       class="gui_icon" src="assets/img/gui/fullscreen-icon.png">
+                </div>
+                <div class="inline_cont">
+                    <div id="quick_turn_tooltip"    class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="quick_turn_icon"       class="gui_icon" src="assets/img/gui/turn-icon.png">
+                </div>
+                <div class="inline_cont">
+                    <div id="settings_tooltip"      class="generic_tooltip bottom_right_tooltip"></div>
+                    <img id="settings_icon"         class="gui_icon" src="assets/img/gui/settings-icon.png">
                 </div>
             </div>
 
-            <div id="watch_ad_prompt">
-                <div id="watch_ad_message"></div>
-                <span id="watch_ad_accept"></span>
-                <span id="watch_ad_decline"></span>
-            </div>
 
             <div id="dungeon_prompt">
                 <div id="dungeon_prompt_top">
@@ -168,10 +201,10 @@
             </div>
             
             <div id="virtual_dpad">
-                <img id="virtual_dpad_up"       src="assets/img/gui/virtual-dpad-up-icon.png">
-                <img id="virtual_dpad_down"     src="assets/img/gui/virtual-dpad-down-icon.png">
-                <img id="virtual_dpad_left"     src="assets/img/gui/virtual-dpad-left-icon.png">
-                <img id="virtual_dpad_right"    src="assets/img/gui/virtual-dpad-right-icon.png">
+                <img id="virtual_dpad_up"    draggable="false" class="virtual_dpad_hover" src="assets/img/gui/virtual-dpad-up-icon.png">
+                <img id="virtual_dpad_down"  draggable="false" class="virtual_dpad_hover" src="assets/img/gui/virtual-dpad-down-icon.png">
+                <img id="virtual_dpad_left"  draggable="false" class="virtual_dpad_hover" src="assets/img/gui/virtual-dpad-left-icon.png">
+                <img id="virtual_dpad_right" draggable="false" class="virtual_dpad_hover" src="assets/img/gui/virtual-dpad-right-icon.png">
             </div>
 
             <div id="respawn_prompt">
@@ -187,11 +220,11 @@
                 <div id="play_again_button"></div>
             </div>
 
-            <div id="shop_panel_container">
+            <div id="shop_panel_cont">
                 <div id="shop_panel_name">
                     Timo's tool shop
                 </div>
-                <div id="shop_contents_container">
+                <div id="shop_contents_cont">
                     <div id="shop_item_1">
                         <img id="shop_item_1_icon" src="assets/img/gui/items/icon-mage-robe.png">
                         <p id="shop_item_1_price">123</p>
@@ -203,10 +236,10 @@
                 </div>
             </div>
 
-            <div id="gold_ex_container">
+            <div id="gold_ex_cont">
                 <div id="gold_ex_name">Gold exchange</div>
                 <div id="gold_ex_rate_text">Exchange rate:</div>
-                <div id="gold_ex_rate_container">
+                <div id="gold_ex_rate_cont">
                     <img src="assets/img/gui/items/icon-gold-bar.png">
                     <p>=</p>
                     <img src="assets/img/gui/coins-icon.png">
@@ -215,13 +248,15 @@
                 <div id="gold_ex_accept">Exchange</div>
             </div>
 
-            <div id="bank_container">
+            <div id="bank_cont">
                 
             </div>
 
             <div id="crafting_panel">
+
+                <div id="crafting_tooltip">Tooltip</div>
                 <div id="crafting_station_name">Workbench</div>
-                <div id="crafting_panel_container">
+                <div id="crafting_panel_main">
                     <div id="crafting_components_bar">
                         <div id="component_slot_1" class="inventory_slot">
                             <img id="component_slot_1_remove"   class="component_slot_remove"   src="assets/img/gui/remove-component-icon.png">
@@ -250,18 +285,18 @@
                         </div>
                     </div>
                     <div id="crafting_spacer"></div>
-                    <div id="craft_result_container">
-                    <div id="craft_result" class="inventory_slot">
-                        <img id="craft_result_accept"   class="component_slot_remove"   src="assets/img/gui/accept-craft-icon.png">
-                        <img id="craft_result_icon"     class="inventory_slot_icon"   src="assets/img/gui/items/icon-gold-ore.png">
-                        <img id="craft_result_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
-                    </div>
+                    <div id="craft_result_cont">
+                        <div id="craft_result" class="inventory_slot">
+                            <img id="craft_result_accept"   class="component_slot_remove"   src="assets/img/gui/accept-craft-icon.png">
+                            <img id="craft_result_icon"     class="inventory_slot_icon"   src="assets/img/gui/items/icon-gold-ore.png">
+                            <img id="craft_result_border"   class="inventory_slot_border"   src="assets/img/gui/inventory-slot-border.png">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <span id="inventory_slot_container" class="gui_zoomable">
-            <div id="item_tooltip_container">
+            <span id="inventory_slot_cont" class="gui_zoomable">
+            <div id="item_tooltip_cont">
                 <div id="item_name"></div>
                 <div id="item_description"></div>
                 <div id="item_durability"></div>
@@ -271,7 +306,7 @@
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
     </div>
 
-    <div id="home_container">
+    <div id="home_cont">
         <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
         <p id="warning_message">Could not connect to game server. Probably updating...</p>
         <input id="name_input" type="text" maxlength="20" autofocus>
@@ -377,7 +412,6 @@
             document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
             document.getElementById('coins_tooltip').innerText =        dungeonz.getTextDef('Coins tooltip');
             document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
-            document.getElementById('watch_ad_tooltip').innerText =     dungeonz.getTextDef('Watch ad tooltip');
             document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
             document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
             document.getElementById('exit_tooltip').innerHTML =         dungeonz.getTextDef('Exit tooltip');
@@ -388,9 +422,6 @@
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
             document.getElementById('fullscreen_tooltip').innerHTML =   dungeonz.getTextDef('Fullscreen tooltip');
-            document.getElementById('watch_ad_message').innerHTML =     dungeonz.getTextDef('Watch ad message');
-            document.getElementById('watch_ad_accept').innerText =      dungeonz.getTextDef('Watch ad accept');
-            document.getElementById('watch_ad_decline').innerText =     dungeonz.getTextDef('Watch ad decline');
             document.getElementById('dungeon_prompt_name_header').innerText =       dungeonz.getTextDef('Dungeon') + ":";
             document.getElementById('dungeon_prompt_difficulty_header').innerText = dungeonz.getTextDef('Difficulty') + ":";
             document.getElementById('dungeon_prompt_glory_cost_header').innerText = dungeonz.getTextDef('Glory cost') + ":";
@@ -418,18 +449,6 @@
         document.getElementById('language_turkish').onclick =       function () { changeLanguage('Turkish');                hideLanguageList(); };
         document.getElementById('language_german').onclick =        function () { changeLanguage('German');                 hideLanguageList(); };
         document.getElementById('language_russian').onclick =       function () { changeLanguage('Russian');                hideLanguageList(); };
-
-        document.getElementById('watch_ad_accept').onclick = function (event) {
-            // Play an ad.
-            console.log("play ad pressed");
-
-            // Hide the prompt.
-            document.getElementById('watch_ad_prompt').style.visibility = "hidden";
-        };
-        document.getElementById('watch_ad_decline').onclick = function (event) {
-            // Hide the prompt.
-            document.getElementById('watch_ad_prompt').style.visibility = "hidden";
-        };
 
     </script>
 

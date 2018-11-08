@@ -29,6 +29,41 @@ class InventorySlot {
         this.slotKey = slotKey;
     }
 
+    /**
+     * Puts an item in this inventory slot.
+     * @param {Object} catalogueEntry
+     * @param {Number} durability
+     * @param {Number} maxDurability
+     */
+    fill (catalogueEntry, durability, maxDurability) {
+        if(catalogueEntry === null){
+            this.empty();
+            return;
+        }
+        // Add it to the client's inventory.
+        this.catalogueEntry = catalogueEntry;
+        this.durability = durability || null;
+        this.maxDurability = maxDurability || null;
+
+        const guiSlot = _this.GUI.inventorySlots[this.slotKey];
+        // Change the source image for the icon.
+        guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
+
+        // Show the icon.
+        guiSlot.icon.style.visibility = "visible";
+
+        // If there is a durability, show and fill the durability meter for this item.
+        if(durability){
+            guiSlot.durability.style.visibility = "visible";
+            // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
+            const meterNumber = Math.floor((durability / maxDurability) * 10);
+            guiSlot.durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+        }
+        else {
+            guiSlot.durability.style.visibility = "hidden";
+        }
+    }
+
     empty () {
         // Hide the item icon and durability meter.
         _this.GUI.inventorySlots[this.slotKey].icon.style.visibility = "hidden";

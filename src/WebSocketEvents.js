@@ -90,7 +90,7 @@ eventResponses.join_world_success = function (data) {
     console.log("join world success, data:");
     console.log(data);
 
-    document.getElementById("home_container").style.display = "none";
+    document.getElementById("home_cont").style.display = "none";
 
     _this.state.start('Game', true, false, data);
 
@@ -320,32 +320,8 @@ eventResponses.add_entities = function (data) {
 
 eventResponses.add_item = function (data) {
     //console.log("add item event:", data);
-    const catalogueEntry = ItemTypes[data.typeNumber];
-    const slotKey = data.slotKey;
 
-    // Add it to the client's inventory.
-    _this.player.inventory[slotKey].catalogueEntry = catalogueEntry;
-    _this.player.inventory[slotKey].durability = data.durability;
-    _this.player.inventory[slotKey].maxDurability = data.maxDurability;
-
-    const guiSlot = _this.GUI.inventorySlots[slotKey];
-    // Change the source image for the icon.
-    guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
-
-    // Show the icon.
-    guiSlot.icon.style.visibility = "visible";
-
-    // If there is a durability, show and fill the durability meter for this item.
-    if(data.durability){
-        guiSlot.durability.style.visibility = "visible";
-        // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
-        const meterNumber = Math.floor((data.durability / data.maxDurability) * 10);
-        guiSlot.durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
-    }
-    else {
-        guiSlot.durability.style.visibility = "hidden";
-    }
-
+    _this.player.inventory[data.slotKey].fill(ItemTypes[data.typeNumber], data.durability, data.maxDurability);
 };
 
 eventResponses.remove_item = function (data) {

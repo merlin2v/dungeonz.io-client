@@ -1,0 +1,41 @@
+
+.generic_tooltip {
+    color: $colourDB32DarkBlurple;
+    text-align: center;
+    background-color: $colourDB32WhiteOpacity80;
+    font-family: Consolas;
+    font-weight: bold;
+    padding: 8px;
+    z-index: 1000;
+    visibility: hidden;
+}
+
+.top_left_tooltip {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 400px;
+}
+
+.top_right_tooltip {
+    position: absolute;
+    margin-top: 20px;
+    margin-right: 40px;
+    width: 400px;
+    right: 0px;
+}
+
+.bottom_right_tooltip {
+    position: absolute;
+    margin-top: 20px;
+    margin-right: 40px;
+    width: 400px;
+    right: 0px;
+    transform: translateY(-100%);
+}
+
+#inventory_tooltip {
+    width: 100%;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}

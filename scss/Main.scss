@@ -1,0 +1,29 @@
+// sass --watch scss/Main.scss:main.css
+
+@import "Variables";
+@import "Home";
+@import "GeneralGUI";
+@import "StatBar";
+@import "Tooltips";
+@import "Panels";
+@import "Inventory";
+@import "VirtualDPad";
+@import "CraftingPanel";
+
+
+#game_canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate(-50%, -50%);
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+::placeholder {
+  color: $colourDB32IronGrey;
+}

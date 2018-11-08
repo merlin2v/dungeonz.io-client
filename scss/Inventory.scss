@@ -1,0 +1,66 @@
+// Inventory bar.
+#inventory_slot_cont {
+  position: absolute;
+  display: inline-flex;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.inventory_slot {
+  margin: 4px;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+}
+
+.inventory_slot_border {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+}
+
+.inventory_slot_equipped {
+  position: absolute;
+  bottom: 47px;
+  width: 48px;
+  object-fit: contain;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inventory_slot_durability {
+  position: absolute;
+  bottom: 10px;
+  width: 48px;
+  object-fit: contain;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inventory_slot_icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#item_tooltip_cont {
+  position: absolute;
+  visibility: hidden;
+  bottom: 100px;
+  left: 50%;
+  width: 75%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: $colourDB32DarkBlurple;
+  background-color: $colourDB32WhiteOpacity80;
+  font-family: Consolas;
+  padding: 8px;
+}
+
+#item_name {
+  font-weight: bold;
+}

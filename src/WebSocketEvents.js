@@ -320,7 +320,6 @@ eventResponses.add_entities = function (data) {
 
 eventResponses.add_item = function (data) {
     //console.log("add item event:", data);
-
     _this.player.inventory[data.slotKey].fill(ItemTypes[data.typeNumber], data.durability, data.maxDurability);
 };
 
@@ -343,26 +342,26 @@ eventResponses.unequip_clothes = function (data) {
 
 eventResponses.activate_clothing = function (data) {
     // Show the clothing icon on the inventory slot.
-    _this.GUI.inventorySlots[data].equipped.src = 'assets/img/gui/clothing-icon.png';
-    _this.GUI.inventorySlots[data].equipped.style.visibility = "visible";
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/clothing-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
 
 eventResponses.deactivate_clothing = function (data) {
     // Hide the equipped icon on the inventory slot.
-    _this.GUI.inventorySlots[data].equipped.style.visibility = "hidden";
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
 };
 
 eventResponses.activate_holding = function (data) {
     _this.player.holdingItem = true;
     // Show the holding icon on the inventory slot.
-    _this.GUI.inventorySlots[data].equipped.src = 'assets/img/gui/holding-icon.png';
-    _this.GUI.inventorySlots[data].equipped.style.visibility = "visible";
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/holding-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
 
 eventResponses.deactivate_holding = function (data) {
     _this.player.holdingItem = false;
     // Hide the equipped icon on the inventory slot.
-    _this.GUI.inventorySlots[data].equipped.style.visibility = "hidden";
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
 };
 
 eventResponses.active_state = function (data) {

@@ -1,7 +1,7 @@
 import EntityTypes from '../src/catalogues/EntityTypes'
 import EntityList from '../src/EntitiesList';
 import Tilemap from './Tilemap'
-import GUI from './GUI'
+import GUI from './gui/GUI'
 import Inventory from './Inventory'
 import CraftingManager from "./CraftingManager";
 
@@ -70,7 +70,8 @@ dungeonz.Game.prototype = {
 
         window._this = this;
 
-        document.getElementById("game_canvas").appendChild(this.game.canvas);
+        this.canvasContainer = document.getElementById("game_canvas");
+        this.canvasContainer.appendChild(this.game.canvas);
 
         this.scale.fullScreenTarget = document.getElementById("game_cont");
 
@@ -155,8 +156,8 @@ dungeonz.Game.prototype = {
         this.GUI.removeExistingDOMElements(this.GUI.hitPointCounters);
         this.GUI.removeExistingDOMElements(this.GUI.energyCounters);
 
-        for(let elemKey in this.GUI.inventorySlots){
-            this.GUI.inventorySlots[elemKey].slot.remove();
+        for(let elemKey in this.GUI.inventoryBar.slots){
+            this.GUI.inventoryBar.slots[elemKey].slot.remove();
         }
 
         this.GUI.hideCraftingPanel();
@@ -184,7 +185,7 @@ dungeonz.Game.prototype = {
         //console.log("move dir:", direction);
 
         // Hide the crafting panel, in case they are just moving away from a station.
-        this.GUI.hideCraftingPanel();
+        this.GUI.craftingPanel.hide();
 
         this.checkPseudoInteractables(direction);
 
@@ -264,40 +265,9 @@ dungeonz.Game.prototype = {
 
     },
 
-    useHeldItem (direction) {
-        if(direction === undefined){
-            // Tell the game server this player wants to use this item.
-            ws.sendEvent('use_item');
-        }
-        else {
-            // Tell the game server this player wants to use this item in a direction.
-            ws.sendEvent('use_item', direction);
-        }
-    },
-
-    equipItem (slotNumber) {
-        // Check there is an item in that inventory slot.
-        if(this.player.inventory[slotNumber].catalogueEntry === null){
-            //console.log("no invent item at that slot");
-            return;
-        }
-
-        // Check if they want to drop the item.
-        if(this.keyboardKeys.shift.isDown === true){
-            // Tell the game server this player wants to drop this item.
-            ws.sendEvent('drop_item', slotNumber);
-            return;
-        }
-
-        // Check if they want to move this item to another slot.
-
-        // Tell the game server this player wants to equip this item.
-        ws.sendEvent('equip_item', slotNumber);
-    },
-
     pointerDownHandler (event) {
         // Stop double clicking from highlighting text elements.
-        //event.preventDefault();
+        //event.preventDefault(); TODO hummm.... :S
         // Only use the selected item if the input wasn't over any other GUI element.
         if(event.target === _this.GUI.gui){
             // Don't try to use the held item if one isn't selected.
@@ -309,12 +279,12 @@ dungeonz.Game.prototype = {
             const targetY = event.clientY - midY;
 
             if(Math.abs(targetX) > Math.abs(targetY)){
-                if(targetX > 0) _this.useHeldItem('r');
-                else            _this.useHeldItem('l');
+                if(targetX > 0) _this.player.inventory.useHeldItem('r');
+                else            _this.player.inventory.useHeldItem('l');
             }
             else {
-                if(targetY > 0) _this.useHeldItem('d');
-                else            _this.useHeldItem('u');
+                if(targetY > 0) _this.player.inventory.useHeldItem('d');
+                else            _this.player.inventory.useHeldItem('u');
             }
         }
 
@@ -368,7 +338,7 @@ dungeonz.Game.prototype = {
             && codeNumber < 10){
                 //console.log("num key pressed:", codeNumber);
                 // Add the "slot" part of the key to the inventory slot number.
-                _this.equipItem("slot" + codeNumber);
+                _this.player.inventory.equipItem("slot" + codeNumber);
             }
 
             if(event.code === 'KeyE'){

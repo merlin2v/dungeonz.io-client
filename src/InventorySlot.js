@@ -45,7 +45,7 @@ class InventorySlot {
         this.durability = durability || null;
         this.maxDurability = maxDurability || null;
 
-        const guiSlot = _this.GUI.inventorySlots[this.slotKey];
+        const guiSlot = _this.GUI.inventoryBar.slots[this.slotKey];
         // Change the source image for the icon.
         guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
 
@@ -66,10 +66,9 @@ class InventorySlot {
 
     empty () {
         // Hide the item icon and durability meter.
-        _this.GUI.inventorySlots[this.slotKey].icon.style.visibility = "hidden";
-        _this.GUI.inventorySlots[this.slotKey].durability.style.visibility = "hidden";
-        _this.GUI.inventorySlots[this.slotKey].equipped.style.visibility = "hidden";
-        _this.GUI.inventorySlots[this.slotKey].addComponent.style.visibility = "hidden";
+        _this.GUI.inventoryBar.slots[this.slotKey].icon.style.visibility = "hidden";
+        _this.GUI.inventoryBar.slots[this.slotKey].durability.style.visibility = "hidden";
+        _this.GUI.inventoryBar.slots[this.slotKey].equipped.style.visibility = "hidden";
 
         // Reset the catalogue entry so it doesn't show up in the tooltip.
         this.catalogueEntry = null;
@@ -84,7 +83,7 @@ class InventorySlot {
         this.durability = value;
         // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
         const meterNumber = Math.floor((this.durability / this.maxDurability) * 10);
-        _this.GUI.inventorySlots[this.slotKey].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+        _this.GUI.inventoryBar.slots[this.slotKey].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
     }
 }
 

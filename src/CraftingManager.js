@@ -4,6 +4,10 @@ import ItemTypes from '../src/catalogues/ItemTypes'
 class CraftingComponent {
     constructor (number) {
         this.number = number;
+        /**
+         * The key of the inventory slot that is occupying this component, or null if empty.
+         * @type {String||null}
+         */
         this.occupiedBy = null;
         //this.DOMContainer = document.getElementById('component_slot_' + number);
         this.DOMRemove = document.getElementById('component_slot_' + number + '_remove');
@@ -58,6 +62,8 @@ class CraftingManager {
         //console.log("adding component, key:", inventorySlotKey);
         // Don't try to add this item if it is already being used as a component.
         if(_this.player.inventory[inventorySlotKey].craftingComponent !== null) return;
+        // Don't try to add this item if there is nothing in that inventory slot.
+        if(_this.player.inventory[inventorySlotKey].catalogueEntry === null) return;
 
         let component;
         // Get the first empty component slot.
@@ -68,10 +74,10 @@ class CraftingManager {
                 component.occupiedBy = inventorySlotKey;
                 component.DOMRemove.style.visibility = "visible";
                 component.DOMIcon.style.visibility = "visible";
-                component.DOMIcon.src = _this.GUI.inventorySlots[inventorySlotKey].icon.src;
+                component.DOMIcon.src = _this.GUI.inventoryBar.slots[inventorySlotKey].icon.src;
                 this.recipeCode += _this.player.inventory[inventorySlotKey].catalogueEntry.typeNumber + '-';
                 _this.player.inventory[inventorySlotKey].craftingComponent = component;
-                _this.GUI.inventorySlots[inventorySlotKey].addComponent.style.opacity = 0.5;
+                _this.GUI.inventoryBar.slots[inventorySlotKey].icon.style.opacity = 0.5;
 
                 this.checkRecipeCode();
 
@@ -85,14 +91,14 @@ class CraftingManager {
     }
 
     removeComponent (componentNumber) {
-        //console.log("remove component:", componentNumber);
+        console.log("remove component:", componentNumber);
         let component = this.components['slot' + componentNumber];
         if(component === undefined) return;
         if(component.occupiedBy === null) return;
         component.DOMRemove.style.visibility = "hidden";
         component.DOMIcon.style.visibility = "hidden";
 
-        _this.GUI.inventorySlots[component.occupiedBy].addComponent.style.opacity = 1;
+        _this.GUI.inventoryBar.slots[component.occupiedBy].icon.style.opacity = 1;
         _this.player.inventory[component.occupiedBy].craftingComponent = null;
         component.occupiedBy = null;
 
@@ -155,6 +161,12 @@ class CraftingManager {
                     break;
                 }
             }
+        }
+    }
+
+    empty () {
+        for(let i=0; i<5; i+=1){
+            this.removeComponent(1);looking good, now bank?
         }
     }
 

@@ -16175,7 +16175,7 @@ PIXI.PixiShader.prototype.initSampler2D = function(uniform)
         {
             var width = (data.width) ? data.width : 512;
             var height = (data.height) ? data.height : 2;
-            var border = (data.border) ? data.border : 0;
+            var border = (data.border) ? data.container : 0;
 
             // void texImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, ArrayBufferView? pixels);
             gl.texImage2D(gl.TEXTURE_2D, 0, format, width, height, border, format, gl.UNSIGNED_BYTE, null);

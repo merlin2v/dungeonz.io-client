@@ -6,3 +6,4 @@ dist/
 assets/map/
 src/lib/phaser.min.js
 src/lib/phaser.js
+src/lib/phaser.js

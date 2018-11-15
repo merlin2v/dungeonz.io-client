@@ -364,6 +364,21 @@ eventResponses.deactivate_holding = function (data) {
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
 };
 
+eventResponses.bank_item_deposited = function (data) {
+    //console.log("bank_item_deposited, data:", data);
+    _this.bankManager.addItemToContents(data.slotIndex, ItemTypes[data.typeNumber], data.durability, data.maxDurability);
+};
+
+eventResponses.bank_item_withdrawn = function (data) {
+    //console.log("bank_item_withdrawn, data:", data);
+    _this.bankManager.removeItemFromContents(data);
+};
+
+eventResponses.bank_coins_value = function (data) {
+    _this.bankManager.coins = data;
+    _this.GUI.bankPanel.moneyValue.innerHTML = data;
+};
+
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
     // Check the entity id is valid.
@@ -419,8 +434,8 @@ eventResponses.chat_warning = function (data) {
 };
 
 eventResponses.stat_levelled = function (data) {
-    console.log("stat levelled, data:", data);
-    _this.GUI.statCounters[data.statName].innerText = data.level;
+    //console.log("stat levelled, data:", data);
+    _this.GUI.statsBar.counters[data.statName].innerText = data.level;
     const upperCaseStatName = data.statName.charAt(0).toUpperCase() + data.statName.slice(1);
     _this.chat(undefined, dungeonz.getTextDef("Stat name: " + upperCaseStatName) + " level gained!", '#73ff66');
 };

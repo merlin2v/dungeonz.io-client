@@ -13,21 +13,20 @@ class Inventory {
         this.slot8 = new InventorySlot("slot8");
         this.slot9 = new InventorySlot("slot9");
         this.slot0 = new InventorySlot("slot0");
-
     }
 
     useHeldItem (direction) {
         if(direction === undefined){
             // Tell the game server this player wants to use this item.
-            ws.sendEvent('use_item');
+            ws.sendEvent('use_held_item');
         }
         else {
             // Tell the game server this player wants to use this item in a direction.
-            ws.sendEvent('use_item', direction);
+            ws.sendEvent('use_held_item', direction);
         }
     }
 
-    equipItem (slotNumber) {
+    useItem (slotNumber) {
         // Check there is an item in that inventory slot.
         if(this[slotNumber].catalogueEntry === null){
             return;
@@ -40,8 +39,8 @@ class Inventory {
             return;
         }
 
-        // Tell the game server this player wants to equip this item.
-        window.ws.sendEvent('equip_item', slotNumber);
+        // Tell the game server this player wants to use this item.
+        window.ws.sendEvent('use_item', slotNumber);
     }
 
     swapInventorySlots(slotKeyFrom, slotKeyTo){

@@ -1,4 +1,6 @@
-// sass --watch scss/Main.scss:main.css
+/*
+sass --watch scss/Main.scss:main.css
+*/
 
 @import "Variables";
 @import "Home";
@@ -9,6 +11,7 @@
 @import "Inventory";
 @import "VirtualDPad";
 @import "CraftingPanel";
+@import "BankPanel";
 
 
 #game_canvas {

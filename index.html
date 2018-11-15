@@ -247,13 +247,29 @@
                 <div id="gold_ex_accept">Exchange</div>
             </div>
 
-            <div id="bank_cont">
-                
+            <div id="bank_panel" class="panel">
+                <div class="panel_header">
+                    <div id="bank_tooltip" class="panel_tooltip">Tooltip</div>
+                    <div id="bank_name" class="panel_name">Bank</div>
+                </div>
+                <div id="bank_contents"></div>
+                <div id="bank_spacer"></div>
+                <div id="bank_money_bar_cont">
+                    <div id="bank_deposit" class="bank_money_text">Deposit</div>
+                    <div id="bank_money_cont">
+                        <img id="bank_money_icon" src="assets/img/gui/coins-icon.png">
+                        <div id="bank_money_value" class="bank_money_text">1000</div>
+                    </div>
+                    <div id="bank_withdraw" class="bank_money_text">Withdraw</div>
+                </div>
+                <input id="bank_money_input" type="number" min="1" max="99999" step="1" placeholder="Amount">
             </div>
 
-            <div id="crafting_panel">
-                <div id="crafting_tooltip">Tooltip</div>
-                <div id="crafting_station_name">Workbench</div>
+            <div id="crafting_panel" class="panel">
+                <div class="panel_header">
+                    <div id="crafting_tooltip" class="panel_tooltip">Tooltip</div>
+                    <div id="crafting_station_name" class="panel_name">Workbench</div>
+                </div>
                 <div id="crafting_panel_main">
                     <div id="crafting_components_bar">
                         <div id="component_slot_1" class="inventory_slot">
@@ -294,12 +310,12 @@
             </div>
 
             <span id="inventory_slot_cont" class="gui_zoomable">
-            <div id="item_tooltip_cont">
-                <div id="item_name"></div>
-                <div id="item_description"></div>
-                <div id="item_durability"></div>
-            </div>
-        </span>
+                <div id="item_tooltip_cont">
+                    <div id="item_name"></div>
+                    <div id="item_description"></div>
+                    <div id="item_durability"></div>
+                </div>
+            </span>
         </div>
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
     </div>

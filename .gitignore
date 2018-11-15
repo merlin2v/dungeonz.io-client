@@ -4,3 +4,5 @@ node_modules/
 dist/
 
 assets/map/
+src/lib/phaser.min.js
+src/lib/phaser.js

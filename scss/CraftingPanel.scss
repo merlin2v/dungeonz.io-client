@@ -1,39 +1,10 @@
 
-
 #crafting_panel {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    visibility: hidden;
-}
-#crafting_station_name {
-    height: 20px;
-    width: 50%;
-    float: left;
-    text-align: center;
-    font-size: 26px;
-    padding: 4px 4px 12px 4px;
-    font-weight: bold;
-    font-family: Consolas;
-    color: $colourDB32VeryDarkPurple;
-    background-color: $colourDB32WhiteOpacity80;
-    user-select: none;
+    display: inline-grid;
 }
 
 #crafting_tooltip {
-    position: absolute;
-    left: 270px;
-    bottom: 80px;
-    text-align: center;
-    font-size: 26px;
-    padding: 4px 12px 4px 12px;
-    margin-bottom: 10px;
-    font-family: Consolas;
-    color: $colourDB32VeryDarkPurple;
-    background-color: $colourDB32WhiteOpacity80;
-    user-select: none;
-    visibility: hidden;
+    left: 204px;
 }
 
 #crafting_panel_main{
@@ -81,6 +52,7 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
 #craft_result {
     padding: 10px;
 }

@@ -4,6 +4,7 @@ import Tilemap from './Tilemap'
 import GUI from './gui/GUI'
 import Inventory from './Inventory'
 import CraftingManager from "./CraftingManager";
+import BankManager from "./BankManager";
 
 dungeonz.Game = function () {
 
@@ -86,10 +87,9 @@ dungeonz.Game.prototype = {
         this.pseudoInteractables = {};
 
         this.tilemap = new Tilemap(this);
-
         this.GUI = new GUI(this);
-
         this.craftingManager = new CraftingManager();
+        this.bankManager = new BankManager(1000);
 
         this.dynamics = {};
 
@@ -157,35 +157,31 @@ dungeonz.Game.prototype = {
         this.GUI.removeExistingDOMElements(this.GUI.energyCounters);
 
         for(let elemKey in this.GUI.inventoryBar.slots){
-            this.GUI.inventoryBar.slots[elemKey].slot.remove();
+            this.GUI.inventoryBar.slots[elemKey].container.remove();
         }
 
-        this.GUI.hideCraftingPanel();
+        const contents = this.GUI.bankPanel.contents;
+        while (contents.firstChild) {
+            contents.removeChild(contents.firstChild);
+        }
 
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
         this.GUI.respawnPrompt.style.visibility = "hidden";
-        this.GUI.settingsIcon.style.opacity = "1";
-        this.GUI.quickTurnIcon.style.visibility = "hidden";
-        this.GUI.audioIcon.style.visibility = "hidden";
-        this.GUI.audioCounter.style.visibility = "hidden";
-        this.GUI.audioMinusIcon.style.visibility = "hidden";
-        this.GUI.audioPlusIcon.style.visibility = "hidden";
-        this.GUI.guiZoomIcon.style.visibility = "hidden";
-        this.GUI.guiZoomCounter.style.visibility = "hidden";
-        this.GUI.guiZoomMinusIcon.style.visibility = "hidden";
-        this.GUI.guiZoomPlusIcon.style.visibility = "hidden";
-        this.GUI.virtualDPadIcon.style.visibility = "hidden";
-        this.GUI.virtualDPad.style.visibility = "hidden";
-        this.GUI.fullscreenIcon.style.visibility = "hidden";
-        this.GUI.craftingPanel.style.visibility = "hidden";
+        this.GUI.statsBar.container.style.visibility = "hidden";
+        this.GUI.settingsBar.hide();
+        this.GUI.craftingPanel.hide();
+        this.GUI.bankPanel.hide();
     },
 
     move (direction) {
         //console.log("move dir:", direction);
 
-        // Hide the crafting panel, in case they are just moving away from a station.
-        this.GUI.craftingPanel.hide();
+        // Hide all panels, in case they are just moving away from the item for it.
+        if(this.GUI.isAnyPanelOpen === true){
+            this.GUI.craftingPanel.hide();
+            this.GUI.bankPanel.hide();
+        }
 
         this.checkPseudoInteractables(direction);
 
@@ -266,8 +262,8 @@ dungeonz.Game.prototype = {
     },
 
     pointerDownHandler (event) {
-        // Stop double clicking from highlighting text elements.
-        //event.preventDefault(); TODO hummm.... :S
+        // Stop double clicking from highlighting text elements, and zooming in on mobile.
+        //event.preventDefault();
         // Only use the selected item if the input wasn't over any other GUI element.
         if(event.target === _this.GUI.gui){
             // Don't try to use the held item if one isn't selected.
@@ -338,7 +334,7 @@ dungeonz.Game.prototype = {
             && codeNumber < 10){
                 //console.log("num key pressed:", codeNumber);
                 // Add the "slot" part of the key to the inventory slot number.
-                _this.player.inventory.equipItem("slot" + codeNumber);
+                _this.player.inventory.useItem("slot" + codeNumber);
             }
 
             if(event.code === 'KeyE'){

@@ -2,6 +2,7 @@ import InventoryBar from './InventoryBar';
 import SettingsBar from "./SettingsBar";
 import StatsBar from "./StatsBar";
 import CraftingPanel from "./CraftingPanel";
+import BankPanel from "./BankPanel";
 
 class GUI {
 
@@ -64,6 +65,9 @@ class GUI {
         this.settingsBar =      new SettingsBar();
         this.statsBar =         new StatsBar();
         this.craftingPanel =    new CraftingPanel();
+        this.bankPanel =        new BankPanel();
+
+        this.isAnyPanelOpen = false;
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
@@ -98,10 +102,12 @@ class GUI {
         this.avatarIcon.onmouseout =    function(){ game.GUI.avatarTooltip.style.visibility = "hidden" };
         this.avatarIcon.onclick =       function(){
             if(game.GUI.statsBar.container.style.visibility === "visible"){
-                game.GUI.statsBar.container.style.visibility = "hidden"
+                game.GUI.statsBar.container.style.visibility = "hidden";
+                game.GUI.bankPanel.hide();
             }
             else {
-                game.GUI.statsBar.container.style.visibility = "visible"
+                game.GUI.statsBar.container.style.visibility = "visible";
+                game.GUI.bankPanel.show();
             }
         };
 
@@ -201,7 +207,8 @@ class GUI {
         };
 
         // Make the various panels draggable.
-        this.makeElementDraggable(document.getElementById('crafting_station_name'), this.craftingPanel.container);
+        this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
+        this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
 
     }
 
@@ -257,7 +264,6 @@ class GUI {
 
             // Remove any existing icons of this type.
             for(let i=0; i<groupObject.length; i+=1){
-
                 //console.log("removing counter");
                 //console.dir(groupObject[i]);
                 groupObject[i].remove();
@@ -271,7 +277,6 @@ class GUI {
             // Remove any existing icons of this type.
             for(let key in groupObject){
                 if(groupObject.hasOwnProperty(key) === false) continue;
-
                 //console.log("removing counter");
                 //console.dir(groupObject[key]);
                 groupObject[key].remove();

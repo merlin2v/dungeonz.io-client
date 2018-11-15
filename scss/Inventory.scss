@@ -1,18 +1,20 @@
 // Inventory bar.
 #inventory_slot_cont {
   position: absolute;
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-columns: repeat(10, 56px);
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .inventory_slot {
-  margin: 4px;
+  position: relative;
   width: 48px;
   height: 48px;
   border-radius: 10px;
   pointer-events: auto;
+  user-select: none;
 }
 
 .inventory_slot_border {
@@ -33,7 +35,7 @@
 
 .inventory_slot_durability {
   position: absolute;
-  bottom: 10px;
+  bottom: 6px;
   width: 48px;
   object-fit: contain;
   visibility: hidden;

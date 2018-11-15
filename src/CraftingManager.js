@@ -3,20 +3,21 @@ import ItemTypes from '../src/catalogues/ItemTypes'
 
 class CraftingComponent {
     constructor (number) {
+        /**
+         * The position of this component slot along the bar. [1] [2]...
+         * @type {Number}
+         */
         this.number = number;
         /**
          * The key of the inventory slot that is occupying this component, or null if empty.
          * @type {String||null}
          */
         this.occupiedBy = null;
-        //this.DOMContainer = document.getElementById('component_slot_' + number);
-        this.DOMRemove = document.getElementById('component_slot_' + number + '_remove');
-        this.DOMIcon = document.getElementById('component_slot_' + number + '_icon');
-        //this.DOMBorder = document.getElementById('component_slot_' + number + '_border');
+        /**
+         * @type {ComponentSlot}
+         */
+        this.guiSlot = _this.GUI.craftingPanel.components['slot' + number];
 
-        this.DOMRemove.onclick = function () {
-            _this.craftingManager.removeComponent(number);
-        };
     }
 }
 
@@ -28,33 +29,12 @@ class CraftingManager {
 
         this.recipeCode = '';
 
-        this.components = {
-            slot1: new CraftingComponent(1),
-            slot2: new CraftingComponent(2),
-            slot3: new CraftingComponent(3),
-            slot4: new CraftingComponent(4),
-            slot5: new CraftingComponent(5)
-        };
+        this.components = {};
+        for(let i=1; i<6; i+=1){
+            this.components['slot' + i] = new CraftingComponent(i);
+        }
 
-        this.resultDOMAccept = document.getElementById('craft_result_accept');
-        this.resultDOMIcon = document.getElementById('craft_result_icon');
-
-        this.resultDOMAccept.onclick = function () {
-            const inventorySlotKeys = [];
-            const components = _this.craftingManager.components;
-            for(let slotKey in components){
-                if(components.hasOwnProperty(slotKey) === false) continue;
-                if(components[slotKey].occupiedBy === null) break;
-                inventorySlotKeys.push(components[slotKey].occupiedBy);
-            }
-
-            for(let slotKey in components){
-                if(components.hasOwnProperty(slotKey) === false) continue;
-                _this.craftingManager.removeComponent(components.slot1.number);
-            }
-
-            window.ws.sendEvent("craft", {stationTypeNumber: _this.craftingManager.stationTypeNumber, inventorySlotKeys: inventorySlotKeys});
-        };
+        this.guiResult = _this.GUI.craftingPanel.result;
 
     }
 
@@ -72,32 +52,30 @@ class CraftingManager {
             component = this.components[slotKey];
             if(component.occupiedBy === null){
                 component.occupiedBy = inventorySlotKey;
-                component.DOMRemove.style.visibility = "visible";
-                component.DOMIcon.style.visibility = "visible";
-                component.DOMIcon.src = _this.GUI.inventoryBar.slots[inventorySlotKey].icon.src;
+                component.guiSlot.remove.style.visibility = "visible";
+                component.guiSlot.icon.style.visibility = "visible";
+                component.guiSlot.icon.src = _this.GUI.inventoryBar.slots[inventorySlotKey].icon.src;
                 this.recipeCode += _this.player.inventory[inventorySlotKey].catalogueEntry.typeNumber + '-';
                 _this.player.inventory[inventorySlotKey].craftingComponent = component;
                 _this.GUI.inventoryBar.slots[inventorySlotKey].icon.style.opacity = 0.5;
 
                 this.checkRecipeCode();
-
+                // Component added. Don't loop the other slots.
                 return;
             }
         }
 
-        //TODO All components are full. Fade out the rest of the add component buttons for the items that aren't being used.
-
-
     }
 
     removeComponent (componentNumber) {
-        console.log("remove component:", componentNumber);
+        //console.log("remove component:", componentNumber);
         let component = this.components['slot' + componentNumber];
         if(component === undefined) return;
         if(component.occupiedBy === null) return;
-        component.DOMRemove.style.visibility = "hidden";
-        component.DOMIcon.style.visibility = "hidden";
-
+        let guiSlot = component.guiSlot;
+        guiSlot.remove.style.visibility = "hidden";
+        guiSlot.icon.style.visibility = "hidden";
+        // Make the item in the inventory full opacity to show it isn't in the craft any more.
         _this.GUI.inventoryBar.slots[component.occupiedBy].icon.style.opacity = 1;
         _this.player.inventory[component.occupiedBy].craftingComponent = null;
         component.occupiedBy = null;
@@ -113,7 +91,6 @@ class CraftingManager {
         }
 
         this.checkRecipeCode();
-
     }
 
     checkRecipeCode () {
@@ -123,14 +100,16 @@ class CraftingManager {
             //console.log("  station is valid, result:", RecipeCatalogue[this.stationTypeNumber]);
             if(RecipeCatalogue[this.stationTypeNumber][this.recipeCode] !== undefined){
                 //console.log("  recipe found for this crafting station:", RecipeCatalogue[this.stationTypeNumber][this.recipeCode]);
-                this.resultDOMAccept.style.visibility = "visible";
-                this.resultDOMIcon.style.visibility = "visible";
-                this.resultDOMIcon.src = 'assets/img/gui/items/' + ItemTypes[RecipeCatalogue[this.stationTypeNumber][this.recipeCode].resultTypeNumber].iconSource + ".png";
+                this.guiResult.icon.style.visibility = "visible";
+                this.guiResult.icon.src = 'assets/img/gui/items/' + ItemTypes[RecipeCatalogue[this.stationTypeNumber][this.recipeCode].resultTypeNumber].iconSource + ".png";
+                this.guiResult.accept.style.visibility = "visible";
+                this.guiResult.itemName = dungeonz.getTextDef("Item name: " + ItemTypes[RecipeCatalogue[this.stationTypeNumber][this.recipeCode].resultTypeNumber].idName);
             }
             else {
                 //console.log("  recipe is NOT valid");
-                this.resultDOMAccept.style.visibility = "hidden";
-                this.resultDOMIcon.style.visibility = "hidden";
+                this.guiResult.icon.style.visibility = "hidden";
+                this.guiResult.accept.style.visibility = "hidden";
+                this.guiResult.itemName = '';
             }
         }
     }
@@ -151,12 +130,12 @@ class CraftingManager {
                     currentComponent.occupiedBy = nextComponent.occupiedBy;
                     nextComponent.occupiedBy = null;
 
-                    currentComponent.DOMRemove.style.visibility = 'visible';
-                    nextComponent.DOMRemove.style.visibility = 'hidden';
+                    currentComponent.guiSlot.remove.style.visibility = 'visible';
+                    nextComponent.guiSlot.remove.style.visibility = 'hidden';
 
-                    currentComponent.DOMIcon.src = nextComponent.DOMIcon.src;
-                    currentComponent.DOMIcon.style.visibility = 'visible';
-                    nextComponent.DOMIcon.style.visibility = 'hidden';
+                    currentComponent.guiSlot.icon.src = nextComponent.guiSlot.icon.src;
+                    currentComponent.guiSlot.icon.style.visibility = 'visible';
+                    nextComponent.guiSlot.icon.style.visibility = 'hidden';
 
                     break;
                 }
@@ -164,9 +143,26 @@ class CraftingManager {
         }
     }
 
+    static accept () {
+        const inventorySlotKeys = [];
+        const components = _this.craftingManager.components;
+        for(let slotKey in components){
+            if(components.hasOwnProperty(slotKey) === false) continue;
+            if(components[slotKey].occupiedBy === null) break;
+            inventorySlotKeys.push(components[slotKey].occupiedBy);
+        }
+
+        for(let slotKey in components){
+            if(components.hasOwnProperty(slotKey) === false) continue;
+            _this.craftingManager.removeComponent(components.slot1.number);
+        }
+
+        window.ws.sendEvent("craft", {stationTypeNumber: _this.craftingManager.stationTypeNumber, inventorySlotKeys: inventorySlotKeys});
+    }
+
     empty () {
         for(let i=0; i<5; i+=1){
-            this.removeComponent(1);looking good, now bank?
+            this.removeComponent(1);
         }
     }
 

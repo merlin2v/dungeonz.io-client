@@ -68,7 +68,7 @@ class InventoryBar {
     }
 
     click () {
-        _this.player.inventory.equipItem(this.getAttribute('slotKey'));
+        _this.player.inventory.useItem(this.getAttribute('slotKey'));
     }
 
     slotMouseOver () {
@@ -118,8 +118,12 @@ class InventoryBar {
         event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
         this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
 
-        for(let slotKey in _this.GUI.craftingPanel.componentSlots){
-            _this.GUI.craftingPanel.componentSlots[slotKey].style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+        // Highlight the slots in panels where items can be dropped.
+        for(let slotKey in _this.GUI.craftingPanel.components){
+            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+        }
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
         }
 
     }
@@ -165,9 +169,7 @@ class InventoryBar {
     slotDrop (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
-        //console.log("drag drop, drag data:", _this.dragData);
         const slotKey = this.getAttribute('slotKey');
-        console.log("drag drop, slot keyyy:", slotKey);
         // If it was from the inventory bar, swap the slots.
         if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
             //console.log("invent slot dropped over another inventory slot");
@@ -176,8 +178,12 @@ class InventoryBar {
         // TODO do the conditions that another panel is the dragorigin
         this.style.backgroundColor = "transparent";
 
-        for(let slotKey in _this.GUI.craftingPanel.componentSlots){
-            _this.GUI.craftingPanel.componentSlots[slotKey].style.backgroundColor = "transparent";
+        // De-highlight the panel slot drop targets.
+        for(let slotKey in _this.GUI.craftingPanel.components){
+            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
+        }
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
         }
     }
 
@@ -186,8 +192,12 @@ class InventoryBar {
         event.stopPropagation();
         this.style.backgroundColor = "transparent";
 
-        for(let slotKey in _this.GUI.craftingPanel.componentSlots){
-            _this.GUI.craftingPanel.componentSlots[slotKey].style.backgroundColor = "transparent";
+        // De-highlight the panel slot drop targets.
+        for(let slotKey in _this.GUI.craftingPanel.components){
+            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
+        }
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
         }
     }
 

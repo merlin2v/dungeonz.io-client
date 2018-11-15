@@ -182,6 +182,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">entities/buildings/anvil.png</key>
+            <key type="filename">entities/buildings/bank-chest.png</key>
             <key type="filename">entities/buildings/counter-flap-inactive.png</key>
             <key type="filename">entities/buildings/counter-flap.png</key>
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>

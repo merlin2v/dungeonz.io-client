@@ -1,0 +1,88 @@
+#bank_panel {
+    //visibility: visible;
+    display: inline-grid;
+}
+
+#bank_tooltip {
+    left: 186px;
+}
+
+#bank_contents {
+    display: grid;
+    grid-template-columns: 48px 48px 48px 48px 48px;
+    grid-gap: 12px;
+    background-color: $colourDB32WhiteOpacity80;
+    width: fit-content;
+    padding: 20px;
+}
+
+#bank_spacer {
+    position: relative;
+    width: 80px;
+    height: 20px;
+    left: 50%;
+    background-color: $colourDB32WhiteOpacity80;
+    transform: translateX(-50%);
+}
+
+#bank_money_bar_cont {
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+    grid-gap: 10px;
+    height: 30px;
+    background-color: $colourDB32WhiteOpacity80;
+    padding: 10px;
+}
+
+.bank_money_text {
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    font-family: Consolas;
+    font-size: 20px;
+    font-weight: bold;
+    user-select: none;
+}
+
+#bank_deposit {
+    background-color: $colourDB32Green;
+    &:hover {
+        background-color: $colourDB32LimeGreen;
+    }
+}
+
+#bank_withdraw {
+    background-color: $colourDB32Yellow;
+    &:hover {
+        background-color: $colourDB32LightTan;
+    }
+}
+
+#bank_money_cont {
+    display: inline-flex;
+    align-items: center;
+}
+
+#bank_money_icon {
+    width: 32px;
+    height: 32px;
+}
+
+#bank_money_value {
+    left: 10px;
+}
+
+#bank_money_input {
+    position: relative;
+    width: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $colourDB32WhiteOpacity80;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Consolas;
+    font-size: 20px;
+    font-weight: bold;
+}

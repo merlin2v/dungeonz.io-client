@@ -106,11 +106,11 @@ class InventoryBar {
 
     slotDragStart (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
-        event.stopPropagation();
+
         //console.log("drag started, this:", this);
         const slotKey = this.getAttribute('slotKey');
         const icon = _this.GUI.inventoryBar.slots[slotKey].icon;
-        event.dataTransfer.setData('text', 'anything');
+        event.dataTransfer.setData('text/plain', null);
         _this.GUI.dragData = {
             dragOrigin: _this.GUI.inventoryBar.slotContainer,
             inventorySlot: _this.player.inventory[slotKey]
@@ -167,6 +167,7 @@ class InventoryBar {
     }
 
     slotDrop (event) {
+        event.preventDefault();
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
         const slotKey = this.getAttribute('slotKey');
@@ -188,6 +189,7 @@ class InventoryBar {
     }
 
     slotDragEnd (event) {
+        event.preventDefault();
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
         this.style.backgroundColor = "transparent";

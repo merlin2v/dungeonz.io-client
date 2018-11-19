@@ -235,16 +235,20 @@
                 </div>
             </div>
 
-            <div id="gold_ex_cont">
-                <div id="gold_ex_name">Gold exchange</div>
-                <div id="gold_ex_rate_text">Exchange rate:</div>
+            <div id="gold_ex_cont" class="panel">
+                <div id="gold_ex_name" class="panel_name">Gold exchange</div>
                 <div id="gold_ex_rate_cont">
-                    <img src="assets/img/gui/items/icon-gold-bar.png">
-                    <p>=</p>
-                    <img src="assets/img/gui/coins-icon.png">
-                    <p id="gold_ex_rate_value">9876</p>
+                    <div id="gold_ex_rate_text" class="bank_money_text">Exchange rate:</div>
+                    <div id="gold_ex_rate_bar">
+                        <img src="assets/img/gui/gold-bar-exchange.png" width="48">
+                        <p id="gold_ex_rate_equals" class="bank_money_text">=</p>
+                        <img src="assets/img/gui/coins-icon.png" width="28" height="28">
+                        <p id="gold_ex_rate_value" class="bank_money_text">9876</p>
+                    </div>
                 </div>
-                <div id="gold_ex_accept">Exchange</div>
+                <div id="gold_ex_accept_cont">
+                    <div id="gold_ex_accept" class="bank_money_text">Exchange</div>
+                </div>
             </div>
 
             <div id="bank_panel" class="panel">
@@ -321,7 +325,9 @@
     </div>
 
     <div id="home_cont">
-        <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
+        <div id="title_img_cont">
+            <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
+        </div>
         <p id="warning_message">Could not connect to game server. Probably updating...</p>
         <input id="name_input" type="text" maxlength="20" autofocus>
         <button id="play_button" type="button" onclick="connect()"></button>

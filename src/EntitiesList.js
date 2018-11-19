@@ -18,6 +18,8 @@ import Citizen              from './entities/characters/Citizen'
 import Bandit               from './entities/characters/Bandit'
 import BanditLeader         from './entities/characters/BanditLeader'
 import Anvil                from './entities/interactables/Anvil'
+import BankChest            from './entities/interactables/BankChest'
+import GoldExchangeTerminal from './entities/interactables/GoldExchangeTerminal'
 import Furnace              from './entities/interactables/Furnace'
 import GoldOre              from './entities/interactables/GoldOre'
 import Tree                 from './entities/interactables/Tree'
@@ -27,6 +29,7 @@ import Exit                 from './entities/interactables/Exit'
 import DungeonPortal        from './entities/interactables/DungeonPortal'
 import OverworldPortal      from './entities/interactables/OverworldPortal'
 import PickupCloak          from './entities/pickups/PickupCloak'
+import PickupCoinPile       from './entities/pickups/PickupCoinPile'
 import PickupMageRobe       from './entities/pickups/PickupMageRobe'
 import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
 import PickupIronPickaxe    from './entities/pickups/PickupIronPickaxe'
@@ -44,34 +47,37 @@ import ProjWind             from './entities/projectiles/ProjWind'
 
 const EntitiesList = {
 
-    Player:             Player,
-    Citizen:            Citizen,
-    Bandit:             Bandit,
-    BanditLeader:       BanditLeader,
-    Anvil:              Anvil,
-    Furnace:            Furnace,
-    GoldOre:            GoldOre,
-    Tree:               Tree,
-    WoodDoor:           WoodDoor,
-    SmallIronCandle:    SmallIronCandle,
-    PickupCloak:        PickupCloak,
-    PickupMageRobe:     PickupMageRobe,
-    PickupIronHatchet:  PickupIronHatchet,
-    PickupIronPickaxe:  PickupIronPickaxe,
-    PickupIronDagger:   PickupIronDagger,
-    PickupIronSword:    PickupIronSword,
-    PickupFireStaff:    PickupFireStaff,
-    PickupWindStaff:    PickupWindStaff,
-    PickupWood:         PickupWood,
-    PickupGoldOre:      PickupGoldOre,
-    PickupGoldBar:      PickupGoldBar,
-    ProjIronDagger:     ProjIronDagger,
-    ProjIronSword:      ProjIronSword,
-    ProjFire:           ProjFire,
-    ProjWind:           ProjWind,
-    Exit:               Exit,
-    DungeonPortal:      DungeonPortal,
-    OverworldPortal:    OverworldPortal
+    Player:                 Player,
+    Citizen:                Citizen,
+    Bandit:                 Bandit,
+    BanditLeader:           BanditLeader,
+    Anvil:                  Anvil,
+    BankChest:              BankChest,
+    GoldExchangeTerminal:   GoldExchangeTerminal,
+    Furnace:                Furnace,
+    GoldOre:                GoldOre,
+    Tree:                   Tree,
+    WoodDoor:               WoodDoor,
+    SmallIronCandle:        SmallIronCandle,
+    PickupCloak:            PickupCloak,
+    PickupCoinPile:         PickupCoinPile,
+    PickupMageRobe:         PickupMageRobe,
+    PickupIronHatchet:      PickupIronHatchet,
+    PickupIronPickaxe:      PickupIronPickaxe,
+    PickupIronDagger:       PickupIronDagger,
+    PickupIronSword:        PickupIronSword,
+    PickupFireStaff:        PickupFireStaff,
+    PickupWindStaff:        PickupWindStaff,
+    PickupWood:             PickupWood,
+    PickupGoldOre:          PickupGoldOre,
+    PickupGoldBar:          PickupGoldBar,
+    ProjIronDagger:         ProjIronDagger,
+    ProjIronSword:          ProjIronSword,
+    ProjFire:               ProjFire,
+    ProjWind:               ProjWind,
+    Exit:                   Exit,
+    DungeonPortal:          DungeonPortal,
+    OverworldPortal:        OverworldPortal
 
 };
 

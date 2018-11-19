@@ -4,7 +4,7 @@
 }
 
 #crafting_tooltip {
-    left: 204px;
+    left: 224px;
 }
 
 #crafting_panel_main{
@@ -12,7 +12,8 @@
 }
 
 #crafting_components_bar {
-    display: inline-flex;
+    display: inline-grid;
+    grid-template-columns: repeat(5, 56px);
     padding: 10px;
     background-color: $colourDB32WhiteOpacity80;
 }
@@ -37,11 +38,15 @@
     position: absolute;
     width: 48px;
     height: 48px;
-    top: 93px;
+    top: 42px;
     visibility: hidden;
     &:hover {
         -webkit-filter: brightness(150%);
     }
+}
+
+#craft_result_accept {
+    top: 54px;
 }
 
 #crafting_spacer {

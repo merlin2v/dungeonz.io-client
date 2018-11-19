@@ -111,6 +111,7 @@ class CraftingPanel {
     }
 
     componentsBarDrop (event) {
+        event.preventDefault();
         event.stopPropagation();
 
         if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){

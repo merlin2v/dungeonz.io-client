@@ -12,6 +12,7 @@ sass --watch scss/Main.scss:main.css
 @import "VirtualDPad";
 @import "CraftingPanel";
 @import "BankPanel";
+@import "GoldExchangePanel";
 
 
 #game_canvas {
@@ -25,6 +26,7 @@ sass --watch scss/Main.scss:main.css
 
 img {
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
 }
 
 ::placeholder {

@@ -379,6 +379,10 @@ eventResponses.bank_coins_value = function (data) {
     _this.GUI.bankPanel.moneyValue.innerHTML = data;
 };
 
+eventResponses.gold_exchange_rate = function (data) {
+    _this.GUI.goldExchangePanel.updateExchangeRate(data);
+};
+
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
     // Check the entity id is valid.

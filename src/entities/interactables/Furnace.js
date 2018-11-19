@@ -16,4 +16,11 @@ Sprite.prototype.interactedByPlayer = function () {
     _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
 };
 
+Sprite.prototype.onMove = function () {
+    _this.tilemap.updateDarknessGrid();
+};
+
+Sprite.prototype.defaultLightDistance = 4;
+Sprite.prototype.lightDistance = 4;
+
 export default Sprite;

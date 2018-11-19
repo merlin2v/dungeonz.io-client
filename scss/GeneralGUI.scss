@@ -80,6 +80,7 @@
     top: 10px;
     left: 10px;
     pointer-events: none;
+    transform-origin: top left;
 }
 
 .gui_counter_icon {
@@ -100,6 +101,7 @@
     right: 10px;
     float: right;
     pointer-events: none;
+    transform-origin: top right;
 }
 
 // Bottom left corner.
@@ -109,6 +111,7 @@
     bottom: 10px;
     left: 10px;
     pointer-events: none;
+    transform-origin: bottom left;
 }
 
 // Bottom right corner.
@@ -121,6 +124,7 @@
     right: 10px;
     float: right;
     pointer-events: none;
+    transform-origin: bottom right;
 }
 
 #audio_counter, #gui_zoom_counter {

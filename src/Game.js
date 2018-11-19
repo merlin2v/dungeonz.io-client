@@ -172,6 +172,7 @@ dungeonz.Game.prototype = {
         this.GUI.settingsBar.hide();
         this.GUI.craftingPanel.hide();
         this.GUI.bankPanel.hide();
+        this.GUI.goldExchangePanel.hide();
     },
 
     move (direction) {
@@ -181,6 +182,7 @@ dungeonz.Game.prototype = {
         if(this.GUI.isAnyPanelOpen === true){
             this.GUI.craftingPanel.hide();
             this.GUI.bankPanel.hide();
+            this.GUI.goldExchangePanel.hide();
         }
 
         this.checkPseudoInteractables(direction);

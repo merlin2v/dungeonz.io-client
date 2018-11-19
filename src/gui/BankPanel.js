@@ -134,6 +134,7 @@ class BankPanel {
     }
 
     slotDrop (event) {
+        event.preventDefault();
         event.stopPropagation();
         //console.log("slot dropped on bank, from:", _this.GUI.dragData.inventorySlot.slotKey, ", to:", this.getAttribute('slotIndex'));
         // Only add an item to the bank if it was dropped from the inventory bar.

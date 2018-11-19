@@ -188,6 +188,7 @@
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>
             <key type="filename">entities/buildings/dungeon-portal.png</key>
             <key type="filename">entities/buildings/furnace.png</key>
+            <key type="filename">entities/buildings/gold-exchange-terminal.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
             <key type="filename">entities/buildings/overworld-portal.png</key>
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
@@ -241,6 +242,7 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
+            <key type="filename">entities/pickups/pickup-coin-pile.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>

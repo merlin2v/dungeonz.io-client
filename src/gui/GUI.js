@@ -3,6 +3,7 @@ import SettingsBar from "./SettingsBar";
 import StatsBar from "./StatsBar";
 import CraftingPanel from "./CraftingPanel";
 import BankPanel from "./BankPanel";
+import GoldExchangePanel from "./GoldExchangePanel";
 
 class GUI {
 
@@ -66,6 +67,7 @@ class GUI {
         this.statsBar =         new StatsBar();
         this.craftingPanel =    new CraftingPanel();
         this.bankPanel =        new BankPanel();
+        this.goldExchangePanel= new GoldExchangePanel();
 
         this.isAnyPanelOpen = false;
 
@@ -199,7 +201,8 @@ class GUI {
             event.preventDefault();
         };
         // If an inventory item is dropped onto the game canvas, drop it.
-        this.gui.ondrop = function () {
+        this.gui.ondrop = function (event) {
+            event.preventDefault();
             // If it was from the inventory bar, drop the item.
             if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
                 window.ws.sendEvent('drop_item', _this.GUI.dragData.inventorySlot.slotKey);
@@ -209,6 +212,7 @@ class GUI {
         // Make the various panels draggable.
         this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
         this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
+        this.makeElementDraggable(this.goldExchangePanel.name, this.goldExchangePanel.container);
 
     }
 

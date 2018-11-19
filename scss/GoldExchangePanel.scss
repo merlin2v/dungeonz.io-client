@@ -1,0 +1,46 @@
+
+#gold_ex_cont {
+    display: inline-grid;
+}
+
+#gold_ex_name {
+    width: 70%;
+    font-size: 20px;
+}
+
+#gold_ex_rate_cont {
+    width: 300px;
+    text-align: center;
+    background-color: $colourDB32WhiteOpacity80;
+}
+
+#gold_ex_rate_bar {
+    display: inline-flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+#gold_ex_rate_equals {
+    margin: 20px;
+    font-size: 60px;
+}
+
+#gold_ex_rate_value {
+    left: 10px;
+    font-size: 24px;
+}
+
+#gold_ex_accept_cont {
+    width: 50%;
+    transform: translateX(100%);
+    background-color: $colourDB32WhiteOpacity80;
+}
+
+#gold_ex_accept {
+    margin: 10px;
+    background-color: $colourDB32Green;
+    &:hover {
+        background-color: $colourDB32LimeGreen;
+    }
+}

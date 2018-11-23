@@ -116,23 +116,29 @@ class InventoryBar {
             inventorySlot: _this.player.inventory[slotKey]
         };
         event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
-        this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
 
         // Highlight the slots in panels where items can be dropped.
+        for(let slotKey in _this.GUI.inventoryBar.slots){
+            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+        }
         for(let slotKey in _this.GUI.craftingPanel.components){
+            if(_this.GUI.craftingPanel.components.hasOwnProperty(slotKey) === false) continue;
             _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
         }
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
             _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
         }
 
+        this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
+
     }
 
     slotDragEnter (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
-        const slotKey = this.getAttribute('slotKey');
-        console.log("drag enter, slotkey:", slotKey);
+        /*const slotKey = this.getAttribute('slotKey');
+        //console.log("drag enter, slotkey:", slotKey);
         const guiSlot = _this.GUI.inventoryBar.slots[slotKey];
         guiSlot.icon.style["-webkit-filter"] = "brightness(150%)";
         guiSlot.durability.style["-webkit-filter"] = "brightness(150%)";
@@ -140,14 +146,14 @@ class InventoryBar {
         guiSlot.border.style["-webkit-filter"] = "brightness(150%)";
         if(_this.GUI.dragData.inventorySlot.slotKey !== slotKey){
             guiSlot.container.style.backgroundColor = _this.GUI.dragColours.validDropTarget;
-        }
+        }*/
     }
 
     slotDragLeave (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
         //console.log("drag leave");
-        const slotKey = this.getAttribute('slotKey');
+        /*const slotKey = this.getAttribute('slotKey');
         const guiSlot = _this.GUI.inventoryBar.slots[slotKey];
         guiSlot.icon.style["-webkit-filter"] = null;
         guiSlot.durability.style["-webkit-filter"] = null;
@@ -157,7 +163,7 @@ class InventoryBar {
         // Want to keep the orange background for the start.
         if(_this.GUI.dragData.inventorySlot.slotKey !== slotKey){
             guiSlot.container.style.backgroundColor = "transparent";
-        }
+        }*/
     }
 
     slotDragOver (event) {
@@ -176,16 +182,19 @@ class InventoryBar {
             //console.log("invent slot dropped over another inventory slot");
             _this.player.inventory.swapInventorySlots(_this.GUI.dragData.inventorySlot.slotKey, slotKey);
         }
-        // TODO do the conditions that another panel is the dragorigin
+        // If it was from the bank panel, withdraw the item.
+        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
+            _this.bankManager.withdrawItem(_this.GUI.dragData.bankSlot.getAttribute('slotIndex'), slotKey);
+        }
+
         this.style.backgroundColor = "transparent";
 
         // De-highlight the panel slot drop targets.
         for(let slotKey in _this.GUI.craftingPanel.components){
             _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
         }
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
-        }
+
+        console.log("invent slot drop");
     }
 
     slotDragEnd (event) {
@@ -195,7 +204,12 @@ class InventoryBar {
         this.style.backgroundColor = "transparent";
 
         // De-highlight the panel slot drop targets.
+        for(let slotKey in _this.GUI.inventoryBar.slots){
+            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = "transparent";
+        }
         for(let slotKey in _this.GUI.craftingPanel.components){
+            if(_this.GUI.craftingPanel.components.hasOwnProperty(slotKey) === false) continue;
             _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
         }
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){

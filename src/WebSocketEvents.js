@@ -3,20 +3,16 @@
 window.ws = false;
 
 const eventResponses = {};
-// 1vCPU 1GB server.
-//const serverIPAddress = '104.248.48.75';
-const serverIPAddress = '127.0.0.4';
 
 import EventNames from '../src/catalogues/EventNames'
 import ItemTypes from '../src/catalogues/ItemTypes'
 import ChatWarnings from './catalogues/ChatWarnings'
 
-window.connectToGameServer = function () {
-
+function makeWebSocketConnection (url) {
     // Only connect if there isn't already a connection.
     if(ws === false){
         // Connect to the game server.
-        window.ws = new WebSocket('ws://' + serverIPAddress + ':3000');
+        window.ws = new WebSocket(url);
     }
     // Connection already exists.
     else {
@@ -25,11 +21,24 @@ window.connectToGameServer = function () {
             // Close the connection.
             ws.close();
             // Try to create a new connection to the game server.
-            window.ws = new WebSocket('ws://' + serverIPAddress + ':3000');
+            window.ws = new WebSocket(url);
         }
         else {
-            return;
+            return false;
         }
+    }
+    return true;
+}
+
+window.connectToGameServer = function () {
+
+    // If the game is running in dev mode (localhost), connect without SSL.
+    if(window.devMode === true){
+        if(makeWebSocketConnection('ws://127.0.0.4:3000') === false) return false;
+    }
+    // Deployment mode. Connect using SSL.
+    else {
+        if(makeWebSocketConnection('wss://test.waywardworlds.com:3000') === false) return false
     }
 
     /**

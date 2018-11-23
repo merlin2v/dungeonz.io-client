@@ -35,6 +35,7 @@ class Slot {
         this.container.onmouseout =     bank.slotMouseOut;
         // Drag and drop.
         this.container.ondragstart =    bank.slotDragStart;
+        this.container.ondragend =      bank.slotDragEnd;
         this.container.ondragenter =    bank.slotDragEnter;
         this.container.ondrop =         bank.slotDrop;
         // Store the key of this slot on the slot itself.
@@ -123,23 +124,76 @@ class BankPanel {
     }
 
     slotDragStart (event) {
+        console.log("this:", this);
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
-        event.preventDefault();
+
+        console.log("slot drag start");
+
+        const slotIndex = this.getAttribute('slotIndex');
+        const icon = _this.GUI.bankPanel.slots[slotIndex].icon;
+        console.log("icon:", icon);
+        event.dataTransfer.setData('text/plain', null);
+        _this.GUI.dragData = {
+            dragOrigin: _this.GUI.bankPanel.contents,
+            bankSlot: _this.GUI.bankPanel.slots[slotIndex].container
+        };
+        event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
+
+        // Highlight the bank panel slots.
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+        }
+        // Highlight the inventory bar slots.
+        for(let slotKey in _this.GUI.inventoryBar.slots){
+            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+        }
+
+        this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
     }
 
     slotDragEnter (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
+        console.log("slot drag enter");
     }
 
     slotDrop (event) {
+        const thisSlotIndex = this.getAttribute('slotIndex');
         event.preventDefault();
         event.stopPropagation();
         //console.log("slot dropped on bank, from:", _this.GUI.dragData.inventorySlot.slotKey, ", to:", this.getAttribute('slotIndex'));
         // Only add an item to the bank if it was dropped from the inventory bar.
         if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
             _this.bankManager.depositItem(_this.GUI.dragData.inventorySlot.slotKey, this.getAttribute('slotIndex'));
+        }
+        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
+            const otherSlotIndex = _this.GUI.dragData.bankSlot.getAttribute('slotIndex');
+            console.log("slot drop, to:", thisSlotIndex, "from:", otherSlotIndex);
+            _this.bankManager.swapSlots(otherSlotIndex, thisSlotIndex);
+        }
+
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
+        }
+    }
+
+    slotDragEnd (event) {
+        console.log("slot drag end");
+        event.preventDefault();
+        // Prevent the GUI from firing it's own drag and drop stuff from this slot.
+        event.stopPropagation();
+        this.style.backgroundColor = "transparent";
+
+        // De-highlight the panel slot drop targets.
+        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
+        }
+        // And the inventory bar slots.
+        for(let slotKey in _this.GUI.inventoryBar.slots){
+            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = "transparent";
         }
     }
 

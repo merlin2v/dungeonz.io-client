@@ -10,4 +10,17 @@
 
     game.state.start('Boot');
 
+    // Check if the game should be run in dev mode.
+    const http = new XMLHttpRequest();
+    http.open('HEAD', "../server/admin-commands", false);
+    http.send();
+    if(http.status === 404){
+        console.log("* Running in prod mode.");
+        window.devMode = false;
+    }
+    else {
+        console.log("* Running in dev mode.");
+        window.devMode = true;
+    }
+
 })();

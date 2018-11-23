@@ -1,3 +1,4 @@
+import GUI from "./gui/GUI";
 
 class BankItem {
     constructor () {
@@ -81,7 +82,74 @@ class BankManager {
     }
 
     swapSlots (fromIndex, toIndex) {
-        // TODO
+        console.log("swapping bank slots:", fromIndex, "to", toIndex);
+
+        const GUIslots = _this.GUI.bankPanel.slots;
+
+        /** @type {BankItem} */
+        const fromItem = this.items[fromIndex];
+        // Temporary store of the data of the item being moved.
+        const fromSlotData = {
+            catalogueEntry: fromItem.catalogueEntry,
+            durability: fromItem.durability,
+            maxDurability: fromItem.maxDurability,
+            iconSource: GUIslots[fromIndex].icon.src
+        };
+
+        /** @type {BankItem} */
+        const toItem = this.items[toIndex];
+
+        // Update the item data of the item being move to be the same as what it is moved into.
+        fromItem.catalogueEntry = toItem.catalogueEntry;
+        fromItem.durability = toItem.durability;
+        fromItem.maxDurability = toItem.maxDurability;
+
+        //console.log("gui slots:", GUIslots);
+        //console.log("from item:", fromItem);
+
+        // The item data from the TO slot has been moved into the item data for the FROM slot. Now update the GUI for the FROM slot.
+        // Check if any item was moved to this slot. Might have swapped with an empty slot.
+        if(fromItem.catalogueEntry === null){
+            // Hide the icon and durability bar.
+            GUIslots[fromIndex].icon.style.visibility = "hidden";
+            GUIslots[fromIndex].durability.style.visibility = "hidden";
+        }
+        else {
+            // Item was moved. Show the icon, and also show the durability bar if it has a durability.
+            GUIslots[fromIndex].icon.style.visibility = "visible";
+            GUIslots[fromIndex].icon.src = GUIslots[toIndex].icon.src;
+            if(fromItem.durability === null){
+                GUIslots[fromIndex].durability.style.visibility = "hidden";
+            }
+            else {
+                GUIslots[fromIndex].durability.style.visibility = "visible";
+            }
+        }
+
+        // The FROM slot is done. Now update the data stored in the TO item to be what was in the FROM item.
+        toItem.catalogueEntry = fromSlotData.catalogueEntry;
+        toItem.durability = fromSlotData.durability;
+        toItem.maxDurability = fromSlotData.maxDurability;
+
+        // Update the TO slot to show what was moved into it.
+        if(toItem.catalogueEntry === null){
+            // Hide the icon and durability bar.
+            GUIslots[toIndex].icon.style.visibility = "hidden";
+            GUIslots[toIndex].durability.style.visibility = "hidden";
+        }
+        else {
+            // Item was moved. Show the icon, and also show the durability bar if it has a durability.
+            GUIslots[toIndex].icon.style.visibility = "visible";
+            GUIslots[toIndex].icon.src = fromSlotData.iconSource;
+            if(toItem.durability === null){
+                GUIslots[toIndex].durability.style.visibility = "hidden";
+            }
+            else {
+                GUIslots[toIndex].durability.style.visibility = "visible";
+            }
+        }
+
+        //window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex, toSlotIndex: toIndex});
     }
 
     depositMoney () {

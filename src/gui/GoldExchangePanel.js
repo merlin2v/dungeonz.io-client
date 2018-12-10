@@ -2,7 +2,7 @@
 class GoldExchangePanel {
     constructor () {
 
-        this.container =    document.getElementById('gold_ex_cont');
+        this.container =    document.getElementById('gold_ex_panel');
         this.name =         document.getElementById('gold_ex_name');
         this.rateValue =    document.getElementById('gold_ex_rate_value');
         this.accept =       document.getElementById('gold_ex_accept');

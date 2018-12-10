@@ -22,6 +22,7 @@ import BankChest            from './entities/interactables/BankChest'
 import GoldExchangeTerminal from './entities/interactables/GoldExchangeTerminal'
 import Furnace              from './entities/interactables/Furnace'
 import GoldOre              from './entities/interactables/GoldOre'
+import IronOre              from './entities/interactables/IronOre'
 import Tree                 from './entities/interactables/Tree'
 import WoodDoor             from './entities/interactables/WoodDoor'
 import SmallIronCandle      from './entities/interactables/SmallIronCandle'
@@ -35,14 +36,19 @@ import PickupIronHatchet    from './entities/pickups/PickupIronHatchet'
 import PickupIronPickaxe    from './entities/pickups/PickupIronPickaxe'
 import PickupIronDagger     from './entities/pickups/PickupIronDagger'
 import PickupIronSword      from './entities/pickups/PickupIronSword'
+import PickupFireGem        from './entities/pickups/PickupFireGem'
 import PickupFireStaff      from './entities/pickups/PickupFireStaff'
+import PickupSuperFireStaff from './entities/pickups/PickupSuperFireStaff'
 import PickupWindStaff      from './entities/pickups/PickupWindStaff'
 import PickupWood           from './entities/pickups/PickupWood'
 import PickupGoldOre        from './entities/pickups/PickupGoldOre'
 import PickupGoldBar        from './entities/pickups/PickupGoldBar'
+import PickupIronOre        from './entities/pickups/PickupIronOre'
+import PickupIronBar        from './entities/pickups/PickupIronBar'
 import ProjIronDagger       from './entities/projectiles/ProjIronDagger'
 import ProjIronSword        from './entities/projectiles/ProjIronSword'
 import ProjFire             from './entities/projectiles/ProjFire'
+import ProjSuperFire        from './entities/projectiles/ProjSuperFire'
 import ProjWind             from './entities/projectiles/ProjWind'
 
 const EntitiesList = {
@@ -56,6 +62,7 @@ const EntitiesList = {
     GoldExchangeTerminal:   GoldExchangeTerminal,
     Furnace:                Furnace,
     GoldOre:                GoldOre,
+    IronOre:                IronOre,
     Tree:                   Tree,
     WoodDoor:               WoodDoor,
     SmallIronCandle:        SmallIronCandle,
@@ -66,14 +73,19 @@ const EntitiesList = {
     PickupIronPickaxe:      PickupIronPickaxe,
     PickupIronDagger:       PickupIronDagger,
     PickupIronSword:        PickupIronSword,
+    PickupFireGem:          PickupFireGem,
     PickupFireStaff:        PickupFireStaff,
+    PickupSuperFireStaff:   PickupSuperFireStaff,
     PickupWindStaff:        PickupWindStaff,
     PickupWood:             PickupWood,
     PickupGoldOre:          PickupGoldOre,
     PickupGoldBar:          PickupGoldBar,
+    PickupIronOre:          PickupIronOre,
+    PickupIronBar:          PickupIronBar,
     ProjIronDagger:         ProjIronDagger,
     ProjIronSword:          ProjIronSword,
     ProjFire:               ProjFire,
+    ProjSuperFire:          ProjSuperFire,
     ProjWind:               ProjWind,
     Exit:                   Exit,
     DungeonPortal:          DungeonPortal,

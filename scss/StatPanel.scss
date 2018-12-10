@@ -1,0 +1,64 @@
+
+#stats_panel {
+    display: inline-grid;
+    //visibility: visible;
+}
+
+#stat_name {
+}
+
+#stats_panel_main {
+    background-color: $colourDB32WhiteOpacity80;
+}
+
+#stats_icons_cont {
+    display: grid;
+    grid-template-columns: 48px 48px 48px 48px 48px 48px;
+    grid-template-rows: 48px 48px;
+    grid-gap: 12px;
+    padding: 10px;
+}
+.stat_icon_cont {
+    border-radius: 14px;
+    &:hover {
+        -webkit-filter: brightness(150%);
+    }
+}
+.stat_icon {
+    width: 48px;
+    height: 48px;
+}
+
+#stats_info_cont {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background-color: $colourDB32WhiteOpacity80;
+}
+
+#stat_name {
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+#stat_description {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#stat_level_counter {
+    font-weight: bold;
+    font-size: 22px;
+    padding-top: 10px;
+}
+
+#stat_exp_counter {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.stat_info_text {
+    font-family: Consolas;
+    font-size: 18px;
+    color: $colourDB32VeryDarkPurple;
+}

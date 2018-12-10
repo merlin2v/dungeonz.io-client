@@ -5,7 +5,7 @@ sass --watch scss/Main.scss:main.css
 @import "Variables";
 @import "Home";
 @import "GeneralGUI";
-@import "StatBar";
+@import "StatPanel";
 @import "Tooltips";
 @import "Panels";
 @import "Inventory";
@@ -13,6 +13,7 @@ sass --watch scss/Main.scss:main.css
 @import "CraftingPanel";
 @import "BankPanel";
 @import "GoldExchangePanel";
+@import "ExitGamePanel";
 
 
 #game_canvas {

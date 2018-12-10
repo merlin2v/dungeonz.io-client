@@ -54,7 +54,7 @@ class Slot {
 class InventoryBar {
 
     constructor () {
-        this.slotContainer =   document.getElementById('inventory_slot_cont');
+        this.slotContainer =   document.getElementById('inventory_bar');
         this.slots = {};
 
         // Rearrange the order of the slot numbers, as the 0 key is at the right end of keyboards.
@@ -120,17 +120,17 @@ class InventoryBar {
         // Highlight the slots in panels where items can be dropped.
         for(let slotKey in _this.GUI.inventoryBar.slots){
             if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
         for(let slotKey in _this.GUI.craftingPanel.components){
             if(_this.GUI.craftingPanel.components.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
 
-        this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
+        this.style.backgroundColor = _this.GUI.GUIColours.currentlyDragged;
 
     }
 
@@ -184,7 +184,7 @@ class InventoryBar {
         }
         // If it was from the bank panel, withdraw the item.
         else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
-            _this.bankManager.withdrawItem(_this.GUI.dragData.bankSlot.getAttribute('slotIndex'), slotKey);
+            _this.player.bankManager.withdrawItem(_this.GUI.dragData.bankSlot.getAttribute('slotIndex'), slotKey);
         }
 
         this.style.backgroundColor = "transparent";
@@ -194,7 +194,7 @@ class InventoryBar {
             _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
         }
 
-        console.log("invent slot drop");
+        //console.log("invent slot drop");
     }
 
     slotDragEnd (event) {

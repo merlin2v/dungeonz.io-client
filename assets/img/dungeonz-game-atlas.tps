@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.8.3</string>
+        <string>4.10.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -194,6 +194,8 @@
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
+            <key type="filename">entities/characters/effects/burn-effect-1.png</key>
+            <key type="filename">entities/characters/effects/burn-effect-2.png</key>
             <key type="filename">entities/characters/human base/human-down-1.png</key>
             <key type="filename">entities/characters/human base/human-down-2.png</key>
             <key type="filename">entities/characters/human base/human-down-3.png</key>
@@ -243,12 +245,15 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
             <key type="filename">entities/pickups/pickup-coin-pile.png</key>
+            <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
+            <key type="filename">entities/pickups/pickup-iron-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
             <key type="filename">entities/pickups/pickup-iron-hatchet.png</key>
             <key type="filename">entities/pickups/pickup-iron-pickaxe.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
+            <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
@@ -257,6 +262,7 @@
             <key type="filename">entities/projectiles/proj-wind.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>
+            <key type="filename">entities/resource nodes/ore-iron.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle-inactive.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle.png</key>
             <key type="filename">entities/resource nodes/tree-inactive.png</key>
@@ -299,6 +305,7 @@
             </struct>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
             <key type="filename">entities/pickups/pickup-gold-ore.png</key>
+            <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -324,6 +331,7 @@
             <filename>entities/characters/bat</filename>
             <filename>entities/clothes/cloak</filename>
             <filename>entities/clothes/paladin armour</filename>
+            <filename>entities/characters/effects</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

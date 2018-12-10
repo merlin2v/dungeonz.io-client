@@ -1,6 +1,6 @@
 import InventoryBar from './InventoryBar';
 import SettingsBar from "./SettingsBar";
-import StatsBar from "./StatsBar";
+import StatsPanel from "./StatsPanel";
 import CraftingPanel from "./CraftingPanel";
 import BankPanel from "./BankPanel";
 import GoldExchangePanel from "./GoldExchangePanel";
@@ -64,7 +64,7 @@ class GUI {
 
         this.inventoryBar =     new InventoryBar();
         this.settingsBar =      new SettingsBar();
-        this.statsBar =         new StatsBar();
+        this.statsPanel =       new StatsPanel();
         this.craftingPanel =    new CraftingPanel();
         this.bankPanel =        new BankPanel();
         this.goldExchangePanel= new GoldExchangePanel();
@@ -103,13 +103,11 @@ class GUI {
         this.avatarIcon.onmouseover =   function(){ game.GUI.avatarTooltip.style.visibility = "visible" };
         this.avatarIcon.onmouseout =    function(){ game.GUI.avatarTooltip.style.visibility = "hidden" };
         this.avatarIcon.onclick =       function(){
-            if(game.GUI.statsBar.container.style.visibility === "visible"){
-                game.GUI.statsBar.container.style.visibility = "hidden";
-                game.GUI.bankPanel.hide();
+            if(game.GUI.statsPanel.container.style.visibility === "visible"){
+                game.GUI.statsPanel.hide();
             }
             else {
-                game.GUI.statsBar.container.style.visibility = "visible";
-                game.GUI.bankPanel.show();
+                game.GUI.statsPanel.show();
             }
         };
 
@@ -119,6 +117,9 @@ class GUI {
 
         this.exitIcon.onmouseover =     function(){ game.GUI.exitTooltip.style.visibility = "visible" };
         this.exitIcon.onmouseout =      function(){ game.GUI.exitTooltip.style.visibility = "hidden" };
+        this.exitIcon.onclick =         function(){
+
+        };
 
         this.respawnsIcon.onmouseover = function(){ game.GUI.respawnsTooltip.style.visibility = "visible" };
         this.respawnsIcon.onmouseout =  function(){ game.GUI.respawnsTooltip.style.visibility = "hidden" };
@@ -185,11 +186,12 @@ class GUI {
         this.respawnsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.respawnsRemainingValue.innerText = this.game.player.respawns;
 
-        this.dragColours = {
+        this.GUIColours = {
             currentlyDragged: "rgba(255, 171, 0, 0.5)",
             validDropTarget: "rgba(146, 255, 236, 0.25)",
             validDropTargetOver: "rgba(140, 203, 255, 0.75)",
-            invalidDropTarget: "rgba(255, 34, 0, 0.5)"
+            invalidDropTarget: "rgba(255, 34, 0, 0.5)",
+            currentlySelected: "rgba(251, 242, 54, 0.5)"
         };
 
         this.dragData = null;
@@ -213,6 +215,7 @@ class GUI {
         this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
         this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
         this.makeElementDraggable(this.goldExchangePanel.name, this.goldExchangePanel.container);
+        this.makeElementDraggable(this.statsPanel.name, this.statsPanel.container);
 
     }
 

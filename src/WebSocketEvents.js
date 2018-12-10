@@ -34,11 +34,13 @@ window.connectToGameServer = function () {
 
     // If the game is running in dev mode (localhost), connect without SSL.
     if(window.devMode === true){
+        // Make a connection, or if one is already made, return so the listeners aren't added again.
         if(makeWebSocketConnection('ws://127.0.0.4:3000') === false) return false;
     }
     // Deployment mode. Connect using SSL.
     else {
-        if(makeWebSocketConnection('wss://test.waywardworlds.com:3000') === false) return false
+        // Make a connection, or if one is already made, return so the listeners aren't added again.
+        if(makeWebSocketConnection('wss://test.waywardworlds.com:3000') === false) return false;
     }
 
     /**
@@ -52,8 +54,9 @@ window.connectToGameServer = function () {
 
     // Wait for the connection to have finished opening before attempting to join the world.
     ws.onopen = function () {
+        console.log("ws onopen");
         // Attempt to join the world as soon as the connection is ready, so the user doesn't have to press 'Play' twice.
-        ws.sendEvent('join_world', {displayName: document.getElementById('name_input').value});
+        playPressed();
     };
 
     ws.onmessage = function (event) {
@@ -295,11 +298,19 @@ eventResponses.durability_value = function (data) {
 };
 
 eventResponses.heal = function (data) {
-    _this.chat(data.id, data.amount, "#87b500");
+    _this.dynamics[data.id].sprite.onHitPointsModified(data.amount);
 };
 
 eventResponses.damage = function (data) {
-    _this.chat(data.id, data.amount, "#ff6700");
+    _this.dynamics[data.id].sprite.onHitPointsModified(data.amount);
+};
+
+eventResponses.start_burn = function (data) {
+    _this.dynamics[data].sprite.onBurnStart();
+};
+
+eventResponses.stop_burn = function (data) {
+    _this.dynamics[data].sprite.onBurnStop();
 };
 
 eventResponses.player_respawn = function () {
@@ -375,14 +386,14 @@ eventResponses.deactivate_holding = function (data) {
 
 eventResponses.bank_item_deposited = function (data) {
     //console.log("bank_item_deposited, data:", data);
-    _this.bankManager.addItemToContents(data.slotIndex, ItemTypes[data.typeNumber], data.durability, data.maxDurability);
+    _this.player.bankManager.addItemToContents(data.slotIndex, ItemTypes[data.typeNumber], data.durability, data.maxDurability);
 };
 
 eventResponses.bank_item_withdrawn = function (data) {
     //console.log("bank_item_withdrawn, data:", data);
-    _this.bankManager.removeItemFromContents(data);
+    _this.player.bankManager.removeItemFromContents(data);
 };
-
+/*
 eventResponses.bank_coins_value = function (data) {
     _this.bankManager.coins = data;
     _this.GUI.bankPanel.moneyValue.innerHTML = data;
@@ -391,7 +402,7 @@ eventResponses.bank_coins_value = function (data) {
 eventResponses.gold_exchange_rate = function (data) {
     _this.GUI.goldExchangePanel.updateExchangeRate(data);
 };
-
+*/
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
     // Check the entity id is valid.
@@ -446,9 +457,12 @@ eventResponses.chat_warning = function (data) {
     _this.chat(undefined, dungeonz.getTextDef(ChatWarnings[data]), "#ffa54f");
 };
 
+eventResponses.exp_gained = function (data) {
+    //console.log("exp gained, data:", data);
+    _this.player.stats.list[data.statName].modExp(data.exp);
+};
+
 eventResponses.stat_levelled = function (data) {
     //console.log("stat levelled, data:", data);
-    _this.GUI.statsBar.counters[data.statName].innerText = data.level;
-    const upperCaseStatName = data.statName.charAt(0).toUpperCase() + data.statName.slice(1);
-    _this.chat(undefined, dungeonz.getTextDef("Stat name: " + upperCaseStatName) + " level gained!", '#73ff66');
+    _this.player.stats.list[data.statName].levelUp(data.level, data.nextLevelExpRequirement);
 };

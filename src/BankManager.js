@@ -1,4 +1,5 @@
 import GUI from "./gui/GUI";
+import ItemTypes from '../src/catalogues/ItemTypes'
 
 class BankItem {
     constructor () {
@@ -10,14 +11,26 @@ class BankItem {
 
 class BankManager {
 
-    constructor (coins) {
+    constructor (items) {
 
-        this.coins = coins || 0;
+        //this.coins = coins || 0;
         /** @type {BankItem[]} */
         this.items = [];
 
         for(let i=0; i<20; i+=1){
             this.items.push(new BankItem());
+        }
+
+        // If a list of existing items on this player was given, fill the client inventory.
+        if(items !== undefined){
+            let item = {};
+            for(let i=0, len=items.length; i<len; i+=1){
+                item = items[i];
+                // Set the properties here. The GUI will handle showing them when it is created.
+                this.items[item.slotIndex].catalogueEntry = ItemTypes[item.typeNumber];
+                this.items[item.slotIndex].durability = item.durability;
+                this.items[item.slotIndex].maxDurability = item.maxDurability;
+            }
         }
     }
 
@@ -82,7 +95,7 @@ class BankManager {
     }
 
     swapSlots (fromIndex, toIndex) {
-        console.log("swapping bank slots:", fromIndex, "to", toIndex);
+        //console.log("swapping bank slots:", fromIndex, "to", toIndex);
 
         const GUIslots = _this.GUI.bankPanel.slots;
 
@@ -123,6 +136,9 @@ class BankManager {
             }
             else {
                 GUIslots[fromIndex].durability.style.visibility = "visible";
+                // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
+                const meterNumber = Math.floor((fromItem.durability / fromItem.maxDurability) * 10);
+                GUIslots[fromIndex].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
             }
         }
 
@@ -146,12 +162,15 @@ class BankManager {
             }
             else {
                 GUIslots[toIndex].durability.style.visibility = "visible";
+                // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
+                const meterNumber = Math.floor((toItem.durability / toItem.maxDurability) * 10);
+                GUIslots[toIndex].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
             }
         }
 
-        //window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex, toSlotIndex: toIndex});
+        window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex, toSlotIndex: toIndex});
     }
-
+/*
     depositMoney () {
         let moneyValue = parseInt(_this.GUI.bankPanel.input.value);
         if(Number.isInteger(moneyValue) === false) return;
@@ -177,7 +196,7 @@ class BankManager {
 
         window.ws.sendEvent("bank_withdraw_money", moneyValue);
     }
-
+*/
 }
 
 export default BankManager;

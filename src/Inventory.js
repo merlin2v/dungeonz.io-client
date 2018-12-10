@@ -1,8 +1,9 @@
 import InventorySlot from "./InventorySlot";
+import ItemTypes from '../src/catalogues/ItemTypes'
 
 class Inventory {
 
-    constructor(){
+    constructor (inventory) {
         this.slot1 = new InventorySlot("slot1");
         this.slot2 = new InventorySlot("slot2");
         this.slot3 = new InventorySlot("slot3");
@@ -13,6 +14,18 @@ class Inventory {
         this.slot8 = new InventorySlot("slot8");
         this.slot9 = new InventorySlot("slot9");
         this.slot0 = new InventorySlot("slot0");
+
+        // If a list of existing items on this player was given, fill the client inventory.
+        if(inventory !== undefined){
+            let item = {};
+            for(let i=0, len=inventory.length; i<len; i+=1){
+                item = inventory[i];
+                // Set the properties here. The GUI will handle showing them when it is created.
+                this[item.slotKey].catalogueEntry = ItemTypes[item.typeNumber];
+                this[item.slotKey].durability = item.durability;
+                this[item.slotKey].maxDurability = item.maxDurability;
+            }
+        }
     }
 
     useHeldItem (direction) {
@@ -44,7 +57,7 @@ class Inventory {
     }
 
     swapInventorySlots(slotKeyFrom, slotKeyTo){
-        console.log("swapping inventory slots: from", slotKeyFrom, "to", slotKeyTo);
+        //console.log("swapping inventory slots: from", slotKeyFrom, "to", slotKeyTo);
 
         const GUIslots = _this.GUI.inventoryBar.slots;
         const fromSlot = this[slotKeyFrom];

@@ -64,12 +64,12 @@ class BankPanel {
         }
 
         this.deposit.onclick = function(){
-            _this.bankManager.depositMoney();
+            _this.player.bankManager.depositMoney();
             // Clear the input box.
             _this.GUI.bankPanel.input.value = "";
         };
         this.withdraw.onclick = function(){
-            _this.bankManager.withdrawMoney();
+            _this.player.bankManager.withdrawMoney();
             // Clear the input box.
             _this.GUI.bankPanel.input.value = "";
         };
@@ -81,12 +81,12 @@ class BankPanel {
         this.container.style.visibility = "visible";
         for(let i=0; i<20; i+=1){
             // Don't show empty slots.
-            if(_this.bankManager.items[i].catalogueEntry === null) continue;
+            if(_this.player.bankManager.items[i].catalogueEntry === null) continue;
 
             const slot = this.slots[i];
             slot.icon.style.visibility = "visible";
 
-            if(_this.bankManager.items[i].durability === null) continue;
+            if(_this.player.bankManager.items[i].durability === null) continue;
             slot.durability.style.visibility = "visible";
         }
     }
@@ -107,15 +107,15 @@ class BankPanel {
     slotClick () {
         //console.log("slot clicked:", this.getAttribute('slotIndex'));
 
-        _this.bankManager.withdrawItem(this.getAttribute('slotIndex'));
+        _this.player.bankManager.withdrawItem(this.getAttribute('slotIndex'));
     }
 
     slotMouseOver () {
         const slotIndex = this.getAttribute('slotIndex');
         // If the slot is empty, don't show the tooltip.
-        if(_this.bankManager.items[slotIndex].catalogueEntry === null) return;
+        if(_this.player.bankManager.items[slotIndex].catalogueEntry === null) return;
 
-        _this.GUI.bankPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + _this.bankManager.items[slotIndex].catalogueEntry.idName);
+        _this.GUI.bankPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + _this.player.bankManager.items[slotIndex].catalogueEntry.idName);
         _this.GUI.bankPanel.tooltip.style.visibility = 'visible';
     }
 
@@ -142,21 +142,21 @@ class BankPanel {
 
         // Highlight the bank panel slots.
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
         // Highlight the inventory bar slots.
         for(let slotKey in _this.GUI.inventoryBar.slots){
             if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.dragColours.validDropTargetOver;
+            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
 
-        this.style.backgroundColor = _this.GUI.dragColours.currentlyDragged;
+        this.style.backgroundColor = _this.GUI.GUIColours.currentlyDragged;
     }
 
     slotDragEnter (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
-        console.log("slot drag enter");
+        //console.log("slot drag enter");
     }
 
     slotDrop (event) {
@@ -166,12 +166,11 @@ class BankPanel {
         //console.log("slot dropped on bank, from:", _this.GUI.dragData.inventorySlot.slotKey, ", to:", this.getAttribute('slotIndex'));
         // Only add an item to the bank if it was dropped from the inventory bar.
         if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
-            _this.bankManager.depositItem(_this.GUI.dragData.inventorySlot.slotKey, this.getAttribute('slotIndex'));
+            _this.player.bankManager.depositItem(_this.GUI.dragData.inventorySlot.slotKey, this.getAttribute('slotIndex'));
         }
         else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
             const otherSlotIndex = _this.GUI.dragData.bankSlot.getAttribute('slotIndex');
-            console.log("slot drop, to:", thisSlotIndex, "from:", otherSlotIndex);
-            _this.bankManager.swapSlots(otherSlotIndex, thisSlotIndex);
+            _this.player.bankManager.swapSlots(otherSlotIndex, thisSlotIndex);
         }
 
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
@@ -180,7 +179,7 @@ class BankPanel {
     }
 
     slotDragEnd (event) {
-        console.log("slot drag end");
+        //console.log("slot drag end");
         event.preventDefault();
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();

@@ -2,6 +2,7 @@ import EntityTypes from '../src/catalogues/EntityTypes'
 import EntityList from '../src/EntitiesList';
 import Tilemap from './Tilemap'
 import GUI from './gui/GUI'
+import Stats from './Stats'
 import Inventory from './Inventory'
 import CraftingManager from "./CraftingManager";
 import BankManager from "./BankManager";
@@ -40,9 +41,11 @@ dungeonz.Game.prototype = {
             hitPoints: data.playerMaxHitPoints,
             energy: data.playerMaxEnergy,
             glory: data.playerGlory,
-            coins: data.playerCoins,
+            //coins: data.playerCoins,
             respawns: data.playerRespawns,
-            inventory: new Inventory(),
+            inventory: new Inventory(data.inventory),
+            bankManager: new BankManager(data.bankItems),
+            stats: new Stats(data.stats),
             holdingItem: false
         };
 
@@ -89,7 +92,26 @@ dungeonz.Game.prototype = {
         this.tilemap = new Tilemap(this);
         this.GUI = new GUI(this);
         this.craftingManager = new CraftingManager();
-        this.bankManager = new BankManager(1000);
+
+        // Make sure the inventory slots are showing the right items.
+        for(let slotKey in _this.player.inventory){
+            if(_this.player.inventory.hasOwnProperty(slotKey) === false) continue;
+            _this.player.inventory.swapInventorySlots(slotKey, slotKey);
+        }
+
+        const items = _this.player.bankManager.items;
+        // Make sure the bank slots are showing the right items.
+        for(let slotIndex=0, len=items.length; slotIndex<len; slotIndex+=1){
+            // Skip empty items slots.
+            if(items[slotIndex].catalogueEntry === null) continue;
+            console.log("adding item:", items[slotIndex]);
+            _this.player.bankManager.addItemToContents(slotIndex, items[slotIndex].catalogueEntry, items[slotIndex].durability, items[slotIndex].maxDurability);
+        }
+        // Hide the panel, as if any of the slots were filled with existing items, they will be shown.
+        _this.GUI.bankPanel.hide();
+
+        // Update the starting value for the next level exp requirement, for the default shown stat info.
+        _this.GUI.statsPanel.changeStatInfo(_this.player.stats.list.Melee);
 
         this.dynamics = {};
 
@@ -168,7 +190,7 @@ dungeonz.Game.prototype = {
         this.GUI.gui.style.visibility = "hidden";
         this.GUI.dungeonPrompt.style.visibility = "hidden";
         this.GUI.respawnPrompt.style.visibility = "hidden";
-        this.GUI.statsBar.container.style.visibility = "hidden";
+        this.GUI.statsPanel.container.style.visibility = "hidden";
         this.GUI.settingsBar.hide();
         this.GUI.craftingPanel.hide();
         this.GUI.bankPanel.hide();
@@ -183,6 +205,7 @@ dungeonz.Game.prototype = {
             this.GUI.craftingPanel.hide();
             this.GUI.bankPanel.hide();
             this.GUI.goldExchangePanel.hide();
+            this.GUI.statsPanel.hide();
         }
 
         this.checkPseudoInteractables(direction);

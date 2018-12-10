@@ -1,79 +1,5 @@
 @import "Variables";
 
-#play_button {
-  position: absolute;
-  width: 20%;
-  height: 60px;
-  top: 50%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: $colourDB32Red;
-  cursor: pointer;
-  border-style: solid;
-  border-color: $colourDB32White;
-  border-width: 3px;
-
-  text-align: center;
-  color: $colourDB32White;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-#play_button:hover {
-  background-color: $colourDB32Rose;
-  color: $colourDB32SkyBlue;
-  border-width: 6px;
-}
-
-
-#warning_message {
-  position: absolute;
-  top: 40%;
-  width: 50%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-
-  text-align: center;
-  color: $colourDB32Orange;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-
-  visibility: hidden;
-}
-
-
-#name_input {
-  position: absolute;
-  width: 30%;
-  height: 40px;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: solid;
-  border-color: $colourDB32White;
-  border-width: 3px;
-  background-color: $colourDB32White;
-  cursor: pointer;
-
-  text-align: center;
-  color: $colourDB32Red;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-#name_input:hover {
-  border-width: 6px;
-}
-
 #title_img_cont {
   position: absolute;
   display: inline-flex;
@@ -88,6 +14,102 @@
 
 #title_img {
   height: 50%;
+}
+
+#play_cont {
+  display: grid;
+  grid-template-rows: 40px 70px 70px;
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+#play_tabs_cont {
+  display: grid;
+  grid-template-columns: 44% 12% 44%;
+  width: 100%;
+}
+
+.play_tab {
+  position: relative;
+  background-color: $colourDB32WhiteOpacity80;
+  color: $colourDB32VeryDarkPurple;
+  font-family: Consolas;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+  &:hover {
+    font-size: 20px;
+  }
+}
+
+#play_inputs_cont {
+  background-color: $colourDB32WhiteOpacity80;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.home_input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $colourDB32White;
+  cursor: pointer;
+  text-align: center;
+  color: $colourDB32Red;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  border: 0;
+  &:hover {
+    font-size: 26px;
+  }
+}
+
+#play_button_cont {
+  background-color: $colourDB32WhiteOpacity80;
+  padding: 10px;
+}
+
+#play_button {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $colourDB32Red;
+  cursor: pointer;
+  text-align: center;
+  color: $colourDB32White;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  border: 0;
+  &:hover {
+    background-color: $colourDB32Rose;
+    font-size: 30px;
+  }
+}
+
+#warning_message {
+  position: absolute;
+  top: 40%;
+  width: 50%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: $colourDB32Orange;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+
+  visibility: hidden;
 }
 
 #background_img {

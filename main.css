@@ -1,74 +1,6 @@
 /*
 sass --watch scss/Main.scss:main.css
 */
-#play_button {
-  position: absolute;
-  width: 20%;
-  height: 60px;
-  top: 50%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #ac3232;
-  cursor: pointer;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 3px;
-  text-align: center;
-  color: #ffffff;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-#play_button:hover {
-  background-color: #d95763;
-  color: #cbdbfc;
-  border-width: 6px;
-}
-
-#warning_message {
-  position: absolute;
-  top: 40%;
-  width: 50%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  color: #df7126;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-  visibility: hidden;
-}
-
-#name_input {
-  position: absolute;
-  width: 30%;
-  height: 40px;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 3px;
-  background-color: #ffffff;
-  cursor: pointer;
-  text-align: center;
-  color: #ac3232;
-  font-family: Consolas;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-#name_input:hover {
-  border-width: 6px;
-}
-
 #title_img_cont {
   position: absolute;
   display: inline-flex;
@@ -85,6 +17,101 @@ sass --watch scss/Main.scss:main.css
 
 #title_img {
   height: 50%;
+}
+
+#play_cont {
+  display: grid;
+  grid-template-rows: 40px 70px 70px;
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+#play_tabs_cont {
+  display: grid;
+  grid-template-columns: 44% 12% 44%;
+  width: 100%;
+}
+
+.play_tab {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #222034;
+  font-family: Consolas;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+}
+.play_tab:hover {
+  font-size: 20px;
+}
+
+#play_inputs_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.home_input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  color: #ac3232;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  border: 0;
+}
+.home_input:hover {
+  font-size: 26px;
+}
+
+#play_button_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+#play_button {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ac3232;
+  cursor: pointer;
+  text-align: center;
+  color: #ffffff;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  border: 0;
+}
+#play_button:hover {
+  background-color: #d95763;
+  font-size: 30px;
+}
+
+#warning_message {
+  position: absolute;
+  top: 40%;
+  width: 50%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #df7126;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  visibility: hidden;
 }
 
 #background_img {
@@ -392,50 +419,66 @@ sass --watch scss/Main.scss:main.css
   visibility: hidden;
 }
 
-#stat_name {
-  font-weight: bold;
+#stats_panel {
+  display: inline-grid;
 }
 
-#stats_cont {
-  display: inline-flex;
-  visibility: hidden;
-  position: relative;
-  top: -2px;
+#stats_panel_main {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-.stat_icon {
-  margin-left: 4px;
-  margin-right: 4px;
-  width: 34px;
-  height: 34px;
-  pointer-events: auto;
+#stats_icons_cont {
+  display: grid;
+  grid-template-columns: 48px 48px 48px 48px 48px 48px;
+  grid-template-rows: 48px 48px;
+  grid-gap: 12px;
+  padding: 10px;
 }
-.stat_icon:hover {
+
+.stat_icon_cont {
+  border-radius: 14px;
+}
+.stat_icon_cont:hover {
   -webkit-filter: brightness(150%);
 }
 
-.stat_counter {
-  text-align: center;
-  color: #ffffff;
-  font-family: Consolas;
-  font-weight: bolder;
-  font-size: 24px;
-  margin-top: 0px;
-  -webkit-text-stroke: 1px #222034;
+.stat_icon {
+  width: 48px;
+  height: 48px;
 }
 
-#stat_tooltip_cont {
+#stats_info_cont {
   position: absolute;
-  width: 100%;
-  top: 100%;
   text-align: center;
-  color: #3f3f74;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+#stat_name {
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+#stat_description {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#stat_level_counter {
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 10px;
+}
+
+#stat_exp_counter {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.stat_info_text {
   font-family: Consolas;
-  margin-top: -20px;
-  padding: 8px 16px 8px 16px;
-  box-sizing: border-box;
-  visibility: hidden;
+  font-size: 18px;
+  color: #222034;
 }
 
 .generic_tooltip {
@@ -676,7 +719,7 @@ sass --watch scss/Main.scss:main.css
   padding-top: 0;
 }
 
-#inventory_slot_cont {
+#inventory_bar {
   position: absolute;
   display: inline-grid;
   grid-template-columns: repeat(10, 56px);
@@ -944,7 +987,7 @@ sass --watch scss/Main.scss:main.css
   color: #222034;
 }
 
-#gold_ex_cont {
+#gold_ex_panel {
   display: inline-grid;
 }
 
@@ -988,6 +1031,89 @@ sass --watch scss/Main.scss:main.css
 }
 #gold_ex_accept:hover {
   background-color: #99e550;
+}
+
+#exit_game_panel {
+  display: inline-grid;
+  visibility: visible;
+}
+
+#exit_game_panel_main {
+  width: 300px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.exit_game_panel_info {
+  padding: 10px;
+  color: #222034;
+  font-family: Consolas;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#exit_game_panel_info_2 {
+  padding-top: 0px;
+  font-size: 14px;
+}
+
+#exit_game_panel_code {
+  background-color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  color: #ac3232;
+  font-family: Consolas;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  line-height: 26px;
+}
+#exit_game_panel_code:hover {
+  font-size: 26px;
+}
+
+#exit_game_panel_buttons_cont {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+
+#exit_game_panel_save_button_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#exit_game_panel_exit_button_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.exit_game_panel_button {
+  position: relative;
+  margin: 10px;
+  text-align: center;
+  font-family: Consolas;
+  font-weight: bold;
+  color: #222034;
+  user-select: none;
+}
+
+#exit_game_panel_save_button {
+  background-color: #d9a066;
+  line-height: 30px;
+  font-size: 18px;
+}
+#exit_game_panel_save_button:hover {
+  background-color: #eec39a;
+  font-size: 20px;
+}
+
+#exit_game_panel_exit_button {
+  background-color: #d95763;
+  line-height: 30px;
+  font-size: 20px;
+}
+#exit_game_panel_exit_button:hover {
+  background-color: #df7126;
+  font-size: 22px;
 }
 
 #game_canvas {

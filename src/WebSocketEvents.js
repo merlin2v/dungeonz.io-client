@@ -88,6 +88,8 @@ window.connectToGameServer = function () {
     ws.onerror = function (error) {
         // Get the warning text.
         let element = document.getElementById("warning_message");
+        // Show the server connect error message.
+        element.innerText = dungeonz.getTextDef("Connect game server warning");
         // Show it.
         element.style.visibility = "visible";
         // Make it disappear after a few seconds.
@@ -96,6 +98,32 @@ window.connectToGameServer = function () {
         }, 8000);
     }
 
+};
+
+eventResponses.invalid_continue_code = function () {
+    // Get the warning text.
+    let element = document.getElementById("warning_message");
+    // Show the server connect error message.
+    element.innerText = dungeonz.getTextDef("Invalid continue code warning");
+    // Show it.
+    element.style.visibility = "visible";
+    // Make it disappear after a few seconds.
+    setTimeout(function () {
+        element.style.visibility = "hidden";
+    }, 8000);
+};
+
+eventResponses.character_in_use = function () {
+    // Get the warning text.
+    let element = document.getElementById("warning_message");
+    // Show the server connect error message.
+    element.innerText = dungeonz.getTextDef("Character in use");
+    // Show it.
+    element.style.visibility = "visible";
+    // Make it disappear after a few seconds.
+    setTimeout(function () {
+        element.style.visibility = "hidden";
+    }, 8000);
 };
 
 eventResponses.join_world_success = function (data) {
@@ -435,7 +463,7 @@ eventResponses.change_direction = function (data) {
     const sprite = dynamic.sprite;
     // Some sprites show their direction by having different frames, others by rotating.
     if(sprite.baseFrames !== undefined){
-        sprite.frameName = sprite.baseFrames[data.direction];
+        sprite.body.frameName = sprite.baseFrames[data.direction];
     }
     if(sprite.directionAngles !== undefined){
         sprite.angle = sprite.directionAngles[data.direction];
@@ -445,7 +473,7 @@ eventResponses.change_direction = function (data) {
         sprite.clothes.animations.stop();
     }
     sprite.direction = data.direction;
-    sprite.animations.stop();
+    sprite.onChangeDirection();
 };
 
 eventResponses.chat = function (data) {

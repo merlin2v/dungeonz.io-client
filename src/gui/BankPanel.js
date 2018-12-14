@@ -51,10 +51,10 @@ class BankPanel {
         this.tooltip =      document.getElementById('bank_tooltip');
         this.name =         document.getElementById('bank_name');
         this.contents =     document.getElementById('bank_contents');
-        this.moneyValue =   document.getElementById('bank_money_value');
-        this.deposit =      document.getElementById('bank_deposit');
-        this.withdraw =     document.getElementById('bank_withdraw');
-        this.input =        document.getElementById('bank_money_input');
+        //this.moneyValue =   document.getElementById('bank_money_value');
+        //this.deposit =      document.getElementById('bank_deposit');
+        //this.withdraw =     document.getElementById('bank_withdraw');
+        //this.input =        document.getElementById('bank_money_input');
 
         this.slots = [];
 
@@ -63,7 +63,7 @@ class BankPanel {
             this.slots.push(new Slot(this, i));
         }
 
-        this.deposit.onclick = function(){
+        /*this.deposit.onclick = function(){
             _this.player.bankManager.depositMoney();
             // Clear the input box.
             _this.GUI.bankPanel.input.value = "";
@@ -72,7 +72,7 @@ class BankPanel {
             _this.player.bankManager.withdrawMoney();
             // Clear the input box.
             _this.GUI.bankPanel.input.value = "";
-        };
+        };*/
     }
 
     show () {
@@ -124,15 +124,15 @@ class BankPanel {
     }
 
     slotDragStart (event) {
-        console.log("this:", this);
+        //console.log("this:", this);
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
 
-        console.log("slot drag start");
+        //console.log("slot drag start");
 
         const slotIndex = this.getAttribute('slotIndex');
         const icon = _this.GUI.bankPanel.slots[slotIndex].icon;
-        console.log("icon:", icon);
+        //console.log("icon:", icon);
         event.dataTransfer.setData('text/plain', null);
         _this.GUI.dragData = {
             dragOrigin: _this.GUI.bankPanel.contents,
@@ -172,6 +172,8 @@ class BankPanel {
             const otherSlotIndex = _this.GUI.dragData.bankSlot.getAttribute('slotIndex');
             _this.player.bankManager.swapSlots(otherSlotIndex, thisSlotIndex);
         }
+        // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
+        _this.GUI.dragData.dragOrigin = null;
 
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
             _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
@@ -194,6 +196,8 @@ class BankPanel {
             if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
             _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = "transparent";
         }
+        // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
+        _this.GUI.dragData.dragOrigin = null;
     }
 
 }

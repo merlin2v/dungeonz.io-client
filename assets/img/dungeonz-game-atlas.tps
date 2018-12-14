@@ -194,6 +194,18 @@
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
+            <key type="filename">entities/characters/bandit/bandit-down-1.png</key>
+            <key type="filename">entities/characters/bandit/bandit-down-2.png</key>
+            <key type="filename">entities/characters/bandit/bandit-down-3.png</key>
+            <key type="filename">entities/characters/bandit/bandit-left-1.png</key>
+            <key type="filename">entities/characters/bandit/bandit-left-2.png</key>
+            <key type="filename">entities/characters/bandit/bandit-left-3.png</key>
+            <key type="filename">entities/characters/bandit/bandit-right-1.png</key>
+            <key type="filename">entities/characters/bandit/bandit-right-2.png</key>
+            <key type="filename">entities/characters/bandit/bandit-right-3.png</key>
+            <key type="filename">entities/characters/bandit/bandit-up-1.png</key>
+            <key type="filename">entities/characters/bandit/bandit-up-2.png</key>
+            <key type="filename">entities/characters/bandit/bandit-up-3.png</key>
             <key type="filename">entities/characters/effects/burn-effect-1.png</key>
             <key type="filename">entities/characters/effects/burn-effect-2.png</key>
             <key type="filename">entities/characters/human base/human-down-1.png</key>
@@ -208,6 +220,18 @@
             <key type="filename">entities/characters/human base/human-up-1.png</key>
             <key type="filename">entities/characters/human base/human-up-2.png</key>
             <key type="filename">entities/characters/human base/human-up-3.png</key>
+            <key type="filename">entities/characters/knight/knight-down-1.png</key>
+            <key type="filename">entities/characters/knight/knight-down-2.png</key>
+            <key type="filename">entities/characters/knight/knight-down-3.png</key>
+            <key type="filename">entities/characters/knight/knight-left-1.png</key>
+            <key type="filename">entities/characters/knight/knight-left-2.png</key>
+            <key type="filename">entities/characters/knight/knight-left-3.png</key>
+            <key type="filename">entities/characters/knight/knight-right-1.png</key>
+            <key type="filename">entities/characters/knight/knight-right-2.png</key>
+            <key type="filename">entities/characters/knight/knight-right-3.png</key>
+            <key type="filename">entities/characters/knight/knight-up-1.png</key>
+            <key type="filename">entities/characters/knight/knight-up-2.png</key>
+            <key type="filename">entities/characters/knight/knight-up-3.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-1.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-2.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-3.png</key>
@@ -255,6 +279,7 @@
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
             <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
+            <key type="filename">entities/pickups/pickup-wood-plank.png</key>
             <key type="filename">entities/pickups/pickup-wood.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
             <key type="filename">entities/projectiles/proj-iron-dagger.png</key>
@@ -304,6 +329,7 @@
                 <false/>
             </struct>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
+            <key type="filename">entities/pickups/pickup-feathers.png</key>
             <key type="filename">entities/pickups/pickup-gold-ore.png</key>
             <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
@@ -316,6 +342,19 @@
                 <rect>5,5,9,9</rect>
                 <key>scale9Paddings</key>
                 <rect>5,5,9,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/pickups/pickup-iron-arrows.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,11,11</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -332,6 +371,8 @@
             <filename>entities/clothes/cloak</filename>
             <filename>entities/clothes/paladin armour</filename>
             <filename>entities/characters/effects</filename>
+            <filename>entities/characters/bandit</filename>
+            <filename>entities/characters/knight</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

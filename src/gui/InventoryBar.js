@@ -194,6 +194,9 @@ class InventoryBar {
             _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
         }
 
+        // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
+        _this.GUI.dragData.dragOrigin = null;
+
         //console.log("invent slot drop");
     }
 
@@ -215,6 +218,9 @@ class InventoryBar {
         for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
             _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
         }
+
+        // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
+        _this.GUI.dragData.dragOrigin = null;
     }
 
 }

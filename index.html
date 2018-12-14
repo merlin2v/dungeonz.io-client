@@ -72,12 +72,12 @@
                     <div id="glory_counter_transition"  class="text_counter text_counter_transition"><p><p/></div>
                     <div id="glory_tooltip"     class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="coins_cont" class="inline_cont">
+                <!--div id="coins_cont" class="inline_cont">
                     <img id="coins_icon"                class="gui_icon" src="assets/img/gui/coins-icon.png">
                     <div id="coin_counter"              class="text_counter"></div>
                     <div id="coin_counter_transition"   class="text_counter text_counter_transition"><p><p/></div>
                     <div id="coins_tooltip"     class="top_left_tooltip generic_tooltip"></div>
-                </div>
+                </div-->
                 <div id="bounty_cont" class="inline_cont">
                     <img id="bounty_icon" class="gui_icon" src="assets/img/gui/bounty-icon.png">
                     <div id="bounty_tooltip"    class="top_left_tooltip generic_tooltip"></div>
@@ -178,31 +178,26 @@
             </div>
 
             <div id="exit_game_panel" class="panel">
-                <div id="exit_game_panel_name" class="panel_name">Exit game?</div>
+                <div id="exit_game_panel_name" class="panel_name"></div>
                 <div id="exit_game_panel_main">
-                    <div id="exit_game_panel_info_1" class="exit_game_panel_info">Use the below continue code the next time you play to resume where you left off.</div>
+                    <div id="exit_game_panel_info_1" class="exit_game_panel_info"></div>
                     <div id="exit_game_panel_code">
-                        1234-5678-99999
                     </div>
-                    <div id="exit_game_panel_info_2" class="exit_game_panel_info">Press 'Save code' to save the code to this device, which will load it automatically on the home page.</div>
+                    <div id="exit_game_panel_info_2" class="exit_game_panel_info"></div>
                 </div>
                 <div id="exit_game_panel_buttons_cont">
                     <div id="exit_game_panel_save_button_cont">
-                        <div id="exit_game_panel_save_button" class="exit_game_panel_button">
-                            Save code
-                        </div>
+                        <div id="exit_game_panel_save_button" class="exit_game_panel_button"></div>
                     </div>
                     <div></div>
                     <div id="exit_game_panel_exit_button_cont">
-                        <div id="exit_game_panel_exit_button" class="exit_game_panel_button">
-                            Exit
-                        </div>
+                        <div id="exit_game_panel_exit_button" class="exit_game_panel_button"></div>
                     </div>
                 </div>
             </div>
 
             <div id="stats_panel" class="panel">
-                <div id="stats_panel_name" class="panel_name">Stats</div>
+                <div id="stats_panel_name" class="panel_name"></div>
                 <div id="stats_panel_main">
                     <div id="stats_icons_cont">
                         <div id="stat_melee" class="stat_icon_cont">
@@ -234,10 +229,10 @@
                         </div>
                     </div>
                     <div id="stats_info_cont">
-                        <div id="stat_name" class="stat_info_text">Weaponry</div>
-                        <div id="stat_description" class="stat_info_text">This is some stuff about the weaponry stat.</div>
-                        <div id="stat_level_counter" class="stat_info_text">Level: 1</div>
-                        <div id="stat_exp_counter" class="stat_info_text">Exp: 0 / 0</div>
+                        <div id="stat_name" class="stat_info_text"></div>
+                        <div id="stat_description" class="stat_info_text"></div>
+                        <div id="stat_level_counter" class="stat_info_text"></div>
+                        <div id="stat_exp_counter" class="stat_info_text"></div>
                     </div>
                 </div>
             </div>
@@ -258,6 +253,7 @@
                 </div>
             </div>-->
 
+            <!--
             <div id="gold_ex_panel" class="panel">
                 <div id="gold_ex_name" class="panel_name">Gold exchange</div>
                 <div id="gold_ex_rate_cont">
@@ -272,15 +268,15 @@
                 <div id="gold_ex_accept_cont">
                     <div id="gold_ex_accept" class="bank_money_text">Exchange</div>
                 </div>
-            </div>
+            </div>-->
 
             <div id="bank_panel" class="panel">
                 <div class="panel_header">
-                    <div id="bank_tooltip" class="panel_tooltip">Tooltip</div>
-                    <div id="bank_name" class="panel_name">Bank</div>
+                    <div id="bank_tooltip" class="panel_tooltip"></div>
+                    <div id="bank_name" class="panel_name"></div>
                 </div>
                 <div id="bank_contents"></div>
-                <div id="bank_spacer"></div>
+                <!--<div id="bank_spacer"></div>
                 <div id="bank_money_bar_cont">
                     <div id="bank_deposit" class="bank_money_text">Deposit</div>
                     <div id="bank_money_cont">
@@ -289,13 +285,13 @@
                     </div>
                     <div id="bank_withdraw" class="bank_money_text">Withdraw</div>
                 </div>
-                <input id="bank_money_input" type="number" min="1" max="99999" step="1" placeholder="Amount">
+                <input id="bank_money_input" type="number" min="1" max="99999" step="1" placeholder="Amount">-->
             </div>
 
             <div id="crafting_panel" class="panel">
                 <div class="panel_header">
-                    <div id="crafting_tooltip" class="panel_tooltip">Tooltip</div>
-                    <div id="crafting_station_name" class="panel_name">Workbench</div>
+                    <div id="crafting_tooltip" class="panel_tooltip"></div>
+                    <div id="crafting_station_name" class="panel_name"></div>
                 </div>
                 <div id="crafting_panel_main">
                     <div id="crafting_components_bar">
@@ -351,7 +347,6 @@
         <div id="title_img_cont">
             <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
         </div>
-        <p id="warning_message">Could not connect to game server. Probably updating...</p>
         <div id="play_cont">
             <div id="play_tabs_cont">
                 <button id="new_character" class="play_tab" type="button" onclick="newCharacterPressed()"></button>
@@ -360,11 +355,12 @@
             </div>
             <div id="play_inputs_cont">
                 <input id="name_input" class="home_input" type="text" maxlength="20" autofocus>
-                <input id="continue_code_input" class="home_input" type="text" maxlength="14">
+                <input id="continue_code_input" class="home_input" type="text" maxlength="18">
             </div>
             <div id="play_button_cont">
                 <button id="play_button" type="button" onclick="playPressed()"></button>
             </div>
+            <p id="warning_message"></p>
         </div>
         <div id="language_select"></div>
         <ul id="language_list">
@@ -419,7 +415,7 @@
 
     <script>
 
-        window.newCharacter = true;
+        window.newCharacter = false;
 
         const colourDB32WhiteOpacity80 = "rgba(255, 255, 255, 0.8)";
         const colourDB32SteelGreyOpacity80 = "rgba(155, 173, 183, 0.8)";
@@ -427,6 +423,15 @@
         const continueCharacterButton = document.getElementById('continue_character');
         const nameInput = document.getElementById('name_input');
         const continueCodeInput = document.getElementById('continue_code_input');
+        const exitGamePanelCode = document.getElementById('exit_game_panel_code');
+
+        // Get the code from the client local storage if one exists.
+        const storedCode = localStorage.getItem('continue_code');
+        if(storedCode !== undefined){
+            window.newCharacter = false;
+            continueCodeInput.value = storedCode;
+            exitGamePanelCode.innerText = storedCode;
+        }
 
         function newCharacterPressed () {
             window.newCharacter = true;
@@ -505,6 +510,8 @@
             dungeonz.language = language;
 
             // Update the DOM elements that have text with the values for the selected language.
+            // Home page.
+            document.getElementById('warning_message').innerText =      dungeonz.getTextDef('Connect game server warning');
             document.getElementById('language_select').innerText =      dungeonz.getTextDef('Language');
             document.getElementById('add_translation').innerText =      dungeonz.getTextDef('Add translation');
             document.getElementById('name_input').placeholder =         dungeonz.getTextDef('Name input');
@@ -523,11 +530,13 @@
             document.getElementById('wikia_tooltip').innerText =        dungeonz.getTextDef('Community: Wikia');
             document.getElementById('discord_tooltip').innerText =      dungeonz.getTextDef('Community: Discord');
             document.getElementById('facebook_tooltip').innerText =     dungeonz.getTextDef('Community: Facebook');
+
+            // General GUI tooltips.
             document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');
             document.getElementById('hitpoint_tooltip').innerText =     dungeonz.getTextDef('Hitpoint tooltip');
             document.getElementById('energy_tooltip').innerText =       dungeonz.getTextDef('Energy tooltip');
             document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
-            document.getElementById('coins_tooltip').innerText =        dungeonz.getTextDef('Coins tooltip');
+            //document.getElementById('coins_tooltip').innerText =        dungeonz.getTextDef('Coins tooltip');
             document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
             document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
             document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
@@ -539,6 +548,8 @@
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
             document.getElementById('fullscreen_tooltip').innerHTML =   dungeonz.getTextDef('Fullscreen tooltip');
+
+            // Dungeon panel.
             document.getElementById('dungeon_prompt_name_header').innerText =       dungeonz.getTextDef('Dungeon') + ":";
             document.getElementById('dungeon_prompt_difficulty_header').innerText = dungeonz.getTextDef('Difficulty') + ":";
             document.getElementById('dungeon_prompt_glory_cost_header').innerText = dungeonz.getTextDef('Glory cost') + ":";
@@ -546,12 +557,25 @@
             document.getElementById('dungeon_prompt_warning_value').innerText =     dungeonz.getTextDef('Enter dungeon warning message');
             document.getElementById('dungeon_prompt_accept').innerText =            dungeonz.getTextDef('Enter');
             document.getElementById('dungeon_prompt_decline').innerText =           dungeonz.getTextDef('Cancel');
-            document.getElementById('you_died').innerText =             dungeonz.getTextDef('You died');
-            document.getElementById('respawns_remaining').innerText =   dungeonz.getTextDef('Respawns remaining');
-            document.getElementById('respawn_button').innerText =       dungeonz.getTextDef('Respawn');
-            document.getElementById('game_over').innerText =            dungeonz.getTextDef('Game over');
-            document.getElementById('game_over_message').innerText =    dungeonz.getTextDef('Game over message');
-            document.getElementById('play_again_button').innerText =    dungeonz.getTextDef('Play again');
+
+            // Respawn panel.
+            document.getElementById('you_died').innerText =                     dungeonz.getTextDef('You died');
+            document.getElementById('respawns_remaining').innerText =           dungeonz.getTextDef('Respawns remaining');
+            document.getElementById('respawn_button').innerText =               dungeonz.getTextDef('Respawn');
+            document.getElementById('game_over').innerText =                    dungeonz.getTextDef('Game over');
+            document.getElementById('game_over_message').innerText =            dungeonz.getTextDef('Game over message');
+            document.getElementById('play_again_button').innerText =            dungeonz.getTextDef('Play again');
+
+            // Other panels.
+            document.getElementById('exit_game_panel_name').innerText =         dungeonz.getTextDef('Exit game panel: name');
+            document.getElementById('exit_game_panel_info_1').innerText =       dungeonz.getTextDef('Exit game panel: info 1');
+            document.getElementById('exit_game_panel_info_2').innerText =       dungeonz.getTextDef('Exit game panel: info 2');
+            document.getElementById('exit_game_panel_save_button').innerText =  dungeonz.getTextDef('Exit game panel: save code');
+            document.getElementById('exit_game_panel_exit_button').innerText =  dungeonz.getTextDef('Exit game panel: exit');
+
+            document.getElementById('stats_panel_name').innerText =             dungeonz.getTextDef('Stats panel: name');
+            document.getElementById('bank_name').innerText =                    dungeonz.getTextDef('Bank panel: name');
+
         }
 
         // Load the default language.

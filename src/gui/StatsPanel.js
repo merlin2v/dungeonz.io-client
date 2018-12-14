@@ -56,8 +56,8 @@ class StatsPanel {
         this.icons[stat.name].style.backgroundColor = _this.GUI.GUIColours.currentlySelected;
         this.statName.innerText = dungeonz.getTextDef("Stat name: " + stat.name);
         this.description.innerText = dungeonz.getTextDef("Stat description: " + stat.name);
-        this.levelCounter.innerText = "Level: " + stat.level;
-        this.expCounter.innerText = "Exp: " + stat.exp + " / " + stat.nextLevelExpRequirement;
+        this.levelCounter.innerText = dungeonz.getTextDef("Level") + ": " + stat.level;
+        this.expCounter.innerText = dungeonz.getTextDef("Exp") + ": " + stat.exp + " / " + stat.nextLevelExpRequirement;
     }
 
     show () {

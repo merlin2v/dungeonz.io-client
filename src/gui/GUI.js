@@ -3,7 +3,8 @@ import SettingsBar from "./SettingsBar";
 import StatsPanel from "./StatsPanel";
 import CraftingPanel from "./CraftingPanel";
 import BankPanel from "./BankPanel";
-import GoldExchangePanel from "./GoldExchangePanel";
+//import GoldExchangePanel from "./GoldExchangePanel";
+import ExitGamePanel from "./ExitGamePanel";
 
 class GUI {
 
@@ -18,7 +19,7 @@ class GUI {
         this.hitPointIcon =             document.getElementById('hitpoint_icon');
         this.energyIcon =               document.getElementById('energy_icon');
         this.gloryIcon =                document.getElementById('glory_icon');
-        this.coinsIcon =                document.getElementById('coins_icon');
+        //this.coinsIcon =                document.getElementById('coins_icon');
         this.bountyIcon =               document.getElementById('bounty_icon');
         this.avatarIcon =               document.getElementById('avatar_icon');
         this.inventoryIcon =            document.getElementById('inventory_icon');
@@ -29,7 +30,7 @@ class GUI {
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
         this.energyTooltip =            document.getElementById('energy_tooltip');
         this.gloryTooltip =             document.getElementById('glory_tooltip');
-        this.coinsTooltip =             document.getElementById('coins_tooltip');
+        //this.coinsTooltip =             document.getElementById('coins_tooltip');
         this.bountyTooltip =            document.getElementById('bounty_tooltip');
         this.avatarTooltip =            document.getElementById('avatar_tooltip');
         this.inventoryTooltip =         document.getElementById('inventory_tooltip');
@@ -38,8 +39,8 @@ class GUI {
 
         this.gloryCounter =             document.getElementById('glory_counter');
         this.gloryCounterTransition =   document.getElementById('glory_counter_transition');
-        this.coinsCounter =             document.getElementById('coin_counter');
-        this.coinsCounterTransition =   document.getElementById('coin_counter_transition');
+        //this.coinsCounter =             document.getElementById('coin_counter');
+        //this.coinsCounterTransition =   document.getElementById('coin_counter_transition');
         this.respawnsCounter =          document.getElementById('respawns_counter_value');
         this.respawnsCounterTransition =document.getElementById('respawns_counter_transition');
 
@@ -67,7 +68,8 @@ class GUI {
         this.statsPanel =       new StatsPanel();
         this.craftingPanel =    new CraftingPanel();
         this.bankPanel =        new BankPanel();
-        this.goldExchangePanel= new GoldExchangePanel();
+        this.exitGamePanel =    new ExitGamePanel();
+        //this.goldExchangePanel= new GoldExchangePanel();
 
         this.isAnyPanelOpen = false;
 
@@ -94,8 +96,8 @@ class GUI {
         this.gloryIcon.onmouseover =    function(){ game.GUI.gloryTooltip.style.visibility = "visible" };
         this.gloryIcon.onmouseout =     function(){ game.GUI.gloryTooltip.style.visibility = "hidden" };
 
-        this.coinsIcon.onmouseover =    function(){ game.GUI.coinsTooltip.style.visibility = "visible" };
-        this.coinsIcon.onmouseout =     function(){ game.GUI.coinsTooltip.style.visibility = "hidden" };
+        //this.coinsIcon.onmouseover =    function(){ game.GUI.coinsTooltip.style.visibility = "visible" };
+        //this.coinsIcon.onmouseout =     function(){ game.GUI.coinsTooltip.style.visibility = "hidden" };
 
         this.bountyIcon.onmouseover =   function(){ game.GUI.bountyTooltip.style.visibility = "visible" };
         this.bountyIcon.onmouseout =    function(){ game.GUI.bountyTooltip.style.visibility = "hidden" };
@@ -118,7 +120,12 @@ class GUI {
         this.exitIcon.onmouseover =     function(){ game.GUI.exitTooltip.style.visibility = "visible" };
         this.exitIcon.onmouseout =      function(){ game.GUI.exitTooltip.style.visibility = "hidden" };
         this.exitIcon.onclick =         function(){
-
+            if(game.GUI.exitGamePanel.container.style.visibility === "visible"){
+                game.GUI.exitGamePanel.hide();
+            }
+            else {
+                game.GUI.exitGamePanel.show();
+            }
         };
 
         this.respawnsIcon.onmouseover = function(){ game.GUI.respawnsTooltip.style.visibility = "visible" };
@@ -180,8 +187,8 @@ class GUI {
         // Set the values for the text based counters (glory, coins).
         this.gloryCounter.innerText = this.game.player.glory;
         this.gloryCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
-        this.coinsCounter.innerText = this.game.player.coins;
-        this.coinsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
+        //this.coinsCounter.innerText = this.game.player.coins;
+        //this.coinsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.respawnsCounter.innerText = this.game.player.respawns;
         this.respawnsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.respawnsRemainingValue.innerText = this.game.player.respawns;
@@ -214,7 +221,7 @@ class GUI {
         // Make the various panels draggable.
         this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
         this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
-        this.makeElementDraggable(this.goldExchangePanel.name, this.goldExchangePanel.container);
+        //this.makeElementDraggable(this.goldExchangePanel.name, this.goldExchangePanel.container);
         this.makeElementDraggable(this.statsPanel.name, this.statsPanel.container);
 
     }
@@ -349,7 +356,7 @@ class GUI {
         this.game.player.glory = value;
         this.gloryCounter.innerText = value;
     }
-
+/*
     updateCoinsCounter (value) {
         const difference = value - _this.player.coins;
         if(difference > 0){
@@ -362,7 +369,7 @@ class GUI {
         this.game.player.coins = value;
         this.coinsCounter.innerText = value;
     }
-
+*/
     updateRespawnsCounter (value) {
         const difference = value - _this.player.respawns;
         if(difference > 0){

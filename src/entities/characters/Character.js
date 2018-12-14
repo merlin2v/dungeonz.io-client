@@ -1,18 +1,23 @@
 
-const moveAnimCompleted = function () {
-    this.frameName = this.baseFrames[this.direction];
-};
+const Sprite = function (x, y, config) {
 
-const Sprite = function (x, y, config, baseFrames) {
+    Phaser.Sprite.call(this, _this.game, x, y, undefined, undefined);
 
-    this.baseFrames = baseFrames;
-
-    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.baseFrames[config.direction] || this.baseFrames.d);
+    //this.anchor.set(0.5);
+    this.scale.setTo(GAME_SCALE);
 
     //this.entityId = config.id;
     this.direction = config.direction;
 
-    this.scale.setTo(GAME_SCALE);
+    let frame = undefined;
+    if(this.baseFrames !== undefined){
+        frame = this.baseFrames[config.direction] || this.baseFrames.d;
+    }
+    this.body = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', frame);
+    //this.body.baseFrames = baseFrames;
+    //this.body.frameName = frame;
+    this.body.anchor.set(0.5);
+    this.addChild(this.body);
 
     const style = {
         font: "20px Consolas",
@@ -23,43 +28,47 @@ const Sprite = function (x, y, config, baseFrames) {
     };
 
     // The anchor is still in the top left, so offset by half the width to center the text.
-    this.displayName = _this.add.text(this.width / 2 / GAME_SCALE, 4, config.displayName, style);
+    this.displayName = _this.add.text(dungeonz.TILE_SIZE / 2, 4, config.displayName, style);
     this.displayName.anchor.set(0.5, 1);
     this.displayName.scale.set(0.5);
     this.addChild(this.displayName);
 
     this.chatTexts = [];
 
-    this.damageMarker = _this.add.text(this.width / 2 / GAME_SCALE, this.height / 2 / GAME_SCALE, -99, style);
+    this.burnEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'burn-effect-1');
+    this.burnEffect.animations.add('burn', ['burn-effect-1', 'burn-effect-2'], 2, true);
+    this.burnEffect.anchor.set(0.5);
+    this.addChild(this.burnEffect);
+    this.burnEffect.visible = false;
+
+    this.damageMarker = _this.add.text(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, -99, style);
     this.damageMarker.anchor.set(0.5);
     this.damageMarker.scale.set(0.5);
     this.damageMarker.visible = false;
     this.addChild(this.damageMarker);
     this.damageMarkerDisappearTimeout = null;
 
-    this.burnEffect = _this.add.sprite(0, 0, 'game-atlas', 'burn-effect-1');
-    this.burnEffect.animations.add('burn', ['burn-effect-1', 'burn-effect-2'], 2, true);
-    this.addChild(this.burnEffect);
-    this.burnEffect.visible = false;
-
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
+Sprite.prototype.moveAnimCompleted = function () {
+    this.body.frameName = this.baseFrames[this.direction];
+};
+
 Sprite.prototype.onMove = function (playMoveAnim) {
-    // Move all of the chat texts along with the player.
+    // Move all of the chat texts along with the character.
     for(let i=0; i<this.chatTexts.length; i+=1){
         this.chatTexts[i].x = this.x + (this.width / 2);
         this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
     }
 
     if(playMoveAnim === true){
-        if(this.animations.currentAnim.isPlaying === false){
-            this.animations.play(this.direction);
+        if(this.body.animations.currentAnim.isPlaying === false){
+            this.body.animations.play(this.direction);
         }
     }
-
 };
 
 Sprite.prototype.onBurnStart = function () {

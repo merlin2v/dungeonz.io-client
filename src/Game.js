@@ -1,5 +1,5 @@
 import EntityTypes from '../src/catalogues/EntityTypes'
-import EntityList from '../src/EntitiesList';
+import EntityList from './entities/EntitiesList';
 import Tilemap from './Tilemap'
 import GUI from './gui/GUI'
 import Stats from './Stats'
@@ -31,21 +31,21 @@ dungeonz.Game.prototype = {
         this.adjacentDungeonID = null;
 
         this.player = {
-            entityId: data.playerId,
-            row: data.playerRow,
-            col: data.playerCol,
-            displayName: data.playerDisplayName,
-            maxDefence: data.playerMaxDefence,
-            maxHitPoints: data.playerMaxHitPoints,
-            maxEnergy: data.playerMaxEnergy,
-            hitPoints: data.playerMaxHitPoints,
-            energy: data.playerMaxEnergy,
-            glory: data.playerGlory,
+            entityId: data.player.id,
+            row: data.player.row,
+            col: data.player.col,
+            displayName: data.player.displayName,
+            maxDefence: data.player.maxDefence,
+            maxHitPoints: data.player.maxHitPoints,
+            maxEnergy: data.player.maxEnergy,
+            hitPoints: data.player.maxHitPoints,
+            energy: data.player.maxEnergy,
+            glory: data.player.glory,
             //coins: data.playerCoins,
-            respawns: data.playerRespawns,
+            respawns: data.player.respawns,
             inventory: new Inventory(data.inventory),
             bankManager: new BankManager(data.bankItems),
-            stats: new Stats(data.stats),
+            stats: new Stats(data.player.stats),
             holdingItem: false
         };
 
@@ -59,6 +59,8 @@ dungeonz.Game.prototype = {
             Dusk: 3,
             Night: 4
         };
+
+        document.getElementById('exit_game_panel_code').innerText = data.continueCode;
 
         //console.log("nearby dynamics: data", this.dynamicsData);
 
@@ -104,7 +106,6 @@ dungeonz.Game.prototype = {
         for(let slotIndex=0, len=items.length; slotIndex<len; slotIndex+=1){
             // Skip empty items slots.
             if(items[slotIndex].catalogueEntry === null) continue;
-            console.log("adding item:", items[slotIndex]);
             _this.player.bankManager.addItemToContents(slotIndex, items[slotIndex].catalogueEntry, items[slotIndex].durability, items[slotIndex].maxDurability);
         }
         // Hide the panel, as if any of the slots were filled with existing items, they will be shown.
@@ -194,7 +195,8 @@ dungeonz.Game.prototype = {
         this.GUI.settingsBar.hide();
         this.GUI.craftingPanel.hide();
         this.GUI.bankPanel.hide();
-        this.GUI.goldExchangePanel.hide();
+        this.GUI.exitGamePanel.hide();
+        //this.GUI.goldExchangePanel.hide();
     },
 
     move (direction) {
@@ -204,8 +206,9 @@ dungeonz.Game.prototype = {
         if(this.GUI.isAnyPanelOpen === true){
             this.GUI.craftingPanel.hide();
             this.GUI.bankPanel.hide();
-            this.GUI.goldExchangePanel.hide();
+            //this.GUI.goldExchangePanel.hide();
             this.GUI.statsPanel.hide();
+            this.GUI.exitGamePanel.hide();
         }
 
         this.checkPseudoInteractables(direction);

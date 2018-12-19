@@ -6,6 +6,7 @@ const eventResponses = {};
 
 import EventNames from '../src/catalogues/EventNames'
 import ItemTypes from '../src/catalogues/ItemTypes'
+import SpellBookTypes from '../src/catalogues/SpellBookTypes'
 import ChatWarnings from './catalogues/ChatWarnings'
 
 function makeWebSocketConnection (url) {
@@ -219,6 +220,8 @@ eventResponses.moved = function (data) {
     }
 
     if(dynamicSprite.onMove !== undefined) dynamicSprite.onMove(true);
+
+    _this.dynamicsGroup.sort('y', Phaser.Group.SORT_ASCENDING);
 };
 
 eventResponses.change_board = function (data) {
@@ -316,10 +319,6 @@ eventResponses.glory_value = function (data) {
     _this.GUI.updateGloryCounter(data);
 };
 
-eventResponses.coins_value = function (data) {
-    _this.GUI.updateCoinsCounter(data);
-};
-
 eventResponses.durability_value = function (data) {
     //console.log("durability_value:", data);
     _this.player.inventory[data.slotKey].updateDurability(data.durability);
@@ -410,6 +409,17 @@ eventResponses.deactivate_holding = function (data) {
     _this.player.holdingItem = false;
     // Hide the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
+    _this.GUI.inventoryBar.slots[data].open.style.visibility = "hidden";
+};
+
+/**
+ *
+ * @param data - The type number of the spell book being held.
+ */
+eventResponses.activate_spell_book = function (data) {
+    //_this.GUI.spellBookPanel.updateIcons(data[1]); <-- good to go
+    // Show the open button on the inventory slot.
+    _this.GUI.inventoryBar.slots[data[0]].open.style.visibility = "visible";
 };
 
 eventResponses.bank_item_deposited = function (data) {
@@ -474,6 +484,30 @@ eventResponses.change_direction = function (data) {
     }
     sprite.direction = data.direction;
     sprite.onChangeDirection();
+};
+
+eventResponses.curse_set = function (data) {
+    const dynamic = _this.dynamics[data];
+    if(dynamic === undefined) return;
+    dynamic.sprite.curseIcon.visible = true;
+};
+
+eventResponses.curse_removed = function (data) {
+    const dynamic = _this.dynamics[data];
+    if(dynamic === undefined) return;
+    dynamic.sprite.curseIcon.visible = false;
+};
+
+eventResponses.enchantment_set = function (data) {
+    const dynamic = _this.dynamics[data];
+    if(dynamic === undefined) return;
+    dynamic.sprite.enchantmentIcon.visible = true;
+};
+
+eventResponses.enchantment_removed = function (data) {
+    const dynamic = _this.dynamics[data];
+    if(dynamic === undefined) return;
+    dynamic.sprite.enchantmentIcon.visible = false;
 };
 
 eventResponses.chat = function (data) {

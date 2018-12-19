@@ -274,15 +274,18 @@
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
+            <key type="filename">entities/pickups/pickup-iron-hammer.png</key>
             <key type="filename">entities/pickups/pickup-iron-hatchet.png</key>
             <key type="filename">entities/pickups/pickup-iron-pickaxe.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
+            <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
             <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
             <key type="filename">entities/pickups/pickup-wood.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
             <key type="filename">entities/projectiles/proj-iron-dagger.png</key>
+            <key type="filename">entities/projectiles/proj-iron-hammer.png</key>
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
             <key type="filename">entities/projectiles/proj-wind.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
@@ -328,6 +331,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/characters/effects/curse-icon.png</key>
+            <key type="filename">entities/characters/effects/enchantment-icon.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,2,3,3</rect>
+                <key>scale9Paddings</key>
+                <rect>2,2,3,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/pickups/pickup-book-of-light.png</key>
+            <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
             <key type="filename">entities/pickups/pickup-feathers.png</key>
             <key type="filename">entities/pickups/pickup-gold-ore.png</key>

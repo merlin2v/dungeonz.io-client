@@ -22,7 +22,7 @@ Sprite.prototype.constructor = Sprite;
 Sprite.prototype.onMove = function (playMoveAnim) {
     // Move all of the chat texts along with the player.
     for(let i=0; i<this.chatTexts.length; i+=1){
-        this.chatTexts[i].x = this.x + (this.width / 2);
+        this.chatTexts[i].x = this.x + this.body.width;
         this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
     }
 

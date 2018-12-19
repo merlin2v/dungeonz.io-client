@@ -35,9 +35,9 @@ dungeonz.Game.prototype = {
             row: data.player.row,
             col: data.player.col,
             displayName: data.player.displayName,
-            maxDefence: data.player.maxDefence,
             maxHitPoints: data.player.maxHitPoints,
             maxEnergy: data.player.maxEnergy,
+            defence: data.player.defence,
             hitPoints: data.player.maxHitPoints,
             energy: data.player.maxEnergy,
             glory: data.player.glory,
@@ -159,10 +159,6 @@ dungeonz.Game.prototype = {
             }
 
         }
-
-        // TODO: Perhaps only do this when an entity is added or moves...
-        this.dynamicsGroup.sort('y', Phaser.Group.SORT_ASCENDING);
-
     },
 
     shutdown: function () {
@@ -484,6 +480,8 @@ dungeonz.Game.prototype = {
         }
 
         this.dynamicsGroup.add(dynamicSprite);
+
+        this.dynamicsGroup.sort('y', Phaser.Group.SORT_ASCENDING);
     },
 
     /**
@@ -605,7 +603,7 @@ dungeonz.Game.prototype = {
             }
         }
 
-        const chatText = _this.add.text(dynamic.sprite.x + (dynamic.sprite.width / 2), dynamic.sprite.y - 24, message, style);
+        const chatText = _this.add.text(dynamic.sprite.x + dynamic.sprite.body.width, dynamic.sprite.y - 24, message, style);
         // Add it to the dynamics group so that it will be affected by scales/transforms correctly.
         _this.dynamicsGroup.add(chatText);
         // Add it to this dynamics list of chat texts, so they can be moved and removed later.

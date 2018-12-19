@@ -12,6 +12,8 @@ const Sprite = function (x, y, config) {
     this.body.animations.add('d',    ['bat-down-1',    'bat-down-2',     'bat-down-1',     'bat-down-3'],    5, true);
     this.body.animations.add('l',    ['bat-left-1',    'bat-left-2',     'bat-left-1',     'bat-left-3'],    5, true);
     this.body.animations.add('r',    ['bat-right-1',   'bat-right-2',    'bat-right-1',    'bat-right-3'],   5, true);
+
+    this.body.animations.play(this.direction);
 };
 
 Sprite.prototype = Object.create(Character.prototype);

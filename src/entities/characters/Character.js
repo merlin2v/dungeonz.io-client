@@ -41,6 +41,16 @@ const Sprite = function (x, y, config) {
     this.addChild(this.burnEffect);
     this.burnEffect.visible = false;
 
+    this.curseIcon = _this.add.sprite(dungeonz.TILE_SIZE / 2 - 6, -13, 'game-atlas', 'curse-icon');
+    this.curseIcon.anchor.set(0.5);
+    this.addChild(this.curseIcon);
+    this.curseIcon.visible = false;
+
+    this.enchantmentIcon = _this.add.sprite(dungeonz.TILE_SIZE / 2 + 6, -13, 'game-atlas', 'enchantment-icon');
+    this.enchantmentIcon.anchor.set(0.5);
+    this.addChild(this.enchantmentIcon);
+    this.enchantmentIcon.visible = false;
+
     this.damageMarker = _this.add.text(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, -99, style);
     this.damageMarker.anchor.set(0.5);
     this.damageMarker.scale.set(0.5);
@@ -71,6 +81,10 @@ Sprite.prototype.onMove = function (playMoveAnim) {
     }
 };
 
+Sprite.prototype.onChangeDirection = function () {
+    this.body.animations.stop();
+};
+
 Sprite.prototype.onBurnStart = function () {
     this.burnEffect.visible = true;
     this.burnEffect.animations.play('burn');
@@ -87,7 +101,8 @@ Sprite.prototype.onHitPointsModified = function (amount) {
         this.damageMarker.addColor('#ff2f00', 0);
     }
     else {
-        this.damageMarker.addColor('#87B500', 0);
+        this.damageMarker.addColor('#6abe30', 0);
+        amount = '+' + amount;
     }
 
     this.damageMarker.visible = true;

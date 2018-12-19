@@ -11,6 +11,19 @@ class Slot {
         this.durability.className = 'inventory_slot_durability';
         this.durability.draggable = false;
 
+        this.open = document.createElement('img');
+        this.open.src = 'assets/img/gui/open-icon.png';
+        this.open.className = 'inventory_slot_open';
+        //this.open.draggable = false;
+        this.open.onclick = bar.openClick;
+        this.open.onmouseover = bar.openOver;
+        this.open.ondragstart = bar.openStopPropagation;
+        this.open.ondragend = bar.openStopPropagation;
+        this.open.ondragenter = bar.openStopPropagation;
+        this.open.ondragleave = bar.openStopPropagation;
+        this.open.ondragover = bar.openStopPropagation;
+        this.open.ondrop = bar.openStopPropagation;
+
         this.equipped = document.createElement('img');
         this.equipped.src = 'assets/img/gui/clothing-icon.png';
         this.equipped.className = 'inventory_slot_equipped';
@@ -24,7 +37,6 @@ class Slot {
         this.container = document.createElement('div');
         this.container.className = 'inventory_slot';
         this.container.draggable = true;
-
         // Use the item in this slot when pressed.
         this.container.onclick =        bar.click;
         // Show and update the item tooltip info text when mouse is over a slot.
@@ -44,6 +56,7 @@ class Slot {
 
         this.container.appendChild(this.icon);
         this.container.appendChild(this.durability);
+        this.container.appendChild(this.open);
         this.container.appendChild(this.equipped);
         this.container.appendChild(this.border);
 
@@ -51,7 +64,7 @@ class Slot {
     }
 }
 
-class InventoryBar {
+class InventoryBar { // TODO: make the "cannot drop here" warning appear above the inventory panel instead of as chat
 
     constructor () {
         this.slotContainer =   document.getElementById('inventory_bar');
@@ -65,6 +78,19 @@ class InventoryBar {
             const slotKey = this.slotKeysByIndex[i];
             this.slots[slotKey] = new Slot(slotKey, this);
         }
+    }
+
+    openClick (event) {
+        event.stopPropagation();
+    }
+
+    openOver (event) {
+        event.stopPropagation();
+    }
+
+    openStopPropagation (event) {
+        event.preventDefault();
+        event.stopPropagation();
     }
 
     click () {
@@ -107,7 +133,7 @@ class InventoryBar {
     slotDragStart (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
 
-        //console.log("drag started, this:", this);
+        console.log("drag started, this:", this);
         const slotKey = this.getAttribute('slotKey');
         const icon = _this.GUI.inventoryBar.slots[slotKey].icon;
         event.dataTransfer.setData('text/plain', null);

@@ -1,0 +1,26 @@
+
+#spell_book_panel {
+    //visibility: visible;
+}
+
+#spell_book_panel_tooltip {
+    left: 280px;
+    bottom: -34px;
+}
+
+#spell_book_panel_name {
+    width: 260px;
+    font-size: 24px;
+}
+
+#spell_book_panel_main {
+    display: inline-flex;
+    background-color: $colourDB32WhiteOpacity80;
+}
+
+.spell_slot {
+    width: 64px;
+    height: 64px;
+    margin: 14px;
+    background-color: $colourDB32LightBlue;
+}

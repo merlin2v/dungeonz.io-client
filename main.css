@@ -177,6 +177,7 @@ sass --watch scss/Main.scss:main.css
 }
 
 #instructions {
+  display: none;
   position: absolute;
   top: 10px;
   left: 0px;
@@ -739,6 +740,19 @@ sass --watch scss/Main.scss:main.css
   pointer-events: none;
 }
 
+.inventory_slot_open {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  object-fit: contain;
+  visibility: hidden;
+}
+.inventory_slot_open:hover {
+  -webkit-filter: brightness(150%);
+}
+
 .inventory_slot_equipped {
   position: absolute;
   bottom: 44px;
@@ -980,6 +994,28 @@ sass --watch scss/Main.scss:main.css
   font-size: 20px;
   font-weight: bold;
   color: #222034;
+}
+
+#spell_book_panel_tooltip {
+  left: 280px;
+  bottom: -34px;
+}
+
+#spell_book_panel_name {
+  width: 260px;
+  font-size: 24px;
+}
+
+#spell_book_panel_main {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.spell_slot {
+  width: 64px;
+  height: 64px;
+  margin: 14px;
+  background-color: #639bff;
 }
 
 #exit_game_panel {

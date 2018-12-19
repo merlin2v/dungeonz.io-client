@@ -180,7 +180,7 @@ class GUI {
         this.hitPointCounters = [];
         this.energyCounters = [];
 
-        this.addDefenceCounters(this.game.player.maxDefence);
+        this.addDefenceCounters(this.game.player.defence);
         this.addHitPointCounters(this.game.player.maxHitPoints);
         this.addEnergyCounters(this.game.player.maxEnergy);
 
@@ -212,6 +212,8 @@ class GUI {
         // If an inventory item is dropped onto the game canvas, drop it.
         this.gui.ondrop = function (event) {
             event.preventDefault();
+
+            if(_this.GUI.dragData === null) return;
             // If it was from the inventory bar, drop the item.
             if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
                 window.ws.sendEvent('drop_item', _this.GUI.dragData.inventorySlot.slotKey);
@@ -228,7 +230,6 @@ class GUI {
 
     addDefenceCounters (amount) {
         this.addCounters(amount, this.defenceIcon, 'defence', this.defenceCounters);
-        this.updateDefenceCounters();
     }
 
     addHitPointCounters (amount) {
@@ -256,6 +257,8 @@ class GUI {
             const element = document.createElement('img');
 
             element.src = 'assets/img/gui/' + type + '-counter.png';
+
+            element.draggable = false;
 
             element.className = "gui_counter_icon";
 
@@ -300,18 +303,10 @@ class GUI {
     }
 
     updateDefenceCounters () {
-        // Defence might be in 0.5s as well as whole numbers, so round down to only count each full defence counter.
-        let defence = Math.floor(this.game.player.defence);
-        let maxDefence = this.game.player.maxDefence;
-
-        for(let i=0; i<maxDefence; i+=1){
-            if(i < defence){
-                this.defenceCounters[i].src = "./assets/img/gui/defence-counter.png";
-            }
-            else {
-                this.defenceCounters[i].src = "./assets/img/gui/empty-counter.png";
-            }
-        }
+        // Remove all current defence counters.
+        //this.removeExistingDOMElements(this.defenceCounters);
+        // Add new ones for however many defence points.
+        this.addDefenceCounters(this.game.player.defence);
     }
 
     updateHitPointCounters () {

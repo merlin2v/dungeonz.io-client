@@ -24,6 +24,19 @@
   pointer-events: none;
 }
 
+.inventory_slot_open {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  object-fit: contain;
+  visibility: hidden;
+  &:hover {
+    -webkit-filter: brightness(150%);
+  }
+}
+
 .inventory_slot_equipped {
   position: absolute;
   bottom: 44px;

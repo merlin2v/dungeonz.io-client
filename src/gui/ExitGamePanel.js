@@ -33,7 +33,7 @@ class ExitGamePanel {
     }
 
     exitPressed () {
-        // Refresh the page.
+        // Reload the page.
         location.reload();
     }
 }

@@ -82,8 +82,8 @@ window.connectToGameServer = function () {
     ws.onclose = function () {
         console.log('* Disconnected from game server.');
         window.ws = false;
-        _this.state.start('Boot');
-        //console.log('after start boot');
+        // Reload the page.
+        location.reload();
     };
 
     ws.onerror = function (error) {
@@ -417,7 +417,7 @@ eventResponses.deactivate_holding = function (data) {
  * @param data - The type number of the spell book being held.
  */
 eventResponses.activate_spell_book = function (data) {
-    //_this.GUI.spellBookPanel.updateIcons(data[1]); <-- good to go
+    _this.GUI.spellBookPanel.changeSpellBook(data[1]);
     // Show the open button on the inventory slot.
     _this.GUI.inventoryBar.slots[data[0]].open.style.visibility = "visible";
 };
@@ -431,16 +431,7 @@ eventResponses.bank_item_withdrawn = function (data) {
     //console.log("bank_item_withdrawn, data:", data);
     _this.player.bankManager.removeItemFromContents(data);
 };
-/*
-eventResponses.bank_coins_value = function (data) {
-    _this.bankManager.coins = data;
-    _this.GUI.bankPanel.moneyValue.innerHTML = data;
-};
 
-eventResponses.gold_exchange_rate = function (data) {
-    _this.GUI.goldExchangePanel.updateExchangeRate(data);
-};
-*/
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
     // Check the entity id is valid.
@@ -461,7 +452,6 @@ eventResponses.active_state = function (data) {
             _this.tilemap.updateDarknessGrid();
         }
     }
-
 };
 
 eventResponses.change_direction = function (data) {

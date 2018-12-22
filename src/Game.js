@@ -191,8 +191,8 @@ dungeonz.Game.prototype = {
         this.GUI.settingsBar.hide();
         this.GUI.craftingPanel.hide();
         this.GUI.bankPanel.hide();
+        this.GUI.spellBookPanel.hide();
         this.GUI.exitGamePanel.hide();
-        //this.GUI.goldExchangePanel.hide();
     },
 
     move (direction) {
@@ -202,8 +202,8 @@ dungeonz.Game.prototype = {
         if(this.GUI.isAnyPanelOpen === true){
             this.GUI.craftingPanel.hide();
             this.GUI.bankPanel.hide();
-            //this.GUI.goldExchangePanel.hide();
             this.GUI.statsPanel.hide();
+            this.GUI.spellBookPanel.hide();
             this.GUI.exitGamePanel.hide();
         }
 

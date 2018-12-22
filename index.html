@@ -253,23 +253,6 @@
                 </div>
             </div>-->
 
-            <!--
-            <div id="gold_ex_panel" class="panel">
-                <div id="gold_ex_name" class="panel_name">Gold exchange</div>
-                <div id="gold_ex_rate_cont">
-                    <div id="gold_ex_rate_text" class="bank_money_text">Exchange rate:</div>
-                    <div id="gold_ex_rate_bar">
-                        <img src="assets/img/gui/gold-bar-exchange.png" width="48">
-                        <p id="gold_ex_rate_equals" class="bank_money_text">=</p>
-                        <img src="assets/img/gui/coins-icon.png" width="28" height="28">
-                        <p id="gold_ex_rate_value" class="bank_money_text">0</p>
-                    </div>
-                </div>
-                <div id="gold_ex_accept_cont">
-                    <div id="gold_ex_accept" class="bank_money_text">Exchange</div>
-                </div>
-            </div>-->
-
             <div id="bank_panel" class="panel">
                 <div class="panel_header">
                     <div id="bank_tooltip" class="panel_tooltip"></div>
@@ -334,14 +317,27 @@
 
             <div id="spell_book_panel" class="panel">
                 <div class="panel_header">
-                    <div id="spell_book_panel_tooltip" class="panel_tooltip">Ward</div>
-                    <div id="spell_book_panel_name" class="panel_name">Book of light</div>
+                    <div id="spell_book_panel_name" class="panel_name">Spell book</div>
                 </div>
                 <div id="spell_book_panel_main">
-                    <div id="spell_1" class="spell_slot"></div>
-                    <div id="spell_2" class="spell_slot"></div>
-                    <div id="spell_3" class="spell_slot"></div>
-                    <div id="spell_4" class="spell_slot"></div>
+                    <div id="spell_icons_cont">
+                        <div id="spell_1" class="spell_icon_cont">
+                            <img id="spell_1_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
+                        </div>
+                        <div id="spell_2" class="spell_icon_cont">
+                            <img id="spell_2_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
+                        </div>
+                        <div id="spell_3" class="spell_icon_cont">
+                            <img id="spell_3_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
+                        </div>
+                        <div id="spell_4" class="spell_icon_cont">
+                            <img id="spell_4_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
+                        </div>
+                    </div>
+                    <div id="spell_info_cont">
+                        <div id="spell_name" class="stat_info_text">Enthrall</div>
+                        <div id="spell_description" class="stat_info_text">Make an unclaimed undead creature become your minion.</div>
+                    </div>
                 </div>
 
             </div>
@@ -428,6 +424,8 @@
     </div>
 
     <script>
+
+        console.log("- - running start script");
 
         window.newCharacter = true;
 

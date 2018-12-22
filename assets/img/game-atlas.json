@@ -194,7 +194,7 @@
 },
 {
 	"filename": "bat-up-2",
-	"frame": {"x":69,"y":333,"w":32,"h":32},
+	"frame": {"x":1,"y":333,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
@@ -202,7 +202,7 @@
 },
 {
 	"filename": "bat-up-3",
-	"frame": {"x":1,"y":333,"w":32,"h":32},
+	"frame": {"x":69,"y":333,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
@@ -314,7 +314,7 @@
 },
 {
 	"filename": "cloak-up-3",
-	"frame": {"x":1,"y":289,"w":16,"h":16},
+	"frame": {"x":37,"y":289,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -322,7 +322,7 @@
 },
 {
 	"filename": "counter-flap-inactive",
-	"frame": {"x":19,"y":271,"w":16,"h":16},
+	"frame": {"x":1,"y":289,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -354,7 +354,7 @@
 },
 {
 	"filename": "dungeon-portal",
-	"frame": {"x":37,"y":271,"w":16,"h":16},
+	"frame": {"x":109,"y":271,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -378,7 +378,7 @@
 },
 {
 	"filename": "gold-exchange-terminal",
-	"frame": {"x":109,"y":271,"w":16,"h":16},
+	"frame": {"x":19,"y":271,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -394,7 +394,7 @@
 },
 {
 	"filename": "human-down-2",
-	"frame": {"x":37,"y":289,"w":16,"h":16},
+	"frame": {"x":37,"y":271,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -810,7 +810,7 @@
 },
 {
 	"filename": "pickup-book-of-light",
-	"frame": {"x":75,"y":289,"w":18,"h":18},
+	"frame": {"x":55,"y":289,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -826,23 +826,15 @@
 },
 {
 	"filename": "pickup-cloak",
-	"frame": {"x":55,"y":289,"w":18,"h":18},
+	"frame": {"x":75,"y":289,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
 	"sourceSize": {"w":18,"h":18}
 },
 {
-	"filename": "pickup-coin-pile",
-	"frame": {"x":91,"y":109,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
 	"filename": "pickup-feathers",
-	"frame": {"x":1,"y":309,"w":18,"h":18},
+	"frame": {"x":95,"y":289,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -850,7 +842,7 @@
 },
 {
 	"filename": "pickup-fire-gem",
-	"frame": {"x":91,"y":127,"w":16,"h":16},
+	"frame": {"x":91,"y":109,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -858,7 +850,7 @@
 },
 {
 	"filename": "pickup-fire-staff",
-	"frame": {"x":19,"y":145,"w":16,"h":16},
+	"frame": {"x":91,"y":127,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -866,7 +858,7 @@
 },
 {
 	"filename": "pickup-gold-bar",
-	"frame": {"x":73,"y":145,"w":16,"h":16},
+	"frame": {"x":19,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -874,7 +866,7 @@
 },
 {
 	"filename": "pickup-gold-ore",
-	"frame": {"x":41,"y":309,"w":18,"h":18},
+	"frame": {"x":1,"y":309,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -890,7 +882,7 @@
 },
 {
 	"filename": "pickup-iron-bar",
-	"frame": {"x":109,"y":145,"w":16,"h":16},
+	"frame": {"x":73,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -898,7 +890,7 @@
 },
 {
 	"filename": "pickup-iron-dagger",
-	"frame": {"x":91,"y":145,"w":16,"h":16},
+	"frame": {"x":109,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -906,7 +898,7 @@
 },
 {
 	"filename": "pickup-iron-hammer",
-	"frame": {"x":55,"y":145,"w":16,"h":16},
+	"frame": {"x":91,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -914,7 +906,7 @@
 },
 {
 	"filename": "pickup-iron-hatchet",
-	"frame": {"x":37,"y":145,"w":16,"h":16},
+	"frame": {"x":55,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -922,7 +914,7 @@
 },
 {
 	"filename": "pickup-iron-ore",
-	"frame": {"x":95,"y":289,"w":18,"h":18},
+	"frame": {"x":41,"y":309,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -930,7 +922,7 @@
 },
 {
 	"filename": "pickup-iron-pickaxe",
-	"frame": {"x":1,"y":145,"w":16,"h":16},
+	"frame": {"x":37,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -938,7 +930,7 @@
 },
 {
 	"filename": "pickup-iron-sword",
-	"frame": {"x":109,"y":127,"w":16,"h":16},
+	"frame": {"x":1,"y":145,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -954,7 +946,7 @@
 },
 {
 	"filename": "pickup-scroll-of-healing",
-	"frame": {"x":1,"y":127,"w":16,"h":16},
+	"frame": {"x":109,"y":127,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -962,7 +954,7 @@
 },
 {
 	"filename": "pickup-super-fire-staff",
-	"frame": {"x":73,"y":109,"w":16,"h":16},
+	"frame": {"x":1,"y":127,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -970,7 +962,7 @@
 },
 {
 	"filename": "pickup-wind-staff",
-	"frame": {"x":19,"y":91,"w":16,"h":16},
+	"frame": {"x":73,"y":109,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -978,7 +970,7 @@
 },
 {
 	"filename": "pickup-wood-plank",
-	"frame": {"x":1,"y":91,"w":16,"h":16},
+	"frame": {"x":19,"y":91,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -986,7 +978,7 @@
 },
 {
 	"filename": "pickup-wood",
-	"frame": {"x":37,"y":91,"w":16,"h":16},
+	"frame": {"x":1,"y":91,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -994,7 +986,7 @@
 },
 {
 	"filename": "proj-fire",
-	"frame": {"x":109,"y":73,"w":16,"h":16},
+	"frame": {"x":37,"y":91,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1002,7 +994,7 @@
 },
 {
 	"filename": "proj-iron-dagger",
-	"frame": {"x":73,"y":73,"w":16,"h":16},
+	"frame": {"x":109,"y":73,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1010,7 +1002,7 @@
 },
 {
 	"filename": "proj-iron-hammer",
-	"frame": {"x":55,"y":73,"w":16,"h":16},
+	"frame": {"x":73,"y":73,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1018,6 +1010,14 @@
 },
 {
 	"filename": "proj-iron-sword",
+	"frame": {"x":55,"y":73,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "proj-pacify",
 	"frame": {"x":55,"y":91,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -1095,6 +1095,6 @@
 	"format": "RGBA8888",
 	"size": {"w":126,"h":468},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a1ed565be6c3fd1261375ea429989a0c:3cc92da9a16e7e7527c466038237fa05:b34e047a981bc8a9c58ce5c60a4731b1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:621f5b43e7eed4975d34ff74f2d125b2:1692914861b7aea7f60bfd096f469fd3:b34e047a981bc8a9c58ce5c60a4731b1$"
 }
 }

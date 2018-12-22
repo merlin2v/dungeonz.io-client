@@ -996,6 +996,10 @@ sass --watch scss/Main.scss:main.css
   color: #222034;
 }
 
+#spell_book_panel {
+  display: inline-grid;
+}
+
 #spell_book_panel_tooltip {
   left: 280px;
   bottom: -34px;
@@ -1007,15 +1011,46 @@ sass --watch scss/Main.scss:main.css
 }
 
 #spell_book_panel_main {
-  display: inline-flex;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.spell_slot {
-  width: 64px;
-  height: 64px;
-  margin: 14px;
+#spell_icons_cont {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: 64px;
+  grid-gap: 32px;
+  padding: 20px;
+}
+
+.spell_icon_cont {
+  border-radius: 14px;
+}
+.spell_icon_cont:hover {
+  -webkit-filter: brightness(150%);
+}
+
+.spell_icon {
+  width: 100%;
+  height: 100%;
   background-color: #639bff;
+}
+
+#spell_info_cont {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 12px;
+}
+
+#spell_name {
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+#spell_description {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #exit_game_panel {

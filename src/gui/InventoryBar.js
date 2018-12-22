@@ -82,6 +82,7 @@ class InventoryBar { // TODO: make the "cannot drop here" warning appear above t
 
     openClick (event) {
         event.stopPropagation();
+        _this.GUI.spellBookPanel.show();
     }
 
     openOver (event) {

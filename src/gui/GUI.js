@@ -1,10 +1,11 @@
+
 import InventoryBar from './InventoryBar';
 import SettingsBar from "./SettingsBar";
 import StatsPanel from "./StatsPanel";
 import CraftingPanel from "./CraftingPanel";
 import BankPanel from "./BankPanel";
-//import GoldExchangePanel from "./GoldExchangePanel";
 import ExitGamePanel from "./ExitGamePanel";
+import SpellBookPanel from "./SpellBookPanel";
 
 class GUI {
 
@@ -68,8 +69,8 @@ class GUI {
         this.statsPanel =       new StatsPanel();
         this.craftingPanel =    new CraftingPanel();
         this.bankPanel =        new BankPanel();
+        this.spellBookPanel=    new SpellBookPanel();
         this.exitGamePanel =    new ExitGamePanel();
-        //this.goldExchangePanel= new GoldExchangePanel();
 
         this.isAnyPanelOpen = false;
 
@@ -223,8 +224,8 @@ class GUI {
         // Make the various panels draggable.
         this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
         this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
-        //this.makeElementDraggable(this.goldExchangePanel.name, this.goldExchangePanel.container);
         this.makeElementDraggable(this.statsPanel.name, this.statsPanel.container);
+        this.makeElementDraggable(this.spellBookPanel.name, this.spellBookPanel.container);
 
     }
 

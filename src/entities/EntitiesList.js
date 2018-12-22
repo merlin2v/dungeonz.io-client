@@ -15,6 +15,7 @@ import Bat                  from './characters/Bat'
 import Bandit               from './characters/Bandit'
 import BanditLeader         from './characters/BanditLeader'
 import Knight               from './characters/Knight'
+import ZombieHuman          from './characters/ZombieHuman'
 
 import Anvil                from './interactables/Anvil'
 import BankChest            from './interactables/BankChest'
@@ -54,6 +55,7 @@ import PickupIronBar        from './pickups/PickupIronBar'
 import ProjIronDagger       from './projectiles/ProjIronDagger'
 import ProjIronSword        from './projectiles/ProjIronSword'
 import ProjIronHammer       from './projectiles/ProjIronHammer'
+import ProjPacify           from './projectiles/ProjPacify'
 import ProjFire             from './projectiles/ProjFire'
 import ProjSuperFire        from './projectiles/ProjSuperFire'
 import ProjWind             from './projectiles/ProjWind'
@@ -66,6 +68,7 @@ const EntitiesList = {
     Bandit:                 Bandit,
     BanditLeader:           BanditLeader,
     Knight:                 Knight,
+    ZombieHuman:            ZombieHuman,
 
     Anvil:                  Anvil,
     BankChest:              BankChest,
@@ -102,6 +105,7 @@ const EntitiesList = {
     ProjIronDagger:         ProjIronDagger,
     ProjIronSword:          ProjIronSword,
     ProjIronHammer:         ProjIronHammer,
+    ProjPacify:             ProjPacify,
     ProjFire:               ProjFire,
     ProjSuperFire:          ProjSuperFire,
     ProjWind:               ProjWind,

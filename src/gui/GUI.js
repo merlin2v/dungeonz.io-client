@@ -64,7 +64,7 @@ class GUI {
 
         this.chatInput =                document.getElementById('chat_input');
 
-        this.inventoryBar =     new InventoryBar();
+        this.inventoryBar =     new InventoryBar(this);
         this.settingsBar =      new SettingsBar();
         this.statsPanel =       new StatsPanel();
         this.craftingPanel =    new CraftingPanel();
@@ -241,8 +241,20 @@ class GUI {
         this.addCounters(amount, this.energyIcon, 'energy', this.energyCounters);
     }
 
+    textCounterSetText (element, value) {
+        // Clear the previous animation.
+        element.style.animationName = "none";
+        // Trigger reflow.
+        element.offsetHeight;
+
+        element.style.visibility = "visible";
+        element.style.webkitAnimationName = 'fadeOut';
+        element.innerText = value;
+    }
+
     textCounterWebkitAnimationEnd () {
         this.style.webkitAnimationName = '';
+        this.style.visibility= "hidden";
     }
 
     addCounters (amount, icon, type, groupArray) {
@@ -343,38 +355,23 @@ class GUI {
     updateGloryCounter (value) {
         const difference = value - _this.player.glory;
         if(difference > 0){
-            this.gloryCounterTransition.innerText = "+" + difference;
+            this.textCounterSetText(this.gloryCounterTransition, "+" + difference);
         }
         else {
-            this.gloryCounterTransition.innerText = difference;
+            this.textCounterSetText(this.gloryCounterTransition, difference);
         }
-        this.gloryCounterTransition.style.webkitAnimationName = 'fadeOut';
         this.game.player.glory = value;
         this.gloryCounter.innerText = value;
     }
-/*
-    updateCoinsCounter (value) {
-        const difference = value - _this.player.coins;
-        if(difference > 0){
-            this.coinsCounterTransition.innerText = "+" + difference;
-        }
-        else {
-            this.coinsCounterTransition.innerText = difference;
-        }
-        this.coinsCounterTransition.style.webkitAnimationName = 'fadeOut';
-        this.game.player.coins = value;
-        this.coinsCounter.innerText = value;
-    }
-*/
+
     updateRespawnsCounter (value) {
         const difference = value - _this.player.respawns;
         if(difference > 0){
-            this.respawnsCounterTransition.innerText = "+" + difference;
+            this.textCounterSetText(this.respawnsCounterTransition, "+" + difference);
         }
         else {
-            this.respawnsCounterTransition.innerText = difference;
+            this.textCounterSetText(this.respawnsCounterTransition, difference);
         }
-        this.respawnsCounterTransition.style.webkitAnimationName = 'fadeOut';
         this.game.player.respawns = value;
         this.respawnsCounter.innerText = value;
         this.respawnsRemainingValue.innerText = value;

@@ -9,56 +9,59 @@ Phaser.Sprite.prototype.tweenPickupFromCenter = function () {
 Phaser.Sprite.prototype.onChangeDirection = function () {
 };
 
-import Player               from './characters/Player'
-import Citizen              from './characters/Citizen'
-import Bat                  from './characters/Bat'
-import Bandit               from './characters/Bandit'
-import BanditLeader         from './characters/BanditLeader'
-import Knight               from './characters/Knight'
-import ZombieHuman          from './characters/ZombieHuman'
+import Player                   from './characters/Player'
+import Citizen                  from './characters/Citizen'
+import Bat                      from './characters/Bat'
+import Bandit                   from './characters/Bandit'
+import BanditLeader             from './characters/BanditLeader'
+import Knight                   from './characters/Knight'
+import ZombieHuman              from './characters/ZombieHuman'
 
-import Anvil                from './interactables/Anvil'
-import BankChest            from './interactables/BankChest'
-import Furnace              from './interactables/Furnace'
-import GoldOre              from './interactables/GoldOre'
-import IronOre              from './interactables/IronOre'
-import Tree                 from './interactables/Tree'
-import WoodDoor             from './interactables/WoodDoor'
-import SmallIronCandle      from './interactables/SmallIronCandle'
-import Exit                 from './interactables/Exit'
-import DungeonPortal        from './interactables/DungeonPortal'
-import OverworldPortal      from './interactables/OverworldPortal'
+import CorpseHuman              from './corpses/CorpseHuman'
 
-import PickupBookOfLight    from './pickups/PickupBookOfLight'
-import PickupBookOfSouls    from './pickups/PickupBookOfSouls'
-import PickupCloak          from './pickups/PickupCloak'
-import PickupMageRobe       from './pickups/PickupMageRobe'
-import PickupIronArrows     from './pickups/PickupIronArrows'
-import PickupIronHatchet    from './pickups/PickupIronHatchet'
-import PickupIronPickaxe    from './pickups/PickupIronPickaxe'
-import PickupIronDagger     from './pickups/PickupIronDagger'
-import PickupIronSword      from './pickups/PickupIronSword'
-import PickupIronHammer     from './pickups/PickupIronHammer'
-import PickupFeathers       from './pickups/PickupFeathers'
-import PickupFireGem        from './pickups/PickupFireGem'
-import PickupFireStaff      from './pickups/PickupFireStaff'
-import PickupSuperFireStaff from './pickups/PickupSuperFireStaff'
-import PickupScrollOfHealing from './pickups/PickupScrollOfHealing'
-import PickupWindStaff      from './pickups/PickupWindStaff'
-import PickupWood           from './pickups/PickupWood'
-import PickupWoodPlank      from './pickups/PickupWoodPlank'
-import PickupGoldOre        from './pickups/PickupGoldOre'
-import PickupGoldBar        from './pickups/PickupGoldBar'
-import PickupIronOre        from './pickups/PickupIronOre'
-import PickupIronBar        from './pickups/PickupIronBar'
+import Anvil                    from './interactables/Anvil'
+import BankChest                from './interactables/BankChest'
+import Furnace                  from './interactables/Furnace'
+import GoldOre                  from './interactables/GoldOre'
+import IronOre                  from './interactables/IronOre'
+import Tree                     from './interactables/Tree'
+import WoodDoor                 from './interactables/WoodDoor'
+import SmallIronCandle          from './interactables/SmallIronCandle'
+import Exit                     from './interactables/Exit'
+import DungeonPortal            from './interactables/DungeonPortal'
+import OverworldPortal          from './interactables/OverworldPortal'
 
-import ProjIronDagger       from './projectiles/ProjIronDagger'
-import ProjIronSword        from './projectiles/ProjIronSword'
-import ProjIronHammer       from './projectiles/ProjIronHammer'
-import ProjPacify           from './projectiles/ProjPacify'
-import ProjFire             from './projectiles/ProjFire'
-import ProjSuperFire        from './projectiles/ProjSuperFire'
-import ProjWind             from './projectiles/ProjWind'
+import PickupBookOfLight        from './pickups/PickupBookOfLight'
+import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
+import PickupCloak              from './pickups/PickupCloak'
+import PickupMageRobe           from './pickups/PickupMageRobe'
+import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
+import PickupIronArrows         from './pickups/PickupIronArrows'
+import PickupIronHatchet        from './pickups/PickupIronHatchet'
+import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
+import PickupIronDagger         from './pickups/PickupIronDagger'
+import PickupIronSword          from './pickups/PickupIronSword'
+import PickupIronHammer         from './pickups/PickupIronHammer'
+import PickupFeathers           from './pickups/PickupFeathers'
+import PickupFireGem            from './pickups/PickupFireGem'
+import PickupFireStaff          from './pickups/PickupFireStaff'
+import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
+import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
+import PickupWindStaff          from './pickups/PickupWindStaff'
+import PickupWood               from './pickups/PickupWood'
+import PickupWoodPlank          from './pickups/PickupWoodPlank'
+import PickupGoldOre            from './pickups/PickupGoldOre'
+import PickupGoldBar            from './pickups/PickupGoldBar'
+import PickupIronOre            from './pickups/PickupIronOre'
+import PickupIronBar            from './pickups/PickupIronBar'
+
+import ProjIronDagger           from './projectiles/ProjIronDagger'
+import ProjIronSword            from './projectiles/ProjIronSword'
+import ProjIronHammer           from './projectiles/ProjIronHammer'
+import ProjPacify               from './projectiles/ProjPacify'
+import ProjFire                 from './projectiles/ProjFire'
+import ProjSuperFire            from './projectiles/ProjSuperFire'
+import ProjWind                 from './projectiles/ProjWind'
 
 const EntitiesList = {
 
@@ -69,6 +72,8 @@ const EntitiesList = {
     BanditLeader:           BanditLeader,
     Knight:                 Knight,
     ZombieHuman:            ZombieHuman,
+
+    CorpseHuman:            CorpseHuman,
 
     Anvil:                  Anvil,
     BankChest:              BankChest,
@@ -83,6 +88,7 @@ const EntitiesList = {
     PickupBookOfSouls:      PickupBookOfSouls,
     PickupCloak:            PickupCloak,
     PickupMageRobe:         PickupMageRobe,
+    PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupIronHatchet:      PickupIronHatchet,
     PickupIronArrows:       PickupIronArrows,
     PickupIronPickaxe:      PickupIronPickaxe,

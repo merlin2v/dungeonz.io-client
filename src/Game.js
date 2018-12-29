@@ -22,7 +22,7 @@ dungeonz.Game.prototype = {
          */
         this.currentBoardName = data.boardName;
 
-        this.boardIsDungeon = data.boardIsDungeon;
+        this.boardAlwaysNight = data.boardAlwaysNight;
 
         /**
          * The ID number of the dungeon that this player is standing next to the entrance of. Each dungeon instance has a unique id, as well as a separate unique name.
@@ -83,8 +83,7 @@ dungeonz.Game.prototype = {
 
         window.addEventListener('resize', window.windowResize);
 
-        this.moveDelay = 100;
-        this.keyDownDelay = 500;
+        this.moveDelay = 250;
         this.nextMoveTime = 0;
 
         this.lightSources = {};
@@ -161,6 +160,10 @@ dungeonz.Game.prototype = {
         }
     },
 
+    render: function () {
+        this.game.debug.text(this.game.time.fps, 10, this.game.height / 2, "#00ff00");
+    },
+
     shutdown: function () {
         // Remove the handler for resize events, so it doesn't try to resize the sprite container groups that have been removed.
         window.removeEventListener('resize', window.windowResize);
@@ -211,12 +214,12 @@ dungeonz.Game.prototype = {
 
         if(this.player.hitPoints <= 0) return;
         ws.sendEvent('mv_' + direction);
-        if(dungeonz.quickTurnEnabled === true){
+        /*if(dungeonz.quickTurnEnabled === true){
             if(this.dynamics[this.player.entityId].sprite.direction !== direction){
                 ws.sendEvent('mv_' + direction);
             }
-        }
-        this.nextMoveTime = Date.now() + this.moveDelay + this.keyDownDelay;
+        }*/
+        this.nextMoveTime = Date.now() + this.moveDelay;
     },
 
     checkPseudoInteractables (direction) {
@@ -311,21 +314,29 @@ dungeonz.Game.prototype = {
     },
 
     moveUpPressed () {
+        // Don't move while the chat input is open.
+        if(this.GUI.chatInput.isActive === true) return;
         _this.move('u');
         _this.moveUpIsDown = true;
     },
 
     moveDownPressed () {
+        // Don't move while the chat input is open.
+        if(this.GUI.chatInput.isActive === true) return;
         _this.move('d');
         _this.moveDownIsDown = true;
     },
 
     moveLeftPressed () {
+        // Don't move while the chat input is open.
+        if(this.GUI.chatInput.isActive === true) return;
         _this.move('l');
         _this.moveLeftIsDown = true;
     },
 
     moveRightPressed () {
+        // Don't move while the chat input is open.
+        if(this.GUI.chatInput.isActive === true) return;
         _this.move('r');
         _this.moveRightIsDown = true;
     },
@@ -378,11 +389,27 @@ dungeonz.Game.prototype = {
                 arrowLeft:  Phaser.KeyCode.LEFT,
                 arrowRight: Phaser.KeyCode.RIGHT,
 
+                w:          Phaser.KeyCode.W,
+                s:          Phaser.KeyCode.S,
+                a:          Phaser.KeyCode.A,
+                d:          Phaser.KeyCode.D,
+
                 shift:      Phaser.KeyCode.SHIFT,
 
                 enterChat:  Phaser.KeyCode.ENTER
             }
         );
+        // Stop the key press events from being captured by Phaser, so they
+        // can go up to the browser to be used in the chat input box.
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.UP);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.DOWN);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.LEFT);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.RIGHT);
+
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.W);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.S);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.A);
+        this.input.keyboard.removeKeyCapture(Phaser.KeyCode.D);
 
         this.keyboardKeys.arrowUp.onDown.add(this.moveUpPressed, this, 0);
         this.keyboardKeys.arrowDown.onDown.add(this.moveDownPressed, this, 0);
@@ -393,6 +420,16 @@ dungeonz.Game.prototype = {
         this.keyboardKeys.arrowDown.onUp.add(this.moveDownReleased, this, 0);
         this.keyboardKeys.arrowLeft.onUp.add(this.moveLeftReleased, this, 0);
         this.keyboardKeys.arrowRight.onUp.add(this.moveRightReleased, this, 0);
+
+        this.keyboardKeys.w.onDown.add(this.moveUpPressed, this, 0);
+        this.keyboardKeys.s.onDown.add(this.moveDownPressed, this, 0);
+        this.keyboardKeys.a.onDown.add(this.moveLeftPressed, this, 0);
+        this.keyboardKeys.d.onDown.add(this.moveRightPressed, this, 0);
+
+        this.keyboardKeys.w.onUp.add(this.moveUpReleased, this, 0);
+        this.keyboardKeys.s.onUp.add(this.moveDownReleased, this, 0);
+        this.keyboardKeys.a.onUp.add(this.moveLeftReleased, this, 0);
+        this.keyboardKeys.d.onUp.add(this.moveRightReleased, this, 0);
 
         this.keyboardKeys.enterChat.onDown.add(function () {
             if(this.player.hitPoints <= 0){

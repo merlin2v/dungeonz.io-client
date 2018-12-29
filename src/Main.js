@@ -2,8 +2,14 @@
 "use strict";
 
 (function () {
+    // Load the saved renderer preference.
+    window.renderer = localStorage.getItem('renderer') || 'webgl';
+    let renderer = Phaser.WEBGL;
+    if(window.renderer === 'canvas'){
+        renderer = Phaser.CANVAS;
+    }
 
-    const game = new Phaser.Game(100, 100, Phaser.CANVAS, '', null, true, false);
+    const game = new Phaser.Game(100, 100, renderer, '', null, true, false);
 
     game.state.add('Boot',              dungeonz.Boot);
     game.state.add('Game',              dungeonz.Game);

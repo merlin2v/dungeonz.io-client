@@ -64,10 +64,12 @@ class Slot {
     }
 }
 
-class InventoryBar { // TODO: make the "cannot drop here" warning appear above the inventory panel instead of as chat
+class InventoryBar {
 
-    constructor () {
-        this.slotContainer =   document.getElementById('inventory_bar');
+    constructor (gui) {
+        this.message = document.getElementById('inventory_message');
+        this.message.addEventListener('webkitAnimationEnd', gui.textCounterWebkitAnimationEnd, false);
+        this.slotContainer = document.getElementById('inventory_bar');
         this.slots = {};
 
         // Rearrange the order of the slot numbers, as the 0 key is at the right end of keyboards.
@@ -134,7 +136,7 @@ class InventoryBar { // TODO: make the "cannot drop here" warning appear above t
     slotDragStart (event) {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
 
-        console.log("drag started, this:", this);
+        //console.log("drag started, this:", this);
         const slotKey = this.getAttribute('slotKey');
         const icon = _this.GUI.inventoryBar.slots[slotKey].icon;
         event.dataTransfer.setData('text/plain', null);

@@ -220,6 +220,18 @@
             <key type="filename">entities/characters/human base/human-up-1.png</key>
             <key type="filename">entities/characters/human base/human-up-2.png</key>
             <key type="filename">entities/characters/human base/human-up-3.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-down-1.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-down-2.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-down-3.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-left-1.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-left-2.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-left-3.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-right-1.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-right-2.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-right-3.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-up-1.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-up-2.png</key>
+            <key type="filename">entities/characters/human zombie/human-zombie-up-3.png</key>
             <key type="filename">entities/characters/knight/knight-down-1.png</key>
             <key type="filename">entities/characters/knight/knight-down-2.png</key>
             <key type="filename">entities/characters/knight/knight-down-3.png</key>
@@ -256,6 +268,18 @@
             <key type="filename">entities/clothes/mage robe/mage-robe-up-1.png</key>
             <key type="filename">entities/clothes/mage robe/mage-robe-up-2.png</key>
             <key type="filename">entities/clothes/mage robe/mage-robe-up-3.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-down-1.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-down-2.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-down-3.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-left-1.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-left-2.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-left-3.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-right-1.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-right-2.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-right-3.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-1.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-2.png</key>
+            <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-3.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-3.png</key>
@@ -268,6 +292,7 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
+            <key type="filename">entities/corpses/corpse-human.png</key>
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
@@ -352,6 +377,7 @@
             <key type="filename">entities/pickups/pickup-gold-ore.png</key>
             <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
+            <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -392,6 +418,9 @@
             <filename>entities/characters/effects</filename>
             <filename>entities/characters/bandit</filename>
             <filename>entities/characters/knight</filename>
+            <filename>entities/characters/human zombie</filename>
+            <filename>entities/clothes/necromancer robe</filename>
+            <filename>entities/corpses</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

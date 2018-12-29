@@ -20,7 +20,7 @@ const Sprite = function (x, y, config) {
     this.addChild(this.body);
 
     const style = {
-        font: "20px Consolas",
+        font: "25px Consolas",
         align: "center",
         fill: "#f5f5f5",
         stroke: "#000000",
@@ -30,7 +30,7 @@ const Sprite = function (x, y, config) {
     // The anchor is still in the top left, so offset by half the width to center the text.
     this.displayName = _this.add.text(dungeonz.TILE_SIZE / 2, 4, config.displayName, style);
     this.displayName.anchor.set(0.5, 1);
-    this.displayName.scale.set(0.5);
+    this.displayName.scale.set(0.25);
     this.addChild(this.displayName);
 
     this.chatTexts = [];

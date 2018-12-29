@@ -39,6 +39,7 @@
 
     <!--<script src="src/lib/phaser.min.js"></script>-->
     <script src="src/lib/phaser.js"></script>
+    <script src="src/lib/phaser-debug.js"></script>
 
     <script src="dist/main.js"></script>
 
@@ -343,6 +344,7 @@
             </div>
 
             <span id="inventory_bar" class="gui_zoomable">
+                <div id="inventory_message" class="text_counter_transition"></div>
                 <div id="item_tooltip_cont">
                     <div id="item_name"></div>
                     <div id="item_description"></div>
@@ -407,6 +409,11 @@
                 <span id="facebook_tooltip" class="community_text"></span>
             </div>
         </div>
+
+        <div id="renderer_button" class="community_button" onclick="swapRenderer();">
+            <p id="renderer_text" class="community_text">WebGL</p>
+        </div>
+
         <div id="instructions">
             <h2 id="how_to_play_header" class="instruction_heading"></h2>
             <div id="how_to_play" class="instructions_border">
@@ -424,9 +431,12 @@
     </div>
 
     <script>
+        //console.log("- - running index script");
 
-        console.log("- - running start script");
-
+        /**
+         * Whether the "New character" tab should be shown. Otherwise shows the "Continue" tab.
+         * @type {boolean}
+         */
         window.newCharacter = true;
 
         const colourDB32WhiteOpacity80 = "rgba(255, 255, 255, 0.8)";
@@ -602,6 +612,22 @@
         document.getElementById('language_turkish').onclick =       function () { changeLanguage('Turkish');                hideLanguageList(); };
         document.getElementById('language_german').onclick =        function () { changeLanguage('German');                 hideLanguageList(); };
         document.getElementById('language_russian').onclick =       function () { changeLanguage('Russian');                hideLanguageList(); };
+
+        // Saved renderer preference already loaded in Main.js.
+        if(window.renderer === 'canvas'){
+            document.getElementById('renderer_text').innerText = 'Canvas';
+        }
+
+        function swapRenderer() {
+            if(window.renderer === 'canvas'){
+                localStorage.setItem('renderer', 'webgl');
+            }
+            else {
+                localStorage.setItem('renderer', 'canvas');
+            }
+
+            location.reload();
+        }
 
     </script>
 

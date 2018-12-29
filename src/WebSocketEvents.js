@@ -55,7 +55,7 @@ window.connectToGameServer = function () {
 
     // Wait for the connection to have finished opening before attempting to join the world.
     ws.onopen = function () {
-        console.log("ws onopen");
+        //console.log("ws onopen");
         // Attempt to join the world as soon as the connection is ready, so the user doesn't have to press 'Play' twice.
         playPressed();
     };
@@ -128,13 +128,12 @@ eventResponses.character_in_use = function () {
 };
 
 eventResponses.join_world_success = function (data) {
-    console.log("join world success, data:");
-    console.log(data);
+    //console.log("join world success, data:");
+    //console.log(data);
 
     document.getElementById("home_cont").style.display = "none";
 
     _this.state.start('Game', true, false, data);
-
 };
 
 eventResponses.world_full = function () {
@@ -163,21 +162,38 @@ eventResponses.moved = function (data) {
         //_this.GUI.updateEnergyCounters();
 
         // Update the static entities BEFORE setting the new values on the player.
+        // Right.
         if(data.col > origCol){
             _this.offsetOtherDynamics(0, +1);
+            _this.tilemap.tileGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
+            _this.tilemap.staticsGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
+            _this.tilemap.updateTileGridEdgeRight();
+            _this.tilemap.updateStaticsGridEdgeRight();
         }
+        // Left.
         else if(data.col < origCol){
             _this.offsetOtherDynamics(0, -1);
+            _this.tilemap.tileGridBitmapData.move(dungeonz.TILE_SIZE, 0);
+            _this.tilemap.staticsGridBitmapData.move(dungeonz.TILE_SIZE, 0);
+            _this.tilemap.updateTileGridEdgeLeft();
+            _this.tilemap.updateStaticsGridEdgeLeft();
         }
+        // Down.
         if(data.row > origRow){
             _this.offsetOtherDynamics(+1, 0);
+            _this.tilemap.tileGridBitmapData.move(0, -dungeonz.TILE_SIZE);
+            _this.tilemap.staticsGridBitmapData.move(0, -dungeonz.TILE_SIZE);
+            _this.tilemap.updateTileGridEdgeBottom();
+            _this.tilemap.updateStaticsGridEdgeBottom();
         }
+        // Up.
         else if(data.row < origRow){
             _this.offsetOtherDynamics(-1, 0);
+            _this.tilemap.tileGridBitmapData.move(0, dungeonz.TILE_SIZE);
+            _this.tilemap.staticsGridBitmapData.move(0, dungeonz.TILE_SIZE);
+            _this.tilemap.updateTileGridEdgeTop();
+            _this.tilemap.updateStaticsGridEdgeTop();
         }
-
-        _this.tilemap.updateTileGrid();
-        _this.tilemap.updateStaticsGrid();
 
     }
     // Another entity moved.
@@ -226,11 +242,11 @@ eventResponses.moved = function (data) {
 
 eventResponses.change_board = function (data) {
     _this.dynamicsData = data.dynamicsData;
-    _this.boardIsDungeon = data.boardIsDungeon;
+    _this.boardAlwaysNight = data.boardAlwaysNight;
     _this.player.row = data.playerRow;
     _this.player.col = data.playerCol;
 
-    if(_this.boardIsDungeon === false){
+    if(_this.boardAlwaysNight === false){
         // Make the darkness layer invisible during day time.
         if(_this.dayPhase === _this.DayPhases.Day){
             let row,
@@ -265,7 +281,7 @@ eventResponses.change_day_phase = function (data) {
     //console.log("changing day phase:", data);
     _this.dayPhase = data;
 
-    if(_this.boardIsDungeon === false){
+    if(_this.boardAlwaysNight === false){
         // Make the darkness layer invisible during day time.
         if(_this.dayPhase === _this.DayPhases.Day){
             let row,
@@ -507,6 +523,26 @@ eventResponses.chat = function (data) {
 
 eventResponses.chat_warning = function (data) {
     _this.chat(undefined, dungeonz.getTextDef(ChatWarnings[data]), "#ffa54f");
+};
+
+eventResponses.cannot_drop_here = function () {
+    _this.GUI.textCounterSetText(_this.GUI.inventoryBar.message, dungeonz.getTextDef("Drop item blocked warning"));
+};
+
+eventResponses.item_broken = function () {
+    _this.GUI.textCounterSetText(_this.GUI.inventoryBar.message, dungeonz.getTextDef("Item broken warning"));
+};
+
+eventResponses.inventory_full = function () {
+    _this.GUI.textCounterSetText(_this.GUI.inventoryBar.message, dungeonz.getTextDef("Inventory full warning"));
+};
+
+eventResponses.hatchet_needed = function () {
+    _this.GUI.textCounterSetText(_this.GUI.inventoryBar.message, dungeonz.getTextDef("Hatchet needed warning"));
+};
+
+eventResponses.pickaxe_needed = function () {
+    _this.GUI.textCounterSetText(_this.GUI.inventoryBar.message, dungeonz.getTextDef("Pickaxe needed warning"));
 };
 
 eventResponses.exp_gained = function (data) {

@@ -65,7 +65,8 @@
 }
 
 .text_counter_transition {
-    opacity: 0;
+    visibility: hidden;
+    animation-delay: 3s;
     animation-duration: 2s;
     animation-timing-function: ease-in;
 }

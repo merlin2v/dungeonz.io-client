@@ -28,6 +28,11 @@ const Sprite = function (config) {
     this.animations.add('Mage robe-l',    ['mage-robe-left-1',    'mage-robe-left-2',     'mage-robe-left-1',     'mage-robe-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Mage robe-r',    ['mage-robe-right-1',   'mage-robe-right-2',    'mage-robe-right-1',    'mage-robe-right-3'],   10).onComplete.add(moveAnimCompleted, this);
 
+    this.animations.add('Necromancer robe-u',    ['necromancer-robe-up-1',      'necromancer-robe-up-2',       'necromancer-robe-up-1',       'necromancer-robe-up-3'],      10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Necromancer robe-d',    ['necromancer-robe-down-1',    'necromancer-robe-down-2',     'necromancer-robe-down-1',     'necromancer-robe-down-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Necromancer robe-l',    ['necromancer-robe-left-1',    'necromancer-robe-left-2',     'necromancer-robe-left-1',     'necromancer-robe-left-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Necromancer robe-r',    ['necromancer-robe-right-1',   'necromancer-robe-right-2',    'necromancer-robe-right-1',    'necromancer-robe-right-3'],   10).onComplete.add(moveAnimCompleted, this);
+
     this.animations.add('Cloak-u',    ['cloak-up-1',      'cloak-up-2',       'cloak-up-1',       'cloak-up-3'],      10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Cloak-d',    ['cloak-down-1',    'cloak-down-2',     'cloak-down-1',     'cloak-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Cloak-l',    ['cloak-left-1',    'cloak-left-2',     'cloak-left-1',     'cloak-left-3'],    10).onComplete.add(moveAnimCompleted, this);
@@ -44,6 +49,12 @@ Sprite.prototype.clothesFrames = {
         d: 'mage-robe-down-1',
         l: 'mage-robe-left-1',
         r: 'mage-robe-right-1'
+    },
+    ['Necromancer robe']: {
+        u: 'necromancer-robe-up-1',
+        d: 'necromancer-robe-down-1',
+        l: 'necromancer-robe-left-1',
+        r: 'necromancer-robe-right-1'
     },
     ['Cloak']: {
         u: 'cloak-up-1',

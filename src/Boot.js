@@ -58,11 +58,11 @@ window.windowResize = function () {
     console.log("w: " + window.innerWidth);
     console.log("h: " + window.innerHeight);*/
 
-    _this.tilemap.tileGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.tilemap.tileGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    _this.tilemap.tileGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    _this.tilemap.tileGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
-    _this.tilemap.staticsGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.tilemap.staticsGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    _this.tilemap.staticsGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    _this.tilemap.staticsGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
     _this.tilemap.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
     _this.tilemap.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
@@ -118,6 +118,11 @@ dungeonz.Boot.prototype = {
         //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         dungeonz.virtualDPadEnabled = !_this.game.device.desktop;
+
+        //this.game.add.plugin(Phaser.Plugin.Debug);
+
+        // Enable advanced timing for the FPS counter.
+        this.game.time.advancedTiming = true;
 
     },
 

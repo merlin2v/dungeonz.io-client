@@ -136,6 +136,7 @@ dungeonz.Game.prototype = {
         this.setupKeyboardControls();
 
         window.addEventListener('mousedown', this.pointerDownHandler);
+        window.addEventListener('mousemove', this.pointerMoveHandler);
 
         //console.log("dynamics: ", this.dynamics);
     },
@@ -172,6 +173,7 @@ dungeonz.Game.prototype = {
         document.removeEventListener('keydown', this.keyDownHandler);
 
         window.removeEventListener('mousedown', this.pointerDownHandler);
+        window.removeEventListener('mousemove', this.pointerMoveHandler);
 
         // Remove some of the DOM GUI elements so they aren't stacked when the game state starts again.
         this.GUI.removeExistingDOMElements(this.GUI.defenceCounters);
@@ -288,11 +290,22 @@ dungeonz.Game.prototype = {
 
     },
 
+    distanceBetween (body, pointer) {
+        return Math.abs(body.worldPosition.x - pointer.clientX) + Math.abs(body.worldPosition.y - pointer.clientY);
+    },
+
     pointerDownHandler (event) {
         // Stop double clicking from highlighting text elements, and zooming in on mobile.
         //event.preventDefault();
         // Only use the selected item if the input wasn't over any other GUI element.
         if(event.target === _this.GUI.gui){
+
+            // If the user pressed on their character sprite, pick up item.
+            if(_this.distanceBetween(_this.dynamics[_this.player.entityId].sprite.body, event) < 32){
+                ws.sendEvent('pick_up_item');
+                return;
+            }
+
             // Don't try to use the held item if one isn't selected.
             if(_this.player.holdingItem === false) return;
 
@@ -313,30 +326,45 @@ dungeonz.Game.prototype = {
 
     },
 
+    pointerMoveHandler (event) {
+        let sprite;
+        for(let dynamicKey in _this.dynamics){
+            if(_this.dynamics.hasOwnProperty(dynamicKey) === false) continue;
+            sprite = _this.dynamics[dynamicKey].sprite;
+            if(sprite.body === null) continue;
+            if(_this.distanceBetween(sprite.body, event) < 32){
+                sprite.onInputOver();
+            }
+            else {
+                sprite.onInputOut();
+            }
+        }
+    },
+
     moveUpPressed () {
         // Don't move while the chat input is open.
-        if(this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI.chatInput.isActive === true) return;
         _this.move('u');
         _this.moveUpIsDown = true;
     },
 
     moveDownPressed () {
         // Don't move while the chat input is open.
-        if(this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI.chatInput.isActive === true) return;
         _this.move('d');
         _this.moveDownIsDown = true;
     },
 
     moveLeftPressed () {
         // Don't move while the chat input is open.
-        if(this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI.chatInput.isActive === true) return;
         _this.move('l');
         _this.moveLeftIsDown = true;
     },
 
     moveRightPressed () {
         // Don't move while the chat input is open.
-        if(this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI.chatInput.isActive === true) return;
         _this.move('r');
         _this.moveRightIsDown = true;
     },
@@ -503,8 +531,8 @@ dungeonz.Game.prototype = {
 
         if(dynamicSprite.centered === true){
             dynamicSprite.anchor.setTo(0.5);
-            dynamicSprite.x += dynamicSprite.width / GAME_SCALE;
-            dynamicSprite.y += dynamicSprite.height / GAME_SCALE;
+            dynamicSprite.x += dynamicSprite.width / GAME_SCALE * 2;
+            dynamicSprite.y += dynamicSprite.height / GAME_SCALE * 2;
         }
 
         if(dynamicSprite.lightDistance !== undefined){
@@ -551,6 +579,7 @@ dungeonz.Game.prototype = {
      */
     offsetOtherDynamics (rowOffset, colOffset) {
         let dynamic;
+        let dynamicSprite;
         let playerRowTopViewRange = _this.player.row - dungeonz.VIEW_RANGE;
         let playerColLeftViewRange = _this.player.col - dungeonz.VIEW_RANGE;
         let playerRowBotViewRange = _this.player.row + dungeonz.VIEW_RANGE;
@@ -561,6 +590,7 @@ dungeonz.Game.prototype = {
             if(this.dynamics.hasOwnProperty(key) === false) continue;
 
             dynamic = this.dynamics[key];
+            dynamicSprite = dynamic.sprite;
 
             // Skip the player entity's sprite.
             if(dynamic.id === this.player.entityId) continue;
@@ -571,9 +601,9 @@ dungeonz.Game.prototype = {
             || dynamic.col < playerColLeftViewRange
             || dynamic.col > playerColRightViewRange){
                 // Out of view range. Remove it.
-                dynamic.sprite.destroy();
+                dynamicSprite.destroy();
                 delete this.dynamics[key];
-                if(dynamic.sprite.lightDistance !== undefined){
+                if(dynamicSprite.lightDistance !== undefined){
                     delete this.lightSources[key];
                     this.tilemap.updateDarknessGrid();
                 }
@@ -581,10 +611,10 @@ dungeonz.Game.prototype = {
             }
 
             // Shift the other dynamics, so it looks like the player is the one moving.
-            dynamic.sprite.x -= (32 / 2 * GAME_SCALE) * colOffset;
-            dynamic.sprite.y -= (32 / 2 * GAME_SCALE) * rowOffset;
+            dynamicSprite.x -= (32 / 2 * GAME_SCALE) * colOffset;
+            dynamicSprite.y -= (32 / 2 * GAME_SCALE) * rowOffset;
 
-            if(dynamic.sprite.onMove !== undefined) dynamic.sprite.onMove();
+            if(dynamicSprite.onMove !== undefined) dynamicSprite.onMove();
         }
     },
 
@@ -640,12 +670,13 @@ dungeonz.Game.prototype = {
             }
         }
 
-        const chatText = _this.add.text(dynamic.sprite.x + dynamic.sprite.body.width, dynamic.sprite.y - 24, message, style);
+        const chatText = _this.add.text(dynamic.sprite.x + (dungeonz.TILE_SIZE * 2), dynamic.sprite.y - 24, message, style);
         // Add it to the dynamics group so that it will be affected by scales/transforms correctly.
         _this.dynamicsGroup.add(chatText);
         // Add it to this dynamics list of chat texts, so they can be moved and removed later.
         dynamic.sprite.chatTexts.push(chatText);
         chatText.anchor.set(0.5);
+        chatText.scale.set(GAME_SCALE * 0.4);
         // How far this chat message has scrolled up so far.
         chatText.yScroll = 0;
         // Make the chat message scroll up.

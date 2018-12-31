@@ -7,8 +7,8 @@ const Sprite = function (x, y, config) {
 
     this.clothes = new Clothes(config);
     this.addChild(this.clothes);
-    // Bring the damage marker over the clothes, so the clothes don't cover it.
-    this.swapChildren(this.clothes, this.damageMarker);
+    // Bring the display name over the clothes, so the clothes don't cover it.
+    this.swapChildren(this.clothes, this.displayName);
 
     this.body.animations.add('u',    ['human-up-1',      'human-up-2',       'human-up-1',       'human-up-3'],      10).onComplete.add(this.moveAnimCompleted, this);
     this.body.animations.add('d',    ['human-down-1',    'human-down-2',     'human-down-1',     'human-down-3'],    10).onComplete.add(this.moveAnimCompleted, this);
@@ -22,7 +22,7 @@ Sprite.prototype.constructor = Sprite;
 Sprite.prototype.onMove = function (playMoveAnim) {
     // Move all of the chat texts along with the player.
     for(let i=0; i<this.chatTexts.length; i+=1){
-        this.chatTexts[i].x = this.x + this.body.width;
+        this.chatTexts[i].x = this.x + (dungeonz.TILE_SIZE * 2);
         this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
     }
 

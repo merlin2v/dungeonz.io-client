@@ -9,9 +9,9 @@ window.dungeonz = {
     mapsData: {},
     TILE_SIZE: 16,
     // The view range on the client is one less than the view range on the server, so the client can see things leaving the view range.
-    VIEW_RANGE: 20,
+    VIEW_RANGE: 15,
     // The edge to edge view distance. x2 for both sides, and +1 for the middle (where this player is).
-    VIEW_DIAMETER: (1+20*2),
+    VIEW_DIAMETER: (1+15*2),
     // Minimum amount of time (in ms) for how long any chat messages should stay for.
     CHAT_BASE_LIFESPAN: 2000,
     // How fast chat messages float upwards.
@@ -51,7 +51,7 @@ window.dungeonz = {
         }
     }
 };
-window.GAME_SCALE = 2;
+window.GAME_SCALE = 4;
 
 window.windowResize = function () {
     /*console.log("resized");

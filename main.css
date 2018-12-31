@@ -431,6 +431,12 @@ sass --watch scss/Main.scss:main.css
   visibility: hidden;
 }
 
+#inventory_icon {
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+}
+
 #stats_panel {
   display: inline-grid;
 }
@@ -529,9 +535,12 @@ sass --watch scss/Main.scss:main.css
 }
 
 #inventory_tooltip {
-  width: 70%;
+  position: absolute;
+  width: 50%;
+  bottom: 50px;
+  right: 50%;
+  transform: translateX(50%);
   margin-bottom: 30px;
-  margin-left: 20px;
 }
 
 .panel {

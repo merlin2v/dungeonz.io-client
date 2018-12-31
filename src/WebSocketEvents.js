@@ -229,9 +229,8 @@ eventResponses.moved = function (data) {
         dynamicSprite.y = (relRow + dungeonz.VIEW_RANGE) * dungeonz.TILE_SIZE * GAME_SCALE;
 
         if(dynamicSprite.centered === true){
-            dynamicSprite.anchor.setTo(0.5);
-            dynamicSprite.x += dynamicSprite.width / GAME_SCALE;
-            dynamicSprite.y += dynamicSprite.height / GAME_SCALE;
+            dynamicSprite.x += dynamicSprite.width / GAME_SCALE * 2;
+            dynamicSprite.y += dynamicSprite.height / GAME_SCALE * 2;
         }
     }
 

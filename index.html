@@ -45,6 +45,17 @@
 
     <link rel="stylesheet" href="main.css" type="text/css"/>
 
+    <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
+        new Crate({
+            server: '472783630075166751',
+            channel: '529389784821399552',
+            shard: 'https://cl2.widgetbot.io',
+
+            location: ['bottom', 'left'],
+            defer: true
+        })
+    </script>
+
 </head>
 <body style="margin: 0; overflow:hidden;">
     <img id="background_img" src="assets/img/misc/main-background.png">
@@ -101,8 +112,6 @@
                 </div>
             </div>
             <div id="bottom_left_corner_cont" class="gui_zoomable">
-                <div id="inventory_tooltip" class="counter_tooltip generic_tooltip"></div>
-                <img id="inventory_icon" class="gui_icon" src="assets/img/gui/inventory-icon.png" draggable="false">
             </div>
             <div id="bottom_right_corner_cont" class="gui_zoomable">
                 <div class="inline_cont">
@@ -136,6 +145,9 @@
                     <img id="settings_icon"         class="gui_icon" src="assets/img/gui/settings-icon.png" draggable="false">
                 </div>
             </div>
+
+            <div id="inventory_tooltip" class="counter_tooltip generic_tooltip"></div>
+            <img id="inventory_icon" class="gui_icon" src="assets/img/gui/inventory-icon.png" draggable="false">
 
             <div id="dungeon_prompt">
                 <div id="dungeon_prompt_top">

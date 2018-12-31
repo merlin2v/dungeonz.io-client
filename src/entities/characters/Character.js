@@ -32,6 +32,7 @@ const Sprite = function (x, y, config) {
     this.displayName.anchor.set(0.5, 1);
     this.displayName.scale.set(0.25);
     this.addChild(this.displayName);
+    this.displayName.visible = false;
 
     this.chatTexts = [];
 
@@ -63,6 +64,19 @@ const Sprite = function (x, y, config) {
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
+Sprite.prototype.onInputOver = function () {
+    this.displayName.visible = true;
+};
+
+Sprite.prototype.onInputOut = function () {
+    this.displayName.visible = false;
+};
+
+Sprite.prototype.onInputDown = function () {
+    console.log("oninputdown");
+    this.displayName.visible = true;
+};
+
 Sprite.prototype.moveAnimCompleted = function () {
     this.body.frameName = this.baseFrames[this.direction];
 };
@@ -70,7 +84,7 @@ Sprite.prototype.moveAnimCompleted = function () {
 Sprite.prototype.onMove = function (playMoveAnim) {
     // Move all of the chat texts along with the character.
     for(let i=0; i<this.chatTexts.length; i+=1){
-        this.chatTexts[i].x = this.x + (this.width / 2);
+        this.chatTexts[i].x = this.x + (dungeonz.TILE_SIZE * 2);
         this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
     }
 

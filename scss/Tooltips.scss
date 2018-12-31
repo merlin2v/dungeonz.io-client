@@ -35,7 +35,10 @@
 }
 
 #inventory_tooltip {
-    width: 70%;
+    position: absolute;
+    width: 50%;
+    bottom: 50px;
+    right: 50%;
+    transform: translateX(50%);
     margin-bottom: 30px;
-    margin-left: 20px;
 }

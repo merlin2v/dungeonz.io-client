@@ -3,8 +3,6 @@ const Sprite = function (x, y, config) {
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'pickup-wood-plank');
 
     this.scale.setTo(GAME_SCALE * 0.8);
-    this.width = 24;
-    this.height = 24;
 
     this.tweenPickupFromCenter();
 };

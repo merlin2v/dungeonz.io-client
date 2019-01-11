@@ -45,6 +45,8 @@
 
     <link rel="stylesheet" href="main.css" type="text/css"/>
 
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
         new Crate({
             server: '472783630075166751',
@@ -58,7 +60,7 @@
 
 </head>
 <body style="margin: 0; overflow:hidden;">
-    <img id="background_img" src="assets/img/misc/main-background.png">
+    <img id="background_img" src="assets/img/misc/main-background-test-2.gif">
     <div id="game_cont">
         <div id="game_canvas"></div>
         <div id="gui_cont">
@@ -146,8 +148,8 @@
                 </div>
             </div>
 
-            <div id="inventory_tooltip" class="counter_tooltip generic_tooltip"></div>
-            <img id="inventory_icon" class="gui_icon" src="assets/img/gui/inventory-icon.png" draggable="false">
+            <div id="inventory_tooltip" class="counter_tooltip generic_tooltip gui_zoomable"></div>
+            <img id="inventory_icon" class="gui_icon gui_zoomable" src="assets/img/gui/inventory-icon.png" draggable="false">
 
             <div id="dungeon_prompt">
                 <div id="dungeon_prompt_top">
@@ -367,26 +369,70 @@
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
     </div>
 
-    <div id="home_cont">
-        <div id="title_img_cont">
-            <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
+    <div id="home_cont" class="press_start_font">
+
+        <div id="top_border" class="top_bottom_border"></div>
+        <div id="bottom_border" class="top_bottom_border"></div>
+
+        <div id="top_bar">
+            <div class="top_bar_button_cont">
+                <img id="dmp_button" class="top_bar_button" src="assets/img/misc/dmp-icon.png"
+                     onclick="window.open('https://dungeonz.wikia.com', '_blank');"
+                     onmouseover="changeHoverTooltip('DMP tooltip');"
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
+            </div>
+            <div class="top_bar_button_cont">
+                <img id="wikia_button" class="top_bar_button" src="assets/img/misc/wikia-logo.png"
+                     onclick="window.open('https://dungeonz.wikia.com', '_blank');"
+                     onmouseover="changeHoverTooltip('Wikia tooltip');"
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
+            </div>
+            <div class="top_bar_button_cont">
+                <img id="discord_button" class="top_bar_button" src="assets/img/misc/discord-logo-color.png"
+                     onclick="window.open('https://discord.gg/7wjyU7B', '_blank');"
+                     onmouseover="changeHoverTooltip('Discord tooltip');"
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
+            </div>
+            <div class="top_bar_button_cont">
+                <img id="facebook_button" class="top_bar_button" src="assets/img/misc/facebook-logo.png"
+                     onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');"
+                     onmouseover="changeHoverTooltip('Facebook tooltip');"
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
+            </div>
+            <div class="top_bar_button_cont">
+            </div>
+            <div class="top_bar_button_cont">
+                <div id="renderer_button" class="top_bar_button"
+                     onclick="swapRenderer();"
+                     onmouseover="changeHoverTooltip('Renderer tooltip');"
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
+                    <p id="renderer_text" class="top_bar_text">WebGL</p>
+                </div>
+            </div>
+            <div class="top_bar_button_cont">
+                <div id="language_button" class="top_bar_button">
+                    <p id="language_text" class="top_bar_text">Language</p>
+                </div>
+            </div>
         </div>
-        <div id="play_cont">
-            <div id="play_tabs_cont">
-                <button id="new_character" class="play_tab" type="button" onclick="newCharacterPressed()"></button>
-                <div></div>
-                <button id="continue_character" class="play_tab" type="button" onclick="continuePressed()"></button>
-            </div>
-            <div id="play_inputs_cont">
-                <input id="name_input" class="home_input" type="text" maxlength="20" autofocus>
-                <input id="continue_code_input" class="home_input" type="text" maxlength="18">
-            </div>
-            <div id="play_button_cont">
-                <button id="play_button" type="button" onclick="playPressed()"></button>
-            </div>
-            <p id="warning_message"></p>
+
+        <div id="controls" class="instructions_border">
+            <img class="controls_image" src="assets/img/misc/controls-move.png">
+            <p id="controls_move">Move</p>
+            <img class="controls_image" src="assets/img/misc/controls-use-item.png">
+            <p id="controls_use_held_item">Use held item</p>
+            <img class="controls_image" src="assets/img/misc/controls-pick-up-item.png">
+            <p id="controls_pick_up_item">Pick up item</p>
+            <img class="controls_image" src="assets/img/misc/controls-select-item.png">
+            <p id="controls_select_item">Select item</p>
         </div>
-        <div id="language_select"></div>
+        <div id="news_cont">
+            <h1 id="news_header">News</h1>
+            <p id="news_date">12/34/2056</p>
+            <p id="news_title">Goblin raiders</p>
+            <img id="news_image" src="assets/img/misc/dungeonz-08-08-2018.PNG">
+        </div>
+
         <ul id="language_list">
             <li id="language_english"       class="language_option">English</li>
             <li id="language_french"        class="language_option">Français</li>
@@ -398,52 +444,40 @@
             <li id="add_translation"        class="language_option" onclick="window.open('https://docs.google.com/spreadsheets/d/1n6jSigPBWrubNQMTz00GsLIh3U8CMtfZH8wMFYmfHaA/edit#gid=0', '_blank');"></li>
         </ul>
 
-        <div id="community_links">
-            <div class="community_link_cont">
-                <img id="wikia_button"      class="community_button" src="assets/img/misc/wikia-logo.png"
-                     onclick="window.open('https://dungeonz.wikia.com', '_blank');"
-                     onmouseover="document.getElementById('wikia_tooltip').style.visibility = 'visible'"
-                     onmouseleave="document.getElementById('wikia_tooltip').style.visibility = 'hidden'">
-                <span id="wikia_tooltip"    class="community_text"></span>
-            </div>
-            <div class="community_link_cont">
-                <img id="discord_button"    class="community_button" src="assets/img/misc/discord-logo-color.png"
-                     onclick="window.open('https://discord.gg/7wjyU7B', '_blank');"
-                     onmouseover="document.getElementById('discord_tooltip').style.visibility = 'visible'"
-                     onmouseleave="document.getElementById('discord_tooltip').style.visibility = 'hidden'">
-                <span id="discord_tooltip"  class="community_text"></span>
-            </div>
-            <div class="community_link_cont">
-                <img id="facebook_button"   class="community_button" src="assets/img/misc/facebook-logo.png"
-                     onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=dungeonz.io', '_blank');"
-                     onmouseover="document.getElementById('facebook_tooltip').style.visibility = 'visible'"
-                     onmouseleave="document.getElementById('facebook_tooltip').style.visibility = 'hidden'">
-                <span id="facebook_tooltip" class="community_text"></span>
-            </div>
-        </div>
+        <div id="ad_banner"></div>
 
-        <div id="renderer_button" class="community_button" onclick="swapRenderer();">
-            <p id="renderer_text" class="community_text">WebGL</p>
-        </div>
-
-        <div id="instructions">
-            <h2 id="how_to_play_header" class="instruction_heading"></h2>
-            <div id="how_to_play" class="instructions_border">
-                <p id="how_to_play_value"></p>
+        <div id="play_cont">
+            <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
+            <div id="play_tabs_cont">
+                <button id="new_character" class="play_tab" type="button"
+                        onclick="newCharacterPressed()"
+                        onmouseover="changeHoverTooltip('New character tooltip');"
+                        onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'"></button>
+                <div></div>
+                <button id="continue_character" class="play_tab" type="button"
+                        onclick="continuePressed()"
+                        onmouseover="changeHoverTooltip('Continue tooltip');"
+                        onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'"></button>
             </div>
-            <h2 id="controls_header" class="instruction_heading"></h2>
-            <div id="controls" class="instructions_border">
-                <p id="controls_move"></p>
-                <p id="controls_run"></p>
-                <p id="controls_pick_up_item"></p>
-                <p id="controls_use_item"></p>
-                <p id="controls_drop_item"></p>
+            <div id="play_inputs_cont">
+                <input id="name_input" class="home_input" type="text" maxlength="20" autofocus>
+                <input id="continue_code_input" class="home_input" type="text" maxlength="18">
             </div>
+            <div id="play_button_cont">
+                <button id="play_button" type="button" onclick="playPressed()"></button>
+            </div>
+            <p id="warning_message"></p>
         </div>
     </div>
 
+    <div id="main_tooltip" class="press_start_font"></div>
+
+    <div id="dmp_info">
+
+    </div>
+
     <script>
-        //console.log("- - running index script");
+        console.log("- - running index script");
 
         /**
          * Whether the "New character" tab should be shown. Otherwise shows the "Continue" tab.
@@ -531,7 +565,7 @@
             }
         }
 
-        document.getElementById('language_select').onclick = function (event) {
+        document.getElementById('language_button').onclick = function (event) {
             if(document.getElementById('language_list').style.visibility === "visible"){
                 document.getElementById('language_list').style.visibility = "hidden";
             }
@@ -546,31 +580,24 @@
             // Update the DOM elements that have text with the values for the selected language.
             // Home page.
             document.getElementById('warning_message').innerText =      dungeonz.getTextDef('Connect game server warning');
-            document.getElementById('language_select').innerText =      dungeonz.getTextDef('Language');
+            document.getElementById('language_text').innerText =        dungeonz.getTextDef('Language');
             document.getElementById('add_translation').innerText =      dungeonz.getTextDef('Add translation');
             document.getElementById('name_input').placeholder =         dungeonz.getTextDef('Name input');
             document.getElementById('continue_code_input').placeholder =dungeonz.getTextDef('Continue code input');
             document.getElementById('new_character').innerText =        dungeonz.getTextDef('New character');
             document.getElementById('continue_character').innerText =   dungeonz.getTextDef('Continue');
             document.getElementById('play_button').innerText =          dungeonz.getTextDef('Play');
-            document.getElementById('how_to_play_header').innerText =   dungeonz.getTextDef('How to play header');
-            document.getElementById('how_to_play_value').innerText =    dungeonz.getTextDef('How to play message');
-            document.getElementById('controls_header').innerText =      dungeonz.getTextDef('Controls header');
             document.getElementById('controls_move').innerText =        dungeonz.getTextDef('Controls: move');
-            document.getElementById('controls_run').innerText =         dungeonz.getTextDef('Controls: run');
+            document.getElementById('controls_use_held_item').innerText=dungeonz.getTextDef('Controls: use held item');
             document.getElementById('controls_pick_up_item').innerText =dungeonz.getTextDef('Controls: pick up item');
-            document.getElementById('controls_use_item').innerText =    dungeonz.getTextDef('Controls: use item');
-            document.getElementById('controls_drop_item').innerText =   dungeonz.getTextDef('Controls: drop item');
-            document.getElementById('wikia_tooltip').innerText =        dungeonz.getTextDef('Community: Wikia');
-            document.getElementById('discord_tooltip').innerText =      dungeonz.getTextDef('Community: Discord');
-            document.getElementById('facebook_tooltip').innerText =     dungeonz.getTextDef('Community: Facebook');
+            document.getElementById('controls_select_item').innerText = dungeonz.getTextDef('Controls: select item');
+            //document.getElementById('controls_drop_item').innerText =   dungeonz.getTextDef('Controls: drop item');
 
             // General GUI tooltips.
             document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');
             document.getElementById('hitpoint_tooltip').innerText =     dungeonz.getTextDef('Hitpoint tooltip');
             document.getElementById('energy_tooltip').innerText =       dungeonz.getTextDef('Energy tooltip');
             document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
-            //document.getElementById('coins_tooltip').innerText =        dungeonz.getTextDef('Coins tooltip');
             document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
             document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
             document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
@@ -625,6 +652,13 @@
         document.getElementById('language_german').onclick =        function () { changeLanguage('German');                 hideLanguageList(); };
         document.getElementById('language_russian').onclick =       function () { changeLanguage('Russian');                hideLanguageList(); };
 
+        const hoverTooltip = document.getElementById('main_tooltip');
+        // Changes the text displayed in the main tooltip.
+        function changeHoverTooltip (textDef) {
+            hoverTooltip.innerText = dungeonz.getTextDef(textDef);
+            hoverTooltip.style.visibility = 'visible';
+        }
+
         // Saved renderer preference already loaded in Main.js.
         if(window.renderer === 'canvas'){
             document.getElementById('renderer_text').innerText = 'Canvas';
@@ -640,6 +674,17 @@
 
             location.reload();
         }
+
+        // Disable the right click context menu on the game.
+        document.getElementById('game_cont').addEventListener('contextmenu', event => event.preventDefault());
+
+        // Load the changelog contents into the news section.
+        let xmlhttp, text;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', './changelog.txt', false);
+        xmlhttp.send();
+        text = xmlhttp.responseText;
+        console.log("text:", text);
 
     </script>
 

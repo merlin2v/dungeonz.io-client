@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.10.0</string>
+        <string>4.11.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -244,6 +244,18 @@
             <key type="filename">entities/characters/knight/knight-up-1.png</key>
             <key type="filename">entities/characters/knight/knight-up-2.png</key>
             <key type="filename">entities/characters/knight/knight-up-3.png</key>
+            <key type="filename">entities/characters/warrior/warrior-down-1.png</key>
+            <key type="filename">entities/characters/warrior/warrior-down-2.png</key>
+            <key type="filename">entities/characters/warrior/warrior-down-3.png</key>
+            <key type="filename">entities/characters/warrior/warrior-left-1.png</key>
+            <key type="filename">entities/characters/warrior/warrior-left-2.png</key>
+            <key type="filename">entities/characters/warrior/warrior-left-3.png</key>
+            <key type="filename">entities/characters/warrior/warrior-right-1.png</key>
+            <key type="filename">entities/characters/warrior/warrior-right-2.png</key>
+            <key type="filename">entities/characters/warrior/warrior-right-3.png</key>
+            <key type="filename">entities/characters/warrior/warrior-up-1.png</key>
+            <key type="filename">entities/characters/warrior/warrior-up-2.png</key>
+            <key type="filename">entities/characters/warrior/warrior-up-3.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-1.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-2.png</key>
             <key type="filename">entities/clothes/cloak/cloak-down-3.png</key>
@@ -256,6 +268,18 @@
             <key type="filename">entities/clothes/cloak/cloak-up-1.png</key>
             <key type="filename">entities/clothes/cloak/cloak-up-2.png</key>
             <key type="filename">entities/clothes/cloak/cloak-up-3.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-down-1.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-down-2.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-down-3.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-left-1.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-left-2.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-left-3.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-right-1.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-right-2.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-right-3.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-up-1.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-up-2.png</key>
+            <key type="filename">entities/clothes/iron armour/iron-armour-up-3.png</key>
             <key type="filename">entities/clothes/mage robe/mage-robe-down-1.png</key>
             <key type="filename">entities/clothes/mage robe/mage-robe-down-2.png</key>
             <key type="filename">entities/clothes/mage robe/mage-robe-down-3.png</key>
@@ -296,6 +320,7 @@
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
+            <key type="filename">entities/pickups/pickup-iron-armour.png</key>
             <key type="filename">entities/pickups/pickup-iron-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
             <key type="filename">entities/pickups/pickup-iron-hammer.png</key>
@@ -307,6 +332,7 @@
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
             <key type="filename">entities/pickups/pickup-wood.png</key>
+            <key type="filename">entities/projectiles/proj-deathbind.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
             <key type="filename">entities/projectiles/proj-iron-dagger.png</key>
             <key type="filename">entities/projectiles/proj-iron-hammer.png</key>
@@ -421,6 +447,8 @@
             <filename>entities/characters/human zombie</filename>
             <filename>entities/clothes/necromancer robe</filename>
             <filename>entities/corpses</filename>
+            <filename>entities/clothes/iron armour</filename>
+            <filename>entities/characters/warrior</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

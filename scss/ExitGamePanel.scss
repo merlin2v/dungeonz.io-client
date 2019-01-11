@@ -11,14 +11,13 @@
 .exit_game_panel_info {
     padding: 10px;
     color: $colourDB32VeryDarkPurple;
-    font-family: Consolas;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 #exit_game_panel_info_2 {
     padding-top: 0px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #exit_game_panel_code {
@@ -26,14 +25,13 @@
     cursor: pointer;
     text-align: center;
     color: $colourDB32Red;
-    font-family: Consolas;
-    font-size: 24px;
+    font-size: 90%;
     font-weight: bold;
     padding: 10px;
     margin: 10px;
     line-height: 26px;
     &:hover {
-        font-size: 26px;
+        font-size: 100%;
     }
 }
 
@@ -43,14 +41,10 @@
 }
 
 #exit_game_panel_save_button_cont {
-    //width: 40%;
-    //transform: translateX(100%);
     background-color: $colourDB32WhiteOpacity80;
 }
 
 #exit_game_panel_exit_button_cont {
-    //width: 40%;
-    //transform: translateX(100%);
     background-color: $colourDB32WhiteOpacity80;
 }
 
@@ -58,7 +52,6 @@
     position: relative;
     margin: 10px;
     text-align: center;
-    font-family: Consolas;
     font-weight: bold;
     color: $colourDB32VeryDarkPurple;
     user-select: none;
@@ -66,20 +59,20 @@
 
 #exit_game_panel_save_button {
     background-color: $colourDB32DarkTan;
-    line-height: 30px;
-    font-size: 18px;
+    line-height: 22px;
+    font-size: 90%;
     &:hover {
         background-color: $colourDB32LightTan;
-        font-size: 20px;
+        font-size: 100%;
     }
 }
 
 #exit_game_panel_exit_button {
     background-color: $colourDB32Rose;
-    line-height: 30px;
-    font-size: 20px;
+    line-height: 22px;
+    font-size: 90%;
     &:hover {
         background-color: $colourDB32Orange;
-        font-size: 22px;
+        font-size: 100%;
     }
 }

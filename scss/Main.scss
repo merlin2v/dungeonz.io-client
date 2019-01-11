@@ -25,6 +25,10 @@ sass --watch scss/Main.scss:main.css
   transform: translate(-50%, -50%);
 }
 
+body {
+  background-color: $colourDB32VeryDarkPurple;
+}
+
 img {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -32,4 +36,10 @@ img {
 
 ::placeholder {
   color: $colourDB32IronGrey;
+}
+
+.press_start_font {
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
 }

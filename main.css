@@ -1,22 +1,69 @@
 /*
 sass --watch scss/Main.scss:main.css
 */
-#title_img_cont {
+.top_bottom_border {
   position: absolute;
-  display: inline-flex;
-  justify-content: center;
-  /* align horizontal */
-  align-items: center;
-  /* align vertical */
+  background-color: #222034;
   width: 100%;
-  height: 80px;
-  top: 6%;
+  height: 5%;
+}
+
+#top_border {
+  top: 0;
+}
+
+#bottom_border {
+  bottom: 0;
+}
+
+#top_bar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr 1fr 1fr;
+  grid-gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.top_bar_button_cont {
   text-align: center;
+}
+
+.top_bar_button {
+  background-color: #ffffff;
+  height: 100%;
+  max-height: 90%;
+  padding: 4px;
+  cursor: pointer;
+}
+.top_bar_button:hover {
+  padding: 8px;
+}
+
+#main_tooltip {
+  position: absolute;
+  width: 800px;
+  max-width: 80%;
+  top: 15%;
+  left: 50%;
+  padding: 20px;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #222034;
   background-color: rgba(255, 255, 255, 0.8);
+  visibility: hidden;
 }
 
 #title_img {
-  height: 50%;
+  position: absolute;
+  width: 150%;
+  top: -90px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #play_cont {
@@ -24,7 +71,7 @@ sass --watch scss/Main.scss:main.css
   grid-template-rows: 40px 70px 70px;
   position: absolute;
   width: 400px;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
@@ -40,7 +87,6 @@ sass --watch scss/Main.scss:main.css
   position: relative;
   background-color: rgba(255, 255, 255, 0.8);
   color: #222034;
-  font-family: Consolas;
   font-size: 18px;
   font-weight: bold;
   border: 0;
@@ -63,7 +109,6 @@ sass --watch scss/Main.scss:main.css
   cursor: pointer;
   text-align: center;
   color: #ac3232;
-  font-family: Consolas;
   font-size: 24px;
   font-weight: bold;
   border: 0;
@@ -88,7 +133,6 @@ sass --watch scss/Main.scss:main.css
   cursor: pointer;
   text-align: center;
   color: #ffffff;
-  font-family: Consolas;
   font-size: 24px;
   font-weight: bold;
   border: 0;
@@ -101,48 +145,54 @@ sass --watch scss/Main.scss:main.css
 #warning_message {
   text-align: center;
   color: #df7126;
-  font-family: Consolas;
   font-size: 24px;
   font-weight: bold;
   visibility: hidden;
 }
 
 #background_img {
+  image-rendering: unset;
   position: absolute;
-  width: 100%;
   height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  /*width: 100vw;
+  height: 56.25vw;
+  max-height: 100vh;
+  max-width: 177.78vh;*/
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: -1;
 }
 
+/*
 #renderer_button {
   position: absolute;
   bottom: 0;
   height: 20px;
-}
-
-#renderer_text {
-  visibility: visible;
+}*/
+.top_bar_text {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 0px;
   margin: 0px;
-  background: none;
   font-size: 15px;
   font-weight: bold;
+  visibility: visible;
 }
 
 #language_select {
-  position: absolute;
+  /*position: absolute;
   right: 0px;
   top: 10px;
   width: 150px;
-  height: 40px;
+  height: 40px;*/
   line-height: 40px;
   vertical-align: middle;
   text-align: center;
   color: #3f3f74;
   background-color: #ffffff;
-  font-family: Consolas;
   border-style: solid;
   border-color: #ffffff;
   border-width: 3px;
@@ -163,12 +213,8 @@ sass --watch scss/Main.scss:main.css
   top: 62px;
   width: 150px;
   text-align: center;
-  color: #3f3f74;
-  background-color: #ffffff;
-  font-family: Consolas;
-  border-style: solid;
-  border-color: #ffffff;
-  border-width: 3px;
+  color: #222034;
+  background-color: rgba(255, 255, 255, 0.8);
   font-size: 12px;
   list-style-type: none;
   margin: 0;
@@ -179,11 +225,9 @@ sass --watch scss/Main.scss:main.css
 .language_option {
   cursor: pointer;
   display: block;
-  height: 30px;
   line-height: 30px;
   vertical-align: middle;
 }
-
 .language_option:hover {
   background-color: #5b6ee1;
   color: #ffffff;
@@ -191,104 +235,70 @@ sass --watch scss/Main.scss:main.css
   font-size: 14px;
 }
 
-#instructions {
-  display: none;
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  width: 200px;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 15px;
-  padding-top: 10px;
-}
-
-.instruction_heading {
-  color: #3f3f74;
-  font-family: Consolas;
-  text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  margin: 2px;
-}
-
-#how_to_play {
-  color: #3f3f74;
-  font-family: Consolas;
-  font-size: 12px;
-  text-align: center;
-  font-weight: bold;
-}
-
 #controls {
-  color: #3f3f74;
-  font-family: Consolas;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.instructions_border {
-  margin: 10px;
-  padding: 5px;
-}
-
-#community_links {
+  display: grid;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-items: center;
   position: absolute;
-  bottom: 100px;
-  pointer-events: none;
-}
-
-.community_link {
-  display: flex;
-  justify-content: center;
-  /* align horizontal */
-  align-items: center;
-  /* align vertical */
-  margin-top: 10px;
-  padding: 5px;
-  width: 64px;
-  height: 64px;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-}
-
-.community_link_cont {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.community_button {
-  margin-top: 10px;
-  padding: 5px;
-  width: 50px;
-  height: 50px;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.community_button:hover {
-  background-color: #5b6ee1;
-  font-weight: bold;
-  border-color: rgba(255, 255, 255, 0.8);
-  color: #ffffff;
-}
-
-.community_text {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  height: 48%;
   text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.controls_image {
+  transform: scale(4);
+}
+
+#news_cont {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 300px;
+  max-width: 25%;
+  min-height: 200px;
+  text-align: center;
+  color: #222034;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #3f3f74;
-  font-family: Consolas;
-  font-size: 20px;
-  margin-left: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#news_header {
+  margin: 0;
   padding: 10px;
-  visibility: hidden;
+  background-color: #ffffff;
+}
+
+#news_image {
+  width: 90%;
+}
+
+#ad_banner {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: orange;
+}
+
+#dmp_info {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .gui_zoomable {
@@ -315,7 +325,6 @@ sass --watch scss/Main.scss:main.css
   margin-right: auto;
   color: #3f3f74;
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -347,10 +356,9 @@ sass --watch scss/Main.scss:main.css
   padding-left: 10px;
   user-select: none;
   font-size: 26px;
-  font-family: Consolas;
   font-weight: bold;
   color: white;
-  -webkit-text-stroke: 1.5px #222034;
+  -webkit-text-stroke: 1px #222034;
 }
 
 .text_counter_transition {
@@ -503,8 +511,7 @@ sass --watch scss/Main.scss:main.css
   color: #3f3f74;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
-  font-weight: bold;
+  line-height: 1.2;
   padding: 8px;
   z-index: 1000;
   visibility: hidden;
@@ -563,7 +570,8 @@ sass --watch scss/Main.scss:main.css
   font-size: 26px;
   padding: 4px 4px 12px 4px;
   font-weight: bold;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   color: #222034;
   background-color: rgba(255, 255, 255, 0.8);
   user-select: none;
@@ -577,7 +585,8 @@ sass --watch scss/Main.scss:main.css
   font-size: 26px;
   padding: 4px 12px 4px 12px;
   margin-bottom: 10px;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   color: #222034;
   background-color: rgba(255, 255, 255, 0.8);
   user-select: none;
@@ -591,7 +600,8 @@ sass --watch scss/Main.scss:main.css
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   color: #3f3f74;
   padding: 10px;
   visibility: hidden;
@@ -623,7 +633,8 @@ sass --watch scss/Main.scss:main.css
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   color: #3f3f74;
   padding: 10px;
   visibility: hidden;
@@ -665,7 +676,8 @@ sass --watch scss/Main.scss:main.css
   text-align: center;
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   padding: 8px;
   padding-bottom: 16px;
   visibility: hidden;
@@ -811,11 +823,11 @@ sass --watch scss/Main.scss:main.css
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
-  color: #df7126;
-  -webkit-text-stroke: 1.2px #222034;
-  font-family: Consolas;
+  color: #ffffff;
+  -webkit-text-stroke: 1.6px #222034;
+  font-family: "Press Start 2P";
 }
 
 #item_tooltip_cont {
@@ -828,7 +840,7 @@ sass --watch scss/Main.scss:main.css
   text-align: center;
   color: #3f3f74;
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: Consolas;
+  font-family: "Press Start 2P";
   padding: 8px;
 }
 
@@ -984,7 +996,8 @@ sass --watch scss/Main.scss:main.css
   position: relative;
   text-align: center;
   line-height: 30px;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   font-size: 20px;
   font-weight: bold;
   color: #222034;
@@ -1029,7 +1042,8 @@ sass --watch scss/Main.scss:main.css
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-  font-family: Consolas;
+  font-family: "Press Start 2P";
+  letter-spacing: 0.1em;
   font-size: 20px;
   font-weight: bold;
   color: #222034;
@@ -1105,14 +1119,13 @@ sass --watch scss/Main.scss:main.css
 .exit_game_panel_info {
   padding: 10px;
   color: #222034;
-  font-family: Consolas;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 #exit_game_panel_info_2 {
   padding-top: 0px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #exit_game_panel_code {
@@ -1120,15 +1133,14 @@ sass --watch scss/Main.scss:main.css
   cursor: pointer;
   text-align: center;
   color: #ac3232;
-  font-family: Consolas;
-  font-size: 24px;
+  font-size: 90%;
   font-weight: bold;
   padding: 10px;
   margin: 10px;
   line-height: 26px;
 }
 #exit_game_panel_code:hover {
-  font-size: 26px;
+  font-size: 100%;
 }
 
 #exit_game_panel_buttons_cont {
@@ -1148,7 +1160,6 @@ sass --watch scss/Main.scss:main.css
   position: relative;
   margin: 10px;
   text-align: center;
-  font-family: Consolas;
   font-weight: bold;
   color: #222034;
   user-select: none;
@@ -1156,22 +1167,22 @@ sass --watch scss/Main.scss:main.css
 
 #exit_game_panel_save_button {
   background-color: #d9a066;
-  line-height: 30px;
-  font-size: 18px;
+  line-height: 22px;
+  font-size: 90%;
 }
 #exit_game_panel_save_button:hover {
   background-color: #eec39a;
-  font-size: 20px;
+  font-size: 100%;
 }
 
 #exit_game_panel_exit_button {
   background-color: #d95763;
-  line-height: 30px;
-  font-size: 20px;
+  line-height: 22px;
+  font-size: 90%;
 }
 #exit_game_panel_exit_button:hover {
   background-color: #df7126;
-  font-size: 22px;
+  font-size: 100%;
 }
 
 #game_canvas {
@@ -1183,6 +1194,10 @@ sass --watch scss/Main.scss:main.css
   transform: translate(-50%, -50%);
 }
 
+body {
+  background-color: #222034;
+}
+
 img {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -1190,6 +1205,12 @@ img {
 
 ::placeholder {
   color: #847e87;
+}
+
+.press_start_font {
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
 }
 
 /*# sourceMappingURL=main.css.map */

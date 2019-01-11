@@ -19,7 +19,8 @@
   font-size: 26px;
   padding: 4px 4px 12px 4px;
   font-weight: bold;
-  font-family: Consolas;
+  font-family: 'Press Start 2P';
+  letter-spacing: 0.1em;
   color: $colourDB32VeryDarkPurple;
   background-color: $colourDB32WhiteOpacity80;
   user-select: none;
@@ -33,7 +34,8 @@
   font-size: 26px;
   padding: 4px 12px 4px 12px;
   margin-bottom: 10px;
-  font-family: Consolas;
+  font-family: 'Press Start 2P';
+  letter-spacing: 0.1em;
   color: $colourDB32VeryDarkPurple;
   background-color: $colourDB32WhiteOpacity80;
   user-select: none;
@@ -49,7 +51,8 @@
   transform: translate(-50%, -50%);
   background-color: $colourDB32WhiteOpacity80;
   text-align: center;
-  font-family: Consolas;
+  font-family: 'Press Start 2P';
+  letter-spacing: 0.1em;
   color: $colourDB32DarkBlurple;
   padding: 10px;
   visibility: hidden;
@@ -80,7 +83,8 @@
   transform: translate(-50%, -50%);
   background-color: $colourDB32WhiteOpacity80;
   text-align: center;
-  font-family: Consolas;
+  font-family: 'Press Start 2P';
+  letter-spacing: 0.1em;
   color: $colourDB32DarkBlurple;
   padding: 10px;
   visibility: hidden;
@@ -123,7 +127,8 @@
   text-align: center;
   color: $colourDB32White;
   background-color: $colourDB32WhiteOpacity80;
-  font-family: Consolas;
+  font-family: 'Press Start 2P';
+  letter-spacing: 0.1em;
   padding: 8px;
   padding-bottom: 16px;
   visibility: hidden;

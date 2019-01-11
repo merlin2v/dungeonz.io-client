@@ -76,6 +76,9 @@ dungeonz.Game.prototype = {
 
         window._this = this;
 
+        // Hide the distracting background gif while the game is running.
+        document.getElementById('background_img').style.visibility = "hidden";
+
         this.canvasContainer = document.getElementById("game_canvas");
         this.canvasContainer.appendChild(this.game.canvas);
 
@@ -166,6 +169,9 @@ dungeonz.Game.prototype = {
     },
 
     shutdown: function () {
+        // Show the background gif.
+        document.getElementById('background_img').style.visibility = "visible";
+
         // Remove the handler for resize events, so it doesn't try to resize the sprite container groups that have been removed.
         window.removeEventListener('resize', window.windowResize);
 

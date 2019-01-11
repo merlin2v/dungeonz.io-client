@@ -20,7 +20,7 @@ const Sprite = function (x, y, config) {
     this.addChild(this.body);
 
     const style = {
-        font: "25px Consolas",
+        font: "20px Press Start 2P",
         align: "center",
         fill: "#f5f5f5",
         stroke: "#000000",

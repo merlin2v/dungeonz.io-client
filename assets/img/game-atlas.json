@@ -585,7 +585,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-down-1",
+	"filename": "iron-armour-down-1",
 	"frame": {"x":55,"y":281,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -593,7 +593,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-down-2",
+	"filename": "iron-armour-down-2",
 	"frame": {"x":73,"y":281,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -601,7 +601,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-down-3",
+	"filename": "iron-armour-down-3",
 	"frame": {"x":91,"y":281,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -609,7 +609,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-left-1",
+	"filename": "iron-armour-left-1",
 	"frame": {"x":109,"y":281,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -617,7 +617,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-left-2",
+	"filename": "iron-armour-left-2",
 	"frame": {"x":1,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -625,7 +625,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-left-3",
+	"filename": "iron-armour-left-3",
 	"frame": {"x":19,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -633,7 +633,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-right-1",
+	"filename": "iron-armour-right-1",
 	"frame": {"x":37,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -641,7 +641,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-right-2",
+	"filename": "iron-armour-right-2",
 	"frame": {"x":55,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -649,7 +649,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-right-3",
+	"filename": "iron-armour-right-3",
 	"frame": {"x":73,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -657,7 +657,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-up-1",
+	"filename": "iron-armour-up-1",
 	"frame": {"x":91,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -665,7 +665,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-up-2",
+	"filename": "iron-armour-up-2",
 	"frame": {"x":109,"y":299,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -673,7 +673,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "knight-up-3",
+	"filename": "iron-armour-up-3",
 	"frame": {"x":1,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -681,7 +681,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-down-1",
+	"filename": "knight-down-1",
 	"frame": {"x":19,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -689,7 +689,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-down-2",
+	"filename": "knight-down-2",
 	"frame": {"x":37,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -697,7 +697,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-down-3",
+	"filename": "knight-down-3",
 	"frame": {"x":55,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -705,7 +705,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-left-1",
+	"filename": "knight-left-1",
 	"frame": {"x":73,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -713,7 +713,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-left-2",
+	"filename": "knight-left-2",
 	"frame": {"x":91,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -721,7 +721,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-left-3",
+	"filename": "knight-left-3",
 	"frame": {"x":109,"y":317,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -729,7 +729,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-right-1",
+	"filename": "knight-right-1",
 	"frame": {"x":1,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -737,7 +737,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-right-2",
+	"filename": "knight-right-2",
 	"frame": {"x":19,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -745,7 +745,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-right-3",
+	"filename": "knight-right-3",
 	"frame": {"x":37,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -753,7 +753,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-up-1",
+	"filename": "knight-up-1",
 	"frame": {"x":55,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -761,7 +761,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-up-2",
+	"filename": "knight-up-2",
 	"frame": {"x":73,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -769,7 +769,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "mage-robe-up-3",
+	"filename": "knight-up-3",
 	"frame": {"x":91,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -777,7 +777,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-down-1",
+	"filename": "mage-robe-down-1",
 	"frame": {"x":109,"y":335,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -785,7 +785,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-down-2",
+	"filename": "mage-robe-down-2",
 	"frame": {"x":1,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -793,7 +793,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-down-3",
+	"filename": "mage-robe-down-3",
 	"frame": {"x":19,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -801,7 +801,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-left-1",
+	"filename": "mage-robe-left-1",
 	"frame": {"x":37,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -809,7 +809,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-left-2",
+	"filename": "mage-robe-left-2",
 	"frame": {"x":55,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -817,7 +817,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-left-3",
+	"filename": "mage-robe-left-3",
 	"frame": {"x":73,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -825,7 +825,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-right-1",
+	"filename": "mage-robe-right-1",
 	"frame": {"x":91,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -833,7 +833,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-right-2",
+	"filename": "mage-robe-right-2",
 	"frame": {"x":109,"y":353,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -841,7 +841,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-right-3",
+	"filename": "mage-robe-right-3",
 	"frame": {"x":1,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -849,7 +849,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-up-1",
+	"filename": "mage-robe-up-1",
 	"frame": {"x":19,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -857,7 +857,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-up-2",
+	"filename": "mage-robe-up-2",
 	"frame": {"x":37,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -865,7 +865,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "necromancer-robe-up-3",
+	"filename": "mage-robe-up-3",
 	"frame": {"x":55,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -873,7 +873,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "ore-gold",
+	"filename": "necromancer-robe-down-1",
 	"frame": {"x":73,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -881,7 +881,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "ore-inactive",
+	"filename": "necromancer-robe-down-2",
 	"frame": {"x":91,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -889,7 +889,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "ore-iron",
+	"filename": "necromancer-robe-down-3",
 	"frame": {"x":109,"y":371,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -897,7 +897,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "overworld-portal-inactive",
+	"filename": "necromancer-robe-left-1",
 	"frame": {"x":1,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -905,7 +905,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "overworld-portal",
+	"filename": "necromancer-robe-left-2",
 	"frame": {"x":19,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -913,7 +913,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-down-1",
+	"filename": "necromancer-robe-left-3",
 	"frame": {"x":37,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -921,7 +921,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-down-2",
+	"filename": "necromancer-robe-right-1",
 	"frame": {"x":55,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -929,7 +929,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-down-3",
+	"filename": "necromancer-robe-right-2",
 	"frame": {"x":73,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -937,7 +937,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-left-1",
+	"filename": "necromancer-robe-right-3",
 	"frame": {"x":91,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -945,7 +945,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-left-2",
+	"filename": "necromancer-robe-up-1",
 	"frame": {"x":109,"y":389,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -953,7 +953,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-left-3",
+	"filename": "necromancer-robe-up-2",
 	"frame": {"x":1,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -961,7 +961,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-right-1",
+	"filename": "necromancer-robe-up-3",
 	"frame": {"x":19,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -969,7 +969,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-right-2",
+	"filename": "ore-gold",
 	"frame": {"x":37,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -977,7 +977,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-right-3",
+	"filename": "ore-inactive",
 	"frame": {"x":55,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -985,7 +985,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-up-1",
+	"filename": "ore-iron",
 	"frame": {"x":73,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -993,7 +993,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-up-2",
+	"filename": "overworld-portal-inactive",
 	"frame": {"x":91,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -1001,7 +1001,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "paladin-armour-up-3",
+	"filename": "overworld-portal",
 	"frame": {"x":109,"y":407,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -1009,8 +1009,104 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
+	"filename": "paladin-armour-down-1",
+	"frame": {"x":1,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-down-2",
+	"frame": {"x":19,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-down-3",
+	"frame": {"x":37,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-left-1",
+	"frame": {"x":55,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-left-2",
+	"frame": {"x":73,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-left-3",
+	"frame": {"x":91,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-right-1",
+	"frame": {"x":109,"y":425,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-right-2",
+	"frame": {"x":1,"y":443,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-right-3",
+	"frame": {"x":19,"y":443,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-up-1",
+	"frame": {"x":37,"y":443,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-up-2",
+	"frame": {"x":55,"y":443,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "paladin-armour-up-3",
+	"frame": {"x":73,"y":443,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
 	"filename": "pickup-book-of-light",
-	"frame": {"x":1,"y":425,"w":18,"h":18},
+	"frame": {"x":91,"y":443,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -1018,7 +1114,7 @@
 },
 {
 	"filename": "pickup-book-of-souls",
-	"frame": {"x":21,"y":425,"w":18,"h":18},
+	"frame": {"x":1,"y":463,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -1026,7 +1122,7 @@
 },
 {
 	"filename": "pickup-cloak",
-	"frame": {"x":41,"y":425,"w":18,"h":18},
+	"frame": {"x":21,"y":463,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -1034,7 +1130,7 @@
 },
 {
 	"filename": "pickup-feathers",
-	"frame": {"x":61,"y":425,"w":18,"h":18},
+	"frame": {"x":41,"y":463,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
@@ -1042,7 +1138,7 @@
 },
 {
 	"filename": "pickup-fire-gem",
-	"frame": {"x":81,"y":425,"w":16,"h":16},
+	"frame": {"x":61,"y":463,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1050,7 +1146,7 @@
 },
 {
 	"filename": "pickup-fire-staff",
-	"frame": {"x":99,"y":425,"w":16,"h":16},
+	"frame": {"x":79,"y":463,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1058,7 +1154,7 @@
 },
 {
 	"filename": "pickup-gold-bar",
-	"frame": {"x":1,"y":445,"w":16,"h":16},
+	"frame": {"x":97,"y":463,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1066,15 +1162,23 @@
 },
 {
 	"filename": "pickup-gold-ore",
-	"frame": {"x":19,"y":445,"w":18,"h":18},
+	"frame": {"x":1,"y":483,"w":18,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
 	"sourceSize": {"w":18,"h":18}
 },
 {
+	"filename": "pickup-iron-armour",
+	"frame": {"x":21,"y":483,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
 	"filename": "pickup-iron-arrows",
-	"frame": {"x":39,"y":445,"w":22,"h":22},
+	"frame": {"x":39,"y":483,"w":22,"h":22},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":22},
@@ -1082,7 +1186,7 @@
 },
 {
 	"filename": "pickup-iron-bar",
-	"frame": {"x":63,"y":445,"w":16,"h":16},
+	"frame": {"x":63,"y":483,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1090,7 +1194,7 @@
 },
 {
 	"filename": "pickup-iron-dagger",
-	"frame": {"x":81,"y":445,"w":16,"h":16},
+	"frame": {"x":81,"y":483,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1098,7 +1202,7 @@
 },
 {
 	"filename": "pickup-iron-hammer",
-	"frame": {"x":99,"y":445,"w":16,"h":16},
+	"frame": {"x":99,"y":483,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1106,110 +1210,6 @@
 },
 {
 	"filename": "pickup-iron-hatchet",
-	"frame": {"x":1,"y":469,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-iron-ore",
-	"frame": {"x":19,"y":469,"w":18,"h":18},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
-	"sourceSize": {"w":18,"h":18}
-},
-{
-	"filename": "pickup-iron-pickaxe",
-	"frame": {"x":39,"y":469,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-iron-sword",
-	"frame": {"x":57,"y":469,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-mage-robe",
-	"frame": {"x":75,"y":469,"w":18,"h":18},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
-	"sourceSize": {"w":18,"h":18}
-},
-{
-	"filename": "pickup-necromancer-robe",
-	"frame": {"x":95,"y":469,"w":18,"h":18},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
-	"sourceSize": {"w":18,"h":18}
-},
-{
-	"filename": "pickup-scroll-of-healing",
-	"frame": {"x":1,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-super-fire-staff",
-	"frame": {"x":19,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-wind-staff",
-	"frame": {"x":37,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-wood-plank",
-	"frame": {"x":55,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "pickup-wood",
-	"frame": {"x":73,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "proj-fire",
-	"frame": {"x":91,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "proj-iron-dagger",
-	"frame": {"x":109,"y":489,"w":16,"h":16},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-{
-	"filename": "proj-iron-hammer",
 	"frame": {"x":1,"y":507,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -1217,8 +1217,120 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
+	"filename": "pickup-iron-ore",
+	"frame": {"x":19,"y":507,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+},
+{
+	"filename": "pickup-iron-pickaxe",
+	"frame": {"x":39,"y":507,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-iron-sword",
+	"frame": {"x":57,"y":507,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-mage-robe",
+	"frame": {"x":75,"y":507,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+},
+{
+	"filename": "pickup-necromancer-robe",
+	"frame": {"x":95,"y":507,"w":18,"h":18},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":18},
+	"sourceSize": {"w":18,"h":18}
+},
+{
+	"filename": "pickup-scroll-of-healing",
+	"frame": {"x":1,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-super-fire-staff",
+	"frame": {"x":19,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-wind-staff",
+	"frame": {"x":37,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-wood-plank",
+	"frame": {"x":55,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "pickup-wood",
+	"frame": {"x":73,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "proj-deathbind",
+	"frame": {"x":91,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "proj-fire",
+	"frame": {"x":109,"y":527,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "proj-iron-dagger",
+	"frame": {"x":1,"y":545,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "proj-iron-hammer",
+	"frame": {"x":19,"y":545,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
 	"filename": "proj-iron-sword",
-	"frame": {"x":19,"y":507,"w":16,"h":16},
+	"frame": {"x":37,"y":545,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1226,7 +1338,7 @@
 },
 {
 	"filename": "proj-pacify",
-	"frame": {"x":37,"y":507,"w":16,"h":16},
+	"frame": {"x":55,"y":545,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1234,7 +1346,7 @@
 },
 {
 	"filename": "proj-wind",
-	"frame": {"x":55,"y":507,"w":16,"h":16},
+	"frame": {"x":73,"y":545,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1242,7 +1354,7 @@
 },
 {
 	"filename": "small-iron-candle-inactive",
-	"frame": {"x":73,"y":507,"w":16,"h":16},
+	"frame": {"x":91,"y":545,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1250,7 +1362,7 @@
 },
 {
 	"filename": "small-iron-candle",
-	"frame": {"x":91,"y":507,"w":16,"h":16},
+	"frame": {"x":109,"y":545,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1258,7 +1370,7 @@
 },
 {
 	"filename": "tree-inactive",
-	"frame": {"x":109,"y":507,"w":16,"h":16},
+	"frame": {"x":1,"y":563,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1266,7 +1378,103 @@
 },
 {
 	"filename": "tree",
-	"frame": {"x":1,"y":525,"w":16,"h":16},
+	"frame": {"x":19,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-down-1",
+	"frame": {"x":37,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-down-2",
+	"frame": {"x":55,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-down-3",
+	"frame": {"x":73,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-left-1",
+	"frame": {"x":91,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-left-2",
+	"frame": {"x":109,"y":563,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-left-3",
+	"frame": {"x":1,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-right-1",
+	"frame": {"x":19,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-right-2",
+	"frame": {"x":37,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-right-3",
+	"frame": {"x":55,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-up-1",
+	"frame": {"x":73,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-up-2",
+	"frame": {"x":91,"y":581,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+{
+	"filename": "warrior-up-3",
+	"frame": {"x":109,"y":581,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1274,7 +1482,7 @@
 },
 {
 	"filename": "wood-door-inactive",
-	"frame": {"x":19,"y":525,"w":16,"h":16},
+	"frame": {"x":1,"y":599,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1282,7 +1490,7 @@
 },
 {
 	"filename": "wood-door-locked",
-	"frame": {"x":37,"y":525,"w":16,"h":16},
+	"frame": {"x":19,"y":599,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1290,7 +1498,7 @@
 },
 {
 	"filename": "wood-door",
-	"frame": {"x":55,"y":525,"w":16,"h":16},
+	"frame": {"x":37,"y":599,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1301,8 +1509,8 @@
 	"version": "1.0",
 	"image": "game-atlas.png",
 	"format": "RGBA8888",
-	"size": {"w":126,"h":542},
+	"size": {"w":126,"h":616},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b67f5348673b965cf65cd564862f6141:5753c6414a647cbd426ccf44a73786b1:b34e047a981bc8a9c58ce5c60a4731b1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:aa19ae3af40ae60e659b33af297133b6:057ab0f21f69c67f9084632c1bd5db8a:b34e047a981bc8a9c58ce5c60a4731b1$"
 }
 }

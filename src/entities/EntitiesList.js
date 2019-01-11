@@ -36,6 +36,7 @@ import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
+import PickupIronArmour         from './pickups/PickupIronArmour'
 import PickupIronArrows         from './pickups/PickupIronArrows'
 import PickupIronHatchet        from './pickups/PickupIronHatchet'
 import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
@@ -55,6 +56,7 @@ import PickupGoldBar            from './pickups/PickupGoldBar'
 import PickupIronOre            from './pickups/PickupIronOre'
 import PickupIronBar            from './pickups/PickupIronBar'
 
+import ProjDeathbind            from './projectiles/ProjDeathbind'
 import ProjIronDagger           from './projectiles/ProjIronDagger'
 import ProjIronSword            from './projectiles/ProjIronSword'
 import ProjIronHammer           from './projectiles/ProjIronHammer'
@@ -89,6 +91,7 @@ const EntitiesList = {
     PickupCloak:            PickupCloak,
     PickupMageRobe:         PickupMageRobe,
     PickupNecromancerRobe:  PickupNecromancerRobe,
+    PickupIronArmour:       PickupIronArmour,
     PickupIronHatchet:      PickupIronHatchet,
     PickupIronArrows:       PickupIronArrows,
     PickupIronPickaxe:      PickupIronPickaxe,
@@ -108,6 +111,7 @@ const EntitiesList = {
     PickupIronOre:          PickupIronOre,
     PickupIronBar:          PickupIronBar,
 
+    ProjDeathbind:          ProjDeathbind,
     ProjIronDagger:         ProjIronDagger,
     ProjIronSword:          ProjIronSword,
     ProjIronHammer:         ProjIronHammer,

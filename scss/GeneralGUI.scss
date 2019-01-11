@@ -23,7 +23,6 @@
     margin-right: auto;
     color: $colourDB32DarkBlurple;
     background-color: $colourDB32WhiteOpacity80;
-    font-family: Consolas;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -57,11 +56,10 @@
 
     user-select: none;
     font-size: 26px;
-    font-family: Consolas;
     font-weight: bold;
     color: $colourTextContentWhite;
 
-    -webkit-text-stroke: 1.5px $colourDB32VeryDarkPurple;
+    -webkit-text-stroke: 1px $colourDB32VeryDarkPurple;
 }
 
 .text_counter_transition {

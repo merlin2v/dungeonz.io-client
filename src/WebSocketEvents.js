@@ -133,6 +133,13 @@ eventResponses.join_world_success = function (data) {
 
     document.getElementById("home_cont").style.display = "none";
 
+    // If something is wrong, close the connection.
+    if(!_this.state){
+        console.log("* WARNING: _this.state is invalid. Closing WS connection. _this:", _this);
+        ws.close();
+        return;
+    }
+
     _this.state.start('Game', true, false, data);
 };
 
@@ -229,8 +236,8 @@ eventResponses.moved = function (data) {
         dynamicSprite.y = (relRow + dungeonz.VIEW_RANGE) * dungeonz.TILE_SIZE * GAME_SCALE;
 
         if(dynamicSprite.centered === true){
-            dynamicSprite.x += dynamicSprite.width / GAME_SCALE * 2;
-            dynamicSprite.y += dynamicSprite.height / GAME_SCALE * 2;
+            dynamicSprite.x += dungeonz.CENTER_OFFSET;
+            dynamicSprite.y += dungeonz.CENTER_OFFSET;
         }
     }
 
@@ -402,8 +409,19 @@ eventResponses.unequip_clothes = function (data) {
     _this.dynamics[data].sprite.clothes.visible = false;
 };
 
+eventResponses.activate_ammunition = function (data) {
+    // Show the equipped icon on the inventory slot.
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/ammunition-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
+};
+
+eventResponses.deactivate_ammunition = function (data) {
+    // Hide the equipped icon on the inventory slot.
+    _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
+};
+
 eventResponses.activate_clothing = function (data) {
-    // Show the clothing icon on the inventory slot.
+    // Show the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/clothing-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
@@ -415,7 +433,7 @@ eventResponses.deactivate_clothing = function (data) {
 
 eventResponses.activate_holding = function (data) {
     _this.player.holdingItem = true;
-    // Show the holding icon on the inventory slot.
+    // Show the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/holding-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };

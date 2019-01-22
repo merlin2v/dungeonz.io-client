@@ -537,8 +537,8 @@ dungeonz.Game.prototype = {
 
         if(dynamicSprite.centered === true){
             dynamicSprite.anchor.setTo(0.5);
-            dynamicSprite.x += dynamicSprite.width / GAME_SCALE * 2;
-            dynamicSprite.y += dynamicSprite.height / GAME_SCALE * 2;
+            dynamicSprite.x += dungeonz.CENTER_OFFSET;
+            dynamicSprite.y += dungeonz.CENTER_OFFSET;
         }
 
         if(dynamicSprite.lightDistance !== undefined){
@@ -643,7 +643,7 @@ dungeonz.Game.prototype = {
         if(dynamic === undefined) return;
 
         const style = {
-            font: "20px Consolas",
+            font: "20px Press Start 2P",
             align: "center",
             fill: fillColour || "#f5f5f5",
             stroke: "#000000",
@@ -682,7 +682,7 @@ dungeonz.Game.prototype = {
         // Add it to this dynamics list of chat texts, so they can be moved and removed later.
         dynamic.sprite.chatTexts.push(chatText);
         chatText.anchor.set(0.5);
-        chatText.scale.set(GAME_SCALE * 0.4);
+        chatText.scale.set(GAME_SCALE * 0.25);
         // How far this chat message has scrolled up so far.
         chatText.yScroll = 0;
         // Make the chat message scroll up.

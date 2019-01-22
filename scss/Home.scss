@@ -89,11 +89,14 @@
   position: relative;
   background-color: $colourDB32WhiteOpacity80;
   color: $colourDB32VeryDarkPurple;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
   &:hover {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 
@@ -101,7 +104,12 @@
   background-color: $colourDB32WhiteOpacity80;
   padding: 10px;
   padding-bottom: 0px;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
 }
+
+
 
 .home_input {
   position: relative;
@@ -111,11 +119,14 @@
   cursor: pointer;
   text-align: center;
   color: $colourDB32Red;
-  font-size: 24px;
+  font-size: 13px;
   font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
   &:hover {
-    font-size: 26px;
+    font-size: 15px;
   }
 }
 
@@ -137,6 +148,9 @@
   color: $colourDB32White;
   font-size: 24px;
   font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
   &:hover {
     background-color: $colourDB32Rose;
@@ -149,6 +163,7 @@
   color: $colourDB32Orange;
   font-size: 24px;
   font-weight: bold;
+  -webkit-text-stroke: 0.1px $colourDB32White;
   visibility: hidden;
 }
 
@@ -168,12 +183,15 @@
   transform: translateX(-50%);
   z-index: -1;
 }
-/*
+
 #renderer_button {
-  position: absolute;
-  bottom: 0;
-  height: 20px;
-}*/
+  height: 60%;
+}
+
+#language_button {
+  height: 60%;
+}
+
 .top_bar_text {
   text-align: center;
   position: relative;
@@ -213,12 +231,12 @@
 
 #language_list {
   position: absolute;
-  right: 0px;
-  top: 62px;
+  right: 18px;
+  top: 84px;
   width: 150px;
   text-align: center;
   color: $colourDB32VeryDarkPurple;
-  background-color: $colourDB32WhiteOpacity80;
+  background-color: $colourDB32White;
   font-size: 12px;
   list-style-type: none;
   margin: 0;
@@ -232,10 +250,13 @@
   line-height: 30px;
   vertical-align: middle;
   &:hover {
-    background-color: $colourDB32Blurple;
-    color: $colourDB32White;
+    //background-color: $colourDB32Blurple;
+    background-color: $colourDB32SteelGrey;
+    //color: $colourDB32White;
     font-weight: bold;
-    font-size: 14px;
+    transform: scale(1.2);
+    filter: brightness(110%);
+    //font-size: 14px;
   }
 }
 
@@ -273,6 +294,10 @@
   background-color: $colourDB32WhiteOpacity80;
   font-weight: bold;
   padding-bottom: 10px;
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    filter: brightness(110%);
+  }
 }
 
 #news_header {
@@ -282,7 +307,6 @@
 }
 
 #news_date {
-
 }
 
 #news_title {
@@ -290,6 +314,20 @@
 
 #news_image {
   width: 90%;
+}
+
+#credits {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  height: 5%;
+  background-color: $colourDB32White;
+  padding: 6px;
+  line-height: 5vh;
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(110%);
+  }
 }
 
 #ad_banner {

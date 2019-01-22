@@ -3,8 +3,10 @@ import DungeonPrompts from '../src/catalogues/DungeonPrompts';
 
 import overworld from '../assets/map/overworld'
 import dungeon_bandit_hideout from '../assets/map/dungeon-bandit-hideout'
+import dungeon_city_sewers from '../assets/map/dungeon-city-sewers'
 
 window._this = {};
+window.GAME_SCALE = 4;
 window.dungeonz = {
     mapsData: {},
     TILE_SIZE: 16,
@@ -51,7 +53,8 @@ window.dungeonz = {
         }
     }
 };
-window.GAME_SCALE = 4;
+// Used to center entity sprites that are centered, such as projectiles and pickups.
+window.dungeonz.CENTER_OFFSET = dungeonz.TILE_SIZE * GAME_SCALE * 0.5;
 
 window.windowResize = function () {
     /*console.log("resized");
@@ -107,8 +110,9 @@ dungeonz.Boot.prototype = {
             window.focus();
         }, false);
 
-        dungeonz.mapsData["overworld"] = overworld;
-        dungeonz.mapsData["dungeon-bandit-hideout"] = dungeon_bandit_hideout;
+        dungeonz.mapsData["overworld"] =                overworld;
+        dungeonz.mapsData["dungeon-bandit-hideout"] =   dungeon_bandit_hideout;
+        dungeonz.mapsData["dungeon-city-sewers"] =      dungeon_city_sewers;
 
         //console.log("maps data:");
         //console.log(dungeonz.mapsData);

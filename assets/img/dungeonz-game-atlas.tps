@@ -183,6 +183,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">entities/buildings/anvil.png</key>
             <key type="filename">entities/buildings/bank-chest.png</key>
+            <key type="filename">entities/buildings/charter.png</key>
             <key type="filename">entities/buildings/counter-flap-inactive.png</key>
             <key type="filename">entities/buildings/counter-flap.png</key>
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>
@@ -191,9 +192,11 @@
             <key type="filename">entities/buildings/gold-exchange-terminal.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
             <key type="filename">entities/buildings/overworld-portal.png</key>
+            <key type="filename">entities/buildings/potionry-lab.png</key>
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
+            <key type="filename">entities/buildings/workbench.png</key>
             <key type="filename">entities/characters/bandit/bandit-down-1.png</key>
             <key type="filename">entities/characters/bandit/bandit-down-2.png</key>
             <key type="filename">entities/characters/bandit/bandit-down-3.png</key>
@@ -304,6 +307,18 @@
             <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-1.png</key>
             <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-2.png</key>
             <key type="filename">entities/clothes/necromancer robe/necromancer-robe-up-3.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-down-1.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-down-2.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-down-3.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-left-1.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-left-2.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-left-3.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-right-1.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-right-2.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-right-3.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-up-1.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-up-2.png</key>
+            <key type="filename">entities/clothes/ninja garb/ninja-garb-up-3.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-3.png</key>
@@ -326,14 +341,19 @@
             <key type="filename">entities/pickups/pickup-iron-hammer.png</key>
             <key type="filename">entities/pickups/pickup-iron-hatchet.png</key>
             <key type="filename">entities/pickups/pickup-iron-pickaxe.png</key>
+            <key type="filename">entities/pickups/pickup-iron-rod.png</key>
+            <key type="filename">entities/pickups/pickup-iron-sheet.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
+            <key type="filename">entities/pickups/pickup-oak-bow.png</key>
+            <key type="filename">entities/pickups/pickup-oak-logs.png</key>
             <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
+            <key type="filename">entities/pickups/pickup-shuriken.png</key>
             <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
-            <key type="filename">entities/pickups/pickup-wood.png</key>
             <key type="filename">entities/projectiles/proj-deathbind.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
+            <key type="filename">entities/projectiles/proj-iron-arrow.png</key>
             <key type="filename">entities/projectiles/proj-iron-dagger.png</key>
             <key type="filename">entities/projectiles/proj-iron-hammer.png</key>
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
@@ -370,6 +390,16 @@
             <key type="filename">entities/characters/bat/bat-up-1.png</key>
             <key type="filename">entities/characters/bat/bat-up-2.png</key>
             <key type="filename">entities/characters/bat/bat-up-3.png</key>
+            <key type="filename">entities/characters/rat/rat-down-2.png</key>
+            <key type="filename">entities/characters/rat/rat-down-3.png</key>
+            <key type="filename">entities/characters/rat/rat-left-2.png</key>
+            <key type="filename">entities/characters/rat/rat-left-3.png</key>
+            <key type="filename">entities/characters/rat/rat-right-2.png</key>
+            <key type="filename">entities/characters/rat/rat-right-3.png</key>
+            <key type="filename">entities/characters/rat/rat-up-2.png</key>
+            <key type="filename">entities/characters/rat/rat-up-3.png</key>
+            <key type="filename">entities/corpses/corpse-bat.png</key>
+            <key type="filename">entities/corpses/corpse-rat.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -396,6 +426,34 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/characters/rat/rat-down-1.png</key>
+            <key type="filename">entities/characters/rat/rat-up-1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,8,9,16</rect>
+                <key>scale9Paddings</key>
+                <rect>5,8,9,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/characters/rat/rat-left-1.png</key>
+            <key type="filename">entities/characters/rat/rat-right-1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,5,18,9</rect>
+                <key>scale9Paddings</key>
+                <rect>9,5,18,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-book-of-light.png</key>
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
@@ -404,6 +462,7 @@
             <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
+            <key type="filename">entities/pickups/pickup-ninja-garb.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -429,6 +488,20 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/projectiles/proj-shuriken-1.png</key>
+            <key type="filename">entities/projectiles/proj-shuriken-2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>3,3,6,6</rect>
+                <key>scale9Paddings</key>
+                <rect>3,3,6,6</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -449,6 +522,8 @@
             <filename>entities/corpses</filename>
             <filename>entities/clothes/iron armour</filename>
             <filename>entities/characters/warrior</filename>
+            <filename>entities/characters/rat</filename>
+            <filename>entities/clothes/ninja garb</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

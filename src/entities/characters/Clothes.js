@@ -38,6 +38,11 @@ const Sprite = function (config) {
     this.animations.add('Cloak-l',    ['cloak-left-1',    'cloak-left-2',     'cloak-left-1',     'cloak-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Cloak-r',    ['cloak-right-1',   'cloak-right-2',    'cloak-right-1',    'cloak-right-3'],   10).onComplete.add(moveAnimCompleted, this);
 
+    this.animations.add('Ninja garb-u',    ['ninja-garb-up-1',      'ninja-garb-up-2',       'ninja-garb-up-1',       'ninja-garb-up-3'],      10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Ninja garb-d',    ['ninja-garb-down-1',    'ninja-garb-down-2',     'ninja-garb-down-1',     'ninja-garb-down-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Ninja garb-l',    ['ninja-garb-left-1',    'ninja-garb-left-2',     'ninja-garb-left-1',     'ninja-garb-left-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Ninja garb-r',    ['ninja-garb-right-1',   'ninja-garb-right-2',    'ninja-garb-right-1',    'ninja-garb-right-3'],   10).onComplete.add(moveAnimCompleted, this);
+
     this.animations.add('Iron armour-u',    ['iron-armour-up-1',      'iron-armour-up-2',       'iron-armour-up-1',       'iron-armour-up-3'],      10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Iron armour-d',    ['iron-armour-down-1',    'iron-armour-down-2',     'iron-armour-down-1',     'iron-armour-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Iron armour-l',    ['iron-armour-left-1',    'iron-armour-left-2',     'iron-armour-left-1',     'iron-armour-left-3'],    10).onComplete.add(moveAnimCompleted, this);
@@ -65,6 +70,12 @@ Sprite.prototype.clothesFrames = {
         d: 'cloak-down-1',
         l: 'cloak-left-1',
         r: 'cloak-right-1'
+    },
+    ['Ninja garb']: {
+        u: 'ninja-garb-up-1',
+        d: 'ninja-garb-down-1',
+        l: 'ninja-garb-left-1',
+        r: 'ninja-garb-right-1'
     },
     ['Iron armour']: {
         u: 'iron-armour-up-1',

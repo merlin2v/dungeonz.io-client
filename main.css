@@ -87,18 +87,24 @@ sass --watch scss/Main.scss:main.css
   position: relative;
   background-color: rgba(255, 255, 255, 0.8);
   color: #222034;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
 }
 .play_tab:hover {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #play_inputs_cont {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
   padding-bottom: 0px;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
 }
 
 .home_input {
@@ -109,12 +115,15 @@ sass --watch scss/Main.scss:main.css
   cursor: pointer;
   text-align: center;
   color: #ac3232;
-  font-size: 24px;
+  font-size: 13px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
 }
 .home_input:hover {
-  font-size: 26px;
+  font-size: 15px;
 }
 
 #play_button_cont {
@@ -135,6 +144,9 @@ sass --watch scss/Main.scss:main.css
   color: #ffffff;
   font-size: 24px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   border: 0;
 }
 #play_button:hover {
@@ -147,6 +159,7 @@ sass --watch scss/Main.scss:main.css
   color: #df7126;
   font-size: 24px;
   font-weight: bold;
+  -webkit-text-stroke: 0.1px #ffffff;
   visibility: hidden;
 }
 
@@ -164,12 +177,14 @@ sass --watch scss/Main.scss:main.css
   z-index: -1;
 }
 
-/*
 #renderer_button {
-  position: absolute;
-  bottom: 0;
-  height: 20px;
-}*/
+  height: 60%;
+}
+
+#language_button {
+  height: 60%;
+}
+
 .top_bar_text {
   text-align: center;
   position: relative;
@@ -209,12 +224,12 @@ sass --watch scss/Main.scss:main.css
 
 #language_list {
   position: absolute;
-  right: 0px;
-  top: 62px;
+  right: 18px;
+  top: 84px;
   width: 150px;
   text-align: center;
   color: #222034;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ffffff;
   font-size: 12px;
   list-style-type: none;
   margin: 0;
@@ -229,10 +244,10 @@ sass --watch scss/Main.scss:main.css
   vertical-align: middle;
 }
 .language_option:hover {
-  background-color: #5b6ee1;
-  color: #ffffff;
+  background-color: #9badb7;
   font-weight: bold;
-  font-size: 14px;
+  transform: scale(1.2);
+  filter: brightness(110%);
 }
 
 #controls {
@@ -270,6 +285,10 @@ sass --watch scss/Main.scss:main.css
   font-weight: bold;
   padding-bottom: 10px;
 }
+#news_cont:hover {
+  transform: translateY(-50%) scale(1.1);
+  filter: brightness(110%);
+}
 
 #news_header {
   margin: 0;
@@ -279,6 +298,20 @@ sass --watch scss/Main.scss:main.css
 
 #news_image {
   width: 90%;
+}
+
+#credits {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  height: 5%;
+  background-color: #ffffff;
+  padding: 6px;
+  line-height: 5vh;
+}
+#credits:hover {
+  transform: scale(1.1);
+  filter: brightness(110%);
 }
 
 #ad_banner {
@@ -327,6 +360,9 @@ sass --watch scss/Main.scss:main.css
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 20px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
   text-align: center;
   visibility: hidden;
 }
@@ -348,14 +384,15 @@ sass --watch scss/Main.scss:main.css
 }
 
 .text_counter {
-  left: 40px;
+  position: relative;
+  top: 8px;
   height: 30px;
   display: flex;
   justify-content: left;
   align-items: center;
   padding-left: 10px;
   user-select: none;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
   color: white;
   -webkit-text-stroke: 1px #222034;
@@ -428,9 +465,9 @@ sass --watch scss/Main.scss:main.css
 
 #audio_counter, #gui_zoom_counter {
   position: relative;
-  top: 4px;
-  left: 0;
-  width: 60px;
+  top: 8px;
+  left: -8px;
+  width: 90px;
   visibility: hidden;
 }
 
@@ -502,8 +539,7 @@ sass --watch scss/Main.scss:main.css
 }
 
 .stat_info_text {
-  font-family: Consolas;
-  font-size: 18px;
+  font-size: 13px;
   color: #222034;
 }
 
@@ -567,7 +603,7 @@ sass --watch scss/Main.scss:main.css
   width: 50%;
   float: left;
   text-align: center;
-  font-size: 26px;
+  font-size: 20px;
   padding: 4px 4px 12px 4px;
   font-weight: bold;
   font-family: "Press Start 2P";
@@ -823,11 +859,10 @@ sass --watch scss/Main.scss:main.css
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 24px;
   color: #ffffff;
-  -webkit-text-stroke: 1.6px #222034;
-  font-family: "Press Start 2P";
+  -webkit-text-stroke: 1.8px #222034;
+  user-select: none;
 }
 
 #item_tooltip_cont {
@@ -840,12 +875,13 @@ sass --watch scss/Main.scss:main.css
   text-align: center;
   color: #3f3f74;
   background-color: rgba(255, 255, 255, 0.8);
-  font-family: "Press Start 2P";
   padding: 8px;
+  user-select: none;
 }
 
 #item_name {
   font-weight: bold;
+  font-size: 20px;
 }
 
 #virtual_dpad {
@@ -1060,7 +1096,7 @@ sass --watch scss/Main.scss:main.css
 
 #spell_book_panel_name {
   width: 260px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 #spell_book_panel_main {
@@ -1205,6 +1241,7 @@ img {
 
 ::placeholder {
   color: #847e87;
+  font-size: 14px;
 }
 
 .press_start_font {

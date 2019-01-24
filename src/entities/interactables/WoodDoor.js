@@ -15,6 +15,7 @@ const Sprite = function (x, y, config) {
 
     this.scale.setTo(GAME_SCALE);
 
+    this.addDamageMarker();
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

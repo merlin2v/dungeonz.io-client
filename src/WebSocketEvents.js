@@ -496,7 +496,7 @@ eventResponses.change_direction = function (data) {
     const sprite = dynamic.sprite;
     // Some sprites show their direction by having different frames, others by rotating.
     if(sprite.baseFrames !== undefined){
-        sprite.body.frameName = sprite.baseFrames[data.direction];
+        sprite.baseSprite.frameName = sprite.baseFrames[data.direction];
     }
     if(sprite.directionAngles !== undefined){
         sprite.angle = sprite.directionAngles[data.direction];
@@ -570,4 +570,11 @@ eventResponses.exp_gained = function (data) {
 eventResponses.stat_levelled = function (data) {
     //console.log("stat levelled, data:", data);
     _this.player.stats.list[data.statName].levelUp(data.level, data.nextLevelExpRequirement);
+};
+
+eventResponses.clan_joined = function (data) {
+    console.log("clan joined, data:", data);
+
+    _this.chat(undefined, "Clan joined!", "#50ff7f");
+
 };

@@ -196,6 +196,7 @@
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
+            <key type="filename">entities/buildings/wood-wall.png</key>
             <key type="filename">entities/buildings/workbench.png</key>
             <key type="filename">entities/characters/bandit/bandit-down-1.png</key>
             <key type="filename">entities/characters/bandit/bandit-down-2.png</key>

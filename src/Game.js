@@ -296,8 +296,8 @@ dungeonz.Game.prototype = {
 
     },
 
-    distanceBetween (body, pointer) {
-        return Math.abs(body.worldPosition.x - pointer.clientX) + Math.abs(body.worldPosition.y - pointer.clientY);
+    distanceBetween (baseSprite, pointer) {
+        return Math.abs(baseSprite.worldPosition.x - pointer.clientX) + Math.abs(baseSprite.worldPosition.y - pointer.clientY);
     },
 
     pointerDownHandler (event) {
@@ -307,7 +307,7 @@ dungeonz.Game.prototype = {
         if(event.target === _this.GUI.gui){
 
             // If the user pressed on their character sprite, pick up item.
-            if(_this.distanceBetween(_this.dynamics[_this.player.entityId].sprite.body, event) < 32){
+            if(_this.distanceBetween(_this.dynamics[_this.player.entityId].sprite.baseSprite, event) < 32){
                 ws.sendEvent('pick_up_item');
                 return;
             }
@@ -337,8 +337,8 @@ dungeonz.Game.prototype = {
         for(let dynamicKey in _this.dynamics){
             if(_this.dynamics.hasOwnProperty(dynamicKey) === false) continue;
             sprite = _this.dynamics[dynamicKey].sprite;
-            if(sprite.body === null) continue;
-            if(_this.distanceBetween(sprite.body, event) < 32){
+            if(sprite.baseSprite === undefined) continue;
+            if(_this.distanceBetween(sprite.baseSprite, event) < 32){
                 sprite.onInputOver();
             }
             else {

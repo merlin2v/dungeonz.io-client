@@ -6,6 +6,7 @@ const Sprite = function (x, y, config) {
     this.stationTypeNumber = config.typeNumber;
 
     this.pseudoInteractable = true;
+    this.addDamageMarker();
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

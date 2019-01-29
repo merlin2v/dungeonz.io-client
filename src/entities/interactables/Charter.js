@@ -12,7 +12,10 @@ Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.interactedByPlayer = function () {
-    //_this.GUI.clanPanel.show();
+    // If this player isn't in a clan, join the one the charter belongs to.
+    if(_this.clanManager.ownRankIndex === null) ws.sendEvent("clan_join");
+    // Open the base crafting panel.
+    else _this.GUI.craftingPanel.show(dungeonz.getTextDef("Base"));
 };
 
 export default Sprite;

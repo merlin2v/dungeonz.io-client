@@ -6,6 +6,7 @@ import Stats from './Stats'
 import Inventory from './Inventory'
 import CraftingManager from "./CraftingManager";
 import BankManager from "./BankManager";
+import ClanManager from "./ClanManager";
 
 dungeonz.Game = function () {
 
@@ -94,6 +95,7 @@ dungeonz.Game.prototype = {
         this.pseudoInteractables = {};
 
         this.tilemap = new Tilemap(this);
+        this.clanManager = new ClanManager();
         this.GUI = new GUI(this);
         this.craftingManager = new CraftingManager();
 
@@ -123,6 +125,7 @@ dungeonz.Game.prototype = {
         this.dynamicsGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
         this.dynamicsGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
 
+        // Add the entities that are visible on start.
         for(let i=0; i<this.dynamicsData.length; i+=1){
             this.addEntity(this.dynamicsData[i]);
         }
@@ -204,6 +207,7 @@ dungeonz.Game.prototype = {
         this.GUI.bankPanel.hide();
         this.GUI.spellBookPanel.hide();
         this.GUI.exitGamePanel.hide();
+        this.GUI.clanPanel.hide();
     },
 
     move (direction) {
@@ -216,6 +220,7 @@ dungeonz.Game.prototype = {
             this.GUI.statsPanel.hide();
             this.GUI.spellBookPanel.hide();
             this.GUI.exitGamePanel.hide();
+            this.GUI.clanPanel.hide();
         }
 
         this.checkPseudoInteractables(direction);
@@ -626,7 +631,7 @@ dungeonz.Game.prototype = {
 
     /**
      *
-     * @param {Number} [entityID]
+     * @param {Number} [entityID] - The entity to make this chat appear from. If not given, uses this player.
      * @param {String} message
      * @param {String} [fillColour="#f5f5f5"]
      */

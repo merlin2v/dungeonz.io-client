@@ -96,6 +96,7 @@ import BankChest                from './interactables/BankChest'
 import Charter                  from './interactables/Charter'
 import ClanWoodWall             from './interactables/ClanWoodWall'
 import Furnace                  from './interactables/Furnace'
+import Generator                from './interactables/Generator'
 import Workbench                from './interactables/Workbench'
 import GoldOre                  from './interactables/GoldOre'
 import IronOre                  from './interactables/IronOre'
@@ -166,6 +167,7 @@ const EntitiesList = {
     Charter:                Charter,
     ClanWoodWall:           ClanWoodWall,
     Furnace:                Furnace,
+    Generator:              Generator,
     Workbench:              Workbench,
     GoldOre:                GoldOre,
     IronOre:                IronOre,

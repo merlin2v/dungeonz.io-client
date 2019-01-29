@@ -14,6 +14,8 @@ sass --watch scss/Main.scss:main.css
 @import "BankPanel";
 @import "SpellBookPanel";
 @import "ExitGamePanel";
+@import "ClanPanel";
+@import "GeneratorPanel";
 
 
 #game_canvas {

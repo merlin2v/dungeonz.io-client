@@ -574,7 +574,22 @@ eventResponses.stat_levelled = function (data) {
 
 eventResponses.clan_joined = function (data) {
     console.log("clan joined, data:", data);
+    _this.clanManager.memberJoined(data);
+};
 
-    _this.chat(undefined, "Clan joined!", "#50ff7f");
+// A member was kicked from the clan. Might have been this player.
+eventResponses.clan_kicked = function (data) {
+    console.log("clan kicked, data:", data);
+    _this.clanManager.memberKicked(data);
+};
 
+// Another member left the clan.
+eventResponses.clan_left = function (data) {
+    console.log("clan left, data:", data);
+    _this.clanManager.memberLeft(data);
+};
+
+eventResponses.clan_destroyed = function (data) {
+    console.log("clan destroyed, data:", data);
+    _this.clanManager.destroyed();
 };

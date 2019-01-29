@@ -5,6 +5,8 @@ import StatsPanel from "./StatsPanel";
 import CraftingPanel from "./CraftingPanel";
 import BankPanel from "./BankPanel";
 import ExitGamePanel from "./ExitGamePanel";
+import ClanPanel from "./ClanPanel";
+//import GeneratorPanel from "./GeneratorPanel";
 import SpellBookPanel from "./SpellBookPanel";
 
 class GUI {
@@ -20,9 +22,9 @@ class GUI {
         this.hitPointIcon =             document.getElementById('hitpoint_icon');
         this.energyIcon =               document.getElementById('energy_icon');
         this.gloryIcon =                document.getElementById('glory_icon');
-        //this.coinsIcon =                document.getElementById('coins_icon');
         this.bountyIcon =               document.getElementById('bounty_icon');
         this.avatarIcon =               document.getElementById('avatar_icon');
+        this.clanIcon =                 document.getElementById('clan_icon');
         this.inventoryIcon =            document.getElementById('inventory_icon');
         this.exitIcon =                 document.getElementById('exit_icon');
         this.respawnsIcon =             document.getElementById('respawns_icon');
@@ -31,17 +33,15 @@ class GUI {
         this.hitPointTooltip =          document.getElementById('hitpoint_tooltip');
         this.energyTooltip =            document.getElementById('energy_tooltip');
         this.gloryTooltip =             document.getElementById('glory_tooltip');
-        //this.coinsTooltip =             document.getElementById('coins_tooltip');
         this.bountyTooltip =            document.getElementById('bounty_tooltip');
         this.avatarTooltip =            document.getElementById('avatar_tooltip');
+        this.clanTooltip =              document.getElementById('clan_tooltip');
         this.inventoryTooltip =         document.getElementById('inventory_tooltip');
         this.exitTooltip =              document.getElementById('exit_tooltip');
         this.respawnsTooltip =          document.getElementById('respawns_tooltip');
 
         this.gloryCounter =             document.getElementById('glory_counter');
         this.gloryCounterTransition =   document.getElementById('glory_counter_transition');
-        //this.coinsCounter =             document.getElementById('coin_counter');
-        //this.coinsCounterTransition =   document.getElementById('coin_counter_transition');
         this.respawnsCounter =          document.getElementById('respawns_counter_value');
         this.respawnsCounterTransition =document.getElementById('respawns_counter_transition');
 
@@ -71,6 +71,8 @@ class GUI {
         this.bankPanel =        new BankPanel();
         this.spellBookPanel=    new SpellBookPanel();
         this.exitGamePanel =    new ExitGamePanel();
+        this.clanPanel =        new ClanPanel();
+        //this.generatorPanel =   new GeneratorPanel();
 
         this.isAnyPanelOpen = false;
 
@@ -97,9 +99,6 @@ class GUI {
         this.gloryIcon.onmouseover =    function(){ game.GUI.gloryTooltip.style.visibility = "visible" };
         this.gloryIcon.onmouseout =     function(){ game.GUI.gloryTooltip.style.visibility = "hidden" };
 
-        //this.coinsIcon.onmouseover =    function(){ game.GUI.coinsTooltip.style.visibility = "visible" };
-        //this.coinsIcon.onmouseout =     function(){ game.GUI.coinsTooltip.style.visibility = "hidden" };
-
         this.bountyIcon.onmouseover =   function(){ game.GUI.bountyTooltip.style.visibility = "visible" };
         this.bountyIcon.onmouseout =    function(){ game.GUI.bountyTooltip.style.visibility = "hidden" };
 
@@ -113,6 +112,18 @@ class GUI {
                 game.GUI.statsPanel.show();
             }
         };
+
+        this.clanIcon.onmouseover =   function(){ game.GUI.clanTooltip.style.visibility = "visible" };
+        this.clanIcon.onmouseout =    function(){ game.GUI.clanTooltip.style.visibility = "hidden" };
+        this.clanIcon.onclick =       function(){
+            if(game.GUI.clanPanel.container.style.visibility === "visible"){
+                game.GUI.clanPanel.hide();
+            }
+            else {
+                game.GUI.clanPanel.show();
+            }
+        };
+        this.clanIcon.style.visibility = "hidden";
 
         this.inventoryIcon.onmouseover =function(){ game.GUI.inventoryTooltip.style.visibility = "visible" };
         this.inventoryIcon.onmouseout = function(){ game.GUI.inventoryTooltip.style.visibility = "hidden" };
@@ -226,6 +237,7 @@ class GUI {
         this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
         this.makeElementDraggable(this.statsPanel.name, this.statsPanel.container);
         this.makeElementDraggable(this.spellBookPanel.name, this.spellBookPanel.container);
+        this.makeElementDraggable(this.clanPanel.name, this.clanPanel.container);
 
     }
 

@@ -94,6 +94,10 @@
                     <img id="avatar_icon" class="gui_icon" src="assets/img/gui/avatar-icon.png" draggable="false">
                     <div id="avatar_tooltip"    class="top_left_tooltip generic_tooltip"></div>
                 </div>
+                <div id="clan_cont" class="inline_cont">
+                    <img id="clan_icon" class="gui_icon" src="assets/img/gui/clan-icon.png" draggable="false">
+                    <div id="clan_tooltip"      class="top_left_tooltip generic_tooltip"></div>
+                </div>
             </div>
             <div id="top_right_corner_cont" class="gui_zoomable">
                 <div id="exit_cont" class="inline_cont">
@@ -268,16 +272,35 @@
                     <div id="bank_name" class="panel_name"></div>
                 </div>
                 <div id="bank_contents"></div>
-                <!--<div id="bank_spacer"></div>
-                <div id="bank_money_bar_cont">
-                    <div id="bank_deposit" class="bank_money_text">Deposit</div>
-                    <div id="bank_money_cont">
-                        <img id="bank_money_icon" src="assets/img/gui/coins-icon.png">
-                        <div id="bank_money_value" class="bank_money_text">0</div>
-                    </div>
-                    <div id="bank_withdraw" class="bank_money_text">Withdraw</div>
+            </div>
+
+            <div id="clan_panel" class="panel">
+                <div class="clan_header">
+                    <div id="clan_name" class="panel_name"></div>
                 </div>
-                <input id="bank_money_input" type="number" min="1" max="99999" step="1" placeholder="Amount">-->
+                <div id="clan_contents">
+                    <div id="clan_top_cont">
+                        <div id="clan_member_list"></div>
+                        <div id="clan_details">
+                            <img id="clan_members_icon" class="clan_details_icon" src="assets/img/gui/clan-members-icon.png">
+                            <div id="clan_members_count" class="clan_details_text">0/20</div>
+                            <img id="clan_structures_icon" class="clan_details_icon" src="assets/img/gui/clan-structures-icon.png">
+                            <div id="clan_structures_count" class="clan_details_text">0/50</div>
+                            <img id="clan_power_icon" class="clan_details_icon" src="assets/img/gui/clan-power-icon.png">
+                            <div id="clan_power_count" class="clan_details_text">0</div>
+                        </div>
+                    </div>
+                    <div id="clan_bottom_cont">
+                        <div id="clan_kick" class="clan_bottom_button"></div>
+                        <div id="clan_promote" class="clan_bottom_button"></div>
+                        <div></div>
+                        <div id="clan_leave" class="clan_bottom_button"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="generator_panel">
+
             </div>
 
             <div id="crafting_panel" class="panel">
@@ -630,6 +653,7 @@
             document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
             document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
             document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
+            document.getElementById('clan_tooltip').innerText =         dungeonz.getTextDef('Clan tooltip');
             document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
             document.getElementById('exit_tooltip').innerHTML =         dungeonz.getTextDef('Exit tooltip');
             document.getElementById('respawns_tooltip').innerHTML =     dungeonz.getTextDef('Respawns tooltip');
@@ -639,6 +663,12 @@
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
             document.getElementById('fullscreen_tooltip').innerHTML =   dungeonz.getTextDef('Fullscreen tooltip');
+
+            // Clan panel.
+            document.getElementById('clan_name').innerText =            dungeonz.getTextDef('Clan');
+            document.getElementById('clan_kick').innerText =            dungeonz.getTextDef('Kick clan member');
+            document.getElementById('clan_promote').innerText =         dungeonz.getTextDef('Promote clan member');
+            document.getElementById('clan_leave').innerText =           dungeonz.getTextDef('Leave clan');
 
             // Dungeon panel.
             document.getElementById('dungeon_prompt_name_header').innerText =       dungeonz.getTextDef('Dungeon') + ":";

@@ -877,6 +877,7 @@ sass --watch scss/Main.scss:main.css
   background-color: rgba(255, 255, 255, 0.8);
   padding: 8px;
   user-select: none;
+  pointer-events: none;
 }
 
 #item_name {
@@ -888,6 +889,8 @@ sass --watch scss/Main.scss:main.css
   width: 100%;
   height: 100%;
   visibility: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 
 #virtual_dpad_up {
@@ -897,6 +900,7 @@ sass --watch scss/Main.scss:main.css
   height: 10%;
   max-width: 20%;
   transform: translateX(-50%);
+  pointer-events: auto;
 }
 
 #virtual_dpad_down {
@@ -906,6 +910,7 @@ sass --watch scss/Main.scss:main.css
   height: 10%;
   max-width: 20%;
   transform: translateX(-50%);
+  pointer-events: auto;
 }
 
 #virtual_dpad_left {
@@ -915,6 +920,7 @@ sass --watch scss/Main.scss:main.css
   width: 10%;
   max-height: 20%;
   transform: translateY(-50%);
+  pointer-events: auto;
 }
 
 #virtual_dpad_right {
@@ -924,6 +930,7 @@ sass --watch scss/Main.scss:main.css
   width: 10%;
   max-height: 20%;
   transform: translateY(-50%);
+  pointer-events: auto;
 }
 
 .virtual_dpad_hover:hover {
@@ -1146,6 +1153,11 @@ sass --watch scss/Main.scss:main.css
   display: inline-grid;
 }
 
+#exit_game_panel_name {
+  width: 70%;
+  font-size: 15px;
+}
+
 #exit_game_panel_main {
   width: 300px;
   text-align: center;
@@ -1219,6 +1231,163 @@ sass --watch scss/Main.scss:main.css
 #exit_game_panel_exit_button:hover {
   background-color: #df7126;
   font-size: 100%;
+}
+
+#clan_panel {
+  display: inline-grid;
+  width: 500px;
+  user-select: none;
+}
+
+#clan_contents {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#clan_top_cont {
+  display: grid;
+  grid-template-columns: auto 40%;
+  grid-gap: 12px;
+  padding: 12px;
+}
+
+#clan_member_list {
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 300px;
+  overflow: auto;
+}
+
+.clan_member_text {
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 6px;
+  margin: 6px 0 6px 6px;
+}
+.clan_member_text:hover {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.clan_member_text_selected {
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 6px;
+  margin: 6px 0 6px 6px;
+  background-color: #9badb7;
+  color: #ffffff;
+}
+.clan_member_text_selected:hover {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+#clan_details {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-template-rows: repeat(3, 32px) auto;
+  grid-gap: 8px;
+  padding: 10px;
+  align-items: center;
+}
+
+.clan_details_icon {
+  height: 100%;
+}
+
+.clan_details_text {
+  font-size: 12px;
+}
+
+#clan_bottom_cont {
+  display: grid;
+  grid-template-columns: 25% 25% auto 25%;
+  grid-gap: 12px;
+  padding: 12px;
+  padding-top: 0;
+  text-align: center;
+}
+
+#clan_kick {
+  background-color: #df7126;
+}
+
+#clan_promote {
+  background-color: #639bff;
+}
+
+#clan_leave {
+  background-color: #d95763;
+}
+
+.clan_bottom_button {
+  font-size: 11px;
+  padding: 8px;
+}
+.clan_bottom_button:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+  filter: brightness(110%);
+}
+
+#stats_panel {
+  display: inline-grid;
+}
+
+#stats_panel_main {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#stats_icons_cont {
+  display: grid;
+  grid-template-columns: 48px 48px 48px 48px 48px 48px;
+  grid-template-rows: 48px 48px;
+  grid-gap: 12px;
+  padding: 10px;
+}
+
+.stat_icon_cont {
+  border-radius: 14px;
+}
+.stat_icon_cont:hover {
+  -webkit-filter: brightness(150%);
+}
+
+.stat_icon {
+  width: 48px;
+  height: 48px;
+}
+
+#stats_info_cont {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#stat_name {
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+#stat_description {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#stat_level_counter {
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 10px;
+}
+
+#stat_exp_counter {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.stat_info_text {
+  font-size: 13px;
+  color: #222034;
 }
 
 #game_canvas {

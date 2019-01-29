@@ -1,4 +1,4 @@
-import GUI from "./gui/GUI";
+
 import ItemTypes from '../src/catalogues/ItemTypes'
 
 class BankItem {
@@ -13,7 +13,6 @@ class BankManager {
 
     constructor (items) {
 
-        //this.coins = coins || 0;
         /** @type {BankItem[]} */
         this.items = [];
 
@@ -170,33 +169,6 @@ class BankManager {
 
         window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex, toSlotIndex: toIndex});
     }
-/*
-    depositMoney () {
-        let moneyValue = parseInt(_this.GUI.bankPanel.input.value);
-        if(Number.isInteger(moneyValue) === false) return;
-        if(moneyValue <= 0) return;
-        // Don't let them deposit more money than they have on them.
-        // Deposit everything they have if trying to deposit more.
-        if(moneyValue > _this.player.coins){
-            moneyValue = _this.player.coins;
-        }
-
-        window.ws.sendEvent("bank_deposit_money", moneyValue);
-    }
-
-    withdrawMoney () {
-        let moneyValue = parseInt(_this.GUI.bankPanel.input.value);
-        if(Number.isInteger(moneyValue) === false) return;
-        if(moneyValue <= 0) return;
-        // Don't let them withdraw more money than they have in the bank.
-        // Withdraw everything in the bank if trying to withdraw more.
-        if(moneyValue > this.coins){
-            moneyValue = this.coins;
-        }
-
-        window.ws.sendEvent("bank_withdraw_money", moneyValue);
-    }
-*/
 }
 
 export default BankManager;

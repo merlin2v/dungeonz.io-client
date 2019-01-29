@@ -189,6 +189,7 @@
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>
             <key type="filename">entities/buildings/dungeon-portal.png</key>
             <key type="filename">entities/buildings/furnace.png</key>
+            <key type="filename">entities/buildings/generator.png</key>
             <key type="filename">entities/buildings/gold-exchange-terminal.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
             <key type="filename">entities/buildings/overworld-portal.png</key>

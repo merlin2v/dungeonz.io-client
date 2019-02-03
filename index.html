@@ -234,11 +234,11 @@
                         <div id="stat_toolery" class="stat_icon_cont">
                             <img id="stat_toolery_icon" src="assets/img/gui/toolery-icon.png" class="stat_icon">
                         </div>
-                        <div id="stat_cookery" class="stat_icon_cont">
-                            <img id="stat_cookery_icon" src="assets/img/gui/cookery-icon.png" class="stat_icon">
-                        </div>
                         <div id="stat_potionry" class="stat_icon_cont">
                             <img id="stat_potionry_icon" src="assets/img/gui/potionry-icon.png" class="stat_icon">
+                        </div>
+                        <div id="stat_clanship" class="stat_icon_cont">
+                            <img id="stat_clanship_icon" src="assets/img/gui/cookery-icon.png" class="stat_icon">
                         </div>
                     </div>
                     <div id="stats_info_cont">
@@ -349,7 +349,7 @@
 
             <div id="spell_book_panel" class="panel">
                 <div class="panel_header">
-                    <div id="spell_book_panel_name" class="panel_name">Spell book</div>
+                    <div id="spell_book_panel_name" class="panel_name"></div>
                 </div>
                 <div id="spell_book_panel_main">
                     <div id="spell_icons_cont">
@@ -367,8 +367,8 @@
                         </div>
                     </div>
                     <div id="spell_info_cont">
-                        <div id="spell_name" class="stat_info_text">Enthrall</div>
-                        <div id="spell_description" class="stat_info_text">Make an unclaimed undead creature become your minion.</div>
+                        <div id="spell_name" class="stat_info_text"></div>
+                        <div id="spell_description" class="stat_info_text"></div>
                     </div>
                 </div>
 
@@ -411,10 +411,10 @@
                      onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
             </div>
             <div class="top_bar_button_cont">
-                <!--<img id="dmp_button" class="top_bar_button" src="assets/img/misc/dmp-icon.png"
-                     onclick="window.open('https://dungeonz.wikia.com', '_blank');"
+                <img id="dmp_button" class="top_bar_button" src="assets/img/misc/dmp-icon.png"
+                     onclick="document.getElementById('dmp_cont').style.visibility = 'visible';"
                      onmouseover="changeHoverTooltip('DMP tooltip');"
-                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">-->
+                     onmouseleave="document.getElementById('main_tooltip').style.visibility = 'hidden'">
             </div>
             <div class="top_bar_button_cont">
             </div>
@@ -493,16 +493,28 @@
 
     <div id="main_tooltip" class="press_start_font"></div>
 
-    <!--<div id="dmp_info">
-    </div>-->
+    <div id="dmp_cont" class="press_start_font">
+        <div id="dmp_close" onclick="document.getElementById('dmp_cont').style.visibility = 'hidden';">x</div>
+        <div id="dmp_header"></div>
+        <div id="dmp_buy_subheader"></div>
+        <div id="dmp_buy_cont">
+            <div id="XS-pay2play-widget"></div>
+            <div id="dmp_buy_info">
+                <p id="dmp_buy_info_1"></p>
+                <p id="dmp_buy_info_2"></p>
+                <p id="dmp_buy_info_3"></p>
+            </div>
+        </div>
+        <div id="dmp_spacer"></div>
+        <div id="dmp_activate_subheader"></div>
+        <input id="dmp_activate_input" class="home_input" type="text" maxlength="20" autofocus>
+        <div id="dmp_activate_accept"></div>
+    </div>
 
-
-    <!--<div id="XS-pay2play-widget"></div>
     <script>
         var options = {
             access_data: {
                 "settings": {
-                    "mode": "sandbox",
                     "project_id": 38669
                 },
                 "purchase": {
@@ -526,7 +538,8 @@
         }, false);
         var head = document.getElementsByTagName("head")[0];
         head.appendChild(s);
-    </script>-->
+    </script>
+
 
     <script>
         console.log("- - running index script");
@@ -644,7 +657,14 @@
             document.getElementById('controls_use_held_item').innerText=dungeonz.getTextDef('Controls: use held item');
             document.getElementById('controls_pick_up_item').innerText =dungeonz.getTextDef('Controls: pick up item');
             document.getElementById('controls_select_item').innerText = dungeonz.getTextDef('Controls: select item');
-            //document.getElementById('controls_drop_item').innerText =   dungeonz.getTextDef('Controls: drop item');
+            document.getElementById('dmp_header').innerText =           dungeonz.getTextDef('Dungeon Master Pass');
+            document.getElementById('dmp_buy_subheader').innerText =    dungeonz.getTextDef('Buy');
+            document.getElementById('dmp_buy_info_1').innerText =       '- ' + dungeonz.getTextDef('Buy info 1');
+            document.getElementById('dmp_buy_info_2').innerText =       '- ' + dungeonz.getTextDef('Buy info 2');
+            document.getElementById('dmp_buy_info_3').innerText =       '- ' + dungeonz.getTextDef('Buy info 3');
+            document.getElementById('dmp_activate_subheader').innerText=dungeonz.getTextDef('Activate');
+            document.getElementById('dmp_activate_input').placeholder=  dungeonz.getTextDef('Enter DMP code');
+            document.getElementById('dmp_activate_accept').innerText=   dungeonz.getTextDef('Accept');
 
             // General GUI tooltips.
             document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');

@@ -94,21 +94,25 @@ import CorpseHuman              from './corpses/CorpseHuman'
 import Anvil                    from './interactables/Anvil'
 import BankChest                from './interactables/BankChest'
 import Charter                  from './interactables/Charter'
-import ClanWoodWall             from './interactables/ClanWoodWall'
+import WoodWall                 from './interactables/WoodWall'
 import Furnace                  from './interactables/Furnace'
 import Generator                from './interactables/Generator'
 import Workbench                from './interactables/Workbench'
 import GoldOre                  from './interactables/GoldOre'
 import IronOre                  from './interactables/IronOre'
-import Tree                     from './interactables/Tree'
+import OakTree                  from './interactables/OakTree'
 import WoodDoor                 from './interactables/WoodDoor'
 import SmallIronCandle          from './interactables/SmallIronCandle'
 import Exit                     from './interactables/Exit'
 import DungeonPortal            from './interactables/DungeonPortal'
 import OverworldPortal          from './interactables/OverworldPortal'
+import Ruler                    from './interactables/Ruler'
 
+import PickupAnvil              from './pickups/PickupAnvil'
+import PickupBankChest          from './pickups/PickupBankChest'
 import PickupBookOfLight        from './pickups/PickupBookOfLight'
 import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
+import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
@@ -124,17 +128,22 @@ import PickupIronHammer         from './pickups/PickupIronHammer'
 import PickupFeathers           from './pickups/PickupFeathers'
 import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
+import PickupFurnace            from './pickups/PickupFurnace'
+import PickupGenerator          from './pickups/PickupGenerator'
 import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
 import PickupWindStaff          from './pickups/PickupWindStaff'
+import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupWoodPlank          from './pickups/PickupWoodPlank'
 import PickupGoldOre            from './pickups/PickupGoldOre'
 import PickupGoldBar            from './pickups/PickupGoldBar'
 import PickupIronOre            from './pickups/PickupIronOre'
 import PickupIronBar            from './pickups/PickupIronBar'
-import PickupOakBow             from './pickups/PickupOakBow'
+import PickupWoodDoor           from './pickups/PickupWoodDoor'
+import PickupWoodWall           from './pickups/PickupWoodWall'
+import PickupWorkbench          from './pickups/PickupWorkbench'
 
 import ProjDeathbind            from './projectiles/ProjDeathbind'
 import ProjIronArrow            from './projectiles/ProjIronArrow'
@@ -165,18 +174,21 @@ const EntitiesList = {
     Anvil:                  Anvil,
     BankChest:              BankChest,
     Charter:                Charter,
-    ClanWoodWall:           ClanWoodWall,
+    WoodWall:               WoodWall,
     Furnace:                Furnace,
     Generator:              Generator,
     Workbench:              Workbench,
     GoldOre:                GoldOre,
     IronOre:                IronOre,
-    Tree:                   Tree,
+    OakTree:                OakTree,
     WoodDoor:               WoodDoor,
     SmallIronCandle:        SmallIronCandle,
 
+    PickupAnvil:            PickupAnvil,
+    PickupBankChest:        PickupBankChest,
     PickupBookOfLight:      PickupBookOfLight,
     PickupBookOfSouls:      PickupBookOfSouls,
+    PickupCharter:          PickupCharter,
     PickupCloak:            PickupCloak,
     PickupMageRobe:         PickupMageRobe,
     PickupNecromancerRobe:  PickupNecromancerRobe,
@@ -192,17 +204,22 @@ const EntitiesList = {
     PickupFeathers:         PickupFeathers,
     PickupFireGem:          PickupFireGem,
     PickupFireStaff:        PickupFireStaff,
+    PickupFurnace:          PickupFurnace,
+    PickupGenerator:        PickupGenerator,
     PickupScrollOfHealing:  PickupScrollOfHealing,
     PickupShuriken:         PickupShuriken,
     PickupSuperFireStaff:   PickupSuperFireStaff,
     PickupWindStaff:        PickupWindStaff,
+    PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
     PickupWoodPlank:        PickupWoodPlank,
     PickupGoldOre:          PickupGoldOre,
     PickupGoldBar:          PickupGoldBar,
     PickupIronOre:          PickupIronOre,
     PickupIronBar:          PickupIronBar,
-    PickupOakBow:           PickupOakBow,
+    PickupWoodDoor:         PickupWoodDoor,
+    PickupWoodWall:         PickupWoodWall,
+    PickupWorkbench:        PickupWorkbench,
 
     ProjDeathbind:          ProjDeathbind,
     ProjIronArrow:          ProjIronArrow,
@@ -217,7 +234,8 @@ const EntitiesList = {
 
     Exit:                   Exit,
     DungeonPortal:          DungeonPortal,
-    OverworldPortal:        OverworldPortal
+    OverworldPortal:        OverworldPortal,
+    Ruler:                  Ruler,
 
 };
 

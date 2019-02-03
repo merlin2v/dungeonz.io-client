@@ -23,8 +23,8 @@ class StatsPanel {
             Weaponry:   document.getElementById('stat_weaponry'),
             Armoury:    document.getElementById('stat_armoury'),
             Toolery:    document.getElementById('stat_toolery'),
-            Cookery:    document.getElementById('stat_cookery'),
-            Potionry:   document.getElementById('stat_potionry')
+            Potionry:   document.getElementById('stat_potionry'),
+            Clanship:   document.getElementById('stat_clanship')
         };
 
         const stats = _this.player.stats.list;
@@ -36,8 +36,8 @@ class StatsPanel {
         document.getElementById('stat_weaponry_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Weaponry) };
         document.getElementById('stat_armoury_icon').onclick =      function(){ statsPanel.changeStatInfo(stats.Armoury) };
         document.getElementById('stat_toolery_icon').onclick =      function(){ statsPanel.changeStatInfo(stats.Toolery) };
-        document.getElementById('stat_cookery_icon').onclick =      function(){ statsPanel.changeStatInfo(stats.Cookery) };
         document.getElementById('stat_potionry_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Potionry) };
+        document.getElementById('stat_clanship_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Clanship) };
     }
 
     updateSelectedStat () {

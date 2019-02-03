@@ -31,8 +31,8 @@ class Stats {
         this.list.Weaponry =    new Stat('Weaponry');
         this.list.Armoury =     new Stat('Armoury');
         this.list.Toolery =     new Stat('Toolery');
-        this.list.Cookery =     new Stat('Cookery');
         this.list.Potionry =    new Stat('Potionry');
+        this.list.Clanship =    new Stat('Clanship');
 
         // Update the stats to the correct exp/requirement values.
         for(let statName in stats){

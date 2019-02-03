@@ -589,7 +589,17 @@ eventResponses.clan_left = function (data) {
     _this.clanManager.memberLeft(data);
 };
 
+eventResponses.clan_promoted = function (data) {
+    console.log("clan promoted, data:", data);
+    _this.clanManager.promoteMember(data);
+};
+
 eventResponses.clan_destroyed = function (data) {
     console.log("clan destroyed, data:", data);
     _this.clanManager.destroyed();
+};
+
+eventResponses.clan_values = function (data) {
+    console.log("clan values, data:", data);
+    _this.GUI.clanPanel.updateValues(data);
 };

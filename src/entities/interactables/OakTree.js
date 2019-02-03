@@ -1,7 +1,7 @@
 
 const Sprite = function (x, y, config) {
 
-    this.activeStateFrame = 'tree';
+    this.activeStateFrame = 'oak-tree';
     this.inactiveStateFrame = 'tree-inactive';
 
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', this.activeStateFrame);

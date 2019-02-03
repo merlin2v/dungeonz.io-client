@@ -43,6 +43,21 @@ class ClanManager {
         }
     }
 
+    findOwnRankIndex () {
+        // Find this player's own rank.
+        for(let i=0; i<this.maxMembers; i+=1){
+            if(this.members[i] === null){
+                this.promoteMember(i+1);
+            }
+
+            // The member with the matching entity ID is this player.
+            if(this.members[i].id === _this.player.entityId){
+                this.ownRankIndex = i;
+                break;
+            }
+        }
+    }
+
     addMember (id, displayName) {
         // Get the first empty slot.
         for(let i=0; i<this.maxMembers; i+=1){
@@ -64,9 +79,11 @@ class ClanManager {
         this.members[toPromoteRankIndex] = this.members[toPromoteRankIndex-1];
         // Move the promoted member to the slot above.
         this.members[toPromoteRankIndex-1] = member;
-        console.log("member promoted:", member.id, ", to rank:", toPromoteRankIndex-1);
+        console.log("member promoted:", member.displayName, ", to rank:", toPromoteRankIndex-1);
         // Update the member list, as the order has changed.
         _this.GUI.clanPanel.updateMemberList();
+
+        this.findOwnRankIndex();
     }
 
     removeMember (rankIndex) {
@@ -89,7 +106,7 @@ class ClanManager {
         // Update the members list. This will only happen during the above
         // promotions if there is actually another member to promote.
         _this.GUI.clanPanel.updateMemberList();
-    }TEST SO FAR, AND THEN DO PROMOTIONS
+    }
 
     /**
      * A new member joined the clan. Might be this player.
@@ -114,13 +131,7 @@ class ClanManager {
             }
 
             // Find the player's own rank.
-            for(let i=0; i<this.maxMembers; i+=1){
-                // The member with the matching entity ID is this player.
-                if(this.members[i].id === _this.player.entityId){
-                    this.ownRankIndex = i;
-                    break;
-                }
-            }
+            this.findOwnRankIndex();
 
             _this.GUI.clanPanel.structuresCount.innerText = data.structuresCount + "/" + this.maxStructures;
             _this.GUI.clanPanel.powerCount.innerText = data.power;
@@ -144,7 +155,10 @@ class ClanManager {
 
     memberLeft (rankIndex) {
         _this.chat(undefined, "Member left clan: " + (this.members[rankIndex].displayName), "#ffb04c");
-        this.removeMember(rankIndex);
+        // If the member at this rank index is valid, remove them.
+        // The members list will be empty if this player pressed the leave button,
+        // but they will still receive this member left event for themselves.
+        if(this.members[rankIndex] !== null) this.removeMember(rankIndex);
     }
 
     /**

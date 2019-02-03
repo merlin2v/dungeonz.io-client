@@ -184,13 +184,13 @@
             <key type="filename">entities/buildings/anvil.png</key>
             <key type="filename">entities/buildings/bank-chest.png</key>
             <key type="filename">entities/buildings/charter.png</key>
+            <key type="filename">entities/buildings/chest.png</key>
             <key type="filename">entities/buildings/counter-flap-inactive.png</key>
             <key type="filename">entities/buildings/counter-flap.png</key>
             <key type="filename">entities/buildings/dungeon-portal-inactive.png</key>
             <key type="filename">entities/buildings/dungeon-portal.png</key>
             <key type="filename">entities/buildings/furnace.png</key>
             <key type="filename">entities/buildings/generator.png</key>
-            <key type="filename">entities/buildings/gold-exchange-terminal.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
             <key type="filename">entities/buildings/overworld-portal.png</key>
             <key type="filename">entities/buildings/potionry-lab.png</key>
@@ -249,6 +249,8 @@
             <key type="filename">entities/characters/knight/knight-up-1.png</key>
             <key type="filename">entities/characters/knight/knight-up-2.png</key>
             <key type="filename">entities/characters/knight/knight-up-3.png</key>
+            <key type="filename">entities/characters/ruler/ruler-1.png</key>
+            <key type="filename">entities/characters/ruler/ruler-2.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-1.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-2.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-3.png</key>
@@ -334,6 +336,7 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
+            <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
@@ -361,13 +364,13 @@
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
             <key type="filename">entities/projectiles/proj-pacify.png</key>
             <key type="filename">entities/projectiles/proj-wind.png</key>
+            <key type="filename">entities/resource nodes/oak-tree.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>
             <key type="filename">entities/resource nodes/ore-iron.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle-inactive.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle.png</key>
             <key type="filename">entities/resource nodes/tree-inactive.png</key>
-            <key type="filename">entities/resource nodes/tree.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -456,15 +459,48 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-anvil.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,5,9,9</rect>
+                <key>scale9Paddings</key>
+                <rect>4,5,9,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/pickups/pickup-bank-chest.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,4,9,9</rect>
+                <key>scale9Paddings</key>
+                <rect>4,4,9,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-book-of-light.png</key>
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
+            <key type="filename">entities/pickups/pickup-charter.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
             <key type="filename">entities/pickups/pickup-feathers.png</key>
+            <key type="filename">entities/pickups/pickup-furnace.png</key>
+            <key type="filename">entities/pickups/pickup-generator.png</key>
             <key type="filename">entities/pickups/pickup-gold-ore.png</key>
             <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
             <key type="filename">entities/pickups/pickup-ninja-garb.png</key>
+            <key type="filename">entities/pickups/pickup-potionry-lab.png</key>
+            <key type="filename">entities/pickups/pickup-wood-door.png</key>
+            <key type="filename">entities/pickups/pickup-wood-wall.png</key>
+            <key type="filename">entities/pickups/pickup-workbench.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -526,6 +562,7 @@
             <filename>entities/characters/warrior</filename>
             <filename>entities/characters/rat</filename>
             <filename>entities/clothes/ninja garb</filename>
+            <filename>entities/characters/ruler</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

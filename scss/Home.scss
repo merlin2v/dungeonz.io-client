@@ -186,10 +186,12 @@
 
 #renderer_button {
   height: 60%;
+  user-select: none;
 }
 
 #language_button {
   height: 60%;
+  user-select: none;
 }
 
 .top_bar_text {
@@ -241,6 +243,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  user-select: none;
   visibility: hidden;
 }
 
@@ -275,6 +278,7 @@
   color: $colourDB32White;
   font-weight: bold;
   font-size: 18px;
+  user-select: none;
 }
 
 .controls_image {
@@ -294,6 +298,7 @@
   background-color: $colourDB32WhiteOpacity80;
   font-weight: bold;
   padding-bottom: 10px;
+  user-select: none;
   &:hover {
     transform: translateY(-50%) scale(1.1);
     filter: brightness(110%);
@@ -324,6 +329,7 @@
   background-color: $colourDB32White;
   padding: 6px;
   line-height: 5vh;
+  user-select: none;
   &:hover {
     transform: scale(1.1);
     filter: brightness(110%);
@@ -340,12 +346,89 @@
   background-color: orange;
 }
 
-#dmp_info {
+#dmp_cont {
   position: absolute;
+  overflow: auto;
+  display: inline-block;
+  text-align: center;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
-  height: 80%;
-  background-color: $colourDB32WhiteOpacity80;
+  height: 100%;
+  background-color: $colourDB32White;
+  user-select: none;
+  visibility: hidden;
+}
+
+#dmp_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 13px;
+  font-size: 22px;
+  background-color: $colourDB32White;
+  &:hover {
+    background-color: $colourDB32SteelGrey;
+  }
+}
+
+#dmp_header {
+  background-color: $colourDB32Red;
+  color: $colourDB32White;
+  padding: 24px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#dmp_buy_subheader {
+  background-color: $colourDB32DarkBlurple;
+  color: $colourDB32White;
+  padding: 12px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#dmp_buy_cont {
+  //background-color: cadetblue;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-items: center;
+}
+
+#dmp_buy_info {
+  text-align: left;
+  padding-right: 12px;
+}
+
+#dmp_spacer {
+  background-color: $colourDB32Red;
+  height: 28px;
+}
+
+#dmp_activate_subheader {
+  background-color: $colourDB32DarkBlurple;
+  color: $colourDB32White;
+  padding: 12px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#dmp_activate_input {
+  background-color: $colourDB32SteelGrey;
+  height: 50px;
+  width: 90%;
+  margin: 14px;
+}
+
+#dmp_activate_accept {
+  background-color: $colourDB32Green;
+  color: $colourDB32White;
+  padding: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  &:hover {
+    background-color: $colourDB32LimeGreen;
+  }
 }

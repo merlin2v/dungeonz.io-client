@@ -54,20 +54,31 @@ class ClanPanel {
             this.memberList.appendChild(nameElement);
         }
 
+        this.getValuesLoop = null;
+
     }
 
     show () {
         _this.GUI.isAnyPanelOpen = true;
         this.container.style.visibility = "visible";
+        this.requestValues();
+        // Start a loop to keep updating the values every few seconds.
+        this.getValuesLoop = setInterval(this.requestValues, 5000);
     }
 
     hide () {
         _this.GUI.isAnyPanelOpen = false;
         this.container.style.visibility = "hidden";
+        // Stop the loop of requesting values.
+        clearInterval(this.getValuesLoop);
+    }
+
+    requestValues () {
+        // Get the current value for the structures and power from the server.
+        ws.sendEvent("get_clan_values");
     }
 
     kickPressed () {
-        console.log(_this.GUI.clanPanel.selectedMemberNameElement);
         // Don't allow kick self, or higher ranks.
         if(_this.clanManager.ownRankIndex < _this.GUI.clanPanel.selectedMemberNameElement.rankIndex){
             ws.sendEvent("clan_kick", _this.GUI.clanPanel.selectedMemberNameElement.rankIndex);
@@ -76,20 +87,20 @@ class ClanPanel {
 
     promotePressed () {
         // Don't allow promote self, or higher ranks, or the rank directly below.
-        //if(_this.clanManager.ownRankIndex < _this.GUI.clanPanel.selectedMemberNameElement.rankIndex-1){
+        if(_this.clanManager.ownRankIndex < _this.GUI.clanPanel.selectedMemberNameElement.rankIndex-1){
             ws.sendEvent("clan_promote", _this.GUI.clanPanel.selectedMemberNameElement.rankIndex);
-        //}
+        }
     }
 
     leavePressed () {
-        console.log("leave clan pressed");
+        //console.log("leave clan pressed");
         _this.clanManager.leave();
     }
 
     updateMemberList () {
         const members = _this.clanManager.members;
+        //console.log("update member list, members:", members);
         const maxMembers = _this.clanManager.maxMembers;
-        // Add some elements for the individual names.
         let i=0,
             memberCount=0;
         for(; i<maxMembers; i+=1){
@@ -100,11 +111,17 @@ class ClanPanel {
             else {
                 memberCount+=1;
                 this.memberListArray[i].innerText = members[i].displayName;
+                //console.log("updating member list, member name:", members[i].displayName, ", at rank:", i);
             }
         }
 
         // Update the counter too.
         this.membersCount.innerText = memberCount + "/" + _this.clanManager.maxMembers;
+    }
+
+    updateValues (data) {
+        _this.GUI.clanPanel.structuresCount.innerText = data.structuresCount + "/" + _this.clanManager.maxStructures;
+        _this.GUI.clanPanel.powerCount.innerText = data.power;
     }
 
 }

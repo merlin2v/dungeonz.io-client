@@ -524,6 +524,11 @@ dungeonz.Game.prototype = {
             return;
         }
 
+        if(EntityList[EntityTypes[typeNumber]] === undefined){
+            console.log("* Invalid entity type number:", typeNumber, ", entity types:", EntityTypes);
+            return;
+        }
+
         // Get the position relative to the player.
         const relCol = col - this.player.col;
         const relRow = row - this.player.row;

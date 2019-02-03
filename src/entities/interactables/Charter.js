@@ -3,8 +3,9 @@ const Sprite = function (x, y, config) {
     Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'charter');
     this.scale.setTo(GAME_SCALE);
 
-    this.pseudoInteractable = true;
+    this.stationTypeNumber = config.typeNumber;
 
+    this.pseudoInteractable = true;
     this.addDamageMarker();
 };
 
@@ -15,7 +16,10 @@ Sprite.prototype.interactedByPlayer = function () {
     // If this player isn't in a clan, join the one the charter belongs to.
     if(_this.clanManager.ownRankIndex === null) ws.sendEvent("clan_join");
     // Open the base crafting panel.
-    else _this.GUI.craftingPanel.show(dungeonz.getTextDef("Base"));
+    else{
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Base"));
+        _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+    }
 };
 
 export default Sprite;

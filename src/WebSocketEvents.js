@@ -572,6 +572,11 @@ eventResponses.stat_levelled = function (data) {
     _this.player.stats.list[data.statName].levelUp(data.level, data.nextLevelExpRequirement);
 };
 
+eventResponses.shop_prices = function (data) {
+    console.log("shop prices, data:", data);
+    _this.GUI.shopPanel.updatePrices(data);
+};
+
 eventResponses.clan_joined = function (data) {
     console.log("clan joined, data:", data);
     _this.clanManager.memberJoined(data);

@@ -51,10 +51,6 @@ class BankPanel {
         this.tooltip =      document.getElementById('bank_tooltip');
         this.name =         document.getElementById('bank_name');
         this.contents =     document.getElementById('bank_contents');
-        //this.moneyValue =   document.getElementById('bank_money_value');
-        //this.deposit =      document.getElementById('bank_deposit');
-        //this.withdraw =     document.getElementById('bank_withdraw');
-        //this.input =        document.getElementById('bank_money_input');
 
         this.slots = [];
 
@@ -63,16 +59,6 @@ class BankPanel {
             this.slots.push(new Slot(this, i));
         }
 
-        /*this.deposit.onclick = function(){
-            _this.player.bankManager.depositMoney();
-            // Clear the input box.
-            _this.GUI.bankPanel.input.value = "";
-        };
-        this.withdraw.onclick = function(){
-            _this.player.bankManager.withdrawMoney();
-            // Clear the input box.
-            _this.GUI.bankPanel.input.value = "";
-        };*/
     }
 
     show () {

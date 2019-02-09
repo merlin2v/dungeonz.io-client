@@ -27,7 +27,7 @@ class CraftingPanel {
 
         this.container =        document.getElementById('crafting_panel');
         this.tooltip =          document.getElementById('crafting_tooltip');
-        this.stationName =      document.getElementById('crafting_station_name');
+        this.name =             document.getElementById('crafting_station_name');
         this.componentsBar =    document.getElementById('crafting_components_bar');
         this.result = {
             container:          document.getElementById('craft_result'),
@@ -55,7 +55,7 @@ class CraftingPanel {
         _this.GUI.isAnyPanelOpen = true;
         // Show the panel and change the station name.
         this.container.style.visibility = "visible";
-        this.stationName.innerText = stationName;
+        this.name.innerText = stationName;
 
         // Clear any existing recipe code.
         _this.craftingManager.recipeCode = '';

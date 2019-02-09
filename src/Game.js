@@ -193,7 +193,12 @@ dungeonz.Game.prototype = {
             this.GUI.inventoryBar.slots[elemKey].container.remove();
         }
 
-        const contents = this.GUI.bankPanel.contents;
+        let contents = this.GUI.bankPanel.contents;
+        while (contents.firstChild) {
+            contents.removeChild(contents.firstChild);
+        }
+
+        contents = this.GUI.shopPanel.contents;
         while (contents.firstChild) {
             contents.removeChild(contents.firstChild);
         }
@@ -203,11 +208,12 @@ dungeonz.Game.prototype = {
         this.GUI.respawnPrompt.style.visibility = "hidden";
         this.GUI.statsPanel.container.style.visibility = "hidden";
         this.GUI.settingsBar.hide();
-        this.GUI.craftingPanel.hide();
-        this.GUI.bankPanel.hide();
-        this.GUI.spellBookPanel.hide();
         this.GUI.exitGamePanel.hide();
-        this.GUI.clanPanel.hide();
+
+        // Hide all the panels.
+        for(let i=0; i<this.GUI.panels.length; i+=1){
+            this.GUI.panels[i].hide();
+        }
     },
 
     move (direction) {
@@ -215,12 +221,11 @@ dungeonz.Game.prototype = {
 
         // Hide all panels, in case they are just moving away from the item for it.
         if(this.GUI.isAnyPanelOpen === true){
-            this.GUI.craftingPanel.hide();
-            this.GUI.bankPanel.hide();
-            this.GUI.statsPanel.hide();
-            this.GUI.spellBookPanel.hide();
             this.GUI.exitGamePanel.hide();
-            this.GUI.clanPanel.hide();
+            // Hide all the panels.
+            for(let i=0; i<this.GUI.panels.length; i+=1){
+                this.GUI.panels[i].hide();
+            }
         }
 
         this.checkPseudoInteractables(direction);
@@ -315,6 +320,23 @@ dungeonz.Game.prototype = {
             if(_this.distanceBetween(_this.dynamics[_this.player.entityId].sprite.baseSprite, event) < 32){
                 ws.sendEvent('pick_up_item');
                 return;
+            }
+
+            //console.log("in pointerdownhander");
+            // Check if any of the dynamics were pressed on that have onInputDown handlers.
+            for(let dynamicKey in _this.dynamics){
+                //console.log("dyn key:", dynamicKey);
+                if(_this.dynamics.hasOwnProperty(dynamicKey) === false) continue;
+                //console.log("dyn is a property");
+                if(_this.dynamics[dynamicKey].sprite.baseSprite === undefined) continue;
+                //console.log("dyn has a basesprite");
+                if(_this.dynamics[dynamicKey].sprite.onInputDown === undefined) continue;
+                //console.log("dyn has a oninputdown");
+                // Check the distance between the cursor and the sprite.
+                if(_this.distanceBetween(_this.dynamics[dynamicKey].sprite.baseSprite, event) < 32){
+                    _this.dynamics[dynamicKey].sprite.onInputDown();
+                    return;
+                }
             }
 
             // Don't try to use the held item if one isn't selected.

@@ -1473,6 +1473,83 @@ sass --watch scss/Main.scss:main.css
   color: #222034;
 }
 
+#shop_panel {
+  display: inline-grid;
+  width: 516px;
+  user-select: none;
+}
+
+#shop_name {
+  width: 70%;
+  font-size: 18px;
+}
+
+#shop_tooltip {
+  left: 224px;
+}
+
+#shop_contents {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: grid;
+  height: 310px;
+  overflow: auto;
+  text-align: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 16px;
+  padding: 16px;
+}
+
+.shop_item_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none;
+}
+.shop_item_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
+}
+
+.shop_item {
+  height: 84px;
+  margin: -4px;
+  pointer-events: none;
+}
+
+.shop_price_cont {
+  height: 50px;
+}
+
+.shop_glory_icon {
+  height: 20px;
+}
+
+.shop_price {
+  color: #45283c;
+  margin: 6px;
+}
+
+#shop_bottom_cont {
+  display: grid;
+  grid-template-columns: auto 50%;
+  text-align: center;
+}
+
+#shop_buy_button_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+#shop_buy_button {
+  background-color: #6abe30;
+  line-height: 22px;
+  font-size: 90%;
+  padding: 6px;
+}
+#shop_buy_button:hover {
+  background-color: #99e550;
+  font-size: 100%;
+}
+
 #game_canvas {
   position: absolute;
   left: 50%;

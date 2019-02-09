@@ -6,7 +6,7 @@ const Sprite = function (x, y, config) {
     //this.anchor.set(0.5);
     this.scale.setTo(GAME_SCALE);
 
-    //this.entityId = config.id;
+    this.entityId = config.id;
     this.direction = config.direction;
 
     let frame = undefined;

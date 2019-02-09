@@ -8,6 +8,7 @@ import ExitGamePanel from "./ExitGamePanel";
 import ClanPanel from "./ClanPanel";
 //import GeneratorPanel from "./GeneratorPanel";
 import SpellBookPanel from "./SpellBookPanel";
+import ShopPanel from "./ShopPanel";
 
 class GUI {
 
@@ -64,17 +65,19 @@ class GUI {
 
         this.chatInput =                document.getElementById('chat_input');
 
+        this.panels = [];
+        this.isAnyPanelOpen = false;
+
         this.inventoryBar =     new InventoryBar(this);
         this.settingsBar =      new SettingsBar();
-        this.statsPanel =       new StatsPanel();
-        this.craftingPanel =    new CraftingPanel();
-        this.bankPanel =        new BankPanel();
-        this.spellBookPanel=    new SpellBookPanel();
         this.exitGamePanel =    new ExitGamePanel();
-        this.clanPanel =        new ClanPanel();
-        //this.generatorPanel =   new GeneratorPanel();
-
-        this.isAnyPanelOpen = false;
+        this.statsPanel =       this.addPanel(new StatsPanel());
+        this.craftingPanel =    this.addPanel(new CraftingPanel());
+        this.bankPanel =        this.addPanel(new BankPanel());
+        this.spellBookPanel=    this.addPanel(new SpellBookPanel());
+        this.clanPanel =        this.addPanel(new ClanPanel());
+        //this.generatorPanel =   this.addPanel(new GeneratorPanel());
+        this.shopPanel =        this.addPanel(new ShopPanel());
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
@@ -210,7 +213,9 @@ class GUI {
             validDropTarget: "rgba(146, 255, 236, 0.25)",
             validDropTargetOver: "rgba(140, 203, 255, 0.75)",
             invalidDropTarget: "rgba(255, 34, 0, 0.5)",
-            currentlySelected: "rgba(251, 242, 54, 0.5)"
+            currentlySelected: "rgba(251, 242, 54, 0.5)",
+            white80Percent: "rgba(255, 255, 255, 0.8)",
+            shopSelected: "rgb(153, 229, 80, 0.8)"
         };
 
         this.dragData = null;
@@ -232,13 +237,14 @@ class GUI {
             }
         };
 
-        // Make the various panels draggable.
-        this.makeElementDraggable(this.craftingPanel.stationName, this.craftingPanel.container);
-        this.makeElementDraggable(this.bankPanel.name, this.bankPanel.container);
-        this.makeElementDraggable(this.statsPanel.name, this.statsPanel.container);
-        this.makeElementDraggable(this.spellBookPanel.name, this.spellBookPanel.container);
-        this.makeElementDraggable(this.clanPanel.name, this.clanPanel.container);
+    }
 
+    addPanel (panel) {
+        console.log("adding panel:", panel);
+        this.panels.push(panel);
+        // Make the various panels draggable.
+        this.makeElementDraggable(panel.name, panel.container);
+        return panel;
     }
 
     addDefenceCounters (amount) {

@@ -1,0 +1,78 @@
+
+#shop_panel {
+    display: inline-grid;
+    width: 516px;
+    user-select: none;
+}
+
+#shop_name {
+    width: 70%;
+    font-size: 18px;
+}
+
+#shop_tooltip {
+    left: 224px;
+}
+
+#shop_contents {
+    background-color: $colourDB32WhiteOpacity80;
+    display: grid;
+    height: 310px;
+    overflow: auto;
+    text-align: center;
+    align-items: center;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 16px;
+    padding: 16px;
+}
+
+.shop_item_cont {
+    background-color: $colourDB32WhiteOpacity80;
+    display: none;
+    //justify-items: center;
+    &:hover {
+        filter: brightness(150%);
+        transform: scale(1.1);
+    }
+}
+
+.shop_item {
+    height: 84px;
+    margin: -4px;
+    pointer-events: none;
+}
+
+.shop_price_cont {
+    height: 50px;
+}
+
+.shop_glory_icon {
+    height: 20px;
+}
+
+.shop_price {
+    color: $colourDB32DarkPurple;
+    margin: 6px;
+}
+
+#shop_bottom_cont {
+    display: grid;
+    grid-template-columns: auto 50%;
+    text-align: center;
+}
+
+#shop_buy_button_cont {
+    background-color: $colourDB32WhiteOpacity80;
+    padding: 10px;
+}
+
+#shop_buy_button {
+    background-color: $colourDB32Green;
+    line-height: 22px;
+    font-size: 90%;
+    padding: 6px;
+    &:hover {
+        background-color: $colourDB32LimeGreen;
+        font-size: 100%;
+    }
+}

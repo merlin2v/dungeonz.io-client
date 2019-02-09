@@ -249,8 +249,9 @@
             <key type="filename">entities/characters/knight/knight-up-1.png</key>
             <key type="filename">entities/characters/knight/knight-up-2.png</key>
             <key type="filename">entities/characters/knight/knight-up-3.png</key>
-            <key type="filename">entities/characters/ruler/ruler-1.png</key>
-            <key type="filename">entities/characters/ruler/ruler-2.png</key>
+            <key type="filename">entities/characters/traders/ruler-1.png</key>
+            <key type="filename">entities/characters/traders/ruler-2.png</key>
+            <key type="filename">entities/characters/traders/trader-basic-1.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-1.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-2.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-3.png</key>
@@ -562,7 +563,7 @@
             <filename>entities/characters/warrior</filename>
             <filename>entities/characters/rat</filename>
             <filename>entities/clothes/ninja garb</filename>
-            <filename>entities/characters/ruler</filename>
+            <filename>entities/characters/traders</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

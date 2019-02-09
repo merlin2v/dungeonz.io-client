@@ -44,8 +44,7 @@ Phaser.Sprite.prototype.onInputOut = function () {
 };
 
 /*Phaser.Sprite.prototype.onInputDown = function () {
-    this.displayName.visible = true; //Might need to do a loop of
-    all dynamics in Game pointerDownHandler to have click-on-able characters
+    console.log("default oninputdown");
 };*/
 
 Phaser.Sprite.prototype.addDamageMarker = function () {
@@ -86,6 +85,8 @@ import BanditLeader             from './characters/BanditLeader'
 import Knight                   from './characters/Knight'
 import Prisoner                 from './characters/Prisoner'
 import Rat                      from './characters/Rat'
+import Innkeeper                from './characters/Innkeeper'
+import Ruler                    from './characters/Ruler'
 import Warrior                  from './characters/Warrior'
 import ZombieHuman              from './characters/ZombieHuman'
 
@@ -106,7 +107,6 @@ import SmallIronCandle          from './interactables/SmallIronCandle'
 import Exit                     from './interactables/Exit'
 import DungeonPortal            from './interactables/DungeonPortal'
 import OverworldPortal          from './interactables/OverworldPortal'
-import Ruler                    from './interactables/Ruler'
 
 import PickupAnvil              from './pickups/PickupAnvil'
 import PickupBankChest          from './pickups/PickupBankChest'
@@ -166,6 +166,8 @@ const EntitiesList = {
     Knight:                 Knight,
     Prisoner:               Prisoner,
     Rat:                    Rat,
+    Innkeeper:              Innkeeper,
+    Ruler:                  Ruler,
     Warrior:                Warrior,
     ZombieHuman:            ZombieHuman,
 
@@ -235,7 +237,6 @@ const EntitiesList = {
     Exit:                   Exit,
     DungeonPortal:          DungeonPortal,
     OverworldPortal:        OverworldPortal,
-    Ruler:                  Ruler,
 
 };
 

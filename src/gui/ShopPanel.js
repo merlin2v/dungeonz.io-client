@@ -63,6 +63,12 @@ class ShopPanel {
             this.stockSlots.push(new StockSlot(this, i));
         }
 
+        // Keep the currently shown shop stock, so the item type numbers can be found to be sent when buying.
+        this.shopStock = [];
+
+        // The trader entity that this player is trading with, to send when buying something so the server knows who to buy from.
+        this.traderID = null;
+
         // The currently selected slot.
         this.selectedSlot = null;
 
@@ -91,6 +97,9 @@ class ShopPanel {
 
             this.stockSlots[i].container.style.display = "block";
         }
+
+        this.shopStock = shopStock;
+        this.traderID = traderID;
     }
 
     hide () {
@@ -115,9 +124,22 @@ class ShopPanel {
     }
 
     buyPressed () {
+        const shopPanel = _this.GUI.shopPanel;
+
+        // Check a slot is actually selected.
+        if(shopPanel.selectedSlot === null) return;
+
         // Get the selected slot index.
-        // TODO
-        const slotIndex = this.getAttribute('slotIndex');
+        const slotIndex = shopPanel.selectedSlot.container.getAttribute('slotIndex');
+
+        ws.sendEvent("shop_buy_item", {
+            traderID: shopPanel.traderID,
+            row: _this.dynamics[shopPanel.traderID].row,
+            col: _this.dynamics[shopPanel.traderID].col,
+            index: slotIndex,
+            itemTypeNumber: shopPanel.shopStock[slotIndex],
+            price: shopPanel.selectedSlot.price.innerText
+        });
     }
 
     updatePrices (prices) {

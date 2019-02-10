@@ -14,8 +14,7 @@ const Sprite = function (x, y, config) {
     this.baseSprite.animations.add('idle',    ['trader-basic-1',   'trader-basic-2'],   2, true);
     this.baseSprite.animations.play('idle');
 
-    //this.addDisplayName(dungeonz.getTextDef("Ruler"));
-    this.addDisplayName("Innkeeper");
+    this.addDisplayName(dungeonz.getTextDef("Mob name: Innkeeper"));
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -29,7 +28,7 @@ Sprite.prototype.onInputDown = function () {
     const rowDist = Math.abs(player.row - entity.row);
     const colDist = Math.abs(player.col - entity.col);
     if((rowDist + colDist) < 3){
-        _this.GUI.shopPanel.show(this.entityId, "Innkeeper", NPCShopTypes.Inn);
+        _this.GUI.shopPanel.show(this.entityId, this.displayName.text, NPCShopTypes.Inn);
     }
 };
 

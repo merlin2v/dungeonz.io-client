@@ -7,3 +7,8 @@ assets/map/
 src/lib/phaser.min.js
 src/lib/phaser.js
 src/lib/phaser.js
+src/catalogues/TextDefinitions.json
+src/catalogues/NPCShopTypes.json
+src/catalogues/ItemTypes.json
+src/catalogues/EntityTypes.json
+src/catalogues/CraftingRecipes.json

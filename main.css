@@ -1480,12 +1480,12 @@ sass --watch scss/Main.scss:main.css
 }
 
 #shop_name {
-  width: 70%;
+  width: 50%;
   font-size: 18px;
 }
 
 #shop_tooltip {
-  left: 224px;
+  left: 276px;
 }
 
 #shop_contents {

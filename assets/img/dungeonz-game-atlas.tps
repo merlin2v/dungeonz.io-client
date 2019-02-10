@@ -338,6 +338,7 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
+            <key type="filename">entities/pickups/pickup-cotton.png</key>
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-gold-bar.png</key>
@@ -365,6 +366,8 @@
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
             <key type="filename">entities/projectiles/proj-pacify.png</key>
             <key type="filename">entities/projectiles/proj-wind.png</key>
+            <key type="filename">entities/resource nodes/cotton-inactive.png</key>
+            <key type="filename">entities/resource nodes/cotton.png</key>
             <key type="filename">entities/resource nodes/oak-tree.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>

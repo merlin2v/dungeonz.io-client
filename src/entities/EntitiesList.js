@@ -99,6 +99,7 @@ import WoodWall                 from './interactables/WoodWall'
 import Furnace                  from './interactables/Furnace'
 import Generator                from './interactables/Generator'
 import Workbench                from './interactables/Workbench'
+import CottonPlant              from './interactables/CottonPlant'
 import GoldOre                  from './interactables/GoldOre'
 import IronOre                  from './interactables/IronOre'
 import OakTree                  from './interactables/OakTree'
@@ -114,6 +115,7 @@ import PickupBookOfLight        from './pickups/PickupBookOfLight'
 import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
+import PickupCotton             from './pickups/PickupCotton'
 import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
 import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
@@ -180,6 +182,7 @@ const EntitiesList = {
     Furnace:                Furnace,
     Generator:              Generator,
     Workbench:              Workbench,
+    CottonPlant:            CottonPlant,
     GoldOre:                GoldOre,
     IronOre:                IronOre,
     OakTree:                OakTree,
@@ -192,6 +195,7 @@ const EntitiesList = {
     PickupBookOfSouls:      PickupBookOfSouls,
     PickupCharter:          PickupCharter,
     PickupCloak:            PickupCloak,
+    PickupCotton:           PickupCotton,
     PickupMageRobe:         PickupMageRobe,
     PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupNinjaGarb:        PickupNinjaGarb,

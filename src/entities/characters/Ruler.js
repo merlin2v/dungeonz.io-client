@@ -14,8 +14,7 @@ const Sprite = function (x, y, config) {
     this.baseSprite.animations.add('idle',    ['ruler-1',   'ruler-2'],   2, true);
     this.baseSprite.animations.play('idle');
 
-    //this.addDisplayName(dungeonz.getTextDef("Ruler"));
-    this.addDisplayName("Ruler");
+    this.addDisplayName(dungeonz.getTextDef("Mob name: Ruler"));
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -29,7 +28,7 @@ Sprite.prototype.onInputDown = function () {
     const rowDist = Math.abs(player.row - entity.row);
     const colDist = Math.abs(player.col - entity.col);
     if((rowDist + colDist) < 3){
-        _this.GUI.shopPanel.show(this.entityId, "Ruler", NPCShopTypes.Ruler);
+        _this.GUI.shopPanel.show(this.entityId, this.displayName.text, NPCShopTypes.Ruler);
     }
 };
 

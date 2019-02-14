@@ -15,7 +15,7 @@ dungeonz.Game = function () {
 dungeonz.Game.prototype = {
 
     init: function (data) {
-        //console.log("in game init: ", data);
+        console.log("in game init: ", data);
 
         /**
          * The name of the board the player is on. This has nothing to do with a dungeon instance that this board might be for.
@@ -47,6 +47,7 @@ dungeonz.Game.prototype = {
             inventory: new Inventory(data.inventory),
             bankManager: new BankManager(data.bankItems),
             stats: new Stats(data.player.stats),
+            tasks: data.player.tasks,
             holdingItem: false
         };
 
@@ -105,6 +106,7 @@ dungeonz.Game.prototype = {
             _this.player.inventory.swapInventorySlots(slotKey, slotKey);
         }
 
+        // Load the bank items.
         const items = _this.player.bankManager.items;
         // Make sure the bank slots are showing the right items.
         for(let slotIndex=0, len=items.length; slotIndex<len; slotIndex+=1){
@@ -114,6 +116,14 @@ dungeonz.Game.prototype = {
         }
         // Hide the panel, as if any of the slots were filled with existing items, they will be shown.
         _this.GUI.bankPanel.hide();
+
+        // Load the tasks.
+        const tasks = _this.player.tasks;
+        for(let taskID in tasks){
+            if(tasks.hasOwnProperty(taskID) === false) continue;
+            console.log("loading task:", taskID);
+            _this.GUI.tasksPanel.addTask(taskID, tasks[taskID]);
+        }
 
         // Update the starting value for the next level exp requirement, for the default shown stat info.
         _this.GUI.statsPanel.changeStatInfo(_this.player.stats.list.Melee);

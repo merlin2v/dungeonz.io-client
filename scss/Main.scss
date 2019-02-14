@@ -17,6 +17,7 @@ sass --watch scss/Main.scss:main.css
 @import "ClanPanel";
 @import "GeneratorPanel";
 @import "ShopPanel";
+@import "TasksPanel";
 
 
 #game_canvas {

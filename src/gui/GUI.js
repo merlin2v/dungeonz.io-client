@@ -9,6 +9,7 @@ import ClanPanel from "./ClanPanel";
 //import GeneratorPanel from "./GeneratorPanel";
 import SpellBookPanel from "./SpellBookPanel";
 import ShopPanel from "./ShopPanel";
+import TasksPanel from "./TasksPanel";
 
 class GUI {
 
@@ -78,6 +79,7 @@ class GUI {
         this.clanPanel =        this.addPanel(new ClanPanel());
         //this.generatorPanel =   this.addPanel(new GeneratorPanel());
         this.shopPanel =        this.addPanel(new ShopPanel());
+        this.tasksPanel =       this.addPanel(new TasksPanel());
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
@@ -240,7 +242,6 @@ class GUI {
     }
 
     addPanel (panel) {
-        console.log("adding panel:", panel);
         this.panels.push(panel);
         // Make the various panels draggable.
         this.makeElementDraggable(panel.name, panel.container);

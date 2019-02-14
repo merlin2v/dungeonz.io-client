@@ -83,10 +83,14 @@ import Bat                      from './characters/Bat'
 import Bandit                   from './characters/Bandit'
 import BanditLeader             from './characters/BanditLeader'
 import Knight                   from './characters/Knight'
+import MagicMerchant            from './characters/MagicMerchant'
+import MeleeMerchant            from './characters/MeleeMerchant'
 import Prisoner                 from './characters/Prisoner'
+import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
 import Innkeeper                from './characters/Innkeeper'
 import Ruler                    from './characters/Ruler'
+import ToolMerchant             from './characters/ToolMerchant'
 import Warrior                  from './characters/Warrior'
 import ZombieHuman              from './characters/ZombieHuman'
 
@@ -127,6 +131,7 @@ import PickupIronDagger         from './pickups/PickupIronDagger'
 import PickupIronSword          from './pickups/PickupIronSword'
 import PickupIronSheet          from './pickups/PickupIronSheet'
 import PickupIronHammer         from './pickups/PickupIronHammer'
+import PickupFabric             from './pickups/PickupFabric'
 import PickupFeathers           from './pickups/PickupFeathers'
 import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
@@ -134,11 +139,12 @@ import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
 import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
+import PickupString             from './pickups/PickupString'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
 import PickupWindStaff          from './pickups/PickupWindStaff'
 import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
-import PickupWoodPlank          from './pickups/PickupWoodPlank'
+import PickupPlainRobe          from './pickups/PickupPlainRobe'
 import PickupGoldOre            from './pickups/PickupGoldOre'
 import PickupGoldBar            from './pickups/PickupGoldBar'
 import PickupIronOre            from './pickups/PickupIronOre'
@@ -166,10 +172,14 @@ const EntitiesList = {
     Bandit:                 Bandit,
     BanditLeader:           BanditLeader,
     Knight:                 Knight,
+    MagicMerchant:          MagicMerchant,
+    MeleeMerchant:          MeleeMerchant,
     Prisoner:               Prisoner,
+    RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
     Innkeeper:              Innkeeper,
     Ruler:                  Ruler,
+    ToolMerchant:           ToolMerchant,
     Warrior:                Warrior,
     ZombieHuman:            ZombieHuman,
 
@@ -207,6 +217,7 @@ const EntitiesList = {
     PickupIronSheet:        PickupIronSheet,
     PickupIronSword:        PickupIronSword,
     PickupIronHammer:       PickupIronHammer,
+    PickupFabric:           PickupFabric,
     PickupFeathers:         PickupFeathers,
     PickupFireGem:          PickupFireGem,
     PickupFireStaff:        PickupFireStaff,
@@ -214,11 +225,12 @@ const EntitiesList = {
     PickupGenerator:        PickupGenerator,
     PickupScrollOfHealing:  PickupScrollOfHealing,
     PickupShuriken:         PickupShuriken,
+    PickupString:           PickupString,
     PickupSuperFireStaff:   PickupSuperFireStaff,
     PickupWindStaff:        PickupWindStaff,
     PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
-    PickupWoodPlank:        PickupWoodPlank,
+    PickupPlainRobe:        PickupPlainRobe,
     PickupGoldOre:          PickupGoldOre,
     PickupGoldBar:          PickupGoldBar,
     PickupIronOre:          PickupIronOre,

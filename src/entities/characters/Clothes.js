@@ -23,6 +23,11 @@ const Sprite = function (config) {
 
     this.frameName = this.clothesFrames[this.clothesName][this.direction];
 
+    this.animations.add('Plain robe-u',    ['plain-robe-up-1',      'plain-robe-up-2',       'plain-robe-up-1',       'plain-robe-up-3'],      10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Plain robe-d',    ['plain-robe-down-1',    'plain-robe-down-2',     'plain-robe-down-1',     'plain-robe-down-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Plain robe-l',    ['plain-robe-left-1',    'plain-robe-left-2',     'plain-robe-left-1',     'plain-robe-left-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Plain robe-r',    ['plain-robe-right-1',   'plain-robe-right-2',    'plain-robe-right-1',    'plain-robe-right-3'],   10).onComplete.add(moveAnimCompleted, this);
+
     this.animations.add('Mage robe-u',    ['mage-robe-up-1',      'mage-robe-up-2',       'mage-robe-up-1',       'mage-robe-up-3'],      10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Mage robe-d',    ['mage-robe-down-1',    'mage-robe-down-2',     'mage-robe-down-1',     'mage-robe-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Mage robe-l',    ['mage-robe-left-1',    'mage-robe-left-2',     'mage-robe-left-1',     'mage-robe-left-3'],    10).onComplete.add(moveAnimCompleted, this);
@@ -53,6 +58,12 @@ Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.clothesFrames = {
+    ['Plain robe']: {
+        u: 'plain-robe-up-1',
+        d: 'plain-robe-down-1',
+        l: 'plain-robe-left-1',
+        r: 'plain-robe-right-1'
+    },
     ['Mage robe']: {
         u: 'mage-robe-up-1',
         d: 'mage-robe-down-1',

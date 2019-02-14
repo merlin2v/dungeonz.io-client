@@ -1,32 +1,47 @@
 
-#shop_panel {
+#tasks_panel {
     display: inline-grid;
     width: 516px;
     user-select: none;
+    visibility: visible;
 }
 
-#shop_name {
+#tasks_name {
     width: 50%;
     font-size: 18px;
 }
 
-#shop_tooltip {
+#tasks_tooltip {
     left: 276px;
 }
 
-#shop_contents {
+#tasks_contents {
     background-color: $colourDB32WhiteOpacity80;
+}
+
+#tasks_subheaders {
+    background-color: lightgreen;
     display: grid;
-    height: 310px;
-    overflow: auto;
+    grid-template-columns: auto 20% 30%;
+    height: 100px;
     text-align: center;
     align-items: center;
-    grid-template-columns: repeat(4, 100px);
     grid-gap: 16px;
     padding: 16px;
 }
 
-.shop_item_cont {
+#tasks_list {
+    background-color: lightsalmon;
+    display: grid;
+    grid-template-columns: auto 20% 30%;
+    height: 500px;
+    text-align: center;
+    align-items: center;
+    grid-gap: 16px;
+    padding: 16px;
+}
+
+.tasks_item_cont {
     background-color: $colourDB32WhiteOpacity80;
     display: none;
     //justify-items: center;
@@ -36,38 +51,38 @@
     }
 }
 
-.shop_item {
+.tasks_item {
     height: 84px;
     margin: -4px;
     pointer-events: none;
     padding: 6px;
 }
 
-.shop_price_cont {
+.tasks_price_cont {
     height: 50px;
 }
 
-.shop_glory_icon {
+.tasks_glory_icon {
     height: 20px;
 }
 
-.shop_price {
+.tasks_price {
     color: $colourDB32DarkPurple;
     margin: 6px;
 }
 
-#shop_bottom_cont {
+#tasks_bottom_cont {
     display: grid;
     grid-template-columns: auto 50%;
     text-align: center;
 }
 
-#shop_buy_button_cont {
+#tasks_claim_button_cont {
     background-color: $colourDB32WhiteOpacity80;
     padding: 10px;
 }
 
-#shop_buy_button {
+#tasks_claim_button {
     background-color: $colourDB32Green;
     line-height: 22px;
     font-size: 90%;

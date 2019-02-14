@@ -336,6 +336,18 @@
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-down-1.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-down-2.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-down-3.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-left-1.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-left-2.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-left-3.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-right-1.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-right-2.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-right-3.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-up-1.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-up-2.png</key>
+            <key type="filename">entities/clothes/plain robe/plain-robe-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-cotton.png</key>
@@ -355,6 +367,7 @@
             <key type="filename">entities/pickups/pickup-oak-logs.png</key>
             <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
             <key type="filename">entities/pickups/pickup-shuriken.png</key>
+            <key type="filename">entities/pickups/pickup-string.png</key>
             <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
@@ -493,6 +506,7 @@
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-charter.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
+            <key type="filename">entities/pickups/pickup-fabric.png</key>
             <key type="filename">entities/pickups/pickup-feathers.png</key>
             <key type="filename">entities/pickups/pickup-furnace.png</key>
             <key type="filename">entities/pickups/pickup-generator.png</key>
@@ -501,6 +515,7 @@
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
             <key type="filename">entities/pickups/pickup-ninja-garb.png</key>
+            <key type="filename">entities/pickups/pickup-plain-robe.png</key>
             <key type="filename">entities/pickups/pickup-potionry-lab.png</key>
             <key type="filename">entities/pickups/pickup-wood-door.png</key>
             <key type="filename">entities/pickups/pickup-wood-wall.png</key>
@@ -567,6 +582,7 @@
             <filename>entities/characters/rat</filename>
             <filename>entities/clothes/ninja garb</filename>
             <filename>entities/characters/traders</filename>
+            <filename>entities/clothes/plain robe</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

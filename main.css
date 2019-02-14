@@ -1513,6 +1513,7 @@ sass --watch scss/Main.scss:main.css
   height: 84px;
   margin: -4px;
   pointer-events: none;
+  padding: 6px;
 }
 
 .shop_price_cont {
@@ -1546,6 +1547,99 @@ sass --watch scss/Main.scss:main.css
   padding: 6px;
 }
 #shop_buy_button:hover {
+  background-color: #99e550;
+  font-size: 100%;
+}
+
+#tasks_panel {
+  display: inline-grid;
+  width: 516px;
+  user-select: none;
+  visibility: visible;
+}
+
+#tasks_name {
+  width: 50%;
+  font-size: 18px;
+}
+
+#tasks_tooltip {
+  left: 276px;
+}
+
+#tasks_contents {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#tasks_subheaders {
+  background-color: lightgreen;
+  display: grid;
+  grid-template-columns: auto 20% 30%;
+  height: 100px;
+  text-align: center;
+  align-items: center;
+  grid-gap: 16px;
+  padding: 16px;
+}
+
+#tasks_list {
+  background-color: lightsalmon;
+  display: grid;
+  grid-template-columns: auto 20% 30%;
+  height: 500px;
+  text-align: center;
+  align-items: center;
+  grid-gap: 16px;
+  padding: 16px;
+}
+
+.tasks_item_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none;
+}
+.tasks_item_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
+}
+
+.tasks_item {
+  height: 84px;
+  margin: -4px;
+  pointer-events: none;
+  padding: 6px;
+}
+
+.tasks_price_cont {
+  height: 50px;
+}
+
+.tasks_glory_icon {
+  height: 20px;
+}
+
+.tasks_price {
+  color: #45283c;
+  margin: 6px;
+}
+
+#tasks_bottom_cont {
+  display: grid;
+  grid-template-columns: auto 50%;
+  text-align: center;
+}
+
+#tasks_claim_button_cont {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+#tasks_claim_button {
+  background-color: #6abe30;
+  line-height: 22px;
+  font-size: 90%;
+  padding: 6px;
+}
+#tasks_claim_button:hover {
   background-color: #99e550;
   font-size: 100%;
 }

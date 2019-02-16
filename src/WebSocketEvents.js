@@ -128,19 +128,24 @@ eventResponses.character_in_use = function () {
 };
 
 eventResponses.join_world_success = function (data) {
-    //console.log("join world success, data:");
-    //console.log(data);
+    console.log("join world success, data:");
+    console.log(data);
 
     document.getElementById("home_cont").style.display = "none";
 
     // If something is wrong, close the connection.
     if(!_this.state){
         console.log("* WARNING: _this.state is invalid. Closing WS connection. _this:", _this);
-        ws.close();
+        setTimeout(function () {
+            ws.close();
+        }, 10000);
         return;
     }
 
+    console.log("before state:", _this);
     _this.state.start('Game', true, false, data);
+    console.log("after state:", _this);
+
 };
 
 eventResponses.world_full = function () {
@@ -372,6 +377,10 @@ eventResponses.player_respawn = function () {
 
 eventResponses.add_entity = function (data) {
     //console.log("add entity event:", data);
+    if(_this.addEntity === undefined){
+        console.log("_this.addEntity is undefined, this:", _this);
+        return;
+    }
     _this.addEntity(data);
 };
 
@@ -607,4 +616,9 @@ eventResponses.clan_destroyed = function (data) {
 eventResponses.clan_values = function (data) {
     console.log("clan values, data:", data);
     _this.GUI.clanPanel.updateValues(data);
+};
+
+eventResponses.task_progress_made = function (data) {
+    console.log("task progresss made, data:", data);
+    _this.GUI.tasksPanel.updateTaskProgress(data.taskID, data.progress);
 };

@@ -94,6 +94,10 @@
                     <img id="avatar_icon" class="gui_icon" src="assets/img/gui/avatar-icon.png" draggable="false">
                     <div id="avatar_tooltip"    class="top_left_tooltip generic_tooltip"></div>
                 </div>
+                <div id="tasks_cont" class="inline_cont">
+                    <img id="tasks_icon" class="gui_icon" src="assets/img/gui/tasks-icon.png" draggable="false">
+                    <div id="tasks_tooltip"     class="top_left_tooltip generic_tooltip"></div>
+                </div>
                 <div id="clan_cont" class="inline_cont">
                     <img id="clan_icon" class="gui_icon" src="assets/img/gui/clan-icon.png" draggable="false">
                     <div id="clan_tooltip"      class="top_left_tooltip generic_tooltip"></div>
@@ -266,7 +270,7 @@
 
             <div id="tasks_panel" class="panel">
                 <div class="panel_header">
-                    <div id="tasks_tooltip" class="panel_tooltip"></div>
+                    <div id="tasks_panel_tooltip" class="panel_tooltip"></div>
                     <div id="tasks_name" class="panel_name">Tasks</div>
                 </div>
                 <div id="tasks_contents">
@@ -692,6 +696,7 @@
             document.getElementById('glory_tooltip').innerText =        dungeonz.getTextDef('Glory tooltip');
             document.getElementById('bounty_tooltip').innerText =       dungeonz.getTextDef('Bounty tooltip');
             document.getElementById('avatar_tooltip').innerText =       dungeonz.getTextDef('Avatar tooltip');
+            document.getElementById('tasks_tooltip').innerText =        dungeonz.getTextDef('Tasks tooltip');
             document.getElementById('clan_tooltip').innerText =         dungeonz.getTextDef('Clan tooltip');
             document.getElementById('inventory_tooltip').innerHTML =    dungeonz.getTextDef('Inventory tooltip');
             document.getElementById('exit_tooltip').innerHTML =         dungeonz.getTextDef('Exit tooltip');

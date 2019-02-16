@@ -1,17 +1,17 @@
 
 #tasks_panel {
     display: inline-grid;
-    width: 516px;
+    width: 600px;
     user-select: none;
     visibility: visible;
 }
 
 #tasks_name {
-    width: 50%;
+    width: 43%;
     font-size: 18px;
 }
 
-#tasks_tooltip {
+#tasks_panel_tooltip {
     left: 276px;
 }
 
@@ -20,55 +20,60 @@
 }
 
 #tasks_subheaders {
-    background-color: lightgreen;
     display: grid;
-    grid-template-columns: auto 20% 30%;
-    height: 100px;
+    grid-template-columns: 36% 18% auto;
+    height: 46px;
     text-align: center;
     align-items: center;
     grid-gap: 16px;
-    padding: 16px;
+    font-weight: bold;
+    margin-bottom: -8px;
 }
 
 #tasks_list {
-    background-color: lightsalmon;
-    display: grid;
-    grid-template-columns: auto 20% 30%;
-    height: 500px;
-    text-align: center;
-    align-items: center;
-    grid-gap: 16px;
-    padding: 16px;
+    height: 300px;
+    padding: 8px;
+    padding-top: 0px;
+    overflow: auto;
 }
 
-.tasks_item_cont {
+.task_slot_cont {
     background-color: $colourDB32WhiteOpacity80;
-    display: none;
-    //justify-items: center;
+    display: grid;
+    grid-template-columns: 42% 18% auto;
+    text-align: center;
+    align-items: center;
+    grid-gap: 8px;
+    font-size: 14px;
+    margin: 8px;
+    border-style: solid;
+    border-width: 0;
     &:hover {
         filter: brightness(150%);
-        transform: scale(1.1);
+        transform: scale(1.03);
     }
 }
 
-.tasks_item {
-    height: 84px;
-    margin: -4px;
+.task_reward_cont {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% auto;
+    grid-gap: 4px;
+    align-items: center;
+    justify-items: center;
+}
+
+.task_reward_item {
+    visibility: hidden;
+    width: 100%;
+    &:hover {
+        filter: brightness(150%);
+        transform: scale(1.3);
+    }
+}
+
+.task_glory_icon {
+    width: 80%;
     pointer-events: none;
-    padding: 6px;
-}
-
-.tasks_price_cont {
-    height: 50px;
-}
-
-.tasks_glory_icon {
-    height: 20px;
-}
-
-.tasks_price {
-    color: $colourDB32DarkPurple;
-    margin: 6px;
 }
 
 #tasks_bottom_cont {
@@ -78,6 +83,7 @@
 }
 
 #tasks_claim_button_cont {
+    visibility: hidden;
     background-color: $colourDB32WhiteOpacity80;
     padding: 10px;
 }

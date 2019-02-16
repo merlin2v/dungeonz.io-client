@@ -26,6 +26,7 @@ class GUI {
         this.gloryIcon =                document.getElementById('glory_icon');
         this.bountyIcon =               document.getElementById('bounty_icon');
         this.avatarIcon =               document.getElementById('avatar_icon');
+        this.tasksIcon =                document.getElementById('tasks_icon');
         this.clanIcon =                 document.getElementById('clan_icon');
         this.inventoryIcon =            document.getElementById('inventory_icon');
         this.exitIcon =                 document.getElementById('exit_icon');
@@ -37,6 +38,7 @@ class GUI {
         this.gloryTooltip =             document.getElementById('glory_tooltip');
         this.bountyTooltip =            document.getElementById('bounty_tooltip');
         this.avatarTooltip =            document.getElementById('avatar_tooltip');
+        this.tasksTooltip =             document.getElementById('tasks_tooltip');
         this.clanTooltip =              document.getElementById('clan_tooltip');
         this.inventoryTooltip =         document.getElementById('inventory_tooltip');
         this.exitTooltip =              document.getElementById('exit_tooltip');
@@ -115,6 +117,17 @@ class GUI {
             }
             else {
                 game.GUI.statsPanel.show();
+            }
+        };
+
+        this.tasksIcon.onmouseover =    function(){ game.GUI.tasksTooltip.style.visibility = "visible" };
+        this.tasksIcon.onmouseout =     function(){ game.GUI.tasksTooltip.style.visibility = "hidden" };
+        this.tasksIcon.onclick =       function(){
+            if(game.GUI.tasksPanel.container.style.visibility === "visible"){
+                game.GUI.tasksPanel.hide();
+            }
+            else {
+                game.GUI.tasksPanel.show();
             }
         };
 
@@ -217,7 +230,8 @@ class GUI {
             invalidDropTarget: "rgba(255, 34, 0, 0.5)",
             currentlySelected: "rgba(251, 242, 54, 0.5)",
             white80Percent: "rgba(255, 255, 255, 0.8)",
-            shopSelected: "rgb(153, 229, 80, 0.8)"
+            shopSelected: "rgb(153, 229, 80, 0.8)",
+            taskComplete: "rgba(106, 190, 48, 0.8)"
         };
 
         this.dragData = null;

@@ -15,7 +15,7 @@ dungeonz.Game = function () {
 dungeonz.Game.prototype = {
 
     init: function (data) {
-        console.log("in game init: ", data);
+        console.log("* In game init:", data);
 
         /**
          * The name of the board the player is on. This has nothing to do with a dungeon instance that this board might be for.

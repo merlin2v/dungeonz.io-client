@@ -4,9 +4,7 @@ import ItemTypes from '../../src/catalogues/ItemTypes'
 
 class TaskSlot {
     constructor (panel, taskID, progress) {
-        console.log("adding task slot:", taskID);
         const task = TaskTypes[taskID];
-        console.log("tasks:", TaskTypes);
 
         this.container = document.createElement('div');
         this.container.className = 'task_slot_cont';
@@ -146,9 +144,6 @@ class TasksPanel {
     }
 
     rewardItemMouseOver () {
-        console.log("rew ms over, this:", this.getAttribute('itemNumber'));
-        console.log("item types:", ItemTypes);
-        console.log(ItemTypes[this.getAttribute('itemNumber')]);
         _this.GUI.tasksPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + ItemTypes[this.getAttribute('itemNumber')].idName);
         _this.GUI.tasksPanel.tooltip.style.visibility = 'visible';
     }
@@ -165,6 +160,9 @@ class TasksPanel {
 
         // Get the selected slot task ID.
         ws.sendEvent("task_claim_reward", tasksPanel.selectedSlot.container.getAttribute('taskID'));
+
+        // Assume it will be claimed successfully, so hide the claim button.
+        tasksPanel.claimButtonCont.style.visibility = "hidden";
     }
 
     /**
@@ -182,6 +180,7 @@ class TasksPanel {
      * @param {String} taskID
      */
     removeTask (taskID) {
+        this.taskSlots[taskID].container.remove();
         delete this.taskSlots[taskID];
         delete _this.player.tasks[taskID];
     }
@@ -193,6 +192,8 @@ class TasksPanel {
         if(progress >= TaskTypes[taskID].completionThreshold){
             this.taskSlots[taskID].container.style.backgroundColor = _this.GUI.GUIColours.taskComplete;
             this.taskSlots[taskID].completed = true;
+            // Tell them via a chat message.
+            _this.chat(undefined, dungeonz.getTextDef("Task completed"), "#50ff7f");
         }
     }
 

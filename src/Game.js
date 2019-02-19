@@ -124,6 +124,8 @@ dungeonz.Game.prototype = {
             console.log("loading task:", taskID);
             _this.GUI.tasksPanel.addTask(taskID, tasks[taskID]);
         }
+        // Make sure the item icons are hidden. They aren't after being added at first.
+        _this.GUI.tasksPanel.hide();
 
         // Update the starting value for the next level exp requirement, for the default shown stat info.
         _this.GUI.statsPanel.changeStatInfo(_this.player.stats.list.Melee);

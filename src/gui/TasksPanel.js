@@ -5,12 +5,14 @@ import ItemTypes from '../../src/catalogues/ItemTypes'
 class TaskSlot {
     constructor (panel, taskID, progress) {
         const task = TaskTypes[taskID];
+        // Check the client actually has this task. Might not have it updated with a new one.
+        if(task === undefined) return;
 
         this.container = document.createElement('div');
         this.container.className = 'task_slot_cont';
 
         this.taskName = document.createElement('p');
-        this.taskName.innerText = dungeonz.getTextDef("Task: " + task.textDefIDName);
+        this.taskName.innerText = dungeonz.getTextDef("Task: " + task.textDefIDName) || task.textDefIDName;
 
         this.progress = document.createElement('p');
         this.progress.innerText = progress + "/" + task.completionThreshold;

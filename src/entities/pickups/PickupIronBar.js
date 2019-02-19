@@ -1,6 +1,6 @@
 
 const Sprite = function (x, y, config) {
-    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'pickup-oak-bow');
+    Phaser.Sprite.call(this, _this.game, x, y, 'game-atlas', 'pickup-iron-bar');
 
     this.scale.setTo(GAME_SCALE);
 

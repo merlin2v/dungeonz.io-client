@@ -15,6 +15,10 @@
   border-radius: 10px;
   pointer-events: auto;
   user-select: none;
+  &:hover {
+    filter: brightness(120%);
+    transform: scale(1.1);
+  }
 }
 
 .inventory_slot_border {

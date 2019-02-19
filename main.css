@@ -458,6 +458,7 @@ sass --watch scss/Main.scss:main.css
 }
 .gui_icon:hover {
   -webkit-filter: brightness(150%);
+  transform: scale(1.2);
 }
 
 .inline_cont {
@@ -886,6 +887,10 @@ sass --watch scss/Main.scss:main.css
   border-radius: 10px;
   pointer-events: auto;
   user-select: none;
+}
+.inventory_slot:hover {
+  filter: brightness(120%);
+  transform: scale(1.1);
 }
 
 .inventory_slot_border {
@@ -1555,7 +1560,6 @@ sass --watch scss/Main.scss:main.css
   display: inline-grid;
   width: 600px;
   user-select: none;
-  visibility: visible;
 }
 
 #tasks_name {

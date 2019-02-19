@@ -195,6 +195,10 @@
             <key type="filename">entities/buildings/overworld-portal.png</key>
             <key type="filename">entities/buildings/potionry-lab.png</key>
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
+            <key type="filename">entities/buildings/wood-door-locked-blue.png</key>
+            <key type="filename">entities/buildings/wood-door-locked-green.png</key>
+            <key type="filename">entities/buildings/wood-door-locked-red.png</key>
+            <key type="filename">entities/buildings/wood-door-locked-yellow.png</key>
             <key type="filename">entities/buildings/wood-door-locked.png</key>
             <key type="filename">entities/buildings/wood-door.png</key>
             <key type="filename">entities/buildings/wood-wall.png</key>
@@ -211,6 +215,18 @@
             <key type="filename">entities/characters/bandit/bandit-up-1.png</key>
             <key type="filename">entities/characters/bandit/bandit-up-2.png</key>
             <key type="filename">entities/characters/bandit/bandit-up-3.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-down-1.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-down-2.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-down-3.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-left-1.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-left-2.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-left-3.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-right-1.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-right-2.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-right-3.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-up-1.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-up-2.png</key>
+            <key type="filename">entities/characters/crypt warden/crypt-warden-up-3.png</key>
             <key type="filename">entities/characters/effects/burn-effect-1.png</key>
             <key type="filename">entities/characters/effects/burn-effect-2.png</key>
             <key type="filename">entities/characters/human base/human-down-1.png</key>
@@ -249,6 +265,30 @@
             <key type="filename">entities/characters/knight/knight-up-1.png</key>
             <key type="filename">entities/characters/knight/knight-up-2.png</key>
             <key type="filename">entities/characters/knight/knight-up-3.png</key>
+            <key type="filename">entities/characters/mummy/mummy-down-1.png</key>
+            <key type="filename">entities/characters/mummy/mummy-down-2.png</key>
+            <key type="filename">entities/characters/mummy/mummy-down-3.png</key>
+            <key type="filename">entities/characters/mummy/mummy-left-1.png</key>
+            <key type="filename">entities/characters/mummy/mummy-left-2.png</key>
+            <key type="filename">entities/characters/mummy/mummy-left-3.png</key>
+            <key type="filename">entities/characters/mummy/mummy-right-1.png</key>
+            <key type="filename">entities/characters/mummy/mummy-right-2.png</key>
+            <key type="filename">entities/characters/mummy/mummy-right-3.png</key>
+            <key type="filename">entities/characters/mummy/mummy-up-1.png</key>
+            <key type="filename">entities/characters/mummy/mummy-up-2.png</key>
+            <key type="filename">entities/characters/mummy/mummy-up-3.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-down-1.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-down-2.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-down-3.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-left-1.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-left-2.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-left-3.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-right-1.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-right-2.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-right-3.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-up-1.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-up-2.png</key>
+            <key type="filename">entities/characters/prisoner/prisoner-up-3.png</key>
             <key type="filename">entities/characters/traders/ruler-1.png</key>
             <key type="filename">entities/characters/traders/ruler-2.png</key>
             <key type="filename">entities/characters/traders/trader-basic-1.png</key>
@@ -532,6 +572,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-exp-orb.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>3,3,5,5</rect>
+                <key>scale9Paddings</key>
+                <rect>3,3,5,5</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-iron-arrows.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -583,6 +636,9 @@
             <filename>entities/clothes/ninja garb</filename>
             <filename>entities/characters/traders</filename>
             <filename>entities/clothes/plain robe</filename>
+            <filename>entities/characters/prisoner</filename>
+            <filename>entities/characters/mummy</filename>
+            <filename>entities/characters/crypt warden</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

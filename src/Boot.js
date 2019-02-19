@@ -4,6 +4,7 @@ import DungeonPrompts from '../src/catalogues/DungeonPrompts';
 import overworld from '../assets/map/overworld'
 import dungeon_bandit_hideout from '../assets/map/dungeon-bandit-hideout'
 import dungeon_city_sewers from '../assets/map/dungeon-city-sewers'
+import dungeon_west_pyramid from '../assets/map/dungeon-west-pyramid'
 
 window._this = {};
 window.GAME_SCALE = 4;
@@ -113,6 +114,7 @@ dungeonz.Boot.prototype = {
         dungeonz.mapsData["overworld"] =                overworld;
         dungeonz.mapsData["dungeon-bandit-hideout"] =   dungeon_bandit_hideout;
         dungeonz.mapsData["dungeon-city-sewers"] =      dungeon_city_sewers;
+        dungeonz.mapsData["dungeon-west-pyramid"] =     dungeon_west_pyramid;
 
         //console.log("maps data:");
         //console.log(dungeonz.mapsData);

@@ -11,7 +11,7 @@ class ClanManager {
         /** @type {Number} */
         //this.structuresCount = 0;
         /** @type {Number} */
-        this.maxStructures = 50;
+        this.maxStructures = 100;
         /** @type {Number} */
         //this.power = 0;
         /** @type {Number} */

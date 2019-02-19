@@ -40,6 +40,7 @@
     user-select: none;
     &:hover {
         -webkit-filter: brightness(150%);
+        transform: scale(1.2);
     }
 }
 

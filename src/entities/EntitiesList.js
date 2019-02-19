@@ -85,6 +85,7 @@ import BanditLeader             from './characters/BanditLeader'
 import Knight                   from './characters/Knight'
 import MagicMerchant            from './characters/MagicMerchant'
 import MeleeMerchant            from './characters/MeleeMerchant'
+import Mummy                    from './characters/Mummy'
 import Prisoner                 from './characters/Prisoner'
 import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
@@ -108,6 +109,7 @@ import GoldOre                  from './interactables/GoldOre'
 import IronOre                  from './interactables/IronOre'
 import OakTree                  from './interactables/OakTree'
 import WoodDoor                 from './interactables/WoodDoor'
+import WoodDoorLockedRed        from './interactables/WoodDoorLockedRed'
 import SmallIronCandle          from './interactables/SmallIronCandle'
 import Exit                     from './interactables/Exit'
 import DungeonPortal            from './interactables/DungeonPortal'
@@ -120,23 +122,30 @@ import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupCotton             from './pickups/PickupCotton'
-import PickupMageRobe           from './pickups/PickupMageRobe'
-import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
-import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
-import PickupIronArmour         from './pickups/PickupIronArmour'
-import PickupIronArrows         from './pickups/PickupIronArrows'
-import PickupIronHatchet        from './pickups/PickupIronHatchet'
-import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
-import PickupIronDagger         from './pickups/PickupIronDagger'
-import PickupIronSword          from './pickups/PickupIronSword'
-import PickupIronSheet          from './pickups/PickupIronSheet'
-import PickupIronHammer         from './pickups/PickupIronHammer'
+import PickupExpOrbArmoury      from './pickups/PickupExpOrbArmoury'
+import PickupExpOrbGathering    from './pickups/PickupExpOrbGathering'
+import PickupExpOrbMagic        from './pickups/PickupExpOrbMagic'
+import PickupExpOrbMelee        from './pickups/PickupExpOrbMelee'
+import PickupExpOrbWeaponry     from './pickups/PickupExpOrbWeaponry'
 import PickupFabric             from './pickups/PickupFabric'
 import PickupFeathers           from './pickups/PickupFeathers'
 import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
 import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
+import PickupIronArmour         from './pickups/PickupIronArmour'
+import PickupIronArrows         from './pickups/PickupIronArrows'
+import PickupIronBar            from './pickups/PickupIronBar'
+import PickupIronHatchet        from './pickups/PickupIronHatchet'
+import PickupIronOre            from './pickups/PickupIronOre'
+import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
+import PickupIronDagger         from './pickups/PickupIronDagger'
+import PickupIronSword          from './pickups/PickupIronSword'
+import PickupIronSheet          from './pickups/PickupIronSheet'
+import PickupIronHammer         from './pickups/PickupIronHammer'
+import PickupMageRobe           from './pickups/PickupMageRobe'
+import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
+import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
 import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
@@ -147,8 +156,6 @@ import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
 import PickupGoldOre            from './pickups/PickupGoldOre'
 import PickupGoldBar            from './pickups/PickupGoldBar'
-import PickupIronOre            from './pickups/PickupIronOre'
-import PickupIronBar            from './pickups/PickupIronBar'
 import PickupWoodDoor           from './pickups/PickupWoodDoor'
 import PickupWoodWall           from './pickups/PickupWoodWall'
 import PickupWorkbench          from './pickups/PickupWorkbench'
@@ -174,6 +181,7 @@ const EntitiesList = {
     Knight:                 Knight,
     MagicMerchant:          MagicMerchant,
     MeleeMerchant:          MeleeMerchant,
+    Mummy:                  Mummy,
     Prisoner:               Prisoner,
     RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
@@ -197,6 +205,7 @@ const EntitiesList = {
     IronOre:                IronOre,
     OakTree:                OakTree,
     WoodDoor:               WoodDoor,
+    WoodDoorLockedRed:      WoodDoorLockedRed,
     SmallIronCandle:        SmallIronCandle,
 
     PickupAnvil:            PickupAnvil,
@@ -206,35 +215,40 @@ const EntitiesList = {
     PickupCharter:          PickupCharter,
     PickupCloak:            PickupCloak,
     PickupCotton:           PickupCotton,
-    PickupMageRobe:         PickupMageRobe,
-    PickupNecromancerRobe:  PickupNecromancerRobe,
-    PickupNinjaGarb:        PickupNinjaGarb,
-    PickupIronArmour:       PickupIronArmour,
-    PickupIronHatchet:      PickupIronHatchet,
-    PickupIronArrows:       PickupIronArrows,
-    PickupIronPickaxe:      PickupIronPickaxe,
-    PickupIronDagger:       PickupIronDagger,
-    PickupIronSheet:        PickupIronSheet,
-    PickupIronSword:        PickupIronSword,
-    PickupIronHammer:       PickupIronHammer,
+    PickupExpOrbArmoury:    PickupExpOrbArmoury,
+    PickupExpOrbGathering:  PickupExpOrbGathering,
+    PickupExpOrbMagic:      PickupExpOrbMagic,
+    PickupExpOrbMelee:      PickupExpOrbMelee,
+    PickupExpOrbWeaponry:   PickupExpOrbWeaponry,
     PickupFabric:           PickupFabric,
     PickupFeathers:         PickupFeathers,
     PickupFireGem:          PickupFireGem,
     PickupFireStaff:        PickupFireStaff,
     PickupFurnace:          PickupFurnace,
     PickupGenerator:        PickupGenerator,
+    PickupGoldOre:          PickupGoldOre,
+    PickupGoldBar:          PickupGoldBar,
+    PickupIronArmour:       PickupIronArmour,
+    PickupIronArrows:       PickupIronArrows,
+    PickupIronBar:          PickupIronBar,
+    PickupIronHatchet:      PickupIronHatchet,
+    PickupIronOre:          PickupIronOre,
+    PickupIronPickaxe:      PickupIronPickaxe,
+    PickupIronDagger:       PickupIronDagger,
+    PickupIronSheet:        PickupIronSheet,
+    PickupIronSword:        PickupIronSword,
+    PickupIronHammer:       PickupIronHammer,
+    PickupMageRobe:         PickupMageRobe,
+    PickupNecromancerRobe:  PickupNecromancerRobe,
+    PickupNinjaGarb:        PickupNinjaGarb,
+    PickupOakBow:           PickupOakBow,
+    PickupOakLogs:          PickupOakLogs,
+    PickupPlainRobe:        PickupPlainRobe,
     PickupScrollOfHealing:  PickupScrollOfHealing,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
     PickupSuperFireStaff:   PickupSuperFireStaff,
     PickupWindStaff:        PickupWindStaff,
-    PickupOakBow:           PickupOakBow,
-    PickupOakLogs:          PickupOakLogs,
-    PickupPlainRobe:        PickupPlainRobe,
-    PickupGoldOre:          PickupGoldOre,
-    PickupGoldBar:          PickupGoldBar,
-    PickupIronOre:          PickupIronOre,
-    PickupIronBar:          PickupIronBar,
     PickupWoodDoor:         PickupWoodDoor,
     PickupWoodWall:         PickupWoodWall,
     PickupWorkbench:        PickupWorkbench,

@@ -1,4 +1,3 @@
-import Sprite from "./characters/Character";
 
 Phaser.Sprite.prototype.tweenPickupFromCenter = function () {
     this.anchor.setTo(0.5);
@@ -78,18 +77,22 @@ Phaser.Sprite.prototype.addDisplayName = function (displayName) {
 };
 
 import Player                   from './characters/Player'
-import Citizen                  from './characters/Citizen'
-import Bat                      from './characters/Bat'
+
 import Bandit                   from './characters/Bandit'
 import BanditLeader             from './characters/BanditLeader'
+import Bat                      from './characters/Bat'
+import Citizen                  from './characters/Citizen'
+import CryptWarden              from './characters/CryptWarden'
+import Innkeeper                from './characters/Innkeeper'
 import Knight                   from './characters/Knight'
 import MagicMerchant            from './characters/MagicMerchant'
 import MeleeMerchant            from './characters/MeleeMerchant'
 import Mummy                    from './characters/Mummy'
+import OmniMerchant             from './characters/OmniMerchant'
+import Pharaoh                  from './characters/Pharaoh'
 import Prisoner                 from './characters/Prisoner'
 import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
-import Innkeeper                from './characters/Innkeeper'
 import Ruler                    from './characters/Ruler'
 import ToolMerchant             from './characters/ToolMerchant'
 import Warrior                  from './characters/Warrior'
@@ -109,7 +112,10 @@ import GoldOre                  from './interactables/GoldOre'
 import IronOre                  from './interactables/IronOre'
 import OakTree                  from './interactables/OakTree'
 import WoodDoor                 from './interactables/WoodDoor'
+import WoodDoorLockedBlue       from './interactables/WoodDoorLockedBlue'
+import WoodDoorLockedGreen      from './interactables/WoodDoorLockedGreen'
 import WoodDoorLockedRed        from './interactables/WoodDoorLockedRed'
+import WoodDoorLockedYellow     from './interactables/WoodDoorLockedYellow'
 import SmallIronCandle          from './interactables/SmallIronCandle'
 import Exit                     from './interactables/Exit'
 import DungeonPortal            from './interactables/DungeonPortal'
@@ -117,6 +123,7 @@ import OverworldPortal          from './interactables/OverworldPortal'
 
 import PickupAnvil              from './pickups/PickupAnvil'
 import PickupBankChest          from './pickups/PickupBankChest'
+import PickupBlueKey            from './pickups/PickupBlueKey'
 import PickupBookOfLight        from './pickups/PickupBookOfLight'
 import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCharter            from './pickups/PickupCharter'
@@ -133,32 +140,35 @@ import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
 import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
+import PickupGoldBar            from './pickups/PickupGoldBar'
+import PickupGoldOre            from './pickups/PickupGoldOre'
+import PickupGreenKey           from './pickups/PickupGreenKey'
 import PickupIronArmour         from './pickups/PickupIronArmour'
 import PickupIronArrows         from './pickups/PickupIronArrows'
 import PickupIronBar            from './pickups/PickupIronBar'
+import PickupIronDagger         from './pickups/PickupIronDagger'
+import PickupIronHammer         from './pickups/PickupIronHammer'
 import PickupIronHatchet        from './pickups/PickupIronHatchet'
 import PickupIronOre            from './pickups/PickupIronOre'
 import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
-import PickupIronDagger         from './pickups/PickupIronDagger'
-import PickupIronSword          from './pickups/PickupIronSword'
 import PickupIronSheet          from './pickups/PickupIronSheet'
-import PickupIronHammer         from './pickups/PickupIronHammer'
+import PickupIronSword          from './pickups/PickupIronSword'
 import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
 import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
+import PickupOakBow             from './pickups/PickupOakBow'
+import PickupOakLogs            from './pickups/PickupOakLogs'
+import PickupPlainRobe          from './pickups/PickupPlainRobe'
+import PickupRedKey             from './pickups/PickupRedKey'
 import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
 import PickupWindStaff          from './pickups/PickupWindStaff'
-import PickupOakBow             from './pickups/PickupOakBow'
-import PickupOakLogs            from './pickups/PickupOakLogs'
-import PickupPlainRobe          from './pickups/PickupPlainRobe'
-import PickupGoldOre            from './pickups/PickupGoldOre'
-import PickupGoldBar            from './pickups/PickupGoldBar'
 import PickupWoodDoor           from './pickups/PickupWoodDoor'
 import PickupWoodWall           from './pickups/PickupWoodWall'
 import PickupWorkbench          from './pickups/PickupWorkbench'
+import PickupYellowKey          from './pickups/PickupYellowKey'
 
 import ProjDeathbind            from './projectiles/ProjDeathbind'
 import ProjIronArrow            from './projectiles/ProjIronArrow'
@@ -174,18 +184,21 @@ import ProjWind                 from './projectiles/ProjWind'
 const EntitiesList = {
 
     Player:                 Player,
-    Citizen:                Citizen,
-    Bat:                    Bat,
     Bandit:                 Bandit,
     BanditLeader:           BanditLeader,
+    Bat:                    Bat,
+    Citizen:                Citizen,
+    CryptWarden:            CryptWarden,
+    Innkeeper:              Innkeeper,
     Knight:                 Knight,
     MagicMerchant:          MagicMerchant,
     MeleeMerchant:          MeleeMerchant,
     Mummy:                  Mummy,
+    OmniMerchant:           OmniMerchant,
+    Pharaoh:                Pharaoh,
     Prisoner:               Prisoner,
     RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
-    Innkeeper:              Innkeeper,
     Ruler:                  Ruler,
     ToolMerchant:           ToolMerchant,
     Warrior:                Warrior,
@@ -205,11 +218,15 @@ const EntitiesList = {
     IronOre:                IronOre,
     OakTree:                OakTree,
     WoodDoor:               WoodDoor,
+    WoodDoorLockedBlue:     WoodDoorLockedBlue,
+    WoodDoorLockedGreen:    WoodDoorLockedGreen,
     WoodDoorLockedRed:      WoodDoorLockedRed,
+    WoodDoorLockedYellow:   WoodDoorLockedYellow,
     SmallIronCandle:        SmallIronCandle,
 
     PickupAnvil:            PickupAnvil,
     PickupBankChest:        PickupBankChest,
+    PickupBlueKey:          PickupBlueKey,
     PickupBookOfLight:      PickupBookOfLight,
     PickupBookOfSouls:      PickupBookOfSouls,
     PickupCharter:          PickupCharter,
@@ -226,24 +243,26 @@ const EntitiesList = {
     PickupFireStaff:        PickupFireStaff,
     PickupFurnace:          PickupFurnace,
     PickupGenerator:        PickupGenerator,
-    PickupGoldOre:          PickupGoldOre,
     PickupGoldBar:          PickupGoldBar,
+    PickupGoldOre:          PickupGoldOre,
+    PickupGreenKey:         PickupGreenKey,
     PickupIronArmour:       PickupIronArmour,
     PickupIronArrows:       PickupIronArrows,
     PickupIronBar:          PickupIronBar,
+    PickupIronDagger:       PickupIronDagger,
+    PickupIronHammer:       PickupIronHammer,
     PickupIronHatchet:      PickupIronHatchet,
     PickupIronOre:          PickupIronOre,
     PickupIronPickaxe:      PickupIronPickaxe,
-    PickupIronDagger:       PickupIronDagger,
     PickupIronSheet:        PickupIronSheet,
     PickupIronSword:        PickupIronSword,
-    PickupIronHammer:       PickupIronHammer,
     PickupMageRobe:         PickupMageRobe,
     PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupNinjaGarb:        PickupNinjaGarb,
     PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
     PickupPlainRobe:        PickupPlainRobe,
+    PickupRedKey:           PickupRedKey,
     PickupScrollOfHealing:  PickupScrollOfHealing,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
@@ -252,6 +271,7 @@ const EntitiesList = {
     PickupWoodDoor:         PickupWoodDoor,
     PickupWoodWall:         PickupWoodWall,
     PickupWorkbench:        PickupWorkbench,
+    PickupYellowKey:        PickupYellowKey,
 
     ProjDeathbind:          ProjDeathbind,
     ProjIronArrow:          ProjIronArrow,

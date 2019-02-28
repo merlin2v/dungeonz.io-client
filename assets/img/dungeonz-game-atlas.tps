@@ -277,6 +277,18 @@
             <key type="filename">entities/characters/mummy/mummy-up-1.png</key>
             <key type="filename">entities/characters/mummy/mummy-up-2.png</key>
             <key type="filename">entities/characters/mummy/mummy-up-3.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-down-1.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-down-2.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-down-3.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-left-1.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-left-2.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-left-3.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-right-1.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-right-2.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-right-3.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-up-1.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-up-2.png</key>
+            <key type="filename">entities/characters/pharaoh/pharaoh-up-3.png</key>
             <key type="filename">entities/characters/prisoner/prisoner-down-1.png</key>
             <key type="filename">entities/characters/prisoner/prisoner-down-2.png</key>
             <key type="filename">entities/characters/prisoner/prisoner-down-3.png</key>
@@ -542,6 +554,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-blue-key.png</key>
+            <key type="filename">entities/pickups/pickup-green-key.png</key>
+            <key type="filename">entities/pickups/pickup-red-key.png</key>
+            <key type="filename">entities/pickups/pickup-yellow-key.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,4,7,7</rect>
+                <key>scale9Paddings</key>
+                <rect>4,4,7,7</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-book-of-light.png</key>
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-charter.png</key>
@@ -639,6 +667,7 @@
             <filename>entities/characters/prisoner</filename>
             <filename>entities/characters/mummy</filename>
             <filename>entities/characters/crypt warden</filename>
+            <filename>entities/characters/pharaoh</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

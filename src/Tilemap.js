@@ -72,9 +72,6 @@ class Tilemap {
 
         this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
         this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
-
-        //this.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (this.darknessGridGroup.width * 0.5);
-        //this.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (this.darknessGridGroup.height * 0.5);
     }
 
     /**
@@ -449,15 +446,6 @@ class Tilemap {
         }
     }
 
-    centerDarknessGridGroupOnScreen () {
-        const baseSprite = _this.dynamics[_this.player.entityId].sprite.baseSprite;
-        this.darknessGridGroup.x = baseSprite.x - (this.darknessGridGroup.width * 0.5);
-        this.darknessGridGroup.y = baseSprite.y - (this.darknessGridGroup.height * 0.5);
-
-        //this.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (this.darknessGridGroup.width * 0.5);
-        //this.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (this.darknessGridGroup.height * 0.5);
-    }
-
     loadMap (boardName) {
         console.log("* Loading map:", boardName);
         this.game.currentBoardName = boardName;
@@ -470,7 +458,25 @@ class Tilemap {
         console.log("* Map rows:", this.mapRows);
         console.log("* Map cols:", this.mapCols);
 
-        this.game.world.setBounds(0, 0, this.mapCols * dungeonz.TILE_SIZE * GAME_SCALE, this.mapRows * dungeonz.TILE_SIZE * GAME_SCALE);
+        if(_this.playerTween !== null){
+            _this.playerTween.stop(true);
+        }
+
+        this.game.world.setBounds(
+            -(dungeonz.VIEW_DIAMETER * dungeonz.TILE_SCALE),
+            -(dungeonz.VIEW_DIAMETER * dungeonz.TILE_SCALE),
+            this.mapCols * dungeonz.TILE_SCALE + (dungeonz.VIEW_DIAMETER * dungeonz.TILE_SCALE * 2),
+            this.mapRows * dungeonz.TILE_SCALE + (dungeonz.VIEW_DIAMETER * dungeonz.TILE_SCALE * 2)
+        );
+
+        this.tileGridGraphic.x = this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+        this.tileGridGraphic.y = this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+
+        this.staticsGridGraphic.x = this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+        this.staticsGridGraphic.y = this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+
+        this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
+        this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
 
         this.updateTileGrid();
         this.updateStaticsGrid();

@@ -20,18 +20,6 @@ Sprite.prototype = Object.create(Character.prototype);
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.onMove = function (playMoveAnim) {
-    // Move all of the chat texts along with the player.
-    /*for(let i=0; i<this.chatTexts.length; i+=1){
-
-        _this.add.tween(this.chatTexts[i]).to({
-            x: _this.player.col * dungeonz.TILE_SCALE,
-            y: _this.player.row * dungeonz.TILE_SCALE
-        }, _this.moveDelay, null, true);
-
-        //this.chatTexts[i].x = this.x + (dungeonz.TILE_SIZE * 2);
-        //this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
-    }*/
-
     if(playMoveAnim === true){
         if(this.baseSprite.animations.currentAnim.isPlaying === false){
             this.baseSprite.animations.play(this.direction);

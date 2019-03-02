@@ -105,6 +105,8 @@ dungeonz.Game.prototype = {
         this.moveDelay = 250;
         this.nextMoveTime = 0;
 
+        this.playerTween = null;
+
         this.tilemap = new Tilemap(this);
         this.clanManager = new ClanManager();
         this.GUI = new GUI(this);
@@ -114,8 +116,6 @@ dungeonz.Game.prototype = {
         this.dynamicsGroup = this.add.group();
         this.lightSources = {};
         this.pseudoInteractables = {};
-
-        this.playerTween = null;
 
         // Make sure the inventory slots are showing the right items.
         for(let slotKey in _this.player.inventory){
@@ -241,8 +241,6 @@ dungeonz.Game.prototype = {
     },
 
     move (direction) {
-        console.log("move dir:", direction);
-
         // Hide all panels, in case they are just moving away from the item for it.
         if(this.GUI && this.GUI.isAnyPanelOpen === true){
             this.GUI.exitGamePanel.hide();
@@ -256,7 +254,6 @@ dungeonz.Game.prototype = {
 
         if(this.player.hitPoints <= 0) return;
         ws.sendEvent('mv_' + direction);
-        console.log("sent move event");
         /*if(dungeonz.quickTurnEnabled === true){ // TODO allow to disable quick turn to make placing clan structures easier
             if(this.dynamics[this.player.entityId].sprite.direction !== direction){
                 ws.sendEvent('mv_' + direction);
@@ -731,25 +728,19 @@ dungeonz.Game.prototype = {
             }
         }
 
-        const chatText = _this.add.text(dynamic.sprite.x + (dungeonz.TILE_SIZE * 2), dynamic.sprite.y - 24, message, style);
+        const chatText = _this.add.text(0, -12, message, style);
         // Add it to the dynamics group so that it will be affected by scales/transforms correctly.
-        dynamic.addChild(chatText);
-        // Add it to this dynamics list of chat texts, so they can be moved and removed later.
-        //dynamic.sprite.chatTexts.push(chatText);
+        dynamic.sprite.baseSprite.addChild(chatText);
         chatText.anchor.set(0.5);
-        chatText.scale.set(GAME_SCALE * 0.25);
-        // How far this chat message has scrolled up so far.
-        chatText.yScroll = 0;
+        chatText.scale.set(0.3);
         // Make the chat message scroll up.
-        chatText.update = function () {
-            this.y -= dungeonz.CHAT_SCROLL_SPEED;
-            this.yScroll -= dungeonz.CHAT_SCROLL_SPEED;
-        };
+        _this.add.tween(chatText).to({
+            y: -30
+        }, dungeonz.CHAT_BASE_LIFESPAN + (60 * message.length), null, true);
         // How long the message should stay for.
         chatText.lifespan = dungeonz.CHAT_BASE_LIFESPAN + (60 * message.length);
         // Destroy and remove from the list of chat messages when the lifespan is over.
         chatText.events.onKilled.add(function () {
-            //dynamic.sprite.chatTexts.shift();
             this.destroy();
         }, chatText);
     }

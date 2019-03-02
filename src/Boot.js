@@ -17,7 +17,7 @@ window.dungeonz = {
     // The edge to edge view distance. x2 for both sides, and +1 for the middle (where this player is).
     VIEW_DIAMETER: (1+15*2),
     // Minimum amount of time (in ms) for how long any chat messages should stay for.
-    CHAT_BASE_LIFESPAN: 2000,
+    CHAT_BASE_LIFESPAN: 3000,
     // How fast chat messages float upwards.
     CHAT_SCROLL_SPEED: 0.3,
     // What language to use from the text defs.

@@ -159,6 +159,7 @@ function tweenCompleteLeft () {
     _this.tilemap.updateStaticsGridEdgeLeft();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
+    //console.log("tween left comp");
 }
 
 function tweenCompleteRight () {
@@ -171,6 +172,7 @@ function tweenCompleteRight () {
     _this.tilemap.updateStaticsGridEdgeRight();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
+    //console.log("tween right comp");
 }
 
 function tweenCompleteUp () {
@@ -183,6 +185,7 @@ function tweenCompleteUp () {
     _this.tilemap.updateStaticsGridEdgeTop();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
+    //console.log("tween up comp");
 }
 
 function tweenCompleteDown () {
@@ -195,6 +198,7 @@ function tweenCompleteDown () {
     _this.tilemap.updateStaticsGridEdgeBottom();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
+    //console.log("tween down comp");
 }
 
 eventResponses.moved = function (data) {
@@ -296,6 +300,7 @@ eventResponses.moved = function (data) {
 };
 
 eventResponses.change_board = function (data) {
+    //console.log("change board, data:", data);
     _this.dynamicsData = data.dynamicsData;
     _this.boardAlwaysNight = data.boardAlwaysNight;
     _this.player.row = data.playerRow;
@@ -330,6 +335,9 @@ eventResponses.change_board = function (data) {
     for(let i=0; i<dynamicsData.length; i+=1){
         _this.addEntity(dynamicsData[i]);
     }
+
+    // Lock the camera to the player sprite.
+    _this.camera.follow(_this.dynamics[_this.player.entityId].sprite.baseSprite);
 
     // Refresh the darkness grid.
     _this.tilemap.updateDarknessGrid();

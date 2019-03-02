@@ -55,7 +55,10 @@ window.dungeonz = {
         }
     }
 };
+// Tile scale * game scale
+window.dungeonz.TILE_SCALE = dungeonz.TILE_SIZE * GAME_SCALE;
 // Used to center entity sprites that are centered, such as projectiles and pickups.
+// Declared after, so tile size is defined.
 window.dungeonz.CENTER_OFFSET = dungeonz.TILE_SIZE * GAME_SCALE * 0.5;
 
 window.windowResize = function () {
@@ -63,17 +66,20 @@ window.windowResize = function () {
     console.log("w: " + window.innerWidth);
     console.log("h: " + window.innerHeight);*/
 
-    _this.tilemap.tileGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.tilemap.tileGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.tileGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.tileGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
-    _this.tilemap.staticsGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.tilemap.staticsGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.staticsGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.staticsGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
-    _this.tilemap.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.tilemap.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.tilemap.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
-    _this.dynamicsGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    _this.dynamicsGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    _this.tilemap.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (_this.tilemap.darknessGridGroup.width * 0.5);
+    _this.tilemap.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (_this.tilemap.darknessGridGroup.height * 0.5);
+
+    //_this.dynamicsGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
+    //_this.dynamicsGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
 };
 

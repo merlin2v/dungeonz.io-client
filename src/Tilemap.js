@@ -5,40 +5,48 @@ class Tilemap {
         this.game = game;
         this.blackFrame = 4;
 
+        this.mapRows = 0;
+        this.mapCols = 0;
+
         this.createTileGrid();
         this.createStaticsGrid();
         this.createDarknessGrid();
 
         this.loadMap(this.game.currentBoardName);
+
     }
 
     createTileGrid () {
         this.tileGridBitmapData = this.game.make.bitmapData(dungeonz.VIEW_DIAMETER * dungeonz.TILE_SIZE, dungeonz.VIEW_DIAMETER * dungeonz.TILE_SIZE);
 
         this.tileGridGraphic = this.tileGridBitmapData.addToWorld(0, 0, 0, 0, GAME_SCALE, GAME_SCALE);
+        this.tileGridGraphic.anchor.setTo(0.5);
 
         this.tileDrawingSprite = this.game.add.sprite(0, 0, 'ground-tileset', this.blackFrame);
         this.tileDrawingSprite.visible = false;
 
-        this.tileGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
-        this.tileGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
+        this.tileGridGraphic.x = this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+        this.tileGridGraphic.y = this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
     }
 
     createStaticsGrid () {
         this.staticsGridBitmapData = this.game.make.bitmapData(dungeonz.VIEW_DIAMETER * dungeonz.TILE_SIZE, dungeonz.VIEW_DIAMETER * dungeonz.TILE_SIZE);
 
         this.staticsGridGraphic = this.staticsGridBitmapData.addToWorld(0, 0, 0, 0, GAME_SCALE, GAME_SCALE);
+        this.staticsGridGraphic.anchor.setTo(0.5);
 
         this.staticsDrawingSprite = this.game.add.sprite(0, 0, 'statics-tileset', 0);
         this.staticsDrawingSprite.visible = false;
 
-        this.staticsGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
-        this.staticsGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
+        this.staticsGridGraphic.x = this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
+        this.staticsGridGraphic.y = this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
     }
 
     createDarknessGrid () {
         this.darknessGrid = [];
         this.darknessGridGroup = this.game.add.group();
+
+        //this.darknessGridGroup.fixedToCamera = true;
 
         let row,
             col,
@@ -62,8 +70,11 @@ class Tilemap {
             }
         }
 
-        this.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
-        this.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
+        this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
+        this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
+
+        //this.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (this.darknessGridGroup.width * 0.5);
+        //this.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (this.darknessGridGroup.height * 0.5);
     }
 
     /**
@@ -405,8 +416,8 @@ class Tilemap {
         const radiusPlusOne = radius + 1;
         let rowOffset = -radius,
             colOffset = -radius,
-            row = Math.floor(y / (dungeonz.TILE_SIZE*GAME_SCALE)),
-            col = Math.floor(x / (dungeonz.TILE_SIZE*GAME_SCALE)),
+            row = (Math.floor(y / (dungeonz.TILE_SCALE)) + dungeonz.VIEW_RANGE) - _this.player.row,
+            col = (Math.floor(x / (dungeonz.TILE_SCALE)) + dungeonz.VIEW_RANGE) - _this.player.col,
             darknessGrid = this.darknessGrid,
             tile,
             rowDist,
@@ -438,11 +449,28 @@ class Tilemap {
         }
     }
 
+    centerDarknessGridGroupOnScreen () {
+        const baseSprite = _this.dynamics[_this.player.entityId].sprite.baseSprite;
+        this.darknessGridGroup.x = baseSprite.x - (this.darknessGridGroup.width * 0.5);
+        this.darknessGridGroup.y = baseSprite.y - (this.darknessGridGroup.height * 0.5);
+
+        //this.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (this.darknessGridGroup.width * 0.5);
+        //this.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (this.darknessGridGroup.height * 0.5);
+    }
+
     loadMap (boardName) {
         console.log("* Loading map:", boardName);
         this.game.currentBoardName = boardName;
         this.currentMapGroundGrid = dungeonz.mapsData[boardName].groundGrid;
         this.currentMapStaticsGrid = dungeonz.mapsData[boardName].staticsGrid;
+
+        this.mapRows = this.currentMapGroundGrid.length;
+        this.mapCols = this.currentMapGroundGrid[0].length;
+
+        console.log("* Map rows:", this.mapRows);
+        console.log("* Map cols:", this.mapCols);
+
+        this.game.world.setBounds(0, 0, this.mapCols * dungeonz.TILE_SIZE * GAME_SCALE, this.mapRows * dungeonz.TILE_SIZE * GAME_SCALE);
 
         this.updateTileGrid();
         this.updateStaticsGrid();

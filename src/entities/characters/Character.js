@@ -21,7 +21,7 @@ const Sprite = function (x, y, config) {
 
     this.addDisplayName(config.displayName);
 
-    this.chatTexts = [];
+    //this.chatTexts = [];
 
     this.burnEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'burn-effect-1');
     this.burnEffect.animations.add('burn', ['burn-effect-1', 'burn-effect-2'], 2, true);
@@ -40,7 +40,6 @@ const Sprite = function (x, y, config) {
     this.enchantmentIcon.visible = false;
 
     this.addDamageMarker();
-
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -52,10 +51,16 @@ Sprite.prototype.moveAnimCompleted = function () {
 
 Sprite.prototype.onMove = function (playMoveAnim) {
     // Move all of the chat texts along with the character.
-    for(let i=0; i<this.chatTexts.length; i+=1){
-        this.chatTexts[i].x = this.x + (dungeonz.TILE_SIZE * 2);
-        this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
-    }
+    /*for(let i=0; i<this.chatTexts.length; i+=1){
+        // Tween them to the characters new row/col.
+        _this.add.tween(this.chatTexts[i]).to({
+            x: _this.player.col * dungeonz.TILE_SCALE,
+            y: _this.player.row * dungeonz.TILE_SCALE
+        }, _this.moveDelay, null, true);
+
+        //this.chatTexts[i].x = this.x + (dungeonz.TILE_SIZE * 2);
+        //this.chatTexts[i].y = this.y - 24 + this.chatTexts[i].yScroll;
+    }*/
 
     if(playMoveAnim === true){
         if(this.baseSprite.animations.currentAnim.isPlaying === false){

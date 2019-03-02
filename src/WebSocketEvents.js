@@ -128,7 +128,7 @@ eventResponses.character_in_use = function () {
 };
 
 eventResponses.join_world_success = function (data) {
-    console.log("join world success, data:");
+    console.log("* Join world success, data:");
     console.log(data);
 
     document.getElementById("home_cont").style.display = "none";
@@ -142,15 +142,60 @@ eventResponses.join_world_success = function (data) {
         return;
     }
 
-    console.log("before state:", _this);
     _this.state.start('Game', true, false, data);
-    console.log("after state:", _this);
-
 };
 
 eventResponses.world_full = function () {
     console.log("* World is full.");
 };
+
+function tweenCompleteLeft () {
+    _this.tilemap.tileGridBitmapData.move(dungeonz.TILE_SIZE, 0);
+    _this.tilemap.staticsGridBitmapData.move(dungeonz.TILE_SIZE, 0);
+    _this.tilemap.tileGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.staticsGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.updateTileGridEdgeLeft();
+    _this.tilemap.updateStaticsGridEdgeLeft();
+    _this.tilemap.updateDarknessGrid();
+    _this.playerTween = null;
+}
+
+function tweenCompleteRight () {
+    _this.tilemap.tileGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
+    _this.tilemap.staticsGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
+    _this.tilemap.tileGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.staticsGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.updateTileGridEdgeRight();
+    _this.tilemap.updateStaticsGridEdgeRight();
+    _this.tilemap.updateDarknessGrid();
+    _this.playerTween = null;
+}
+
+function tweenCompleteUp () {
+    _this.tilemap.tileGridBitmapData.move(0, dungeonz.TILE_SIZE);
+    _this.tilemap.staticsGridBitmapData.move(0, dungeonz.TILE_SIZE);
+    _this.tilemap.tileGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.staticsGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.updateTileGridEdgeTop();
+    _this.tilemap.updateStaticsGridEdgeTop();
+    _this.tilemap.updateDarknessGrid();
+    _this.playerTween = null;
+}
+
+function tweenCompleteDown () {
+    _this.tilemap.tileGridBitmapData.move(0, -dungeonz.TILE_SIZE);
+    _this.tilemap.staticsGridBitmapData.move(0, -dungeonz.TILE_SIZE);
+    _this.tilemap.tileGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.staticsGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.updateTileGridEdgeBottom();
+    _this.tilemap.updateStaticsGridEdgeBottom();
+    _this.tilemap.updateDarknessGrid();
+    _this.playerTween = null;
+}
 
 eventResponses.moved = function (data) {
     //console.log("moved: ", data);
@@ -164,47 +209,45 @@ eventResponses.moved = function (data) {
 
     // The client player moved.
     if(data.id === _this.player.entityId){
-
+        //console.log("player moved, data:", data);
         let origRow = _this.player.row;
         let origCol = _this.player.col;
 
+        // Make sure the current tween has stopped, so it finishes with moving the tilemap in that direction correctly.
+        if(_this.playerTween !== null){
+            _this.playerTween.stop(true);
+        }
+
+        // Do this AFTER stopping the current player tween, so it can finish with the
+        // previous position (the one that matches the state the tween starter in).
         _this.player.row = data.row;
         _this.player.col = data.col;
-        //_this.player.energy -= 0.5;
-        //_this.GUI.updateEnergyCounters();
 
-        // Update the static entities BEFORE setting the new values on the player.
+        // Tween the player sprite to the target row/col.
+        _this.playerTween = _this.add.tween(dynamicSprite).to({
+            x: data.col * dungeonz.TILE_SCALE,
+            y: data.row * dungeonz.TILE_SCALE
+        }, _this.moveDelay, null, true);
+
         // Right.
         if(data.col > origCol){
-            _this.offsetOtherDynamics(0, +1);
-            _this.tilemap.tileGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
-            _this.tilemap.staticsGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
-            _this.tilemap.updateTileGridEdgeRight();
-            _this.tilemap.updateStaticsGridEdgeRight();
+            _this.offsetOtherDynamics(0, -1);
+            _this.playerTween.onComplete.add(tweenCompleteRight);
         }
         // Left.
         else if(data.col < origCol){
-            _this.offsetOtherDynamics(0, -1);
-            _this.tilemap.tileGridBitmapData.move(dungeonz.TILE_SIZE, 0);
-            _this.tilemap.staticsGridBitmapData.move(dungeonz.TILE_SIZE, 0);
-            _this.tilemap.updateTileGridEdgeLeft();
-            _this.tilemap.updateStaticsGridEdgeLeft();
+            _this.offsetOtherDynamics(0, +1);
+            _this.playerTween.onComplete.add(tweenCompleteLeft);
         }
         // Down.
         if(data.row > origRow){
             _this.offsetOtherDynamics(+1, 0);
-            _this.tilemap.tileGridBitmapData.move(0, -dungeonz.TILE_SIZE);
-            _this.tilemap.staticsGridBitmapData.move(0, -dungeonz.TILE_SIZE);
-            _this.tilemap.updateTileGridEdgeBottom();
-            _this.tilemap.updateStaticsGridEdgeBottom();
+            _this.playerTween.onComplete.add(tweenCompleteDown);
         }
         // Up.
         else if(data.row < origRow){
             _this.offsetOtherDynamics(-1, 0);
-            _this.tilemap.tileGridBitmapData.move(0, dungeonz.TILE_SIZE);
-            _this.tilemap.staticsGridBitmapData.move(0, dungeonz.TILE_SIZE);
-            _this.tilemap.updateTileGridEdgeTop();
-            _this.tilemap.updateStaticsGridEdgeTop();
+            _this.playerTween.onComplete.add(tweenCompleteUp);
         }
 
     }
@@ -229,20 +272,21 @@ eventResponses.moved = function (data) {
             dynamicSprite.destroy();
             // Remove the reference to it.
             delete _this.dynamics[dynamic.id];
-            //console.log("other entity moved out of view range:", dynamic.id);
             return;
         }
 
-        // Get the position relative to the player.
-        const relCol = data.col - _this.player.col;
-        const relRow = data.row - _this.player.row;
-
-        dynamicSprite.x = (relCol + dungeonz.VIEW_RANGE) * dungeonz.TILE_SIZE * GAME_SCALE;
-        dynamicSprite.y = (relRow + dungeonz.VIEW_RANGE) * dungeonz.TILE_SIZE * GAME_SCALE;
-
+        // Tween to the new location.
         if(dynamicSprite.centered === true){
-            dynamicSprite.x += dungeonz.CENTER_OFFSET;
-            dynamicSprite.y += dungeonz.CENTER_OFFSET;
+            _this.add.tween(dynamicSprite).to({
+                x: (data.col * dungeonz.TILE_SCALE) + dungeonz.CENTER_OFFSET,
+                y: (data.row * dungeonz.TILE_SCALE) + dungeonz.CENTER_OFFSET
+            }, 250, null, true);//TODO get the move rate of each dynamic, and use this here (250) for smoother timing
+        }
+        else {
+            _this.add.tween(dynamicSprite).to({
+                x: data.col * dungeonz.TILE_SCALE,
+                y: data.row * dungeonz.TILE_SCALE
+            }, 250, null, true);
         }
     }
 
@@ -286,6 +330,9 @@ eventResponses.change_board = function (data) {
     for(let i=0; i<dynamicsData.length; i+=1){
         _this.addEntity(dynamicsData[i]);
     }
+
+    // Refresh the darkness grid.
+    _this.tilemap.updateDarknessGrid();
 };
 
 eventResponses.change_day_phase = function (data) {
@@ -377,10 +424,7 @@ eventResponses.player_respawn = function () {
 
 eventResponses.add_entity = function (data) {
     //console.log("add entity event:", data);
-    if(_this.addEntity === undefined){
-        console.log("_this.addEntity is undefined, this:", _this);
-        return;
-    }
+    if(_this.addEntity === undefined) return;
     _this.addEntity(data);
 };
 
@@ -582,54 +626,54 @@ eventResponses.stat_levelled = function (data) {
 };
 
 eventResponses.shop_prices = function (data) {
-    console.log("shop prices, data:", data);
+    //console.log("shop prices, data:", data);
     _this.GUI.shopPanel.updatePrices(data);
 };
 
 eventResponses.clan_joined = function (data) {
-    console.log("clan joined, data:", data);
+    //console.log("clan joined, data:", data);
     _this.clanManager.memberJoined(data);
 };
 
 // A member was kicked from the clan. Might have been this player.
 eventResponses.clan_kicked = function (data) {
-    console.log("clan kicked, data:", data);
+    //console.log("clan kicked, data:", data);
     _this.clanManager.memberKicked(data);
 };
 
 // Another member left the clan.
 eventResponses.clan_left = function (data) {
-    console.log("clan left, data:", data);
+    //console.log("clan left, data:", data);
     _this.clanManager.memberLeft(data);
 };
 
 eventResponses.clan_promoted = function (data) {
-    console.log("clan promoted, data:", data);
+    //console.log("clan promoted, data:", data);
     _this.clanManager.promoteMember(data);
 };
 
 eventResponses.clan_destroyed = function (data) {
-    console.log("clan destroyed, data:", data);
+    //console.log("clan destroyed, data:", data);
     _this.clanManager.destroyed();
 };
 
 eventResponses.clan_values = function (data) {
-    console.log("clan values, data:", data);
+    //console.log("clan values, data:", data);
     _this.GUI.clanPanel.updateValues(data);
 };
 
 eventResponses.task_progress_made = function (data) {
-    console.log("task progresss made, data:", data);
+    //console.log("task progresss made, data:", data);
     _this.GUI.tasksPanel.updateTaskProgress(data.taskID, data.progress);
 };
 
 eventResponses.task_claimed = function (data) {
-    console.log("task claimed, data:", data);
+    //console.log("task claimed, data:", data);
     _this.GUI.tasksPanel.removeTask(data);
 };
 
 eventResponses.task_added = function (data) {
-    console.log("task added, data:", data);
+    //console.log("task added, data:", data);
     if(_this.GUI === undefined) return;
 
     _this.GUI.tasksPanel.addTask(data.taskID, data.progress);

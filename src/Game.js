@@ -8,6 +8,9 @@ import CraftingManager from "./CraftingManager";
 import BankManager from "./BankManager";
 import ClanManager from "./ClanManager";
 
+dungeonz.EntityTypes = EntityTypes;
+dungeonz.EntityList = EntityList;
+
 dungeonz.Game = function () {
 
 };
@@ -15,6 +18,17 @@ dungeonz.Game = function () {
 dungeonz.Game.prototype = {
 
     init: function (data) {
+        /**
+         * - Map load
+         * - - get map dimensions
+         * - - set world size to map dimension * game scale
+         * - - lock camera to player
+         * - Move
+         * - - convert row/col to world x/y, so it will always go to the right place even if stopped part way though to start another tween
+         * - - same for other sprites
+         * - - - remove them if they are row/col out of view range
+         */
+
         console.log("* In game init:", data);
 
         /**
@@ -91,14 +105,17 @@ dungeonz.Game.prototype = {
         this.moveDelay = 250;
         this.nextMoveTime = 0;
 
-        this.lightSources = {};
-
-        this.pseudoInteractables = {};
-
         this.tilemap = new Tilemap(this);
         this.clanManager = new ClanManager();
         this.GUI = new GUI(this);
         this.craftingManager = new CraftingManager();
+
+        this.dynamics = {};
+        this.dynamicsGroup = this.add.group();
+        this.lightSources = {};
+        this.pseudoInteractables = {};
+
+        this.playerTween = null;
 
         // Make sure the inventory slots are showing the right items.
         for(let slotKey in _this.player.inventory){
@@ -121,7 +138,6 @@ dungeonz.Game.prototype = {
         const tasks = _this.player.tasks;
         for(let taskID in tasks){
             if(tasks.hasOwnProperty(taskID) === false) continue;
-            console.log("loading task:", taskID);
             _this.GUI.tasksPanel.addTask(taskID, tasks[taskID]);
         }
         // Make sure the item icons are hidden. They aren't after being added at first.
@@ -129,13 +145,6 @@ dungeonz.Game.prototype = {
 
         // Update the starting value for the next level exp requirement, for the default shown stat info.
         _this.GUI.statsPanel.changeStatInfo(_this.player.stats.list.Melee);
-
-        this.dynamics = {};
-
-        this.dynamicsGroup = this.add.group();
-
-        this.dynamicsGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
-        this.dynamicsGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * (1+dungeonz.VIEW_RANGE*2) * 0.5);
 
         // Add the entities that are visible on start.
         for(let i=0; i<this.dynamicsData.length; i+=1){
@@ -153,10 +162,13 @@ dungeonz.Game.prototype = {
 
         this.setupKeyboardControls();
 
+        // Lock the camera to the player sprite.
+        this.camera.follow(this.dynamics[this.player.entityId].sprite.baseSprite);
+
         window.addEventListener('mousedown', this.pointerDownHandler);
         window.addEventListener('mousemove', this.pointerMoveHandler);
 
-        //console.log("dynamics: ", this.dynamics);
+        //console.log("dynamics: ", this.dynamics);*/
     },
 
     update: function () {
@@ -229,10 +241,10 @@ dungeonz.Game.prototype = {
     },
 
     move (direction) {
-        //console.log("move dir:", direction);
+        console.log("move dir:", direction);
 
         // Hide all panels, in case they are just moving away from the item for it.
-        if(this.GUI.isAnyPanelOpen === true){
+        if(this.GUI && this.GUI.isAnyPanelOpen === true){
             this.GUI.exitGamePanel.hide();
             // Hide all the panels.
             for(let i=0; i<this.GUI.panels.length; i+=1){
@@ -244,7 +256,8 @@ dungeonz.Game.prototype = {
 
         if(this.player.hitPoints <= 0) return;
         ws.sendEvent('mv_' + direction);
-        /*if(dungeonz.quickTurnEnabled === true){
+        console.log("sent move event");
+        /*if(dungeonz.quickTurnEnabled === true){ // TODO allow to disable quick turn to make placing clan structures easier
             if(this.dynamics[this.player.entityId].sprite.direction !== direction){
                 ws.sendEvent('mv_' + direction);
             }
@@ -388,28 +401,28 @@ dungeonz.Game.prototype = {
 
     moveUpPressed () {
         // Don't move while the chat input is open.
-        if(_this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI && _this.GUI.chatInput.isActive === true) return;
         _this.move('u');
         _this.moveUpIsDown = true;
     },
 
     moveDownPressed () {
         // Don't move while the chat input is open.
-        if(_this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI && _this.GUI.chatInput.isActive === true) return;
         _this.move('d');
         _this.moveDownIsDown = true;
     },
 
     moveLeftPressed () {
         // Don't move while the chat input is open.
-        if(_this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI && _this.GUI.chatInput.isActive === true) return;
         _this.move('l');
         _this.moveLeftIsDown = true;
     },
 
     moveRightPressed () {
         // Don't move while the chat input is open.
-        if(_this.GUI.chatInput.isActive === true) return;
+        if(_this.GUI && _this.GUI.chatInput.isActive === true) return;
         _this.move('r');
         _this.moveRightIsDown = true;
     },
@@ -435,18 +448,20 @@ dungeonz.Game.prototype = {
 
         const codeNumber = event.code[5];
 
-        // Don't send pressed events if the chat input is open.
-        if(_this.GUI.chatInput.isActive === false){
-            // Get the 0 - 9 keys.
-            if(codeNumber > -1
-            && codeNumber < 10){
-                //console.log("num key pressed:", codeNumber);
-                // Add the "slot" part of the key to the inventory slot number.
-                _this.player.inventory.useItem("slot" + codeNumber);
-            }
+        if(_this.GUI !== undefined){
+            // Don't send pressed events if the chat input is open.
+            if(_this.GUI.chatInput.isActive === false){
+                // Get the 0 - 9 keys.
+                if(codeNumber > -1
+                    && codeNumber < 10){
+                    //console.log("num key pressed:", codeNumber);
+                    // Add the "slot" part of the key to the inventory slot number.
+                    _this.player.inventory.useItem("slot" + codeNumber);
+                }
 
-            if(event.code === 'KeyE'){
-                ws.sendEvent('pick_up_item');
+                if(event.code === 'KeyE'){
+                    ws.sendEvent('pick_up_item');
+                }
             }
         }
     },
@@ -563,21 +578,21 @@ dungeonz.Game.prototype = {
             return;
         }
 
-        // Get the position relative to the player.
-        const relCol = col - this.player.col;
-        const relRow = row - this.player.row;
-
         this.dynamics[id] = {
             id: id,
             row: row,
             col: col,
-            sprite: new EntityList[EntityTypes[typeNumber]](
-                ((relCol * 2) + (dungeonz.VIEW_RANGE * 2)) * (16 / 2 * GAME_SCALE),
-                ((relRow * 2) + (dungeonz.VIEW_RANGE * 2)) * (16 / 2 * GAME_SCALE),
+            sprite: new EntityList[EntityTypes[typeNumber]](// <-- figure out this weird offset thing
+                col * dungeonz.TILE_SIZE * GAME_SCALE,
+                row * dungeonz.TILE_SIZE * GAME_SCALE,
                 data)
         };
 
         const dynamicSprite = this.dynamics[id].sprite;
+
+        // Add the sprite to the world group, as it extends sprite but
+        // overwrites the constructor so doesn't get added automatically.
+        _this.add.existing(dynamicSprite);
 
         if(dynamicSprite.centered === true){
             dynamicSprite.anchor.setTo(0.5);
@@ -660,10 +675,6 @@ dungeonz.Game.prototype = {
                 continue;
             }
 
-            // Shift the other dynamics, so it looks like the player is the one moving.
-            dynamicSprite.x -= (32 / 2 * GAME_SCALE) * colOffset;
-            dynamicSprite.y -= (32 / 2 * GAME_SCALE) * rowOffset;
-
             if(dynamicSprite.onMove !== undefined) dynamicSprite.onMove();
         }
     },
@@ -722,9 +733,9 @@ dungeonz.Game.prototype = {
 
         const chatText = _this.add.text(dynamic.sprite.x + (dungeonz.TILE_SIZE * 2), dynamic.sprite.y - 24, message, style);
         // Add it to the dynamics group so that it will be affected by scales/transforms correctly.
-        _this.dynamicsGroup.add(chatText);
+        dynamic.addChild(chatText);
         // Add it to this dynamics list of chat texts, so they can be moved and removed later.
-        dynamic.sprite.chatTexts.push(chatText);
+        //dynamic.sprite.chatTexts.push(chatText);
         chatText.anchor.set(0.5);
         chatText.scale.set(GAME_SCALE * 0.25);
         // How far this chat message has scrolled up so far.
@@ -738,7 +749,7 @@ dungeonz.Game.prototype = {
         chatText.lifespan = dungeonz.CHAT_BASE_LIFESPAN + (60 * message.length);
         // Destroy and remove from the list of chat messages when the lifespan is over.
         chatText.events.onKilled.add(function () {
-            dynamic.sprite.chatTexts.shift();
+            //dynamic.sprite.chatTexts.shift();
             this.destroy();
         }, chatText);
     }

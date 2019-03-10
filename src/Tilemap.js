@@ -410,6 +410,7 @@ class Tilemap {
     }
 
     revealDarkness (x, y, radius) {
+        // TODO: figure out daytime darkness for dark areas, caves etc.
         const radiusPlusOne = radius + 1;
         let rowOffset = -radius,
             colOffset = -radius,

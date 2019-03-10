@@ -1,0 +1,92 @@
+
+.panel_template_cont {
+    left: 50%;
+    top: 50%;
+}
+
+// The container the other generic parts are positioned relative to, and gives the main background and side borders.
+.panel_template_main_cont {
+    width: 400px;
+    height: 300px;
+    background-color: $colourDB32SteelGrey;
+    border: 8px solid $colourDB32VeryDarkPurple;
+    outline: 8px solid $colourDB32VeryDarkPurple;
+}
+
+// The top left icon that goes being the actual panel specific icon.
+.panel_template_icon_border {
+    left: 0%;
+    top: 0%;
+    width: 80px;
+}
+
+// The top left icon that represents this panel.
+.panel_template_icon {
+    left: 0%;
+    top: 0%;
+    width: 64px;
+}
+
+.panel_template_close_button {
+    left: 100%;
+    top: 0%;
+    width: 52px;
+    &:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+        filter: brightness(150%);
+    }
+}
+
+.panel_template_left_corner {
+    left: 0%;
+    top: 100%;
+    width: 36px;
+}
+
+.panel_template_right_corner {
+    left: 100%;
+    top: 100%;
+    width: 36px;
+}
+
+.centered {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+// The shown localised name of the context of this panel.
+.panel_template_name_border {
+    position: absolute;
+    top: 0%;
+    //left: 46px;
+    width: 100%;
+    //background-color: $colourDB32VeryDarkPurple;
+    padding: 4px;
+    color: $colourDB32White;
+    font-size: 28px;
+    -webkit-text-stroke: 14px $colourDB32VeryDarkPurple;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+// The shown localised name of the context of this panel.
+.panel_template_name {
+    position: absolute;
+    top: 0%;
+    //left: 46px;
+    width: 100%;
+    //background-color: $colourDB32VeryDarkPurple;
+    padding: 4px;
+    color: $colourDB32White;
+    font-size: 28px;
+    //-webkit-text-stroke: 2.5px $colourDB32VeryDarkPurple;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+// The container for all of the specific stuff for this panel.
+.panel_template_contents_cont {
+    width: 100%;
+    height: 100%;
+    //background-color: $colourDB32WhiteOpacity80;
+}

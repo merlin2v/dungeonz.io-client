@@ -58,7 +58,7 @@ class ShopPanel {
         this.buyButton.onclick = this.buyPressed;
 
         this.stockSlots = [];
-        this.maxStock = 20;
+        this.maxStock = 30;
         for(let i=0; i<this.maxStock; i+=1){
             this.stockSlots.push(new StockSlot(this, i));
         }

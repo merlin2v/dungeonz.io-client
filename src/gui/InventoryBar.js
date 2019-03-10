@@ -39,6 +39,7 @@ class Slot {
         this.container.draggable = true;
         // Use the item in this slot when pressed.
         this.container.onclick =        bar.click;
+        this.container.onmousedown =    bar.mouseDown;
         // Show and update the item tooltip info text when mouse is over a slot.
         this.container.onmouseover =    bar.slotMouseOver;
         // Hide the item tooltip when mouse is not over a slot.
@@ -96,7 +97,20 @@ class InventoryBar {
         event.stopPropagation();
     }
 
-    click () {
+    mouseDown (event) {
+        // Detect right mouse button click, to drop inventory items.
+        let isRightMB;
+        if ("which" in event)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+            isRightMB = event.which === 3;
+        else if ("button" in event)  // IE, Opera
+            isRightMB = event.button === 2;
+
+        if(isRightMB === true){
+            window.ws.sendEvent('drop_item', this.getAttribute('slotKey'));
+        }
+    }
+
+    click (event) {
         _this.player.inventory.useItem(this.getAttribute('slotKey'));
     }
 

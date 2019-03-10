@@ -215,6 +215,30 @@
             <key type="filename">entities/characters/bandit/bandit-up-1.png</key>
             <key type="filename">entities/characters/bandit/bandit-up-2.png</key>
             <key type="filename">entities/characters/bandit/bandit-up-3.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-down-1.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-down-2.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-down-3.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-left-1.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-left-2.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-left-3.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-right-1.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-right-2.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-right-3.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-up-1.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-up-2.png</key>
+            <key type="filename">entities/characters/blood lord/blood-lord-up-3.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-down-1.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-down-2.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-down-3.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-left-1.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-left-2.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-left-3.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-right-1.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-right-2.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-right-3.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-up-1.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-up-2.png</key>
+            <key type="filename">entities/characters/blood priest/blood-priest-up-3.png</key>
             <key type="filename">entities/characters/crypt warden/crypt-warden-down-1.png</key>
             <key type="filename">entities/characters/crypt warden/crypt-warden-down-2.png</key>
             <key type="filename">entities/characters/crypt warden/crypt-warden-down-3.png</key>
@@ -304,6 +328,18 @@
             <key type="filename">entities/characters/traders/ruler-1.png</key>
             <key type="filename">entities/characters/traders/ruler-2.png</key>
             <key type="filename">entities/characters/traders/trader-basic-1.png</key>
+            <key type="filename">entities/characters/vampire/vampire-down-1.png</key>
+            <key type="filename">entities/characters/vampire/vampire-down-2.png</key>
+            <key type="filename">entities/characters/vampire/vampire-down-3.png</key>
+            <key type="filename">entities/characters/vampire/vampire-left-1.png</key>
+            <key type="filename">entities/characters/vampire/vampire-left-2.png</key>
+            <key type="filename">entities/characters/vampire/vampire-left-3.png</key>
+            <key type="filename">entities/characters/vampire/vampire-right-1.png</key>
+            <key type="filename">entities/characters/vampire/vampire-right-2.png</key>
+            <key type="filename">entities/characters/vampire/vampire-right-3.png</key>
+            <key type="filename">entities/characters/vampire/vampire-up-1.png</key>
+            <key type="filename">entities/characters/vampire/vampire-up-2.png</key>
+            <key type="filename">entities/characters/vampire/vampire-up-3.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-1.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-2.png</key>
             <key type="filename">entities/characters/warrior/warrior-down-3.png</key>
@@ -376,6 +412,18 @@
             <key type="filename">entities/clothes/ninja garb/ninja-garb-up-1.png</key>
             <key type="filename">entities/clothes/ninja garb/ninja-garb-up-2.png</key>
             <key type="filename">entities/clothes/ninja garb/ninja-garb-up-3.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-down-1.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-down-2.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-down-3.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-left-1.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-left-2.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-left-3.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-right-1.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-right-2.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-right-3.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-up-1.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-up-2.png</key>
+            <key type="filename">entities/clothes/noctis armour/noctis-armour-up-3.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-1.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-2.png</key>
             <key type="filename">entities/clothes/paladin armour/paladin-armour-down-3.png</key>
@@ -557,6 +605,7 @@
             <key type="filename">entities/pickups/pickup-blue-key.png</key>
             <key type="filename">entities/pickups/pickup-green-key.png</key>
             <key type="filename">entities/pickups/pickup-red-key.png</key>
+            <key type="filename">entities/pickups/pickup-vampire-fang.png</key>
             <key type="filename">entities/pickups/pickup-yellow-key.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -583,6 +632,7 @@
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
             <key type="filename">entities/pickups/pickup-ninja-garb.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-armour.png</key>
             <key type="filename">entities/pickups/pickup-plain-robe.png</key>
             <key type="filename">entities/pickups/pickup-potionry-lab.png</key>
             <key type="filename">entities/pickups/pickup-wood-door.png</key>
@@ -601,6 +651,7 @@
                 <false/>
             </struct>
             <key type="filename">entities/pickups/pickup-exp-orb.png</key>
+            <key type="filename">entities/projectiles/proj-vampire-fang.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -623,6 +674,19 @@
                 <rect>6,6,11,11</rect>
                 <key>scale9Paddings</key>
                 <rect>6,6,11,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/projectiles/proj-blood-bolt.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,3,8,5</rect>
+                <key>scale9Paddings</key>
+                <rect>4,3,8,5</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -668,6 +732,10 @@
             <filename>entities/characters/mummy</filename>
             <filename>entities/characters/crypt warden</filename>
             <filename>entities/characters/pharaoh</filename>
+            <filename>entities/characters/vampire</filename>
+            <filename>entities/characters/blood lord</filename>
+            <filename>entities/characters/blood priest</filename>
+            <filename>entities/clothes/noctis armour</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

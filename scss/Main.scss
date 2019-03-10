@@ -18,6 +18,7 @@ sass --watch scss/Main.scss:main.css
 @import "GeneratorPanel";
 @import "ShopPanel";
 @import "TasksPanel";
+@import "PanelTemplate";
 
 
 #game_canvas {

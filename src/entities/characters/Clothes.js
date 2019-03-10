@@ -52,6 +52,11 @@ const Sprite = function (config) {
     this.animations.add('Iron armour-d',    ['iron-armour-down-1',    'iron-armour-down-2',     'iron-armour-down-1',     'iron-armour-down-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Iron armour-l',    ['iron-armour-left-1',    'iron-armour-left-2',     'iron-armour-left-1',     'iron-armour-left-3'],    10).onComplete.add(moveAnimCompleted, this);
     this.animations.add('Iron armour-r',    ['iron-armour-right-1',   'iron-armour-right-2',    'iron-armour-right-1',    'iron-armour-right-3'],   10).onComplete.add(moveAnimCompleted, this);
+
+    this.animations.add('Noctis armour-u',    ['noctis-armour-up-1',      'noctis-armour-up-2',       'noctis-armour-up-1',       'noctis-armour-up-3'],      10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Noctis armour-d',    ['noctis-armour-down-1',    'noctis-armour-down-2',     'noctis-armour-down-1',     'noctis-armour-down-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Noctis armour-l',    ['noctis-armour-left-1',    'noctis-armour-left-2',     'noctis-armour-left-1',     'noctis-armour-left-3'],    10).onComplete.add(moveAnimCompleted, this);
+    this.animations.add('Noctis armour-r',    ['noctis-armour-right-1',   'noctis-armour-right-2',    'noctis-armour-right-1',    'noctis-armour-right-3'],   10).onComplete.add(moveAnimCompleted, this);
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -93,6 +98,12 @@ Sprite.prototype.clothesFrames = {
         d: 'iron-armour-down-1',
         l: 'iron-armour-left-1',
         r: 'iron-armour-right-1'
+    },
+    ['Noctis armour']: {
+        u: 'noctis-armour-up-1',
+        d: 'noctis-armour-down-1',
+        l: 'noctis-armour-left-1',
+        r: 'noctis-armour-right-1'
     }
 };
 

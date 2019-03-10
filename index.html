@@ -70,16 +70,6 @@
                     <div id="defence_counters"></div>
                     <div id="defence_tooltip"   class="top_left_tooltip generic_tooltip"></div>
                 </div>
-                <div id="hitpoint_cont" class="inline_cont">
-                    <img id="hitpoint_icon" class="gui_icon" src="assets/img/gui/hitpoint-icon.png" draggable="false">
-                    <div id="hitpoint_counters"></div>
-                    <div id="hitpoint_tooltip"  class="top_left_tooltip generic_tooltip"></div>
-                </div>
-                <div id="energy_cont" class="inline_cont">
-                    <img id="energy_icon" class="gui_icon" src="assets/img/gui/energy-icon.png" draggable="false">
-                    <div id="energy_counters"></div>
-                    <div id="energy_tooltip"    class="top_left_tooltip generic_tooltip"></div>
-                </div>
                 <div id="glory_cont" class="inline_cont">
                     <img id="glory_icon"                class="gui_icon" src="assets/img/gui/glory-icon.png" draggable="false">
                     <div id="glory_counter"             class="text_counter">100</div>
@@ -397,6 +387,19 @@
 
             </div>
 
+            <div id="hp_energy_bars_cont">
+                <div id="hitpoint_cont" class="inline_cont">
+                    <img id="hitpoint_icon" class="gui_icon" src="assets/img/gui/hitpoint-icon.png" draggable="false">
+                    <div id="hitpoint_counters"></div>
+                    <div id="hitpoint_tooltip"  class="top_left_tooltip generic_tooltip"></div>
+                </div>
+                <div id="energy_cont" class="inline_cont">
+                    <img id="energy_icon" class="gui_icon" src="assets/img/gui/energy-icon.png" draggable="false">
+                    <div id="energy_counters"></div>
+                    <div id="energy_tooltip"    class="top_left_tooltip generic_tooltip"></div>
+                </div>
+            </div>
+
             <span id="inventory_bar" class="gui_zoomable">
                 <div id="inventory_message" class="text_counter_transition"></div>
                 <div id="item_tooltip_cont">
@@ -405,6 +408,20 @@
                     <div id="item_durability"></div>
                 </div>
             </span>
+
+            <div id="test_panel" class="panel_template_cont centered">
+                <div class="panel_template_main_cont">
+                    <img class="centered panel_template_icon_border" src="assets/img/gui/panel_icon_border.png">
+                    <div class="panel_template_name_border">&nbsp;&nbsp;Crafting</div>
+                    <div class="panel_template_name">&nbsp;&nbsp;Crafting</div>
+                    <img class="centered panel_template_icon" src="assets/img/gui/items/icon-workbench.png">
+                    <img class="centered panel_template_close_button" src="assets/img/gui/panel_close_button.png">
+                    <img class="centered panel_template_left_corner" src="assets/img/gui/panel_corner.png">
+                    <img class="centered panel_template_right_corner" src="assets/img/gui/panel_corner.png">
+                    <img class="centered panel_template_right_corner" src="assets/img/gui/panel_corner.png">
+                    <div class="panel_template_contents_cont"></div>
+                </div>
+            </div>
         </div>
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
     </div>

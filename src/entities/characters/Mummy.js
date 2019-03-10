@@ -3,8 +3,7 @@ import Character from './Character'
 
 const Sprite = function (x, y, config) {
     Character.call(this, x, y, config);
-    //this.displayName.setText(dungeonz.getTextDef("Mob name: Mummy"));
-    this.displayName.setText("Mummy");
+    this.displayName.setText(dungeonz.getTextDef("Mob name: Mummy"));
 
     this.baseSprite.animations.add('u',    ['mummy-up-1',      'mummy-up-2',       'mummy-up-1',       'mummy-up-3'],      10).onComplete.add(this.moveAnimCompleted, this);
     this.baseSprite.animations.add('d',    ['mummy-down-1',    'mummy-down-2',     'mummy-down-1',     'mummy-down-3'],    10).onComplete.add(this.moveAnimCompleted, this);

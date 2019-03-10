@@ -81,6 +81,8 @@ import Player                   from './characters/Player'
 import Bandit                   from './characters/Bandit'
 import BanditLeader             from './characters/BanditLeader'
 import Bat                      from './characters/Bat'
+import BloodLord                from './characters/BloodLord'
+import BloodPriest              from './characters/BloodPriest'
 import Citizen                  from './characters/Citizen'
 import CryptWarden              from './characters/CryptWarden'
 import Innkeeper                from './characters/Innkeeper'
@@ -95,6 +97,7 @@ import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
 import Ruler                    from './characters/Ruler'
 import ToolMerchant             from './characters/ToolMerchant'
+import Vampire                  from './characters/Vampire'
 import Warrior                  from './characters/Warrior'
 import ZombieHuman              from './characters/ZombieHuman'
 
@@ -156,6 +159,7 @@ import PickupIronSword          from './pickups/PickupIronSword'
 import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
 import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
+import PickupNoctisArmour       from './pickups/PickupNoctisArmour'
 import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
@@ -164,12 +168,14 @@ import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
+import PickupVampireFang        from './pickups/PickupVampireFang'
 import PickupWindStaff          from './pickups/PickupWindStaff'
 import PickupWoodDoor           from './pickups/PickupWoodDoor'
 import PickupWoodWall           from './pickups/PickupWoodWall'
 import PickupWorkbench          from './pickups/PickupWorkbench'
 import PickupYellowKey          from './pickups/PickupYellowKey'
 
+import ProjBloodBolt            from './projectiles/ProjBloodBolt'
 import ProjDeathbind            from './projectiles/ProjDeathbind'
 import ProjIronArrow            from './projectiles/ProjIronArrow'
 import ProjIronDagger           from './projectiles/ProjIronDagger'
@@ -179,6 +185,7 @@ import ProjPacify               from './projectiles/ProjPacify'
 import ProjShuriken             from './projectiles/ProjShuriken'
 import ProjFire                 from './projectiles/ProjFire'
 import ProjSuperFire            from './projectiles/ProjSuperFire'
+import ProjVampireFang          from './projectiles/ProjVampireFang'
 import ProjWind                 from './projectiles/ProjWind'
 
 const EntitiesList = {
@@ -187,6 +194,8 @@ const EntitiesList = {
     Bandit:                 Bandit,
     BanditLeader:           BanditLeader,
     Bat:                    Bat,
+    BloodLord:              BloodLord,
+    BloodPriest:            BloodPriest,
     Citizen:                Citizen,
     CryptWarden:            CryptWarden,
     Innkeeper:              Innkeeper,
@@ -201,6 +210,7 @@ const EntitiesList = {
     Rat:                    Rat,
     Ruler:                  Ruler,
     ToolMerchant:           ToolMerchant,
+    Vampire:                Vampire,
     Warrior:                Warrior,
     ZombieHuman:            ZombieHuman,
 
@@ -259,6 +269,7 @@ const EntitiesList = {
     PickupMageRobe:         PickupMageRobe,
     PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupNinjaGarb:        PickupNinjaGarb,
+    PickupNoctisArmour:     PickupNoctisArmour,
     PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
     PickupPlainRobe:        PickupPlainRobe,
@@ -267,12 +278,14 @@ const EntitiesList = {
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
     PickupSuperFireStaff:   PickupSuperFireStaff,
+    PickupVampireFang:      PickupVampireFang,
     PickupWindStaff:        PickupWindStaff,
     PickupWoodDoor:         PickupWoodDoor,
     PickupWoodWall:         PickupWoodWall,
     PickupWorkbench:        PickupWorkbench,
     PickupYellowKey:        PickupYellowKey,
 
+    ProjBloodBolt:          ProjBloodBolt,
     ProjDeathbind:          ProjDeathbind,
     ProjIronArrow:          ProjIronArrow,
     ProjIronDagger:         ProjIronDagger,
@@ -282,6 +295,7 @@ const EntitiesList = {
     ProjShuriken:           ProjShuriken,
     ProjFire:               ProjFire,
     ProjSuperFire:          ProjSuperFire,
+    ProjVampireFang:        ProjVampireFang,
     ProjWind:               ProjWind,
 
     Exit:                   Exit,

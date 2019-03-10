@@ -546,6 +546,13 @@ sass --watch scss/Main.scss:main.css
   transform-origin: bottom right;
 }
 
+#hp_energy_bars_cont {
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+}
+
 #audio_counter, #gui_zoom_counter {
   position: relative;
   top: 8px;
@@ -1653,6 +1660,86 @@ sass --watch scss/Main.scss:main.css
 #tasks_claim_button:hover {
   background-color: #99e550;
   font-size: 100%;
+}
+
+.panel_template_cont {
+  left: 50%;
+  top: 50%;
+}
+
+.panel_template_main_cont {
+  width: 400px;
+  height: 300px;
+  background-color: #9badb7;
+  border: 8px solid #222034;
+  outline: 8px solid #222034;
+}
+
+.panel_template_icon_border {
+  left: 0%;
+  top: 0%;
+  width: 80px;
+}
+
+.panel_template_icon {
+  left: 0%;
+  top: 0%;
+  width: 64px;
+}
+
+.panel_template_close_button {
+  left: 100%;
+  top: 0%;
+  width: 52px;
+}
+.panel_template_close_button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: brightness(150%);
+}
+
+.panel_template_left_corner {
+  left: 0%;
+  top: 100%;
+  width: 36px;
+}
+
+.panel_template_right_corner {
+  left: 100%;
+  top: 100%;
+  width: 36px;
+}
+
+.centered {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.panel_template_name_border {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  padding: 4px;
+  color: #ffffff;
+  font-size: 28px;
+  -webkit-text-stroke: 14px #222034;
+  transform: translateY(-50%);
+  user-select: none;
+}
+
+.panel_template_name {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  padding: 4px;
+  color: #ffffff;
+  font-size: 28px;
+  transform: translateY(-50%);
+  user-select: none;
+}
+
+.panel_template_contents_cont {
+  width: 100%;
+  height: 100%;
 }
 
 #game_canvas {

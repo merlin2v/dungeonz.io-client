@@ -1,5 +1,6 @@
 
 import ItemTypes from '../../src/catalogues/ItemTypes'
+import PanelTemplate from "./PanelTemplate";
 
 class StockSlot {
     constructor (panel, slotNumber) {
@@ -37,25 +38,46 @@ class StockSlot {
         this.container.appendChild(this.itemIcon);
         this.container.appendChild(this.priceContainer);
 
-        panel.contents.appendChild(this.container);
+        panel.shopContents.appendChild(this.container);
+
+        // TODO, add tooltips for each shop stock slot, could just do one and move it, might be messy
 
         // The item name for when it is hovered over.
         this.itemName = '';
     }
 }
 
-class ShopPanel {
+class ShopPanel extends PanelTemplate {
 
     constructor () {
-        const panel = this;
 
-        this.container =        document.getElementById('shop_panel');
-        this.tooltip =          document.getElementById('shop_tooltip');
-        this.name =             document.getElementById('shop_name');
-        this.contents =         document.getElementById('shop_contents');
-        this.buyButton =        document.getElementById('shop_buy_button');
+        super(document.getElementById('shop_panel_test'), 440, 384, 'Shop', 'shop-icon');
 
-        this.buyButton.onclick = this.buyPressed;
+        this.shopContents = document.createElement('div');
+        this.shopContents.id = 'shop_contents';
+        this.contentsContainer.appendChild(this.shopContents);
+
+        const bottomContainer = document.createElement('div');
+        bottomContainer.id = 'shop_bottom_cont';
+        this.contentsContainer.appendChild(bottomContainer);
+
+        // Add a container for the 'Buy' text and the image button.
+        const buyButtonContainer = document.createElement('div');
+        buyButtonContainer.className = 'centered shop_buy_button_cont';
+        buyButtonContainer.onclick = this.buyPressed;
+        bottomContainer.appendChild(buyButtonContainer);
+
+        this.buyButton = document.createElement('img');
+        this.buyButton.className = 'centered shop_buy_button';
+        this.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+        this.buyButton.draggable = false;
+        buyButtonContainer.appendChild(this.buyButton);
+
+        const buyText = document.createElement('div');
+        buyText.innerText = "Buy";
+        buyText.className = 'centered shop_buy_text';
+        buyButtonContainer.appendChild(buyText);
+
 
         this.stockSlots = [];
         this.maxStock = 30;
@@ -77,10 +99,14 @@ class ShopPanel {
     }
 
     show (traderID, shopName, shopStock) {
+
+        super.show();
+
         _this.GUI.isAnyPanelOpen = true;
         // Show the panel and change the shop name.
-        this.container.style.visibility = "visible";
-        this.name.innerText = shopName;
+        //this.container.style.visibility = "visible";
+        this.changeName(shopName);
+        //this.name.innerText = shopName;
 
         // Request the prices of items in this shop.
         ws.sendEvent('get_shop_prices', {traderID: traderID, row: _this.dynamics[traderID].row, col: _this.dynamics[traderID].col});
@@ -103,10 +129,10 @@ class ShopPanel {
     }
 
     hide () {
-        _this.GUI.isAnyPanelOpen = false;
         // Hide the panel.
-        this.container.style.visibility = "hidden";
-        this.tooltip.style.visibility = 'hidden';
+        super.hide();
+
+        _this.GUI.isAnyPanelOpen = false;
 
         // Hide all of the stock items, so they don't show in the next shop visited.
         for(let i=0; i<this.maxStock; i+=1){
@@ -119,6 +145,9 @@ class ShopPanel {
             this.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
             this.selectedSlot = null;
         }
+
+        // Reset the buy button.
+        this.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
 
         clearInterval(this.getPricesLoop);
     }
@@ -151,14 +180,21 @@ class ShopPanel {
     slotClick () {
         // If nothing is selected, select this slot.
         if(_this.GUI.shopPanel.selectedSlot === null){
+            /** @type {StockSlot} */
             const slot = _this.GUI.shopPanel.stockSlots[this.getAttribute('slotIndex')];
             _this.GUI.shopPanel.selectedSlot = slot;
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
+
+            // If the player has enough glory for that item, make the buy button green.
+            if(slot.price.innerText > _this.player.glory) _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            else _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
         }
         // The selected slot was selected again, deselect it.
         else if(_this.GUI.shopPanel.selectedSlot.container === this){
             _this.GUI.shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
             _this.GUI.shopPanel.selectedSlot = null;
+
+            _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
         }
         // A slot is already selected, deselect it and select this one.
         else {
@@ -166,6 +202,9 @@ class ShopPanel {
             const slot = _this.GUI.shopPanel.stockSlots[this.getAttribute('slotIndex')];
             _this.GUI.shopPanel.selectedSlot = slot;
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
+            // If the player has enough glory for that item, make the buy button green.
+            if(slot.price.innerText > _this.player.glory) _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            else _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
         }
 
     }
@@ -173,13 +212,13 @@ class ShopPanel {
     slotMouseOver () {
         const slotIndex = this.getAttribute('slotIndex');
         // If the slot is empty, don't show the tooltip.
-        if(_this.GUI.shopPanel.stockSlots[slotIndex].itemName === null) return;
-        _this.GUI.shopPanel.tooltip.innerText = _this.GUI.shopPanel.stockSlots[slotIndex].itemName;
-        _this.GUI.shopPanel.tooltip.style.visibility = 'visible';
+        //if(_this.GUI.shopPanel.stockSlots[slotIndex].itemName === null) return;
+        //_this.GUI.shopPanel.tooltip.innerText = _this.GUI.shopPanel.stockSlots[slotIndex].itemName;
+        //_this.GUI.shopPanel.tooltip.style.visibility = 'visible';
     }
 
     slotMouseOut () {
-        _this.GUI.shopPanel.tooltip.style.visibility = 'hidden';
+        //_this.GUI.shopPanel.tooltip.style.visibility = 'hidden';
     }
 
 }

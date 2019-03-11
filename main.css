@@ -1485,36 +1485,36 @@ sass --watch scss/Main.scss:main.css
   color: #222034;
 }
 
+/*
 #shop_panel {
-  display: inline-grid;
-  width: 516px;
-  user-select: none;
+    display: inline-grid;
+    //width: 516px;
+    user-select: none;
 }
 
 #shop_name {
-  width: 50%;
-  font-size: 18px;
+    width: 50%;
+    font-size: 18px;
 }
 
 #shop_tooltip {
-  left: 276px;
-}
-
+    left: 276px;
+}*/
 #shop_contents {
-  background-color: rgba(255, 255, 255, 0.8);
   display: grid;
-  height: 310px;
+  height: 81%;
   overflow: auto;
   text-align: center;
   align-items: center;
-  grid-template-columns: repeat(4, 100px);
-  grid-gap: 16px;
+  grid-template-columns: repeat(4, 25%);
   padding: 16px;
 }
 
 .shop_item_cont {
   background-color: rgba(255, 255, 255, 0.8);
-  display: none;
+  user-select: none;
+  margin: 8px;
+  border: 4px solid #222034;
 }
 .shop_item_cont:hover {
   filter: brightness(150%);
@@ -1522,10 +1522,10 @@ sass --watch scss/Main.scss:main.css
 }
 
 .shop_item {
-  height: 84px;
+  height: 60px;
   margin: -4px;
   pointer-events: none;
-  padding: 6px;
+  padding: 4px;
 }
 
 .shop_price_cont {
@@ -1542,25 +1542,33 @@ sass --watch scss/Main.scss:main.css
 }
 
 #shop_bottom_cont {
-  display: grid;
-  grid-template-columns: auto 50%;
-  text-align: center;
+  position: relative;
+  height: 15%;
+  background-color: #222034;
 }
 
-#shop_buy_button_cont {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
+.shop_buy_button_cont {
+  height: 75%;
+  left: 50%;
+  top: 50%;
+  user-select: none;
+}
+.shop_buy_button_cont:hover {
+  filter: brightness(150%);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
-#shop_buy_button {
-  background-color: #6abe30;
-  line-height: 22px;
-  font-size: 90%;
-  padding: 6px;
+.shop_buy_button {
+  height: 100%;
+  left: 50%;
+  top: 50%;
 }
-#shop_buy_button:hover {
-  background-color: #99e550;
-  font-size: 100%;
+
+.shop_buy_text {
+  left: 50%;
+  top: 50%;
+  font-size: 20px;
+  color: #222034;
 }
 
 #tasks_panel {
@@ -1673,24 +1681,28 @@ sass --watch scss/Main.scss:main.css
   background-color: #9badb7;
   border: 8px solid #222034;
   outline: 8px solid #222034;
+  user-select: none;
 }
 
 .panel_template_icon_border {
   left: 0%;
   top: 0%;
   width: 80px;
+  user-select: none;
 }
 
 .panel_template_icon {
   left: 0%;
   top: 0%;
-  width: 64px;
+  width: 54px;
+  user-select: none;
 }
 
 .panel_template_close_button {
   left: 100%;
   top: 0%;
   width: 52px;
+  user-select: none;
 }
 .panel_template_close_button:hover {
   transform: translate(-50%, -50%) scale(1.1);
@@ -1701,12 +1713,14 @@ sass --watch scss/Main.scss:main.css
   left: 0%;
   top: 100%;
   width: 36px;
+  user-select: none;
 }
 
 .panel_template_right_corner {
   left: 100%;
   top: 100%;
   width: 36px;
+  user-select: none;
 }
 
 .centered {
@@ -1720,7 +1734,7 @@ sass --watch scss/Main.scss:main.css
   width: 100%;
   padding: 4px;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 20px;
   -webkit-text-stroke: 14px #222034;
   transform: translateY(-50%);
   user-select: none;
@@ -1732,7 +1746,7 @@ sass --watch scss/Main.scss:main.css
   width: 100%;
   padding: 4px;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 20px;
   transform: translateY(-50%);
   user-select: none;
 }

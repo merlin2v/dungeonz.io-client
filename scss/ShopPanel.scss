@@ -1,7 +1,7 @@
-
+/*
 #shop_panel {
     display: inline-grid;
-    width: 516px;
+    //width: 516px;
     user-select: none;
 }
 
@@ -12,24 +12,23 @@
 
 #shop_tooltip {
     left: 276px;
-}
+}*/
 
 #shop_contents {
-    background-color: $colourDB32WhiteOpacity80;
     display: grid;
-    height: 310px;
+    height: 81%;
     overflow: auto;
     text-align: center;
     align-items: center;
-    grid-template-columns: repeat(4, 100px);
-    grid-gap: 16px;
+    grid-template-columns: repeat(4, 25%);
     padding: 16px;
 }
 
 .shop_item_cont {
     background-color: $colourDB32WhiteOpacity80;
-    display: none;
-    //justify-items: center;
+    user-select: none;
+    margin: 8px;
+    border: 4px solid $colourDB32VeryDarkPurple;
     &:hover {
         filter: brightness(150%);
         transform: scale(1.1);
@@ -37,10 +36,10 @@
 }
 
 .shop_item {
-    height: 84px;
+    height: 60px;
     margin: -4px;
     pointer-events: none;
-    padding: 6px;
+    padding: 4px;
 }
 
 .shop_price_cont {
@@ -57,23 +56,31 @@
 }
 
 #shop_bottom_cont {
-    display: grid;
-    grid-template-columns: auto 50%;
-    text-align: center;
+    position: relative;
+    height: 15%;
+    background-color: $colourDB32VeryDarkPurple;
 }
 
-#shop_buy_button_cont {
-    background-color: $colourDB32WhiteOpacity80;
-    padding: 10px;
-}
-
-#shop_buy_button {
-    background-color: $colourDB32Green;
-    line-height: 22px;
-    font-size: 90%;
-    padding: 6px;
+.shop_buy_button_cont {
+    height: 75%;
+    left: 50%;
+    top: 50%;
+    user-select: none;
     &:hover {
-        background-color: $colourDB32LimeGreen;
-        font-size: 100%;
+        filter: brightness(150%);
+        transform: translate(-50%, -50%) scale(1.1);
     }
+}
+
+.shop_buy_button {
+    height: 100%;
+    left: 50%;
+    top: 50%;
+}
+
+.shop_buy_text {
+    left: 50%;
+    top: 50%;
+    font-size: 20px;
+    color: $colourDB32VeryDarkPurple;
 }

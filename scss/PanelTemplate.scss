@@ -11,6 +11,7 @@
     background-color: $colourDB32SteelGrey;
     border: 8px solid $colourDB32VeryDarkPurple;
     outline: 8px solid $colourDB32VeryDarkPurple;
+    user-select: none;
 }
 
 // The top left icon that goes being the actual panel specific icon.
@@ -18,19 +19,22 @@
     left: 0%;
     top: 0%;
     width: 80px;
+    user-select: none;
 }
 
 // The top left icon that represents this panel.
 .panel_template_icon {
     left: 0%;
     top: 0%;
-    width: 64px;
+    width: 54px;
+    user-select: none;
 }
 
 .panel_template_close_button {
     left: 100%;
     top: 0%;
     width: 52px;
+    user-select: none;
     &:hover {
         transform: translate(-50%, -50%) scale(1.1);
         filter: brightness(150%);
@@ -41,12 +45,14 @@
     left: 0%;
     top: 100%;
     width: 36px;
+    user-select: none;
 }
 
 .panel_template_right_corner {
     left: 100%;
     top: 100%;
     width: 36px;
+    user-select: none;
 }
 
 .centered {
@@ -58,12 +64,10 @@
 .panel_template_name_border {
     position: absolute;
     top: 0%;
-    //left: 46px;
     width: 100%;
-    //background-color: $colourDB32VeryDarkPurple;
     padding: 4px;
     color: $colourDB32White;
-    font-size: 28px;
+    font-size: 20px;
     -webkit-text-stroke: 14px $colourDB32VeryDarkPurple;
     transform: translateY(-50%);
     user-select: none;
@@ -73,13 +77,10 @@
 .panel_template_name {
     position: absolute;
     top: 0%;
-    //left: 46px;
     width: 100%;
-    //background-color: $colourDB32VeryDarkPurple;
     padding: 4px;
     color: $colourDB32White;
-    font-size: 28px;
-    //-webkit-text-stroke: 2.5px $colourDB32VeryDarkPurple;
+    font-size: 20px;
     transform: translateY(-50%);
     user-select: none;
 }
@@ -88,5 +89,4 @@
 .panel_template_contents_cont {
     width: 100%;
     height: 100%;
-    //background-color: $colourDB32WhiteOpacity80;
 }

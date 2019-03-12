@@ -40,8 +40,6 @@ class StockSlot {
 
         panel.shopContents.appendChild(this.container);
 
-        // TODO, add tooltips for each shop stock slot, could just do one and move it, might be messy
-
         // The item name for when it is hovered over.
         this.itemName = '';
     }
@@ -77,6 +75,10 @@ class ShopPanel extends PanelTemplate {
         buyText.innerText = "Buy";
         buyText.className = 'centered shop_buy_text';
         buyButtonContainer.appendChild(buyText);
+
+        this.tooltip = document.createElement('div');
+        this.tooltip.id = 'shop_tooltip';
+        this.topContainer.appendChild(this.tooltip);
 
 
         this.stockSlots = [];
@@ -178,47 +180,59 @@ class ShopPanel extends PanelTemplate {
     }
 
     slotClick () {
+        const shopPanel = _this.GUI.shopPanel;
         // If nothing is selected, select this slot.
-        if(_this.GUI.shopPanel.selectedSlot === null){
+        if(shopPanel.selectedSlot === null){
             /** @type {StockSlot} */
-            const slot = _this.GUI.shopPanel.stockSlots[this.getAttribute('slotIndex')];
-            _this.GUI.shopPanel.selectedSlot = slot;
+            const slot = shopPanel.stockSlots[this.getAttribute('slotIndex')];
+            shopPanel.selectedSlot = slot;
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
 
             // If the player has enough glory for that item, make the buy button green.
-            if(slot.price.innerText > _this.player.glory) _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
-            else _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            else shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
         }
         // The selected slot was selected again, deselect it.
-        else if(_this.GUI.shopPanel.selectedSlot.container === this){
-            _this.GUI.shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
-            _this.GUI.shopPanel.selectedSlot = null;
+        else if(shopPanel.selectedSlot.container === this){
+            shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
+            shopPanel.selectedSlot = null;
 
-            _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
         }
         // A slot is already selected, deselect it and select this one.
         else {
-            _this.GUI.shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
-            const slot = _this.GUI.shopPanel.stockSlots[this.getAttribute('slotIndex')];
-            _this.GUI.shopPanel.selectedSlot = slot;
+            shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
+            const slot = shopPanel.stockSlots[this.getAttribute('slotIndex')];
+            shopPanel.selectedSlot = slot;
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
             // If the player has enough glory for that item, make the buy button green.
-            if(slot.price.innerText > _this.player.glory) _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
-            else _this.GUI.shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            else shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
         }
 
     }
 
     slotMouseOver () {
-        const slotIndex = this.getAttribute('slotIndex');
+        const shopPanel = _this.GUI.shopPanel;
+        /** @type {StockSlot} */
+        const slot = shopPanel.stockSlots[this.getAttribute('slotIndex')];
         // If the slot is empty, don't show the tooltip.
-        //if(_this.GUI.shopPanel.stockSlots[slotIndex].itemName === null) return;
-        //_this.GUI.shopPanel.tooltip.innerText = _this.GUI.shopPanel.stockSlots[slotIndex].itemName;
-        //_this.GUI.shopPanel.tooltip.style.visibility = 'visible';
+        if(slot.itemName === null) return;
+        shopPanel.tooltip.innerText = slot.itemName;
+        shopPanel.tooltip.style.visibility = 'visible';
+
+        slot.container.appendChild(shopPanel.tooltip);
+
+        // Get the col of the selected slot.
+        // If the slot is in the first or second (left half) of shop contents grid, then show the tooltip on the right of the item.
+        if((this.getAttribute('slotIndex') % 4) > 1) shopPanel.tooltip.className = 'shop_tooltip_right';
+        // Otherwise, show it to the left of the item.
+        else shopPanel.tooltip.className = 'shop_tooltip_left';
+
     }
 
     slotMouseOut () {
-        //_this.GUI.shopPanel.tooltip.style.visibility = 'hidden';
+        _this.GUI.shopPanel.tooltip.style.visibility = 'hidden';
     }
 
 }

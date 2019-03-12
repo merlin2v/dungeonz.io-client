@@ -1,23 +1,30 @@
-/*
-#shop_panel {
-    display: inline-grid;
-    //width: 516px;
-    user-select: none;
-}
-
-#shop_name {
-    width: 50%;
-    font-size: 18px;
-}
 
 #shop_tooltip {
-    left: 276px;
-}*/
+    position: absolute;
+    max-width: 250px;
+    color: $colourDB32White;
+    text-align: center;
+    font-size: 12px;
+    background-color: $colourDB32VeryDarkPurple;
+    padding: 6px;
+    top: 0%;
+}
+
+.shop_tooltip_left {
+    transform: translate(0%, 0%);
+    left: 100%;
+}
+
+.shop_tooltip_right {
+    transform: translate(-100%, 0%);
+    left: 0%;
+}
 
 #shop_contents {
     display: grid;
     height: 81%;
     overflow: auto;
+    overflow-x: hidden;
     text-align: center;
     align-items: center;
     grid-template-columns: repeat(4, 25%);

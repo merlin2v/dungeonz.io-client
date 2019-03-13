@@ -16,7 +16,7 @@ class StockSlot {
 
         this.gloryIcon = document.createElement('img');
         this.gloryIcon.className = 'shop_glory_icon';
-        this.gloryIcon.src = 'assets/img/gui/glory-icon.png';
+        this.gloryIcon.src = 'assets/img/gui/hud/glory-icon.png';
 
         this.price = document.createElement('p');
         this.price.className = "shop_price";
@@ -49,7 +49,7 @@ class ShopPanel extends PanelTemplate {
 
     constructor () {
 
-        super(document.getElementById('shop_panel_test'), 440, 384, 'Shop', 'shop-icon');
+        super(document.getElementById('shop_panel'), 440, 384, 'Shop', 'gui/panels/shop-icon');
 
         this.shopContents = document.createElement('div');
         this.shopContents.id = 'shop_contents';
@@ -67,7 +67,7 @@ class ShopPanel extends PanelTemplate {
 
         this.buyButton = document.createElement('img');
         this.buyButton.className = 'centered shop_buy_button';
-        this.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+        this.buyButton.src = 'assets/img/gui/panels/buy-button-border-valid.png';
         this.buyButton.draggable = false;
         buyButtonContainer.appendChild(this.buyButton);
 
@@ -149,7 +149,7 @@ class ShopPanel extends PanelTemplate {
         }
 
         // Reset the buy button.
-        this.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+        this.buyButton.src = 'assets/img/gui/panels/buy-button-border-invalid.png';
 
         clearInterval(this.getPricesLoop);
     }
@@ -189,15 +189,15 @@ class ShopPanel extends PanelTemplate {
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
 
             // If the player has enough glory for that item, make the buy button green.
-            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
-            else shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/panels/buy-button-border-invalid.png';
+            else shopPanel.buyButton.src = 'assets/img/gui/panels/buy-button-border-valid.png';
         }
         // The selected slot was selected again, deselect it.
         else if(shopPanel.selectedSlot.container === this){
             shopPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.white80Percent;
             shopPanel.selectedSlot = null;
 
-            shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
+            shopPanel.buyButton.src = 'assets/img/gui/panels/buy-button-border-invalid.png';
         }
         // A slot is already selected, deselect it and select this one.
         else {
@@ -206,8 +206,8 @@ class ShopPanel extends PanelTemplate {
             shopPanel.selectedSlot = slot;
             slot.container.style.backgroundColor = _this.GUI.GUIColours.shopSelected;
             // If the player has enough glory for that item, make the buy button green.
-            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-invalid.png';
-            else shopPanel.buyButton.src = 'assets/img/gui/buy-button-border-valid.png';
+            if(slot.price.innerText > _this.player.glory) shopPanel.buyButton.src = 'assets/img/gui/panels/buy-button-border-invalid.png';
+            else shopPanel.buyButton.src = 'assets/img/gui/panels/buy-button-border-valid.png';
         }
 
     }

@@ -7,12 +7,12 @@ class Slot {
         this.icon.draggable = false;
 
         this.durability = document.createElement('img');
-        this.durability.src = 'assets/img/gui/durability-meter-10.png';
+        this.durability.src = 'assets/img/gui/hud/durability-meter-10.png';
         this.durability.className = 'inventory_slot_durability';
         this.durability.draggable = false;
 
         this.open = document.createElement('img');
-        this.open.src = 'assets/img/gui/open-icon.png';
+        this.open.src = 'assets/img/gui/hud/open-icon.png';
         this.open.className = 'inventory_slot_open';
         //this.open.draggable = false;
         this.open.onclick = bar.openClick;
@@ -25,12 +25,12 @@ class Slot {
         this.open.ondrop = bar.openStopPropagation;
 
         this.equipped = document.createElement('img');
-        this.equipped.src = 'assets/img/gui/clothing-icon.png';
+        this.equipped.src = 'assets/img/gui/hud/clothing-icon.png';
         this.equipped.className = 'inventory_slot_equipped';
         this.equipped.draggable = false;
 
         this.border = document.createElement('img');
-        this.border.src = 'assets/img/gui/inventory-slot-border.png';
+        this.border.src = 'assets/img/gui/hud/inventory-slot-border.png';
         this.border.className = 'inventory_slot_border';
         this.border.draggable = false;
 
@@ -226,7 +226,7 @@ class InventoryBar {
             _this.player.inventory.swapInventorySlots(_this.GUI.dragData.inventorySlot.slotKey, slotKey);
         }
         // If it was from the bank panel, withdraw the item.
-        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
+        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.bankSlots){
             _this.player.bankManager.withdrawItem(_this.GUI.dragData.bankSlot.getAttribute('slotIndex'), slotKey);
         }
 
@@ -250,16 +250,19 @@ class InventoryBar {
         this.style.backgroundColor = "transparent";
 
         // De-highlight the panel slot drop targets.
-        for(let slotKey in _this.GUI.inventoryBar.slots){
-            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = "transparent";
+        const inventorySlots = _this.GUI.inventoryBar.slots;
+        for(let slotKey in inventorySlots){
+            if(inventorySlots.hasOwnProperty(slotKey) === false) continue;
+            inventorySlots[slotKey].container.style.backgroundColor = "transparent";
         }
-        for(let slotKey in _this.GUI.craftingPanel.components){
-            if(_this.GUI.craftingPanel.components.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
+        const craftingComponents = _this.GUI.craftingPanel.components;
+        for(let slotKey in craftingComponents){
+            if(craftingComponents.hasOwnProperty(slotKey) === false) continue;
+            craftingComponents[slotKey].container.style.backgroundColor = "transparent";
         }
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
+        const bankSlots = _this.GUI.bankPanel.slots;
+        for(let i=0, len=bankSlots.length; i<len; i+=1){
+            bankSlots[i].refreshBackground();
         }
 
         // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.

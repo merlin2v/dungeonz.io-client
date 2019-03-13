@@ -231,7 +231,9 @@ class GUI {
             currentlySelected: "rgba(251, 242, 54, 0.5)",
             white80Percent: "rgba(255, 255, 255, 0.8)",
             shopSelected: "rgb(153, 229, 80, 0.8)",
-            taskComplete: "rgba(106, 190, 48, 0.8)"
+            taskComplete: "rgba(106, 190, 48, 0.8)",
+            bankSlotOccupied: "#ffffff",
+            bankSlotEmpty: "#696a6a",
         };
 
         this.dragData = null;
@@ -302,7 +304,7 @@ class GUI {
         for(let i=0; i<amount; i+=1){
             const element = document.createElement('img');
 
-            element.src = 'assets/img/gui/' + type + '-counter.png';
+            element.src = 'assets/img/gui/hud/' + type + '-counter.png';
 
             element.draggable = false;
 
@@ -362,10 +364,10 @@ class GUI {
 
         for(let i=0; i<maxHitPoints; i+=1){
             if(i < hitPoints){
-                this.hitPointCounters[i].src = "./assets/img/gui/hitpoint-counter.png";
+                this.hitPointCounters[i].src = "./assets/img/gui/hud/hitpoint-counter.png";
             }
             else {
-                this.hitPointCounters[i].src = "./assets/img/gui/empty-counter.png";
+                this.hitPointCounters[i].src = "./assets/img/gui/hud/empty-counter.png";
             }
         }
     }
@@ -377,10 +379,10 @@ class GUI {
 
         for(let i=0; i<maxEnergy; i+=1){
             if(i < energy){
-                this.energyCounters[i].src = "./assets/img/gui/energy-counter.png";
+                this.energyCounters[i].src = "./assets/img/gui/hud/energy-counter.png";
             }
             else {
-                this.energyCounters[i].src = "./assets/img/gui/empty-counter.png";
+                this.energyCounters[i].src = "./assets/img/gui/hud/empty-counter.png";
             }
         }
     }

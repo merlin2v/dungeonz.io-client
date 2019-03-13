@@ -5,9 +5,9 @@ class PanelTemplate {
      * @param {Number} width - The width of the main container.
      * @param {Number} height - The height of the main container.
      * @param {String} panelName - The displayed name of the panel.
-     * @param {String} panelIconName - The file name of the source image to use for the icon.
+     * @param {String} panelIconURL - The url path relative to `assets/img/` to the source image to use for the icon.
      */
-    constructor (panelContainer, width, height, panelName, panelIconName) {
+    constructor (panelContainer, width, height, panelName, panelIconURL) {
         //console.log("panel container:", panelContainer);
 
         this.topContainer = panelContainer;
@@ -24,7 +24,7 @@ class PanelTemplate {
         // Add the top left icon border that gives a backing to the panel specific icon.
         const iconBorder = document.createElement('img');
         iconBorder.className = 'centered panel_template_icon_border';
-        iconBorder.src = 'assets/img/gui/panel_icon_border.png';
+        iconBorder.src = 'assets/img/gui/panels/panel_icon_border.png';
         iconBorder.draggable = false;
         mainContainer.appendChild(iconBorder);
 
@@ -45,14 +45,14 @@ class PanelTemplate {
         // Add the top left panel specific icon.
         const icon = document.createElement('img');
         icon.className = 'centered panel_template_icon';
-        icon.src = 'assets/img/gui/' + panelIconName + '.png';
+        icon.src = 'assets/img/' + panelIconURL + '.png';
         icon.draggable = false;
         mainContainer.appendChild(icon);
 
         // Add the close button.
         const closeButton = document.createElement('img');
         closeButton.className = 'centered panel_template_close_button';
-        closeButton.src = 'assets/img/gui/panel_close_button.png';
+        closeButton.src = 'assets/img/gui/panels/panel_close_button.png';
         closeButton.onclick = this.hide.bind(this);
         closeButton.draggable = false;
         mainContainer.appendChild(closeButton);
@@ -60,13 +60,13 @@ class PanelTemplate {
         // Add the bottom corners.
         const leftCorner = document.createElement('img');
         leftCorner.className = 'centered panel_template_left_corner';
-        leftCorner.src = 'assets/img/gui/panel_corner.png';
+        leftCorner.src = 'assets/img/gui/panels/panel_corner.png';
         leftCorner.draggable = false;
         mainContainer.appendChild(leftCorner);
 
         const rightCorner = document.createElement('img');
         rightCorner.className = 'centered panel_template_right_corner';
-        rightCorner.src = 'assets/img/gui/panel_corner.png';
+        rightCorner.src = 'assets/img/gui/panels/panel_corner.png';
         rightCorner.draggable = false;
         mainContainer.appendChild(rightCorner);
 

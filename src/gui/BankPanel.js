@@ -1,31 +1,33 @@
 
+import PanelTemplate from "./PanelTemplate";
+
 class Slot {
     constructor (bank, slotIndex) {
 
         this.icon = document.createElement('img');
         this.icon.src = 'assets/img/gui/items/icon-gold-ore.png';
-        this.icon.className = 'inventory_slot_icon';
+        this.icon.className = 'bank_slot_icon';
         this.icon.draggable = false;
 
         this.durability = document.createElement('img');
-        this.durability.src = 'assets/img/gui/durability-meter-10.png';
-        this.durability.className = 'inventory_slot_durability';
+        this.durability.src = 'assets/img/gui/hud/durability-meter-10.png';
+        this.durability.className = 'bank_slot_durability';
         this.durability.draggable = false;
 
-        this.border = document.createElement('img');
-        this.border.src = 'assets/img/gui/inventory-slot-border.png';
-        this.border.className = 'inventory_slot_border';
-        this.border.draggable = false;
+        //this.border = document.createElement('img');
+        //this.border.src = 'assets/img/gui/inventory-slot-border.png';
+        //this.border.className = 'inventory_slot_border';
+        //this.border.draggable = false;
 
         this.container = document.createElement('div');
-        this.container.className = 'inventory_slot';
+        this.container.className = 'bank_slot_cont';
         this.container.draggable = true;
 
         this.container.appendChild(this.icon);
         this.container.appendChild(this.durability);
-        this.container.appendChild(this.border);
+        //this.container.appendChild(this.border);
 
-        bank.contents.appendChild(this.container);
+        bank.bankSlots.appendChild(this.container);
 
         // Withdraw the item from the bank when it is clicked on.
         this.container.onclick =        bank.slotClick;
@@ -42,48 +44,99 @@ class Slot {
         this.container.setAttribute('slotIndex', slotIndex);
 
     }
+
+    refreshBackground () {
+        // Only give a white background back to the bank slots that have something in them.
+        if(_this.player.bankManager.items[this.container.getAttribute('slotIndex')].catalogueEntry === null){
+            this.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotEmpty;
+        }
+        else {
+            this.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotOccupied;
+        }
+    }
 }
 
-class BankPanel {
+class BankPanel extends PanelTemplate {
 
     constructor () {
-        this.container =    document.getElementById('bank_panel');
-        this.tooltip =      document.getElementById('bank_tooltip');
-        this.name =         document.getElementById('bank_name');
-        this.contents =     document.getElementById('bank_contents');
+        super(document.getElementById('bank_panel'), 500, 320, 'Bank', 'entities/buildings/bank-chest');
+
+        this.innerContainer = document.createElement('div');
+        this.innerContainer.id = 'bank_inner_cont';
+        this.contentsContainer.appendChild(this.innerContainer);
+
+        this.tabsContainer = document.createElement('div');
+        this.tabsContainer.id = 'bank_tabs_cont';
+        this.innerContainer.appendChild(this.tabsContainer);
+
+        this.tab1Button = document.createElement('img');
+        this.tab1Button.src = 'assets/img/gui/panels/bank-tab-1-button-active.png';
+        this.tab1Button.className = 'bank_tab_button';
+        this.tabsContainer.appendChild(this.tab1Button);
+
+        this.tab2Button = document.createElement('img');
+        this.tab2Button.src = 'assets/img/gui/panels/bank-tab-2-button-inactive.png';
+        this.tab2Button.className = 'bank_tab_button';
+        this.tabsContainer.appendChild(this.tab2Button);
+
+        this.tab3Button = document.createElement('img');
+        this.tab3Button.src = 'assets/img/gui/panels/bank-tab-locked-icon.png';
+        this.tab3Button.className = 'bank_tab_button';
+        this.tabsContainer.appendChild(this.tab3Button);
+
+        this.tab4Button = document.createElement('img');
+        this.tab4Button.src = 'assets/img/gui/panels/bank-tab-locked-icon.png';
+        this.tab4Button.className = 'bank_tab_button';
+        this.tabsContainer.appendChild(this.tab4Button);
+
+        this.bankSlots = document.createElement('div');
+        this.bankSlots.id = 'bank_contents';
+        this.innerContainer.appendChild(this.bankSlots);
 
         this.slots = [];
 
-        // Create 10 slots.
-        for(let i=0; i<20; i+=1){
+        //TODO: LOOKS GOOD SO FAR, NOW DO THE DMP LOCKED OTHER TABS, MORE TABS IS GOING TO BE MESSY :/
+
+        // Create some slots.
+        for(let i=0; i<15; i+=1){
             this.slots.push(new Slot(this, i));
         }
+
+        this.tooltip = document.createElement('div');
+        this.tooltip.id = 'bank_tooltip';
+        this.topContainer.appendChild(this.tooltip);
 
     }
 
     show () {
-        _this.GUI.isAnyPanelOpen = true;
         // Show the panel.
-        this.container.style.visibility = "visible";
-        for(let i=0; i<20; i+=1){
+        super.show();
+
+        _this.GUI.isAnyPanelOpen = true;
+
+        const items = _this.player.bankManager.items;
+
+        for(let i=0; i<items.length; i+=1){
             // Don't show empty slots.
-            if(_this.player.bankManager.items[i].catalogueEntry === null) continue;
+            if(items[i].catalogueEntry === null) continue;
 
             const slot = this.slots[i];
             slot.icon.style.visibility = "visible";
 
-            if(_this.player.bankManager.items[i].durability === null) continue;
+            if(items[i].durability === null) continue;
             slot.durability.style.visibility = "visible";
         }
     }
 
     hide () {
-        _this.GUI.isAnyPanelOpen = false;
         // Hide the panel.
-        this.container.style.visibility = "hidden";
+        super.hide();
         this.tooltip.style.visibility = 'hidden';
+
+        _this.GUI.isAnyPanelOpen = false;
+
         // Hide the contents.
-        for(let i=0; i<20; i+=1){
+        for(let i=0; i<this.slots.length; i+=1){
             const slot = this.slots[i];
             slot.icon.style.visibility = "hidden";
             slot.durability.style.visibility = "hidden";
@@ -91,18 +144,24 @@ class BankPanel {
     }
 
     slotClick () {
-        //console.log("slot clicked:", this.getAttribute('slotIndex'));
+        console.log("slot clicked:", this.getAttribute('slotIndex'));
 
         _this.player.bankManager.withdrawItem(this.getAttribute('slotIndex'));
     }
 
     slotMouseOver () {
-        const slotIndex = this.getAttribute('slotIndex');
+        /** @type {BankItem} */
+        const bankSlot = _this.player.bankManager.items[this.getAttribute('slotIndex')];
         // If the slot is empty, don't show the tooltip.
-        if(_this.player.bankManager.items[slotIndex].catalogueEntry === null) return;
+        if(bankSlot.catalogueEntry === null) return;
 
-        _this.GUI.bankPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + _this.player.bankManager.items[slotIndex].catalogueEntry.idName);
-        _this.GUI.bankPanel.tooltip.style.visibility = 'visible';
+        const bankPanel = _this.GUI.bankPanel;
+
+        bankPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + bankSlot.catalogueEntry.idName);
+        bankPanel.tooltip.style.visibility = 'visible';
+
+        bankPanel.slots[this.getAttribute('slotIndex')].container.appendChild(bankPanel.tooltip);
+        console.log("tooltip added");
     }
 
     slotMouseOut () {
@@ -114,26 +173,37 @@ class BankPanel {
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
 
-        //console.log("slot drag start");
+        console.log("slot drag start");
 
         const slotIndex = this.getAttribute('slotIndex');
+
+        // Don't bother doing a drag if there is nothing in this slot.
+        if(_this.player.bankManager.items[slotIndex].catalogueEntry === null){
+            console.log("empty slot:", slotIndex);
+            event.preventDefault();
+            return;
+        }
+
         const icon = _this.GUI.bankPanel.slots[slotIndex].icon;
         //console.log("icon:", icon);
         event.dataTransfer.setData('text/plain', null);
         _this.GUI.dragData = {
-            dragOrigin: _this.GUI.bankPanel.contents,
+            dragOrigin: _this.GUI.bankPanel.bankSlots,
             bankSlot: _this.GUI.bankPanel.slots[slotIndex].container
         };
         event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
 
-        // Highlight the bank panel slots.
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
+        // Highlight the bank panel slots, to show that slots can be swapped within the bank panel.
+        const bankGUISlots = _this.GUI.bankPanel.slots;
+        for(let i=0, len=bankGUISlots.length; i<len; i+=1){
+            bankGUISlots[i].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
-        // Highlight the inventory bar slots.
-        for(let slotKey in _this.GUI.inventoryBar.slots){
-            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
+
+        // Highlight the inventory bar slots, to show that bank slots can be moved to the inventory bar.
+        const inventoryGUISlots = _this.GUI.inventoryBar.slots;
+        for(let slotKey in inventoryGUISlots){
+            if(inventoryGUISlots.hasOwnProperty(slotKey) === false) continue;
+            inventoryGUISlots[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
         }
 
         this.style.backgroundColor = _this.GUI.GUIColours.currentlyDragged;
@@ -154,33 +224,36 @@ class BankPanel {
         if(_this.GUI.dragData.dragOrigin === _this.GUI.inventoryBar.slotContainer){
             _this.player.bankManager.depositItem(_this.GUI.dragData.inventorySlot.slotKey, this.getAttribute('slotIndex'));
         }
-        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.contents){
+        else if(_this.GUI.dragData.dragOrigin === _this.GUI.bankPanel.bankSlots){
             const otherSlotIndex = _this.GUI.dragData.bankSlot.getAttribute('slotIndex');
             _this.player.bankManager.swapSlots(otherSlotIndex, thisSlotIndex);
         }
         // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
         _this.GUI.dragData.dragOrigin = null;
-
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
+        // Reset the highlighted bank slots.
+        const bankSlots = _this.GUI.bankPanel.slots;
+        for(let i=0, len=bankSlots.length; i<len; i+=1){
+            bankSlots[i].refreshBackground();
         }
     }
 
     slotDragEnd (event) {
-        //console.log("slot drag end");
+        console.log("slot drag end");
         event.preventDefault();
         // Prevent the GUI from firing it's own drag and drop stuff from this slot.
         event.stopPropagation();
         this.style.backgroundColor = "transparent";
 
         // De-highlight the panel slot drop targets.
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = "transparent";
+        const bankSlots = _this.GUI.bankPanel.slots;
+        for(let i=0, len=bankSlots.length; i<len; i+=1){
+            bankSlots[i].refreshBackground();
         }
         // And the inventory bar slots.
-        for(let slotKey in _this.GUI.inventoryBar.slots){
-            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = "transparent";
+        const inventorySlots = _this.GUI.inventoryBar.slots;
+        for(let slotKey in inventorySlots){
+            if(inventorySlots.hasOwnProperty(slotKey) === false) continue;
+            inventorySlots[slotKey].container.style.backgroundColor = "transparent";
         }
         // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
         _this.GUI.dragData.dragOrigin = null;

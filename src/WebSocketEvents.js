@@ -472,7 +472,7 @@ eventResponses.unequip_clothes = function (data) {
 
 eventResponses.activate_ammunition = function (data) {
     // Show the equipped icon on the inventory slot.
-    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/ammunition-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/hud/ammunition-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
 
@@ -483,7 +483,7 @@ eventResponses.deactivate_ammunition = function (data) {
 
 eventResponses.activate_clothing = function (data) {
     // Show the equipped icon on the inventory slot.
-    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/clothing-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/hud/clothing-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
 
@@ -495,7 +495,7 @@ eventResponses.deactivate_clothing = function (data) {
 eventResponses.activate_holding = function (data) {
     _this.player.holdingItem = true;
     // Show the equipped icon on the inventory slot.
-    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/holding-icon.png';
+    _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/hud/holding-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
 };
 

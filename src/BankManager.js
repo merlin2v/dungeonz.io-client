@@ -49,7 +49,7 @@ class BankManager {
      * @param {Number|null} maxDurability
      */
     addItemToContents (slotIndex, catalogueEntry, durability, maxDurability) {
-        //console.log("add item to contents:", slotIndex);
+        console.log("add item to bank contents:", slotIndex);
         const slot = this.items[slotIndex];
         if(slot === undefined) return;
 
@@ -63,11 +63,14 @@ class BankManager {
         guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
         guiSlot.icon.style.visibility = "visible";
 
+        // Make the background look occupied.
+        guiSlot.refreshBackground();
+
         if(durability !== null){
             guiSlot.durability.style.visibility = "visible";
             // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
             const meterNumber = Math.floor((durability / maxDurability) * 10);
-            guiSlot.durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+            guiSlot.durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
         }
         else {
             guiSlot.durability.style.visibility = "hidden";
@@ -91,6 +94,9 @@ class BankManager {
         const guiSlot = _this.GUI.bankPanel.slots[slotIndex];
         guiSlot.icon.style.visibility = "hidden";
         guiSlot.durability.style.visibility = "hidden";
+
+        // Make the background look empty.
+        guiSlot.refreshBackground();
     }
 
     swapSlots (fromIndex, toIndex) {
@@ -137,7 +143,7 @@ class BankManager {
                 GUIslots[fromIndex].durability.style.visibility = "visible";
                 // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
                 const meterNumber = Math.floor((fromItem.durability / fromItem.maxDurability) * 10);
-                GUIslots[fromIndex].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+                GUIslots[fromIndex].durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
             }
         }
 
@@ -163,7 +169,7 @@ class BankManager {
                 GUIslots[toIndex].durability.style.visibility = "visible";
                 // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
                 const meterNumber = Math.floor((toItem.durability / toItem.maxDurability) * 10);
-                GUIslots[toIndex].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+                GUIslots[toIndex].durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
             }
         }
 

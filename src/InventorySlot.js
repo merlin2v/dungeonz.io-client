@@ -57,7 +57,7 @@ class InventorySlot {
             guiSlot.durability.style.visibility = "visible";
             // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
             const meterNumber = Math.floor((durability / maxDurability) * 10);
-            guiSlot.durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+            guiSlot.durability.src = "assets/img/gui/hud//durability-meter-" + meterNumber + ".png";
         }
         else {
             guiSlot.durability.style.visibility = "hidden";
@@ -84,7 +84,7 @@ class InventorySlot {
         this.durability = value;
         // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
         const meterNumber = Math.floor((this.durability / this.maxDurability) * 10);
-        _this.GUI.inventoryBar.slots[this.slotKey].durability.src = "assets/img/gui/durability-meter-" + meterNumber + ".png";
+        _this.GUI.inventoryBar.slots[this.slotKey].durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
     }
 }
 

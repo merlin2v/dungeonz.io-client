@@ -13,10 +13,17 @@ class BankManager {
 
     constructor (items) {
 
+        console.log("bank manager, items:", items);
+
+        this.selectedTab = 1;
+
+        // Add to the bank panel slot index to get the slot index relative to the selected tab.
+        this.selectedTabSlotIndexOffset = 0;
+
         /** @type {BankItem[]} */
         this.items = [];
 
-        for(let i=0; i<20; i+=1){
+        for(let i=0; i<60; i+=1){
             this.items.push(new BankItem());
         }
 
@@ -31,6 +38,13 @@ class BankManager {
                 this.items[item.slotIndex].maxDurability = item.maxDurability;
             }
         }
+    }
+
+    slotIndexToTabNumber (slotIndex) {
+        if(slotIndex < 15) return 1;
+        if(slotIndex < 30) return 2;
+        if(slotIndex < 45) return 3;
+        return 4;
     }
 
     depositItem (inventorySlotKey, bankSlotIndex) {
@@ -57,23 +71,26 @@ class BankManager {
         slot.durability = durability;
         slot.maxDurability = maxDurability;
 
-        const guiSlot = _this.GUI.bankPanel.slots[slotIndex];
+        // If the target slot index is within the current tab, update the GUI slot.
+        if(this.slotIndexToTabNumber(slotIndex) === this.selectedTab){
+            const guiSlot = _this.GUI.bankPanel.slots[slotIndex - this.selectedTabSlotIndexOffset];
 
-        // Change the source image for the icon.
-        guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
-        guiSlot.icon.style.visibility = "visible";
+            // Change the source image for the icon.
+            guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
+            guiSlot.icon.style.visibility = "visible";
 
-        // Make the background look occupied.
-        guiSlot.refreshBackground();
+            // Make the background look occupied.
+            guiSlot.refreshBackground();
 
-        if(durability !== null){
-            guiSlot.durability.style.visibility = "visible";
-            // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
-            const meterNumber = Math.floor((durability / maxDurability) * 10);
-            guiSlot.durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
-        }
-        else {
-            guiSlot.durability.style.visibility = "hidden";
+            if(durability !== null){
+                guiSlot.durability.style.visibility = "visible";
+                // Get the durability of the item as a proportion of the max durability, to use as the meter source image.
+                const meterNumber = Math.floor((durability / maxDurability) * 10);
+                guiSlot.durability.src = "assets/img/gui/hud/durability-meter-" + meterNumber + ".png";
+            }
+            else {
+                guiSlot.durability.style.visibility = "hidden";
+            }
         }
 
     }
@@ -83,7 +100,7 @@ class BankManager {
      * @param {Number} slotIndex - The index of the slot to empty.
      */
     removeItemFromContents (slotIndex) {
-        //console.log("remove item from contents:", slotIndex);
+        console.log("remove item from contents:", slotIndex);
         const slot = this.items[slotIndex];
         if(slot === undefined) return;
 
@@ -91,21 +108,28 @@ class BankManager {
         slot.durability = null;
         slot.maxDurability = null;
 
-        const guiSlot = _this.GUI.bankPanel.slots[slotIndex];
-        guiSlot.icon.style.visibility = "hidden";
-        guiSlot.durability.style.visibility = "hidden";
+        // If the target slot index is within the current tab, update the GUI slot.
+        if(this.slotIndexToTabNumber(slotIndex) === this.selectedTab){
+            const guiSlot = _this.GUI.bankPanel.slots[slotIndex - this.selectedTabSlotIndexOffset];
+            guiSlot.icon.style.visibility = "hidden";
+            guiSlot.durability.style.visibility = "hidden";
 
-        // Make the background look empty.
-        guiSlot.refreshBackground();
+            // Make the background look empty.
+            guiSlot.refreshBackground();
+        }
     }
 
     swapSlots (fromIndex, toIndex) {
-        //console.log("swapping bank slots:", fromIndex, "to", toIndex);
+        console.log("swapping bank slots:", fromIndex, "to", toIndex);
+
+        // Make sure they are numbers, not strings.
+        fromIndex *= 1;
+        toIndex *= 1;
 
         const GUIslots = _this.GUI.bankPanel.slots;
 
         /** @type {BankItem} */
-        const fromItem = this.items[fromIndex];
+        const fromItem = this.items[fromIndex + this.selectedTabSlotIndexOffset];
         // Temporary store of the data of the item being moved.
         const fromSlotData = {
             catalogueEntry: fromItem.catalogueEntry,
@@ -115,7 +139,7 @@ class BankManager {
         };
 
         /** @type {BankItem} */
-        const toItem = this.items[toIndex];
+        const toItem = this.items[toIndex + this.selectedTabSlotIndexOffset];
 
         // Update the item data of the item being move to be the same as what it is moved into.
         fromItem.catalogueEntry = toItem.catalogueEntry;
@@ -173,7 +197,20 @@ class BankManager {
             }
         }
 
-        window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex, toSlotIndex: toIndex});
+        window.ws.sendEvent("bank_swap_slots", {fromSlotIndex: fromIndex + this.selectedTabSlotIndexOffset, toSlotIndex: toIndex + this.selectedTabSlotIndexOffset});
+    }
+
+    setSelectedTab (tabNumber) {
+        // Make sure it is a number, and not a string. 1, not "1".
+        this.selectedTab = 1*tabNumber;
+        this.selectedTabSlotIndexOffset = (1*tabNumber - 1) * 15;
+    }
+
+    loadTab (tabNumber) {
+        this.setSelectedTab(tabNumber);
+        // Works good enough.
+        _this.GUI.bankPanel.hide();
+        _this.GUI.bankPanel.show();
     }
 }
 

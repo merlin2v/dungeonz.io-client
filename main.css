@@ -320,7 +320,7 @@ sass --watch scss/Main.scss:main.css
   filter: brightness(110%);
 }
 
-#ad_banner {
+#home_ad_banner {
   position: absolute;
   width: 300px;
   height: 250px;
@@ -414,6 +414,17 @@ sass --watch scss/Main.scss:main.css
 }
 #dmp_activate_accept:hover {
   background-color: #99e550;
+}
+
+#dmp_activate_show {
+  background-color: #306082;
+  color: #ffffff;
+  padding: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+#dmp_activate_show:hover {
+  background-color: #639bff;
 }
 
 .gui_zoomable {
@@ -1094,96 +1105,100 @@ sass --watch scss/Main.scss:main.css
   padding: 10px;
 }
 
-#bank_panel {
-  display: inline-grid;
+#bank_tooltip {
+  position: absolute;
+  max-width: 250px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  background-color: #222034;
+  padding: 6px;
+  top: 0%;
+  transform: translate(-100%, 0%);
+  left: 0%;
 }
 
-#bank_tooltip {
-  left: 186px;
+#bank_inner_cont {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 15% auto;
+  grid-gap: 12px;
+  background-color: #222034;
+}
+
+#bank_dmp_tooltip {
+  position: absolute;
+  width: 300px;
+  color: #ffffff;
+  text-align: left;
+  font-size: 12px;
+  background-color: #222034;
+  padding: 8px;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  visibility: hidden;
+}
+
+#bank_tabs_cont {
+  display: grid;
+  grid-template-rows: repeat(4, 25%);
+  justify-items: center;
+  align-items: center;
+  background-color: #847e87;
+  padding-top: 40px;
+}
+
+.bank_tab_cont {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.bank_tab_button {
+  width: 70%;
+}
+.bank_tab_button:hover {
+  transform: scale(1.1);
+  filter: brightness(150%);
 }
 
 #bank_contents {
+  background-color: #9badb7;
   display: grid;
-  grid-template-columns: 48px 48px 48px 48px 48px;
-  grid-gap: 12px;
-  background-color: rgba(255, 255, 255, 0.8);
-  width: fit-content;
-  padding: 20px;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(3, 33%);
+  justify-items: center;
+  align-items: center;
+  padding: 12px;
 }
 
-#bank_spacer {
-  position: relative;
-  width: 80px;
-  height: 20px;
-  left: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
-  transform: translateX(-50%);
-}
-
-#bank_money_bar_cont {
-  display: grid;
-  grid-template-columns: 30% auto 30%;
-  grid-gap: 10px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-}
-
-.bank_money_text {
-  position: relative;
-  text-align: center;
-  line-height: 30px;
-  font-family: "Press Start 2P";
-  letter-spacing: 0.1em;
-  font-size: 20px;
-  font-weight: bold;
-  color: #222034;
+.bank_slot_cont {
+  height: 83%;
+  background-color: #696a6a;
+  border: 4px solid #222034;
+  margin: 4px;
+  pointer-events: auto;
   user-select: none;
 }
-
-#bank_deposit {
-  background-color: #6abe30;
-}
-#bank_deposit:hover {
-  background-color: #99e550;
+.bank_slot_cont:hover {
+  transform: scale(1.1);
+  filter: brightness(150%);
 }
 
-#bank_withdraw {
-  background-color: #fbf236;
-}
-#bank_withdraw:hover {
-  background-color: #eec39a;
-}
-
-#bank_money_cont {
-  display: inline-flex;
-  align-items: center;
-}
-
-#bank_money_icon {
-  width: 32px;
-  height: 32px;
-}
-
-#bank_money_value {
-  left: 10px;
-}
-
-#bank_money_input {
+.bank_slot_icon {
   position: relative;
-  width: 38%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.bank_slot_durability {
+  position: relative;
+  bottom: 5px;
+  width: 110%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: "Press Start 2P";
-  letter-spacing: 0.1em;
-  font-size: 20px;
-  font-weight: bold;
-  color: #222034;
+  pointer-events: none;
 }
 
 #spell_book_panel {
@@ -1485,25 +1500,36 @@ sass --watch scss/Main.scss:main.css
   color: #222034;
 }
 
-/*
 #shop_panel {
-    display: inline-grid;
-    //width: 516px;
-    user-select: none;
-}
-
-#shop_name {
-    width: 50%;
-    font-size: 18px;
+  visibility: hidden;
 }
 
 #shop_tooltip {
-    left: 276px;
-}*/
+  position: absolute;
+  max-width: 250px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  background-color: #222034;
+  padding: 6px;
+  top: 0%;
+}
+
+.shop_tooltip_left {
+  transform: translate(0%, 0%);
+  left: 100%;
+}
+
+.shop_tooltip_right {
+  transform: translate(-100%, 0%);
+  left: 0%;
+}
+
 #shop_contents {
   display: grid;
   height: 81%;
   overflow: auto;
+  overflow-x: hidden;
   text-align: center;
   align-items: center;
   grid-template-columns: repeat(4, 25%);

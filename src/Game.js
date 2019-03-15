@@ -65,6 +65,8 @@ dungeonz.Game.prototype = {
             holdingItem: false
         };
 
+        dungeonz.DMPActivated = data.player.dmpActivated || false;
+
         this.dynamicsData = data.dynamicsData;
 
         this.dayPhase = data.dayPhase;
@@ -133,6 +135,9 @@ dungeonz.Game.prototype = {
         }
         // Hide the panel, as if any of the slots were filled with existing items, they will be shown.
         _this.GUI.bankPanel.hide();
+
+        // Hide the shop panel, all of the slots are reset and empty ones won't be visible when first opened.
+        _this.GUI.shopPanel.hide();
 
         // Load the tasks.
         const tasks = _this.player.tasks;
@@ -738,7 +743,7 @@ dungeonz.Game.prototype = {
             y: -30
         }, dungeonz.CHAT_BASE_LIFESPAN + (60 * message.length), null, true);
         // How long the message should stay for.
-        chatText.lifespan = dungeonz.CHAT_BASE_LIFESPAN + (60 * message.length);
+        chatText.lifespan = dungeonz.CHAT_BASE_LIFESPAN + (80 * message.length);
         // Destroy and remove from the list of chat messages when the lifespan is over.
         chatText.events.onKilled.add(function () {
             this.destroy();

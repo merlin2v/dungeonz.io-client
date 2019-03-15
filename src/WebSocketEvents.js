@@ -101,6 +101,30 @@ window.connectToGameServer = function () {
 
 };
 
+eventResponses.dmp_code_accepted = function () {
+    console.log("* DMP code accepted");
+    // Keep this stored for future reference.
+    localStorage.setItem('DMP_activated', "true");
+    dungeonz.DMPActivated = true;
+};
+
+eventResponses.invalid_dmp_code = function () {
+    console.log("* Invalid DMP code");
+    // Get the warning text.
+    let element = document.getElementById("warning_message");
+    // Show the server connect error message.
+    element.innerText = dungeonz.getTextDef("Invalid DMP code warning");
+    // Show it.
+    element.style.visibility = "visible";
+    // Make it disappear after a few seconds.
+    setTimeout(function () {
+        element.style.visibility = "hidden";
+    }, 8000);
+    // The DMP code is not activated.
+    localStorage.setItem('DMP_activated', "false");
+    dungeonz.DMPActivated = true;
+};
+
 eventResponses.invalid_continue_code = function () {
     // Get the warning text.
     let element = document.getElementById("warning_message");
@@ -203,6 +227,12 @@ function tweenCompleteDown () {
 
 eventResponses.moved = function (data) {
     //console.log("moved: ", data);
+
+    if(_this.dynamics === undefined){
+        // Something went wrong... Reload the page.
+        location.reload();
+        return;
+    }
 
     const dynamic = _this.dynamics[data.id];
 
@@ -517,7 +547,7 @@ eventResponses.activate_spell_book = function (data) {
 };
 
 eventResponses.bank_item_deposited = function (data) {
-    //console.log("bank_item_deposited, data:", data);
+    console.log("bank_item_deposited, data:", data);
     _this.player.bankManager.addItemToContents(data.slotIndex, ItemTypes[data.typeNumber], data.durability, data.maxDurability);
 };
 

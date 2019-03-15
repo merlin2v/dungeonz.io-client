@@ -336,7 +336,7 @@
   }
 }
 
-#ad_banner {
+#home_ad_banner {
   position: absolute;
   width: 300px;
   height: 250px;
@@ -430,5 +430,16 @@
   margin-right: 30%;
   &:hover {
     background-color: $colourDB32LimeGreen;
+  }
+}
+
+#dmp_activate_show {
+  background-color: $colourDB32PrussianBlue;
+  color: $colourDB32White;
+  padding: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  &:hover {
+    background-color: $colourDB32LightBlue;
   }
 }

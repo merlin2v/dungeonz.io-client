@@ -495,7 +495,7 @@
             <li id="add_translation"        class="language_option" onclick="window.open('https://docs.google.com/spreadsheets/d/1n6jSigPBWrubNQMTz00GsLIh3U8CMtfZH8wMFYmfHaA/edit#gid=0', '_blank');"></li>
         </ul>
 
-        <div id="ad_banner"></div>
+        <div id="home_ad_banner"></div>
 
         <div id="play_cont">
             <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
@@ -532,13 +532,14 @@
             <div id="dmp_buy_info">
                 <p id="dmp_buy_info_1"></p>
                 <p id="dmp_buy_info_2"></p>
-                <p id="dmp_buy_info_3"></p>wire up the dmps
+                <p id="dmp_buy_info_3"></p>
             </div>
         </div>
         <div id="dmp_spacer"></div>
         <div id="dmp_activate_subheader"></div>
         <input id="dmp_activate_input" class="home_input" type="text" maxlength="20" autofocus>
-        <div id="dmp_activate_accept"></div>
+        <div id="dmp_activate_accept" onclick="dmpAcceptPressed()"></div>
+        <div id="dmp_activate_show" onclick="dmpShowPressed()"></div>
     </div>
 
     <script>
@@ -642,12 +643,14 @@
         }
 
         function playPressed () {
+            const dmpCode = localStorage.getItem('DMP_code');
+
             if(window.newCharacter === true){
                 // New character option selected. Start as a new character with the given display name.
                 window.connectToGameServer();
                 // Only attempt to connect if the connection is ready to communicate.
                 if(ws.readyState === 1){
-                    ws.sendEvent('new_char', {displayName: document.getElementById('name_input').value});
+                    ws.sendEvent('new_char', {displayName: document.getElementById('name_input').value, dmpCode: dmpCode});
                 }
             }
             else {
@@ -655,7 +658,7 @@
                 window.connectToGameServer();
                 // Only attempt to connect if the connection is ready to communicate.
                 if(ws.readyState === 1){
-                    ws.sendEvent('cont_char', {continueCode: document.getElementById('continue_code_input').value});
+                    ws.sendEvent('cont_char', {continueCode: document.getElementById('continue_code_input').value, dmpCode: dmpCode});
                 }
             }
         }
@@ -695,6 +698,7 @@
             document.getElementById('dmp_activate_subheader').innerText=dungeonz.getTextDef('Activate');
             document.getElementById('dmp_activate_input').placeholder=  dungeonz.getTextDef('Enter DMP code');
             document.getElementById('dmp_activate_accept').innerText=   dungeonz.getTextDef('Accept');
+            document.getElementById('dmp_activate_show').innerText=     dungeonz.getTextDef('Show');
 
             // General GUI tooltips.
             document.getElementById('defence_tooltip').innerText =      dungeonz.getTextDef('Defence tooltip');
@@ -748,8 +752,6 @@
             document.getElementById('stats_panel_name').innerText =             dungeonz.getTextDef('Stats panel: name');
             document.getElementById('bank_name').innerText =                    dungeonz.getTextDef('Bank panel: name');
 
-            document.getElementById('shop_buy_button').innerText =              dungeonz.getTextDef('Buy');
-
         }
 
         // Load the default language.
@@ -799,6 +801,53 @@
         xmlhttp.open('GET', './changelog.txt', false);
         xmlhttp.send();
         text = xmlhttp.responseText;
+
+        // Check if a DMP code is saved on this device. If so, load and use it.
+        const dmpCode = localStorage.getItem('DMP_code');
+        if(dmpCode){
+            console.log("dmp exists:", dmpCode);
+            // Set the DMP code in the input, or it will be empty when dmpAcceptPressed is run and will be saved.
+            document.getElementById('dmp_activate_input').value = dmpCode;
+            dmpAcceptPressed();
+            // If there is nothing in the
+            // If the code is activated (been verified by server before), then hide all of the ads.
+            if(localStorage.getItem('DMP_activated') === 'true'){
+                document.getElementById('home_ad_banner').style.display = "none";
+            }
+        }
+        // No DMP code. Hide the show button.
+        else {
+            document.getElementById('dmp_activate_show').style.display = "none";
+        }
+
+        function dmpAcceptPressed () {
+            console.log("dmp accept pressed");
+            
+            const inputElement = document.getElementById('dmp_activate_input');
+            const dmpCode = inputElement.value;
+            // Store the code, ready to be sent when the player attempts to play.
+            // This isn't checked straight away. Would need to start the server connection right now for that.
+            localStorage.setItem('DMP_code', dmpCode);
+
+            // If empty, don't swap the buttons around.
+            if(dmpCode === "") return;
+
+            // Hide the DMP code, and change the accept button to the show one.
+            let hiddenCode = '';
+            for(let i=0; i<dmpCode.length; i+=1) hiddenCode += '*';
+            inputElement.value = hiddenCode;
+
+            document.getElementById('dmp_activate_accept').style.display = "none";
+            document.getElementById('dmp_activate_show').style.display = "block";
+        }
+
+        function dmpShowPressed () {
+            // Show the DMP code, and change the show button to the accept one, in case they have changed it so they can update it.
+            document.getElementById('dmp_activate_input').value = localStorage.getItem('DMP_code');
+
+            document.getElementById('dmp_activate_accept').style.display = "block";
+            document.getElementById('dmp_activate_show').style.display = "none";
+        }
 
     </script>
 

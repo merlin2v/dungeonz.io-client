@@ -72,7 +72,7 @@ class ShopPanel extends PanelTemplate {
         buyButtonContainer.appendChild(this.buyButton);
 
         const buyText = document.createElement('div');
-        buyText.innerText = "Buy";
+        buyText.innerText = dungeonz.getTextDef('Buy');
         buyText.className = 'centered shop_buy_text';
         buyButtonContainer.appendChild(buyText);
 

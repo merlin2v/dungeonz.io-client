@@ -1,6 +1,7 @@
 
 import TaskTypes from '../../src/catalogues/TaskTypes'
 import ItemTypes from '../../src/catalogues/ItemTypes'
+import PanelTemplate from "./PanelTemplate";
 
 class TaskSlot {
     constructor (panel, taskID, progress) {
@@ -11,55 +12,69 @@ class TaskSlot {
         this.container = document.createElement('div');
         this.container.className = 'task_slot_cont';
 
-        this.taskName = document.createElement('p');
+        this.taskName = document.createElement('div');
+        this.taskName.className = 'task_slot_cell task_slot_task_name';
         this.taskName.innerText = dungeonz.getTextDef("Task: " + task.textDefIDName) || task.textDefIDName;
 
-        this.progress = document.createElement('p');
+        this.progress = document.createElement('div');
+        this.progress.className = 'task_slot_cell';
         this.progress.innerText = progress + "/" + task.completionThreshold;
 
         this.rewardContainer = document.createElement('div');
-        this.rewardContainer.className = 'task_reward_cont';
+        this.rewardContainer.className = 'task_reward_cont task_slot_cell';
+
+        this.rewardItemCont1 = document.createElement('div');
+        this.rewardItemCont1.className = "task_reward_item_cont";
+        this.rewardItemCont1.onmouseover = panel.rewardItemMouseOver;
+        this.rewardItemCont1.onmouseout = panel.rewardItemMouseOut;
+        this.rewardContainer.appendChild(this.rewardItemCont1);
 
         this.rewardItemIcon1 = document.createElement('img');
         this.rewardItemIcon1.className = "task_reward_item";
-        this.rewardItemIcon1.onmouseover = panel.rewardItemMouseOver;
-        this.rewardItemIcon1.onmouseout = panel.rewardItemMouseOut;
-        this.rewardContainer.appendChild(this.rewardItemIcon1);
+        this.rewardItemCont1.appendChild(this.rewardItemIcon1);
+
+        this.rewardItemCont2 = document.createElement('div');
+        this.rewardItemCont2.className = "task_reward_item_cont";
+        this.rewardItemCont2.onmouseover = panel.rewardItemMouseOver;
+        this.rewardItemCont2.onmouseout = panel.rewardItemMouseOut;
+        this.rewardContainer.appendChild(this.rewardItemCont2);
 
         this.rewardItemIcon2 = document.createElement('img');
         this.rewardItemIcon2.className = "task_reward_item";
-        this.rewardItemIcon2.onmouseover = panel.rewardItemMouseOver;
-        this.rewardItemIcon2.onmouseout = panel.rewardItemMouseOut;
-        this.rewardContainer.appendChild(this.rewardItemIcon2);
+        this.rewardItemCont2.appendChild(this.rewardItemIcon2);
+
+        this.rewardItemCont3 = document.createElement('div');
+        this.rewardItemCont3.className = "task_reward_item_cont";
+        this.rewardItemCont3.onmouseover = panel.rewardItemMouseOver;
+        this.rewardItemCont3.onmouseout = panel.rewardItemMouseOut;
+        this.rewardContainer.appendChild(this.rewardItemCont3);
 
         this.rewardItemIcon3 = document.createElement('img');
         this.rewardItemIcon3.className = "task_reward_item";
-        this.rewardItemIcon3.onmouseover = panel.rewardItemMouseOver;
-        this.rewardItemIcon3.onmouseout = panel.rewardItemMouseOut;
-        this.rewardContainer.appendChild(this.rewardItemIcon3);
+        this.rewardItemCont3.appendChild(this.rewardItemIcon3);
 
         if(task.rewardItemTypeNumbers[0]){
             this.rewardItemIcon1.src = 'assets/img/gui/items/' + ItemTypes[task.rewardItemTypeNumbers[0]].iconSource + '.png';
             this.rewardItemIcon1.style.visibility = "visible";
-            this.rewardItemIcon1.setAttribute('itemNumber', task.rewardItemTypeNumbers[0]);
+            this.rewardItemCont1.setAttribute('itemNumber', task.rewardItemTypeNumbers[0]);
         }
 
         if(task.rewardItemTypeNumbers[1]){
             this.rewardItemIcon2.src = 'assets/img/gui/items/' + ItemTypes[task.rewardItemTypeNumbers[1]].iconSource + '.png';
             this.rewardItemIcon2.style.visibility = "visible";
-            this.rewardItemIcon2.setAttribute('itemNumber', task.rewardItemTypeNumbers[1]);
+            this.rewardItemCont2.setAttribute('itemNumber', task.rewardItemTypeNumbers[1]);
         }
 
         if(task.rewardItemTypeNumbers[2]){
             this.rewardItemIcon3.src = 'assets/img/gui/items/' + ItemTypes[task.rewardItemTypeNumbers[2]].iconSource + '.png';
             this.rewardItemIcon3.style.visibility = "visible";
-            this.rewardItemIcon3.setAttribute('itemNumber', task.rewardItemTypeNumbers[2]);
+            this.rewardItemCont3.setAttribute('itemNumber', task.rewardItemTypeNumbers[2]);
         }
 
         this.rewardGloryIcon = document.createElement('img');
         this.rewardGloryIcon.className = 'task_glory_icon';
-        this.rewardGloryIcon.src = 'assets/img/gui/glory-icon.png';
-        this.rewardGloryAmount = document.createElement('p');
+        this.rewardGloryIcon.src = 'assets/img/gui/hud/glory-icon.png';
+        this.rewardGloryAmount = document.createElement('div');
         this.rewardGloryAmount.innerText = task.rewardGlory;
 
         this.rewardContainer.appendChild(this.rewardGloryIcon);
@@ -73,31 +88,101 @@ class TaskSlot {
         this.container.appendChild(this.progress);
         this.container.appendChild(this.rewardContainer);
 
-        panel.list.appendChild(this.container);
+        panel.listContainer.appendChild(this.container);
 
         this.completed = false;
         // Check this task is already completed. Progress might have been made before, but
         // the completion threshold lowered since they last played, and thus now is complete.
         if(progress >= task.completionThreshold){
-            this.container.style.backgroundColor = _this.GUI.GUIColours.taskComplete;
+            this.setCompleted();
             this.completed = true;
         }
     }
+
+    setDefault () {
+        this.taskName.style.backgroundColor = _this.GUI.GUIColours.taskSlotDefault;
+        this.progress.style.backgroundColor = _this.GUI.GUIColours.taskSlotDefault;
+        this.rewardContainer.style.backgroundColor = _this.GUI.GUIColours.taskSlotDefault;
+    }
+
+    setTracking () {
+        this.taskName.style.backgroundColor = _this.GUI.GUIColours.taskSlotTracking;
+        this.progress.style.backgroundColor = _this.GUI.GUIColours.taskSlotTracking;
+        this.rewardContainer.style.backgroundColor = _this.GUI.GUIColours.taskSlotTracking;
+    }
+
+    setCompleted () {
+        this.taskName.style.backgroundColor = _this.GUI.GUIColours.taskSlotCompleted;
+        this.progress.style.backgroundColor = _this.GUI.GUIColours.taskSlotCompleted;
+        this.rewardContainer.style.backgroundColor = _this.GUI.GUIColours.taskSlotCompleted;
+    }
 }
 
-class TasksPanel {
+class TasksPanel extends PanelTemplate {
 
     constructor (tasks) {
-        const panel = this;
+        super(document.getElementById('tasks_panel'), 540, 380, 'Tasks', 'gui/hud/tasks-icon');
 
-        this.container =        document.getElementById('tasks_panel');
-        this.tooltip =          document.getElementById('tasks_panel_tooltip');
-        this.name =             document.getElementById('tasks_name');
-        this.list =             document.getElementById('tasks_list');
-        this.claimButton =      document.getElementById('tasks_claim_button');
-        this.claimButtonCont =  document.getElementById('tasks_claim_button_cont');
+        this.innerContainer = document.createElement('div');
+        this.innerContainer.id = 'tasks_inner_cont';
+        this.contentsContainer.appendChild(this.innerContainer);
 
-        this.claimButton.onclick = this.claimPressed;
+        this.headingsContainer = document.createElement('div');
+        this.headingsContainer.id = 'tasks_headings_cont';
+        this.innerContainer.appendChild(this.headingsContainer);
+
+        const taskText = document.createElement('div');
+        taskText.innerText = "Task";
+        const progressText = document.createElement('div');
+        progressText.innerText = "Progress";
+        const rewardText = document.createElement('div');
+        rewardText.innerText = "Reward";
+        this.headingsContainer.appendChild(taskText);
+        this.headingsContainer.appendChild(progressText);
+        this.headingsContainer.appendChild(rewardText);
+
+        this.listContainer = document.createElement('div');
+        this.listContainer.id = 'tasks_list_cont';
+        this.innerContainer.appendChild(this.listContainer);
+
+        this.bottomContainer = document.createElement('div');
+        this.bottomContainer.id = 'tasks_bottom_cont';
+        this.innerContainer.appendChild(this.bottomContainer);
+
+        this.trackButtonContainer = document.createElement('div');
+        this.trackButtonContainer.className = 'tasks_bottom_button_cont';
+        this.bottomContainer.appendChild(this.trackButtonContainer);
+
+        this.trackButton = document.createElement('img');
+        this.trackButton.className = 'centered tasks_bottom_button';
+        this.trackButton.src = 'assets/img/gui/panels/track-button-border-inactive.png';
+        this.trackButton.draggable = false;
+        this.trackButtonContainer.appendChild(this.trackButton);
+
+        const trackText = document.createElement('div');
+        trackText.innerText = 'Track'; //dungeonz.getTextDef('Track');
+        trackText.className = 'centered tasks_bottom_text';
+        this.trackButtonContainer.appendChild(trackText);
+
+        this.claimButtonContainer = document.createElement('div');
+        this.claimButtonContainer.className = 'tasks_bottom_button_cont';
+        this.bottomContainer.appendChild(this.claimButtonContainer);
+
+        this.claimButton = document.createElement('img');
+        this.claimButton.className = 'centered tasks_bottom_button';
+        this.claimButton.src = 'assets/img/gui/panels/claim-button-border-invalid.png';
+        this.claimButton.draggable = false;
+        this.claimButtonContainer.appendChild(this.claimButton);
+
+        const claimText = document.createElement('div');
+        claimText.innerText = dungeonz.getTextDef('Claim');
+        claimText.className = 'centered tasks_bottom_text';
+        this.claimButtonContainer.appendChild(claimText);
+
+        this.claimButtonContainer.onclick = this.claimPressed;
+
+        this.tooltip = document.createElement('div');
+        this.tooltip.id = "tasks_tooltip";
 
         /**
          * @type {Object<TaskSlot>} Each task slot instance, accessed by the task ID of the task it is for.
@@ -109,11 +194,11 @@ class TasksPanel {
     }
 
     show () {
-        _this.GUI.isAnyPanelOpen = true;
-        // Show the panel.
-        this.container.style.visibility = "visible";
+        super.show();
 
-        // Shoe the reward item icons.
+        _this.GUI.isAnyPanelOpen = true;
+
+        // Show the reward item icons.
         for(let taskKey in this.taskSlots){
             if(this.taskSlots.hasOwnProperty(taskKey) === false) continue;
             const taskSlot = this.taskSlots[taskKey];
@@ -124,14 +209,13 @@ class TasksPanel {
     }
 
     hide () {
+        super.hide();
+
         _this.GUI.isAnyPanelOpen = false;
-        // Hide the panel.
-        this.container.style.visibility = "hidden";
-        this.tooltip.style.visibility = 'hidden';
 
         // If a slot is selected, deselect it.
         if(this.selectedSlot !== null){
-            this.selectedSlot.container.style.borderWidth = "0";
+            this.selectedSlot.container.style.borderColor = _this.GUI.GUIColours.taskSlotSelected;
             this.selectedSlot = null;
         }
         // Hide the reward item icons and the claim button, as they have their visibility set.
@@ -142,12 +226,13 @@ class TasksPanel {
             taskSlot.rewardItemIcon2.style.visibility = "hidden";
             taskSlot.rewardItemIcon3.style.visibility = "hidden";
         }
-        this.claimButtonCont.style.visibility = "hidden";
     }
 
     rewardItemMouseOver () {
-        _this.GUI.tasksPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + ItemTypes[this.getAttribute('itemNumber')].idName);
-        _this.GUI.tasksPanel.tooltip.style.visibility = 'visible';
+        const tooltip = _this.GUI.tasksPanel.tooltip;
+        tooltip.innerText = dungeonz.getTextDef("Item name: " + ItemTypes[this.getAttribute('itemNumber')].idName);
+        tooltip.style.visibility = 'visible';
+        this.appendChild(tooltip);
     }
 
     rewardItemMouseOut () {
@@ -164,7 +249,7 @@ class TasksPanel {
         ws.sendEvent("task_claim_reward", tasksPanel.selectedSlot.container.getAttribute('taskID'));
 
         // Assume it will be claimed successfully, so hide the claim button.
-        tasksPanel.claimButtonCont.style.visibility = "hidden";
+        tasksPanel.claimButtonContainer.style.visibility = "hidden";
     }
 
     /**
@@ -189,11 +274,12 @@ class TasksPanel {
 
     updateTaskProgress (taskID, progress) {
         _this.player.tasks[taskID] = progress;
-        this.taskSlots[taskID].progress.innerText = progress + "/" + TaskTypes[taskID].completionThreshold;
+        const taskSlot = this.taskSlots[taskID];
+        taskSlot.progress.innerText = progress + "/" + TaskTypes[taskID].completionThreshold;
         // If the progress is now enough for the completion threshold, make the slot green.
         if(progress >= TaskTypes[taskID].completionThreshold){
-            this.taskSlots[taskID].container.style.backgroundColor = _this.GUI.GUIColours.taskComplete;
-            this.taskSlots[taskID].completed = true;
+            taskSlot.setCompleted();
+            taskSlot.completed = true;
             // Tell them via a chat message.
             _this.chat(undefined, dungeonz.getTextDef("Task completed"), "#50ff7f");
         }
@@ -205,26 +291,30 @@ class TasksPanel {
         if(tasksPanel.selectedSlot === null){
             const slot = tasksPanel.taskSlots[this.getAttribute('taskID')];
             tasksPanel.selectedSlot = slot;
-            slot.container.style.borderWidth = "6px";
+            slot.container.style.backgroundColor = _this.GUI.GUIColours.taskSlotSelected;
+            slot.container.style.borderColor = _this.GUI.GUIColours.taskSlotSelected;
             // Show the claim button if the task is complete.
-            if(tasksPanel.selectedSlot.completed === true) tasksPanel.claimButtonCont.style.visibility = "visible";
-            else tasksPanel.claimButtonCont.style.visibility = "hidden";
+            if(tasksPanel.selectedSlot.completed === true) tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-valid.png';
+            else tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-invalid.png'
         }
         // The selected slot was selected again, deselect it.
         else if(tasksPanel.selectedSlot.container === this){
-            tasksPanel.selectedSlot.container.style.borderWidth = "0";
+            tasksPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.taskSlotUnselected;
+            tasksPanel.selectedSlot.container.style.borderColor = _this.GUI.GUIColours.taskSlotUnselected;
             tasksPanel.selectedSlot = null;
-            tasksPanel.claimButtonCont.style.visibility = "hidden";
+            tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-invalid.png';
         }
         // A slot is already selected, deselect it and select this one.
         else {
-            tasksPanel.selectedSlot.container.style.borderWidth = "0";
+            tasksPanel.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.taskSlotUnselected;
+            tasksPanel.selectedSlot.container.style.borderColor = _this.GUI.GUIColours.taskSlotUnselected;
             const slot = tasksPanel.taskSlots[this.getAttribute('taskID')];
             tasksPanel.selectedSlot = slot;
-            slot.container.style.borderWidth = "6px";
+            slot.container.style.backgroundColor = _this.GUI.GUIColours.taskSlotSelected;
+            slot.container.style.borderColor = _this.GUI.GUIColours.taskSlotSelected;
             // Show the claim button if the task is complete.
-            if(tasksPanel.selectedSlot.completed === true) tasksPanel.claimButtonCont.style.visibility = "visible";
-            else tasksPanel.claimButtonCont.style.visibility = "hidden";
+            if(tasksPanel.selectedSlot.completed === true) tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-valid.png';
+            else tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-invalid.png';
         }
     }
 

@@ -3,14 +3,13 @@ import PanelTemplate from "./PanelTemplate";
 
 class Tab {
     constructor (bankPanel, number) {
-        console.log("new tab:", number);
         this.container = document.createElement('div');
         this.container.className = 'bank_tab_cont';
         this.container.draggable = false;
         bankPanel.tabsContainer.appendChild(this.container);
 
         this.button = document.createElement('img');
-        this.button.src = 'assets/img/gui/panels/bank-tab-' + number + '-button-active.png';
+        this.button.src = 'assets/img/gui/panels/bank-tab-' + number + '-button-inactive.png';
         this.button.className = 'bank_tab_button';
         this.container.appendChild(this.button);
         // If no DMP, show the locked tab icon instead.
@@ -132,6 +131,8 @@ class BankPanel extends PanelTemplate {
             3: new Tab(this, 3),
             4: new Tab(this, 4),
         };
+        // Make the first tab look active, as that is what is loaded by default.
+        this.tabs["1"].button.src = 'assets/img/gui/panels/bank-tab-1-button-active.png';
 
         this.bankSlots = document.createElement('div');
         this.bankSlots.id = 'bank_contents';

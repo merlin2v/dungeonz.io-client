@@ -123,12 +123,8 @@ class GUI {
         this.tasksIcon.onmouseover =    function(){ game.GUI.tasksTooltip.style.visibility = "visible" };
         this.tasksIcon.onmouseout =     function(){ game.GUI.tasksTooltip.style.visibility = "hidden" };
         this.tasksIcon.onclick =       function(){
-            if(game.GUI.tasksPanel.container.style.visibility === "visible"){
-                game.GUI.tasksPanel.hide();
-            }
-            else {
-                game.GUI.tasksPanel.show();
-            }
+            if(game.GUI.tasksPanel.isOpen === true) game.GUI.tasksPanel.hide();
+            else game.GUI.tasksPanel.show();
         };
 
         this.clanIcon.onmouseover =   function(){ game.GUI.clanTooltip.style.visibility = "visible" };
@@ -234,6 +230,11 @@ class GUI {
             taskComplete: "rgba(106, 190, 48, 0.8)",
             bankSlotOccupied: "#ffffff",
             bankSlotEmpty: "#696a6a",
+            taskSlotUnselected: "#222034",
+            taskSlotSelected: "#df7126",
+            taskSlotDefault: "#ffffff",
+            taskSlotTracking: "#639bff",
+            taskSlotCompleted: "#6abe30",
         };
 
         this.dragData = null;

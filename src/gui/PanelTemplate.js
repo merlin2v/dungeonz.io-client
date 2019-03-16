@@ -10,6 +10,9 @@ class PanelTemplate {
     constructor (panelContainer, width, height, panelName, panelIconURL) {
         //console.log("panel container:", panelContainer);
 
+        // Is the panel currently open, visible, shown.
+        this.isOpen = false;
+
         this.topContainer = panelContainer;
         this.topContainer.draggable = false;
 
@@ -77,6 +80,7 @@ class PanelTemplate {
     }
 
     show () {
+        this.isOpen = true;
         // Show the panel.
         this.topContainer.style.visibility = "visible";
 
@@ -84,6 +88,7 @@ class PanelTemplate {
     }
 
     hide () {
+        this.isOpen = false;
         // Hide the panel.
         this.topContainer.style.visibility = "hidden";
 

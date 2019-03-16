@@ -547,7 +547,7 @@ eventResponses.activate_spell_book = function (data) {
 };
 
 eventResponses.bank_item_deposited = function (data) {
-    console.log("bank_item_deposited, data:", data);
+    //console.log("bank_item_deposited, data:", data);
     _this.player.bankManager.addItemToContents(data.slotIndex, ItemTypes[data.typeNumber], data.durability, data.maxDurability);
 };
 

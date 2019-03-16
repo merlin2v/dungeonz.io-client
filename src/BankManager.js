@@ -12,8 +12,7 @@ class BankItem {
 class BankManager {
 
     constructor (items) {
-
-        console.log("bank manager, items:", items);
+        //console.log("bank manager, items:", items);
 
         this.selectedTab = 1;
 
@@ -63,7 +62,7 @@ class BankManager {
      * @param {Number|null} maxDurability
      */
     addItemToContents (slotIndex, catalogueEntry, durability, maxDurability) {
-        console.log("add item to bank contents:", slotIndex);
+        //console.log("add item to bank contents:", slotIndex);
         const slot = this.items[slotIndex];
         if(slot === undefined) return;
 
@@ -100,7 +99,7 @@ class BankManager {
      * @param {Number} slotIndex - The index of the slot to empty.
      */
     removeItemFromContents (slotIndex) {
-        console.log("remove item from contents:", slotIndex);
+        //console.log("remove item from contents:", slotIndex);
         const slot = this.items[slotIndex];
         if(slot === undefined) return;
 
@@ -120,7 +119,7 @@ class BankManager {
     }
 
     swapSlots (fromIndex, toIndex) {
-        console.log("swapping bank slots:", fromIndex, "to", toIndex);
+        //console.log("swapping bank slots:", fromIndex, "to", toIndex);
 
         // Make sure they are numbers, not strings.
         fromIndex *= 1;

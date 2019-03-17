@@ -119,7 +119,6 @@ class TaskSlot {
 }
 
 class TasksPanel extends PanelTemplate {
-
     constructor (tasks) {
         super(document.getElementById('tasks_panel'), 540, 380, 'Tasks', 'gui/hud/tasks-icon');
 
@@ -182,7 +181,7 @@ class TasksPanel extends PanelTemplate {
         this.claimButtonContainer.onclick = this.claimPressed;
 
         this.tooltip = document.createElement('div');
-        this.tooltip.id = "tasks_tooltip";
+        this.tooltip.id = "tasks_panel_tooltip";
 
         /**
          * @type {Object<TaskSlot>} Each task slot instance, accessed by the task ID of the task it is for.
@@ -215,7 +214,8 @@ class TasksPanel extends PanelTemplate {
 
         // If a slot is selected, deselect it.
         if(this.selectedSlot !== null){
-            this.selectedSlot.container.style.borderColor = _this.GUI.GUIColours.taskSlotSelected;
+            this.selectedSlot.container.style.backgroundColor = _this.GUI.GUIColours.taskSlotUnselected;
+            this.selectedSlot.container.style.borderColor = _this.GUI.GUIColours.taskSlotUnselected;
             this.selectedSlot = null;
         }
         // Hide the reward item icons and the claim button, as they have their visibility set.

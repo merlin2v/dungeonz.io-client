@@ -112,12 +112,8 @@ class GUI {
         this.avatarIcon.onmouseover =   function(){ game.GUI.avatarTooltip.style.visibility = "visible" };
         this.avatarIcon.onmouseout =    function(){ game.GUI.avatarTooltip.style.visibility = "hidden" };
         this.avatarIcon.onclick =       function(){
-            if(game.GUI.statsPanel.container.style.visibility === "visible"){
-                game.GUI.statsPanel.hide();
-            }
-            else {
-                game.GUI.statsPanel.show();
-            }
+            if(game.GUI.statsPanel.isOpen === true) game.GUI.statsPanel.hide();
+            else game.GUI.statsPanel.show();
         };
 
         this.tasksIcon.onmouseover =    function(){ game.GUI.tasksTooltip.style.visibility = "visible" };

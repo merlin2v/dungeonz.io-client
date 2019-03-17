@@ -3,35 +3,49 @@
     display: inline-grid;
 }
 
-#stat_name {
-}
-
-#stats_panel_main {
-    background-color: $colourDB32WhiteOpacity80;
-}
-
-#stats_icons_cont {
+#stats_inner_cont {
+    background-color: $colourDB32VeryDarkPurple;
+    height: 100%;
     display: grid;
-    grid-template-columns: 48px 48px 48px 48px 48px 48px;
-    grid-template-rows: 48px 48px;
+    grid-template-columns: 32% auto;
     grid-gap: 12px;
+}
+
+#stat_icons_cont {
+    background-color: $colourDB32IronGrey;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(5, 20%);
+    align-items: center;
+    justify-items: center;
     padding: 10px;
 }
-.stat_icon_cont {
-    border-radius: 14px;
-    &:hover {
-        -webkit-filter: brightness(150%);
-    }
-}
-.stat_icon {
-    width: 48px;
-    height: 48px;
+
+.stat_icon_cont_cont {
+    height: 100%;
 }
 
-#stats_info_cont {
-    position: absolute;
+.stat_icon_cont {
+    border: 6px solid $colourDB32VeryDarkPurple;
+    text-align: center;
+    background-color: $colourDB32White;
+    height: 68%;
+    margin: 13px;
+    &:hover {
+        filter: brightness(150%);
+        transform: scale(1.2);
+    }
+}
+
+.stat_icon {
+    height: 100%;
+    //height: 48px;
+}
+
+#stat_info_cont {
     text-align: center;
     width: 100%;
+    padding-top: 18px;
     background-color: $colourDB32WhiteOpacity80;
 }
 

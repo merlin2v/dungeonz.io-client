@@ -1,43 +1,77 @@
 
-class StatsPanel {
+import PanelTemplate from "./PanelTemplate";
 
+class StatIcon {
+    constructor (iconsContainer, iconFileName, onClickFunction) {
+        const contCont = document.createElement('div');
+        contCont.className = "stat_icon_cont_cont";
+        iconsContainer.appendChild(contCont);
+
+        this.container = document.createElement('div');
+        this.container.className = "stat_icon_cont";
+        this.container.onclick = onClickFunction;
+        contCont.appendChild(this.container);
+
+        this.icon = document.createElement('img');
+        this.icon.className = "stat_icon";
+        this.icon.src = "assets/img/gui/panels/" + iconFileName + "-icon.png";
+        this.container.appendChild(this.icon);
+    }
+}
+
+class StatsPanel extends PanelTemplate {
     constructor () {
-        const statsPanel = this;
+        super(document.getElementById('stats_panel'), 540, 380, 'Stats', 'gui/hud/stats-icon');
 
         // Which stat is currently selected.
         this.selectedStat = _this.player.stats.list.Melee;
 
-        // The whole thing.
-        this.container =    document.getElementById('stats_panel');
-        this.name =         document.getElementById('stats_panel_name');
-        this.statName =     document.getElementById('stat_name');
-        this.description =  document.getElementById('stat_description');
-        this.levelCounter = document.getElementById('stat_level_counter');
-        this.expCounter =   document.getElementById('stat_exp_counter');
+        this.innerContainer = document.createElement('div');
+        this.innerContainer.id = 'stats_inner_cont';
+        this.contentsContainer.appendChild(this.innerContainer);
 
-        this.icons = {
-            Melee:      document.getElementById('stat_melee'),
-            Ranged:     document.getElementById('stat_ranged'),
-            Magic:      document.getElementById('stat_magic'),
-            Gathering:  document.getElementById('stat_gathering'),
-            Weaponry:   document.getElementById('stat_weaponry'),
-            Armoury:    document.getElementById('stat_armoury'),
-            Toolery:    document.getElementById('stat_toolery'),
-            Potionry:   document.getElementById('stat_potionry'),
-            Clanship:   document.getElementById('stat_clanship')
-        };
+        this.statIconsContainer = document.createElement('div');
+        this.statIconsContainer.id = "stat_icons_cont";
+        this.innerContainer.appendChild(this.statIconsContainer);
 
+        this.statInfoContainer = document.createElement('div');
+        this.statInfoContainer.id = "stat_info_cont";
+        this.innerContainer.appendChild(this.statInfoContainer);
+
+        this.statName = document.createElement('div');
+        this.statName.id = "stat_name";
+        this.statName.className = "stat_info_text";
+        this.statInfoContainer.appendChild(this.statName);
+
+        this.statDescription = document.createElement('div');
+        this.statDescription.id = "stat_description";
+        this.statDescription.className = "stat_info_text";
+        this.statInfoContainer.appendChild(this.statDescription);
+
+        this.statLevelCounter = document.createElement('div');
+        this.statLevelCounter.id = "stat_level_counter";
+        this.statLevelCounter.className = "stat_info_text";
+        this.statInfoContainer.appendChild(this.statLevelCounter);
+
+        this.statExpCounter = document.createElement('div');
+        this.statExpCounter.id = "stat_exp_counter";
+        this.statExpCounter.className = "stat_info_text";
+        this.statInfoContainer.appendChild(this.statExpCounter);
+
+        const statsPanel = this;
         const stats = _this.player.stats.list;
 
-        document.getElementById('stat_melee_icon').onclick =        function(){ statsPanel.changeStatInfo(stats.Melee) };
-        document.getElementById('stat_ranged_icon').onclick =       function(){ statsPanel.changeStatInfo(stats.Ranged) };
-        document.getElementById('stat_magic_icon').onclick =        function(){ statsPanel.changeStatInfo(stats.Magic) };
-        document.getElementById('stat_gathering_icon').onclick =    function(){ statsPanel.changeStatInfo(stats.Gathering) };
-        document.getElementById('stat_weaponry_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Weaponry) };
-        document.getElementById('stat_armoury_icon').onclick =      function(){ statsPanel.changeStatInfo(stats.Armoury) };
-        document.getElementById('stat_toolery_icon').onclick =      function(){ statsPanel.changeStatInfo(stats.Toolery) };
-        document.getElementById('stat_potionry_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Potionry) };
-        document.getElementById('stat_clanship_icon').onclick =     function(){ statsPanel.changeStatInfo(stats.Clanship) };
+        this.icons = {
+            Melee:      new StatIcon(this.statIconsContainer, 'melee', function(){ statsPanel.changeStatInfo(stats.Melee) }),
+            Ranged:     new StatIcon(this.statIconsContainer, 'ranged', function(){ statsPanel.changeStatInfo(stats.Ranged) }),
+            Magic:      new StatIcon(this.statIconsContainer, 'magic', function(){ statsPanel.changeStatInfo(stats.Magic) }),
+            Gathering:  new StatIcon(this.statIconsContainer, 'gathering', function(){ statsPanel.changeStatInfo(stats.Gathering) }),
+            Weaponry:   new StatIcon(this.statIconsContainer, 'weaponry', function(){ statsPanel.changeStatInfo(stats.Weaponry) }),
+            Armoury:    new StatIcon(this.statIconsContainer, 'armoury', function(){ statsPanel.changeStatInfo(stats.Armoury) }),
+            Toolery:    new StatIcon(this.statIconsContainer, 'toolery', function(){ statsPanel.changeStatInfo(stats.Toolery) }),
+            Potionry:   new StatIcon(this.statIconsContainer, 'potionry', function(){ statsPanel.changeStatInfo(stats.Potionry) }),
+            Clanship:   new StatIcon(this.statIconsContainer, 'clanship', function(){ statsPanel.changeStatInfo(stats.Clanship) }),
+        };
     }
 
     updateSelectedStat () {
@@ -45,30 +79,33 @@ class StatsPanel {
     }
 
     changeStatInfo (stat) {
+        console.log("stat:", stat);
+        console.log("this:", this);
         this.selectedStat = stat;
 
         // Un-highlight all other icons.
         for(let key in this.icons){
             if(this.icons.hasOwnProperty(key) === false) continue;
-            this.icons[key].style.backgroundColor = "transparent";
+            this.icons[key].container.style.backgroundColor = _this.GUI.GUIColours.taskSlotDefault;
         }
 
-        this.icons[stat.name].style.backgroundColor = _this.GUI.GUIColours.currentlySelected;
+        console.log("icon:", this.icons[stat.name]);
+        this.icons[stat.name].container.style.backgroundColor = _this.GUI.GUIColours.taskSlotTracking;
         this.statName.innerText = dungeonz.getTextDef("Stat name: " + stat.name);
-        this.description.innerText = dungeonz.getTextDef("Stat description: " + stat.name);
-        this.levelCounter.innerText = dungeonz.getTextDef("Level") + ": " + stat.level;
-        this.expCounter.innerText = dungeonz.getTextDef("Exp") + ": " + stat.exp + " / " + stat.nextLevelExpRequirement;
+        this.statDescription.innerText = dungeonz.getTextDef("Stat description: " + stat.name);
+        this.statLevelCounter.innerText = dungeonz.getTextDef("Level") + ": " + stat.level;
+        this.statExpCounter.innerText = dungeonz.getTextDef("Exp") + ": " + stat.exp + " / " + stat.nextLevelExpRequirement;
     }
 
     show () {
+        super.show();
         _this.GUI.isAnyPanelOpen = true;
-        this.container.style.visibility = "visible";
         this.updateSelectedStat();
     }
 
     hide () {
+        super.hide();
         _this.GUI.isAnyPanelOpen = false;
-        this.container.style.visibility = "hidden";
     }
 
 }

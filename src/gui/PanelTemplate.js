@@ -46,11 +46,11 @@ class PanelTemplate {
         mainContainer.appendChild(this.name);
 
         // Add the top left panel specific icon.
-        const icon = document.createElement('img');
-        icon.className = 'centered panel_template_icon';
-        icon.src = 'assets/img/' + panelIconURL + '.png';
-        icon.draggable = false;
-        mainContainer.appendChild(icon);
+        this.icon = document.createElement('img');
+        this.icon.className = 'centered panel_template_icon';
+        this.icon.src = 'assets/img/' + panelIconURL + '.png';
+        this.icon.draggable = false;
+        mainContainer.appendChild(this.icon);
 
         // Add the close button.
         const closeButton = document.createElement('img');

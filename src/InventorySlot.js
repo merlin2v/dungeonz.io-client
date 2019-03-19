@@ -45,12 +45,15 @@ class InventorySlot {
         this.durability = durability || null;
         this.maxDurability = maxDurability || null;
 
+        /** @type {Slot} */
         const guiSlot = _this.GUI.inventoryBar.slots[this.slotKey];
         // Change the source image for the icon.
         guiSlot.icon.src = "assets/img/gui/items/" + catalogueEntry.iconSource + ".png";
 
         // Show the icon.
         guiSlot.icon.style.visibility = "visible";
+        // And the add button if a panel that can be added to is open.
+        guiSlot.refreshAddButton();
 
         // If there is a durability, show and fill the durability meter for this item.
         if(durability){
@@ -70,6 +73,7 @@ class InventorySlot {
         _this.GUI.inventoryBar.slots[this.slotKey].durability.style.visibility = "hidden";
         _this.GUI.inventoryBar.slots[this.slotKey].equipped.style.visibility = "hidden";
         _this.GUI.inventoryBar.slots[this.slotKey].open.style.visibility = "hidden";
+        _this.GUI.inventoryBar.slots[this.slotKey].addButton.style.visibility = "hidden";
 
         // Reset the catalogue entry so it doesn't show up in the tooltip.
         this.catalogueEntry = null;

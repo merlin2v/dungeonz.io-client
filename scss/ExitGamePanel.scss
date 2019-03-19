@@ -1,3 +1,84 @@
+
+#exit_game_panel {
+    visibility: hidden;
+}
+
+#exit_inner_cont {
+    background-color: $colourDB32VeryDarkPurple;
+    height: 100%;
+    display: grid;
+    grid-gap: 12px;
+    grid-template-rows: auto 10% 12% 30% 12%;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+#exit_top_info_cont {
+    background-color: $colourDB32SteelGrey;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+#exit_code_cont {
+    background-color: $colourDB32White;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $colourDB32VeryDarkPurple;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.exit_button_cont {
+    position: relative;
+    height: 100%;
+    &:hover {
+        filter: brightness(150%);
+        transform: scale(1.1);
+    }
+}
+
+.exit_button {
+    height: 100%;
+}
+
+#exit_bottom_info_cont {
+    background-color: $colourDB32Rose;
+    width: 100%;
+    height: 100%;
+}
+
+#exit_warning_heading {
+    padding-top: 6px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#exit_warning_text {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.exit_button_text {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: $colourDB32VeryDarkPurple;
+}
+
+/*
 #exit_game_panel {
     display: inline-grid;
 }
@@ -81,4 +162,4 @@
         background-color: $colourDB32Orange;
         font-size: 100%;
     }
-}
+}*/

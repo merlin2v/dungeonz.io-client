@@ -18,17 +18,6 @@ dungeonz.Game = function () {
 dungeonz.Game.prototype = {
 
     init: function (data) {
-        /**
-         * - Map load
-         * - - get map dimensions
-         * - - set world size to map dimension * game scale
-         * - - lock camera to player
-         * - Move
-         * - - convert row/col to world x/y, so it will always go to the right place even if stopped part way though to start another tween
-         * - - same for other sprites
-         * - - - remove them if they are row/col out of view range
-         */
-
         console.log("* In game init:", data);
 
         /**
@@ -46,6 +35,7 @@ dungeonz.Game.prototype = {
         this.adjacentDungeonID = null;
 
         this.player = {
+            continueCode: data.continueCode,
             entityId: data.player.id,
             row: data.player.row,
             col: data.player.col,
@@ -56,7 +46,6 @@ dungeonz.Game.prototype = {
             hitPoints: data.player.maxHitPoints,
             energy: data.player.maxEnergy,
             glory: data.player.glory,
-            //coins: data.playerCoins,
             respawns: data.player.respawns,
             inventory: new Inventory(data.inventory),
             bankManager: new BankManager(data.bankItems),
@@ -77,8 +66,6 @@ dungeonz.Game.prototype = {
             Dusk: 3,
             Night: 4
         };
-
-        document.getElementById('exit_game_panel_code').innerText = data.continueCode;
 
         //console.log("nearby dynamics: data", this.dynamicsData);
 

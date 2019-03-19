@@ -33,6 +33,26 @@
     transform: translateY(-100%);
 }
 
+#hitpoint_cont {
+    position: relative;
+}
+
+#hitpoint_tooltip {
+    bottom: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#energy_cont {
+    position: relative;
+}
+
+#energy_tooltip {
+    bottom: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
 #inventory_tooltip {
     position: absolute;
     width: 50%;

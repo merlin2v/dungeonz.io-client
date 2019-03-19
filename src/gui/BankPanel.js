@@ -115,7 +115,7 @@ class Slot {
 class BankPanel extends PanelTemplate {
 
     constructor () {
-        super(document.getElementById('bank_panel'), 500, 320, 'Bank', 'entities/buildings/bank-chest');
+        super(document.getElementById('bank_panel'), 500, 320, dungeonz.getTextDef('Bank panel: name'), 'gui/panels/bank-chest');
 
         this.innerContainer = document.createElement('div');
         this.innerContainer.id = 'bank_inner_cont';
@@ -171,6 +171,9 @@ class BankPanel extends PanelTemplate {
             //console.log("showing item:", slots[i]);
             slots[i].loadItem();
         }
+
+        // Show the add buttons on the inventory bar.
+        _this.GUI.inventoryBar.showAddButtons();
     }
 
     hide () {
@@ -186,9 +189,16 @@ class BankPanel extends PanelTemplate {
             slot.icon.style.visibility = "hidden";
             slot.durability.style.visibility = "hidden";
         }
+
+        // Hide the add buttons on the inventory bar.
+        _this.GUI.inventoryBar.hideAddButtons();
     }
 
     tabClick () {
+        // Only change the tabs if this player has a DMP active.
+        // If they don't, only the first tab is available, which is already selected.
+        if(dungeonz.DMPActivated === false) return;
+
         const tabNumber = this.getAttribute('tabNumber');
         _this.player.bankManager.loadTab(tabNumber);
         const tabs = _this.GUI.bankPanel.tabs;
@@ -204,7 +214,7 @@ class BankPanel extends PanelTemplate {
     tabMouseOver () {
         const bankPanel = _this.GUI.bankPanel;
 
-        bankPanel.dmpTooltip.innerText = "DMP needed to access this bank storage tab.";//dungeonz.getTextDef("Get a DMP to access extra bank storage tabs.");
+        bankPanel.dmpTooltip.innerText = dungeonz.getTextDef("Bank panel: Tab DMP needed");
         bankPanel.dmpTooltip.style.visibility = 'visible';
 
         this.appendChild(bankPanel.dmpTooltip);

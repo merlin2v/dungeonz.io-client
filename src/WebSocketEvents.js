@@ -230,7 +230,7 @@ eventResponses.moved = function (data) {
 
     if(_this.dynamics === undefined){
         // Something went wrong... Reload the page.
-        location.reload();
+        //location.reload();
         return;
     }
 

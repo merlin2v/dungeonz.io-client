@@ -2,10 +2,15 @@
 import ItemTypes from '../src/catalogues/ItemTypes'
 
 class BankItem {
-    constructor () {
+    constructor (dmpLocked) {
+        /**
+         * The entry of this item in the ItemTypes catalogue. Null if this bank item slot is empty.
+         * @type {Object||null}
+         */
         this.catalogueEntry = null;
         this.durability = null;
         this.maxDurability = null;
+        this.dmpLocked = dmpLocked || true;
     }
 }
 
@@ -22,8 +27,13 @@ class BankManager {
         /** @type {BankItem[]} */
         this.items = [];
 
-        for(let i=0; i<60; i+=1){
-            this.items.push(new BankItem());
+        // Add the free slots.
+        for(let i=0; i<15; i+=1){
+            this.items.push(new BankItem(false));
+        }
+        // Add the DMP locked slots.
+        for(let i=0; i<45; i+=1){
+            this.items.push(new BankItem(true));
         }
 
         // If a list of existing items on this player was given, fill the client inventory.
@@ -36,6 +46,35 @@ class BankManager {
                 this.items[item.slotIndex].durability = item.durability;
                 this.items[item.slotIndex].maxDurability = item.maxDurability;
             }
+        }
+    }
+
+    /**
+     * Searches through the bank items list to find an empty slot.
+     * If one is found, returns the index. Otherwise, returns false.
+     * @returns {Number|Boolean}
+     */
+    getFirstEmptySlotIndex () {
+        const DMPActivated = dungeonz.DMPActivated;
+        // If they have a DMP activated, just find the first empty slot.
+        if(DMPActivated === true){
+            for(let i=0; i<this.items.length; i+=1){
+                // If an empty slot is found, return it.
+                if(this.items[i].catalogueEntry === null) return i;
+            }
+            // No empty slot found.
+            return false;
+        }
+        // If they don't have a DMP activated, check if the slot is DMP only, and if so don't return it.
+        else {
+            for(let i=0; i<this.items.length; i+=1){
+                // If a DMP locked slot is reached, stop searching, as all the free ones will have been before this.
+                if(this.items[i].dmpLocked === true) return false;
+                // If an empty slot is found, return it.
+                if(this.items[i].catalogueEntry === null) return i;
+            }
+            // No empty slot found.
+            return false;
         }
     }
 

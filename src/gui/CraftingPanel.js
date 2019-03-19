@@ -1,11 +1,13 @@
+
 import CraftingManager from "../CraftingManager";
+import PanelTemplate from "./PanelTemplate";
 
 class ComponentSlot {
     constructor (panel, slotNumber) {
-        this.container =    document.getElementById('component_slot_' + slotNumber);
-        this.icon =         document.getElementById('component_slot_' + slotNumber + '_icon');
-        this.remove =       document.getElementById('component_slot_' + slotNumber + '_remove');
-
+        this.container = document.createElement('div');
+        this.container.id = 'component_slot_' + slotNumber + '_cont';
+        this.container.className = 'crafting_component_slot_cont';
+        this.container.draggable = false;
         // Remove the component when it is clicked on.
         this.container.onclick =        panel.slotClick;
         // Show and update the item tooltip info text when mouse is over a slot.
@@ -17,74 +19,158 @@ class ComponentSlot {
         this.container.ondragenter =    panel.slotDragEnter;
         // Store the key of this slot on the slot itself.
         this.container.setAttribute('slotKey', 'slot' + slotNumber);
+        panel.innerContainer.appendChild(this.container);
+
+        this.icon = document.createElement('img');
+        this.icon.id = 'component_slot_' + slotNumber + '_icon';
+        this.icon.src = 'assets/img/gui/items/icon-dungium-ore.png';
+        this.icon.className = 'crafting_component_slot_icon';
+        this.icon.draggable = false;
+        this.container.appendChild(this.icon);
+    }
+
+    refreshBackground () {
+        // Only give a white background back to the component slots that have something in them.
+        if(_this.craftingManager.components[this.container.getAttribute('slotKey')].occupiedBy === null){
+            this.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotEmpty;
+        }
+        else {
+            this.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotOccupied;
+        }
     }
 }
 
-class CraftingPanel {
+class CraftingPanel extends PanelTemplate {
 
     constructor () {
+        super(document.getElementById('crafting_panel'), 500, 180, "Crafting", 'entities/buildings/bank-chest');
+
         const panel = this;
 
-        this.container =        document.getElementById('crafting_panel');
-        this.tooltip =          document.getElementById('crafting_tooltip');
-        this.name =             document.getElementById('crafting_station_name');
-        this.componentsBar =    document.getElementById('crafting_components_bar');
-        this.result = {
-            container:          document.getElementById('craft_result'),
-            icon:               document.getElementById('craft_result_icon'),
-            accept:             document.getElementById('craft_result_accept'),
-            itemName: ''
-        };
-
-        this.componentsBar.ondragenter = panel.componentsBarDragEnter;
-        this.componentsBar.ondragover =  panel.componentsBarDragOver;
-        this.componentsBar.ondrop =      panel.componentsBarDrop;
-
-        this.result.accept.onclick = CraftingManager.accept;
-        this.result.container.onmouseover = this.resultMouseOver;
-        this.result.container.onmouseout = this.slotMouseOut;
+        this.innerContainer = document.createElement('div');
+        this.innerContainer.id = 'crafting_inner_cont';
+        this.innerContainer.ondragenter = panel.componentsBarDragEnter;
+        this.innerContainer.ondragover =  panel.componentsBarDragOver;
+        this.innerContainer.ondrop =      panel.componentsBarDrop;
+        this.contentsContainer.appendChild(this.innerContainer);
 
         this.components = {};
-
         for(let i=1; i<6; i+=1){
             this.components['slot' + i] = new ComponentSlot(this, i);
         }
+
+        // Add the arrow icon.
+        const arrowIcon = document.createElement('img');
+        arrowIcon.id = 'crafting_arrow_icon';
+        arrowIcon.src = 'assets/img/gui/panels/crafting-arrow-icon.png';
+        arrowIcon.draggable = false;
+        this.innerContainer.appendChild(arrowIcon);
+
+        const resultContainer = document.createElement('div');
+        //resultContainer.id = 'crafting_result_cont';
+        resultContainer.className = 'crafting_component_slot_cont';
+        resultContainer.draggable = false;
+        resultContainer.onmouseover = this.resultMouseOver;
+        resultContainer.onmouseout = this.slotMouseOut;
+        this.innerContainer.appendChild(resultContainer);
+
+        const resultIcon = document.createElement('img');
+        resultIcon.src = 'assets/img/gui/items/icon-dungium-ore.png';
+        resultIcon.className = 'crafting_component_slot_icon';
+        resultIcon.draggable = false;
+        resultContainer.appendChild(resultIcon);
+
+        // Add the remove buttons.
+        //this.removeButtons = {};
+        for(let i=1; i<6; i+=1){
+            const removeButton = this.components['slot' + i].remove = document.createElement('img');
+            //removeButton.id = 'component_slot_' + i + '_icon';
+            removeButton.src = 'assets/img/gui/panels/crafting-remove-button.png';
+            removeButton.className = 'crafting_button';
+            removeButton.draggable = false;
+            // Store the key of this slot on the button itself.
+            removeButton.setAttribute('slotKey', 'slot' + i);
+            // Remove the component when this is clicked on.
+            removeButton.onclick = panel.slotClick;
+            this.innerContainer.appendChild(removeButton);
+        }
+
+        // Add the empty space.
+        const emptySpace = document.createElement('div');
+        this.innerContainer.appendChild(emptySpace);
+
+        const acceptButton = document.createElement('img');
+        //acceptButton.id = 'crafting_accept_button';
+        acceptButton.src = 'assets/img/gui/panels/crafting-accept-button.png';
+        acceptButton.className = 'crafting_button';
+        acceptButton.draggable = false;
+        acceptButton.onclick = CraftingManager.accept;
+        this.innerContainer.appendChild(acceptButton);
+
+        this.tooltip = document.createElement('div');
+        this.tooltip.id = 'crafting_tooltip';
+
+        this.result = {
+            container:      resultContainer,
+            icon:           resultIcon,
+            accept:         acceptButton,
+            itemName: ''
+        };
+
     }
 
-    show (stationName) {
+    show (stationName, panelIconURL) {
+        super.show();
+
         _this.GUI.isAnyPanelOpen = true;
-        // Show the panel and change the station name.
-        this.container.style.visibility = "visible";
-        this.name.innerText = stationName;
+
+        this.changeName(stationName);
+
+        if(panelIconURL){
+            // Update the top left icon to show the crafting station sprite.
+            this.icon.src = panelIconURL;
+        }
 
         // Clear any existing recipe code.
         _this.craftingManager.recipeCode = '';
+
+        // Show the add buttons on the inventory bar.
+        _this.GUI.inventoryBar.showAddButtons();
     }
 
     hide () {
-        _this.GUI.isAnyPanelOpen = false;
-        // Hide the panel.
-        this.container.style.visibility = "hidden";
+        super.hide();
+
         this.tooltip.style.visibility = 'hidden';
         this.result.icon.style.visibility = "hidden";
         this.result.accept.style.visibility = "hidden";
 
+        _this.GUI.isAnyPanelOpen = false;
+
         _this.craftingManager.empty();
+
+        // Hide the add buttons on the inventory bar.
+        _this.GUI.inventoryBar.hideAddButtons();
     }
 
     slotClick () {
         const slotKey = this.getAttribute('slotKey');
-        console.log("slot clicked:", slotKey);
+        //console.log("slot clicked:", slotKey);
         _this.craftingManager.removeComponent(slotKey[4]);
     }
 
     slotMouseOver () {
         const slotKey = this.getAttribute('slotKey');
+        //console.log("slot mouse over, slotkey:", slotKey);
         // If the slot is empty, don't show the tooltip.
         if(_this.craftingManager.components[slotKey].occupiedBy === null) return;
 
-        _this.GUI.craftingPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + _this.player.inventory[_this.craftingManager.components[slotKey].occupiedBy].catalogueEntry.idName);
-        _this.GUI.craftingPanel.tooltip.style.visibility = 'visible';
+        const craftingPanel = _this.GUI.craftingPanel;
+
+        craftingPanel.tooltip.innerText = dungeonz.getTextDef("Item name: " + _this.player.inventory[_this.craftingManager.components[slotKey].occupiedBy].catalogueEntry.idName);
+        craftingPanel.tooltip.style.visibility = 'visible';
+
+        this.appendChild(craftingPanel.tooltip);
     }
 
     slotMouseOut () {
@@ -120,10 +206,13 @@ class CraftingPanel {
     }
 
     resultMouseOver () {
-        if(_this.GUI.craftingPanel.result.itemName === '') return;
+        const craftingPanel = _this.GUI.craftingPanel;
+        if(craftingPanel.result.itemName === '') return;
 
-        _this.GUI.craftingPanel.tooltip.innerText = _this.GUI.craftingPanel.result.itemName;
-        _this.GUI.craftingPanel.tooltip.style.visibility = 'visible';
+        craftingPanel.tooltip.innerText = craftingPanel.result.itemName;
+        craftingPanel.tooltip.style.visibility = 'visible';
+
+        this.appendChild(_this.GUI.craftingPanel.tooltip);
     }
 
 }

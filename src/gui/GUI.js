@@ -77,7 +77,7 @@ class GUI {
         this.statsPanel =       this.addPanel(new StatsPanel());
         this.craftingPanel =    this.addPanel(new CraftingPanel());
         this.bankPanel =        this.addPanel(new BankPanel());
-        this.spellBookPanel=    this.addPanel(new SpellBookPanel());
+        this.spellBookPanel =   this.addPanel(new SpellBookPanel());
         this.clanPanel =        this.addPanel(new ClanPanel());
         //this.generatorPanel =   this.addPanel(new GeneratorPanel());
         this.shopPanel =        this.addPanel(new ShopPanel());
@@ -142,12 +142,8 @@ class GUI {
         this.exitIcon.onmouseover =     function(){ game.GUI.exitTooltip.style.visibility = "visible" };
         this.exitIcon.onmouseout =      function(){ game.GUI.exitTooltip.style.visibility = "hidden" };
         this.exitIcon.onclick =         function(){
-            if(game.GUI.exitGamePanel.container.style.visibility === "visible"){
-                game.GUI.exitGamePanel.hide();
-            }
-            else {
-                game.GUI.exitGamePanel.show();
-            }
+            if(game.GUI.exitGamePanel.isOpen === true) game.GUI.exitGamePanel.hide();
+            else game.GUI.exitGamePanel.show();
         };
 
         this.respawnsIcon.onmouseover = function(){ game.GUI.respawnsTooltip.style.visibility = "visible" };
@@ -254,10 +250,15 @@ class GUI {
 
     }
 
+    /**
+     *
+     * @param {PanelTemplate} panel
+     * @returns {*}
+     */
     addPanel (panel) {
         this.panels.push(panel);
         // Make the various panels draggable.
-        this.makeElementDraggable(panel.name, panel.container);
+        //this.makeElementDraggable(panel.icon, panel.topContainer);
         return panel;
     }
 

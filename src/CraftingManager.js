@@ -38,8 +38,13 @@ class CraftingManager {
 
     }
 
+    /**
+     * Add an item from the inventory to the crafting recipe.
+     * @param {Number|String} inventorySlotKey - The slot key of the inventory item to add.
+     */
     addComponent (inventorySlotKey) {
         //console.log("adding component, key:", inventorySlotKey);
+
         // Don't try to add this item if it is already being used as a component.
         if(_this.player.inventory[inventorySlotKey].craftingComponent !== null) return;
         // Don't try to add this item if there is nothing in that inventory slot.
@@ -52,11 +57,15 @@ class CraftingManager {
             component = this.components[slotKey];
             if(component.occupiedBy === null){
                 component.occupiedBy = inventorySlotKey;
+                component.guiSlot.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotOccupied;
                 component.guiSlot.remove.style.visibility = "visible";
                 component.guiSlot.icon.style.visibility = "visible";
                 component.guiSlot.icon.src = _this.GUI.inventoryBar.slots[inventorySlotKey].icon.src;
                 this.recipeCode += _this.player.inventory[inventorySlotKey].catalogueEntry.typeNumber + '-';
                 _this.player.inventory[inventorySlotKey].craftingComponent = component;
+                // Hide the add item button on the inventory bar.
+                _this.GUI.inventoryBar.slots[inventorySlotKey].addButton.style.visibility = "hidden";
+                // Fade out the item icon on the inventory bar a bit.
                 _this.GUI.inventoryBar.slots[inventorySlotKey].icon.style.opacity = 0.5;
 
                 this.checkRecipeCode();
@@ -75,6 +84,9 @@ class CraftingManager {
         let guiSlot = component.guiSlot;
         guiSlot.remove.style.visibility = "hidden";
         guiSlot.icon.style.visibility = "hidden";
+        guiSlot.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotEmpty;
+        // Show the add item button.
+        _this.GUI.inventoryBar.slots[component.occupiedBy].addButton.style.visibility = "visible";
         // Make the item in the inventory full opacity to show it isn't in the craft any more.
         _this.GUI.inventoryBar.slots[component.occupiedBy].icon.style.opacity = 1;
         _this.player.inventory[component.occupiedBy].craftingComponent = null;
@@ -100,6 +112,7 @@ class CraftingManager {
             //console.log("  station is valid, result:", RecipeCatalogue[this.stationTypeNumber]);
             if(RecipeCatalogue[this.stationTypeNumber][this.recipeCode] !== undefined){
                 //console.log("  recipe found for this crafting station:", RecipeCatalogue[this.stationTypeNumber][this.recipeCode]);
+                this.guiResult.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotOccupied;
                 this.guiResult.icon.style.visibility = "visible";
                 this.guiResult.icon.src = 'assets/img/gui/items/' + ItemTypes[RecipeCatalogue[this.stationTypeNumber][this.recipeCode].resultTypeNumber].iconSource + ".png";
                 this.guiResult.accept.style.visibility = "visible";
@@ -107,6 +120,7 @@ class CraftingManager {
             }
             else {
                 //console.log("  recipe is NOT valid");
+                this.guiResult.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotEmpty;
                 this.guiResult.icon.style.visibility = "hidden";
                 this.guiResult.accept.style.visibility = "hidden";
                 this.guiResult.itemName = '';
@@ -136,6 +150,9 @@ class CraftingManager {
                     currentComponent.guiSlot.icon.src = nextComponent.guiSlot.icon.src;
                     currentComponent.guiSlot.icon.style.visibility = 'visible';
                     nextComponent.guiSlot.icon.style.visibility = 'hidden';
+
+                    currentComponent.guiSlot.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotOccupied;
+                    nextComponent.guiSlot.container.style.backgroundColor = _this.GUI.GUIColours.bankSlotEmpty;
 
                     break;
                 }

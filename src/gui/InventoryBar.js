@@ -2,7 +2,7 @@
 class Slot {
     constructor (slotKey, bar) {
         this.icon = document.createElement('img');
-        this.icon.src = 'assets/img/gui/items/icon-gold-ore.png';
+        this.icon.src = 'assets/img/gui/items/icon-dungium-ore.png';
         this.icon.className = 'inventory_slot_icon';
         this.icon.draggable = false;
 
@@ -34,6 +34,14 @@ class Slot {
         this.border.className = 'inventory_slot_border';
         this.border.draggable = false;
 
+        this.addButton = document.createElement('img');
+        this.addButton.src = 'assets/img/gui/hud/inventory-add-item-icon.png';
+        this.addButton.className = 'inventory_slot_add_button';
+        this.addButton.draggable = false;
+        this.addButton.onclick =        bar.addClick;
+        // Store the key of this slot on the add button itself.
+        this.addButton.setAttribute('slotKey', slotKey);
+
         this.container = document.createElement('div');
         this.container.className = 'inventory_slot';
         this.container.draggable = true;
@@ -60,8 +68,23 @@ class Slot {
         this.container.appendChild(this.open);
         this.container.appendChild(this.equipped);
         this.container.appendChild(this.border);
+        this.container.appendChild(this.addButton);
 
         bar.slotContainer.appendChild(this.container);
+    }
+
+    refreshAddButton () {
+        // Show the add button if any of the relevant panels are open.
+        if(_this.GUI.bankPanel.isOpen === true){
+            this.addButton.style.visibility = "visible";
+        }
+        else if(_this.GUI.craftingPanel.isOpen === true){
+            this.addButton.style.visibility = "visible";
+        }
+        // None of them are open, hide the add button.
+        else {
+            this.addButton.style.visibility = "hidden";
+        }
     }
 }
 
@@ -80,6 +103,23 @@ class InventoryBar {
         for(let i=0; i<10; i+=1){
             const slotKey = this.slotKeysByIndex[i];
             this.slots[slotKey] = new Slot(slotKey, this);
+        }
+    }
+
+    showAddButtons () {
+        for(let key in this.slots){
+            if(this.slots.hasOwnProperty(key) === false) continue;
+            // Only show if the inventory slot has something in it.
+            if(_this.player.inventory[key].catalogueEntry === null) continue;
+
+            this.slots[key].addButton.style.visibility = "visible";
+        }
+    }
+
+    hideAddButtons () {
+        for(let key in this.slots){
+            if(this.slots.hasOwnProperty(key) === false) continue;
+            this.slots[key].addButton.style.visibility = "hidden";
         }
     }
 
@@ -111,7 +151,26 @@ class InventoryBar {
     }
 
     click (event) {
+        console.log("slot click");
         _this.player.inventory.useItem(this.getAttribute('slotKey'));
+    }
+
+    addClick (event) {
+
+        event.stopPropagation();
+
+        // Check if any of the panels that can have items added to them are open.
+        if(_this.GUI.bankPanel.isOpen === true){
+            const emptySlotIndex = _this.player.bankManager.getFirstEmptySlotIndex();
+            if(emptySlotIndex === false) return;
+
+            _this.player.bankManager.depositItem(this.getAttribute('slotKey'), emptySlotIndex);
+        }
+        else if(_this.GUI.craftingPanel.isOpen === true){
+            console.log("adding to crafting panel");
+            _this.craftingManager.addComponent(this.getAttribute('slotKey'));
+        }
+
     }
 
     slotMouseOver () {
@@ -161,19 +220,23 @@ class InventoryBar {
         event.dataTransfer.setDragImage(icon, icon.width/2, icon.height/2);
 
         // Highlight the slots in panels where items can be dropped.
-        for(let slotKey in _this.GUI.inventoryBar.slots){
-            if(_this.GUI.inventoryBar.slots.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.inventoryBar.slots[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
+        const GUIColours = _this.GUI.GUIColours;
+        let list = _this.GUI.inventoryBar.slots;
+        for(let slotKey in list){
+            if(list.hasOwnProperty(slotKey) === false) continue;
+            list[slotKey].container.style.backgroundColor = GUIColours.validDropTargetOver;
         }
-        for(let slotKey in _this.GUI.craftingPanel.components){
-            if(_this.GUI.craftingPanel.components.hasOwnProperty(slotKey) === false) continue;
-            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
+        list = _this.GUI.craftingPanel.components;
+        for(let slotKey in list){
+            if(list.hasOwnProperty(slotKey) === false) continue;
+            list[slotKey].container.style.backgroundColor = GUIColours.validDropTargetOver;
         }
-        for(let i=0, len=_this.GUI.bankPanel.slots.length; i<len; i+=1){
-            _this.GUI.bankPanel.slots[i].container.style.backgroundColor = _this.GUI.GUIColours.validDropTargetOver;
+        list = _this.GUI.bankPanel.slots;
+        for(let i=0, len=list.length; i<len; i+=1){
+            list[i].container.style.backgroundColor = GUIColours.validDropTargetOver;
         }
 
-        this.style.backgroundColor = _this.GUI.GUIColours.currentlyDragged;
+        this.style.backgroundColor = GUIColours.currentlyDragged;
 
     }
 
@@ -234,7 +297,7 @@ class InventoryBar {
 
         // De-highlight the panel slot drop targets.
         for(let slotKey in _this.GUI.craftingPanel.components){
-            _this.GUI.craftingPanel.components[slotKey].container.style.backgroundColor = "transparent";
+            _this.GUI.craftingPanel.components[slotKey].refreshBackground();
         }
 
         // Clear the drag origin, so other GUI elements don't still refer to the thing that was dragged when they are dropped over.
@@ -258,7 +321,7 @@ class InventoryBar {
         const craftingComponents = _this.GUI.craftingPanel.components;
         for(let slotKey in craftingComponents){
             if(craftingComponents.hasOwnProperty(slotKey) === false) continue;
-            craftingComponents[slotKey].container.style.backgroundColor = "transparent";
+            craftingComponents[slotKey].refreshBackground();
         }
         const bankSlots = _this.GUI.bankPanel.slots;
         for(let i=0, len=bankSlots.length; i<len; i+=1){

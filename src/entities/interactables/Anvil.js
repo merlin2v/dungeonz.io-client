@@ -13,7 +13,7 @@ Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.interactedByPlayer = function () {
-    _this.GUI.craftingPanel.show(dungeonz.getTextDef("Anvil"));
+    _this.GUI.craftingPanel.show(dungeonz.getTextDef("Anvil"), 'assets/img/gui/panels/anvil.png');
     _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
 };
 

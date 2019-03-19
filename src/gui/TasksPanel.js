@@ -120,7 +120,7 @@ class TaskSlot {
 
 class TasksPanel extends PanelTemplate {
     constructor (tasks) {
-        super(document.getElementById('tasks_panel'), 540, 380, 'Tasks', 'gui/hud/tasks-icon');
+        super(document.getElementById('tasks_panel'), 540, 380, dungeonz.getTextDef('Tasks'), 'gui/hud/tasks-icon');
 
         this.innerContainer = document.createElement('div');
         this.innerContainer.id = 'tasks_inner_cont';
@@ -131,11 +131,11 @@ class TasksPanel extends PanelTemplate {
         this.innerContainer.appendChild(this.headingsContainer);
 
         const taskText = document.createElement('div');
-        taskText.innerText = "Task";
+        taskText.innerText = dungeonz.getTextDef('Task');
         const progressText = document.createElement('div');
-        progressText.innerText = "Progress";
+        progressText.innerText = dungeonz.getTextDef('Progress');
         const rewardText = document.createElement('div');
-        rewardText.innerText = "Reward";
+        rewardText.innerText = dungeonz.getTextDef('Reward');
         this.headingsContainer.appendChild(taskText);
         this.headingsContainer.appendChild(progressText);
         this.headingsContainer.appendChild(rewardText);
@@ -159,7 +159,7 @@ class TasksPanel extends PanelTemplate {
         this.trackButtonContainer.appendChild(this.trackButton);
 
         const trackText = document.createElement('div');
-        trackText.innerText = 'Track'; //dungeonz.getTextDef('Track');
+        trackText.innerText = dungeonz.getTextDef('Track');
         trackText.className = 'centered tasks_bottom_text';
         this.trackButtonContainer.appendChild(trackText);
 
@@ -230,9 +230,13 @@ class TasksPanel extends PanelTemplate {
 
     rewardItemMouseOver () {
         const tooltip = _this.GUI.tasksPanel.tooltip;
-        tooltip.innerText = dungeonz.getTextDef("Item name: " + ItemTypes[this.getAttribute('itemNumber')].idName);
-        tooltip.style.visibility = 'visible';
-        this.appendChild(tooltip);
+        // If there is an item in this reward slot, show the tooltip with its name.
+        const itemNumber = this.getAttribute('itemNumber');
+        if(ItemTypes[itemNumber]){
+            tooltip.innerText = dungeonz.getTextDef("Item name: " + ItemTypes[this.getAttribute('itemNumber')].idName);
+            tooltip.style.visibility = 'visible';
+            this.appendChild(tooltip);
+        }
     }
 
     rewardItemMouseOut () {
@@ -248,8 +252,8 @@ class TasksPanel extends PanelTemplate {
         // Get the selected slot task ID.
         ws.sendEvent("task_claim_reward", tasksPanel.selectedSlot.container.getAttribute('taskID'));
 
-        // Assume it will be claimed successfully, so hide the claim button.
-        tasksPanel.claimButtonContainer.style.visibility = "hidden";
+        // Assume it will be claimed successfully, so default the claim button.
+        tasksPanel.claimButton.src = 'assets/img/gui/panels/claim-button-border-invalid.png';
     }
 
     /**

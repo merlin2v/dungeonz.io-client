@@ -21,7 +21,7 @@ class StatIcon {
 
 class StatsPanel extends PanelTemplate {
     constructor () {
-        super(document.getElementById('stats_panel'), 540, 380, 'Stats', 'gui/hud/stats-icon');
+        super(document.getElementById('stats_panel'), 540, 380, dungeonz.getTextDef('Stats panel: name'), 'gui/hud/stats-icon');
 
         // Which stat is currently selected.
         this.selectedStat = _this.player.stats.list.Melee;
@@ -79,8 +79,6 @@ class StatsPanel extends PanelTemplate {
     }
 
     changeStatInfo (stat) {
-        console.log("stat:", stat);
-        console.log("this:", this);
         this.selectedStat = stat;
 
         // Un-highlight all other icons.
@@ -89,7 +87,6 @@ class StatsPanel extends PanelTemplate {
             this.icons[key].container.style.backgroundColor = _this.GUI.GUIColours.taskSlotDefault;
         }
 
-        console.log("icon:", this.icons[stat.name]);
         this.icons[stat.name].container.style.backgroundColor = _this.GUI.GUIColours.taskSlotTracking;
         this.statName.innerText = dungeonz.getTextDef("Stat name: " + stat.name);
         this.statDescription.innerText = dungeonz.getTextDef("Stat description: " + stat.name);

@@ -184,7 +184,7 @@
                 <div id="play_again_button"></div>
             </div>
 
-            <div id="exit_game_panel" class="panel">
+            <!--<div id="exit_game_panel" class="panel">
                 <div id="exit_game_panel_name" class="panel_name"></div>
                 <div id="exit_game_panel_main">
                     <div id="exit_game_panel_info_1" class="exit_game_panel_info"></div>
@@ -201,48 +201,9 @@
                         <div id="exit_game_panel_exit_button" class="exit_game_panel_button"></div>
                     </div>
                 </div>
-            </div>
-
-            <!--<div id="stats_panel_old" class="panel">
-                <div id="stats_panel_name" class="panel_name"></div>
-                <div id="stats_panel_main">
-                    <div id="stats_icons_cont">
-                        <div id="stat_melee" class="stat_icon_cont">
-                            <img id="stat_melee_icon" src="assets/img/gui/panels/melee-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_ranged" class="stat_icon_cont">
-                            <img id="stat_ranged_icon" src="assets/img/gui/panels/ranged-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_magic" class="stat_icon_cont">
-                            <img id="stat_magic_icon" src="assets/img/gui/panels/magic-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_gathering" class="stat_icon_cont">
-                            <img id="stat_gathering_icon" src="assets/img/gui/panels/gathering-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_weaponry" class="stat_icon_cont">
-                            <img id="stat_weaponry_icon" src="assets/img/gui/panels/weaponry-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_armoury" class="stat_icon_cont">
-                            <img id="stat_armoury_icon" src="assets/img/gui/panels/armoury-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_toolery" class="stat_icon_cont">
-                            <img id="stat_toolery_icon" src="assets/img/gui/panels/toolery-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_potionry" class="stat_icon_cont">
-                            <img id="stat_potionry_icon" src="assets/img/gui/panels/potionry-icon.png" class="stat_icon">
-                        </div>
-                        <div id="stat_clanship" class="stat_icon_cont">
-                            <img id="stat_clanship_icon" src="assets/img/gui/panels/cookery-icon.png" class="stat_icon">
-                        </div>
-                    </div>
-                    <div id="stats_info_cont">
-                        <div id="stat_name" class="stat_info_text"></div>
-                        <div id="stat_description" class="stat_info_text"></div>
-                        <div id="stat_level_counter" class="stat_info_text"></div>
-                        <div id="stat_exp_counter" class="stat_info_text"></div>
-                    </div>
-                </div>
             </div>-->
+
+            <div id="exit_game_panel" class="centered panel_template_cont"></div>
 
             <div id="stats_panel" class="centered panel_template_cont"></div>
 
@@ -279,7 +240,7 @@
 
             </div>
 
-            <div id="crafting_panel" class="panel">
+            <!--<div id="crafting_panel" class="panel">
                 <div class="panel_header">
                     <div id="crafting_tooltip" class="panel_tooltip"></div>
                     <div id="crafting_station_name" class="panel_name"></div>
@@ -321,7 +282,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
+
+            <div id="crafting_panel" class="centered panel_template_cont"></div>
+
+            <div id="shop_panel" class="centered panel_template_cont"></div>
 
             <div id="spell_book_panel" class="panel">
                 <div class="panel_header">
@@ -372,21 +337,6 @@
                 </div>
             </span>
 
-            <div id="shop_panel" class="centered panel_template_cont"></div>
-
-            <!--<div id="test_panel" class="centered panel_template_cont">
-                <div class="panel_template_main_cont">
-                    <img class="centered panel_template_icon_border" src="assets/img/gui/panel_icon_border.png">
-                    <div class="panel_template_name_border">&nbsp;&nbsp;Crafting</div>
-                    <div class="panel_template_name">&nbsp;&nbsp;Crafting</div>
-                    <img class="centered panel_template_icon" src="assets/img/gui/items/icon-workbench.png">
-                    <img class="centered panel_template_close_button" src="assets/img/gui/panel_close_button.png">
-                    <img class="centered panel_template_left_corner" src="assets/img/gui/panel_corner.png">
-                    <img class="centered panel_template_right_corner" src="assets/img/gui/panel_corner.png">
-                    <img class="centered panel_template_right_corner" src="assets/img/gui/panel_corner.png">
-                    <div class="panel_template_contents_cont"></div>
-                </div>
-            </div>-->
         </div>
         <input id="chat_input" type="text" minLength="1" maxLength="46" placeholder="Enter a message"/>
     </div>
@@ -562,14 +512,12 @@
         const continueCharacterButton = document.getElementById('continue_character');
         const nameInput = document.getElementById('name_input');
         const continueCodeInput = document.getElementById('continue_code_input');
-        const exitGamePanelCode = document.getElementById('exit_game_panel_code');
 
         // Get the code from the client local storage if one exists.
         const storedCode = localStorage.getItem('continue_code');
         if(storedCode !== null){
             window.newCharacter = false;
             continueCodeInput.value = storedCode;
-            exitGamePanelCode.innerText = storedCode;
         }
 
         function newCharacterPressed () {
@@ -717,16 +665,6 @@
             document.getElementById('game_over_message').innerText =            dungeonz.getTextDef('Game over message');
             document.getElementById('play_again_button').innerText =            dungeonz.getTextDef('Play again');
 
-            // Other panels.
-            document.getElementById('exit_game_panel_name').innerText =         dungeonz.getTextDef('Exit game panel: name');
-            document.getElementById('exit_game_panel_info_1').innerText =       dungeonz.getTextDef('Exit game panel: info 1');
-            document.getElementById('exit_game_panel_info_2').innerText =       dungeonz.getTextDef('Exit game panel: info 2');
-            document.getElementById('exit_game_panel_save_button').innerText =  dungeonz.getTextDef('Exit game panel: save code');
-            document.getElementById('exit_game_panel_exit_button').innerText =  dungeonz.getTextDef('Exit game panel: exit');
-
-            document.getElementById('stats_panel_name').innerText =             dungeonz.getTextDef('Stats panel: name');
-            document.getElementById('bank_name').innerText =                    dungeonz.getTextDef('Bank panel: name');
-
         }
 
         // Load the default language.
@@ -768,7 +706,7 @@
         }
 
         // Disable the right click context menu on the game.
-        document.getElementById('game_cont').addEventListener('contextmenu', event => event.preventDefault());
+        //TODO: reenable this when done with new panels --> document.getElementById('game_cont').addEventListener('contextmenu', event => event.preventDefault());
 
         // Load the changelog contents into the news section.
         let xmlhttp, text;

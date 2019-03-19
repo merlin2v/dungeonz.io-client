@@ -1,63 +1,57 @@
 
 #crafting_panel {
-    display: inline-grid;
+    visibility: hidden;
+}
+
+#crafting_inner_cont {
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: 50% 50%;
+    align-items: center;
+    justify-items: center;
+    padding: 12px;
+    padding-top: 33px;
 }
 
 #crafting_tooltip {
-    left: 224px;
-}
-
-#crafting_panel_main{
-    display: inline-flex;
-}
-
-#crafting_components_bar {
-    display: inline-grid;
-    grid-template-columns: repeat(5, 56px);
-    padding: 10px;
-    background-color: $colourDB32WhiteOpacity80;
-}
-
-#craft_result_cont {
-    display: inline-flex;
-    background-color: $colourDB32WhiteOpacity80;
-}
-
-.component_slot_add {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    bottom: 47px;
     visibility: hidden;
+    position: absolute;
+    max-width: 250px;
+    color: $colourDB32White;
+    text-align: center;
+    font-size: 12px;
+    background-color: $colourDB32VeryDarkPurple;
+    padding: 6px;
+    top: 0%;
+    transform: translate(-100%, 0%);
+    left: 0%;
+}
+
+.crafting_component_slot_cont {
+    background-color: $colourDB32Grey;
+    width: 72%;
+    border: 6px solid $colourDB32VeryDarkPurple;
     &:hover {
-        -webkit-filter: brightness(150%);
+        transform: scale(1.1);
+        filter: brightness(150%);
     }
 }
 
-.component_slot_remove {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    top: 42px;
+.crafting_component_slot_icon {
     visibility: hidden;
+    width: 100%;
+}
+
+#crafting_arrow_icon {
+    width: 100%;
+}
+
+.crafting_button {
+    visibility: hidden;
+    width: 75%;
     &:hover {
-        -webkit-filter: brightness(150%);
+        transform: scale(1.2);
+        filter: brightness(150%);
     }
-}
-
-#craft_result_accept {
-    top: 54px;
-}
-
-#crafting_spacer {
-    width: 40px;
-    height: 20px;
-    background-color: $colourDB32WhiteOpacity80;
-    top: 50%;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-#craft_result {
-    padding: 10px;
 }

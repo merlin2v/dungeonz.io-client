@@ -150,8 +150,7 @@ class InventoryBar {
         }
     }
 
-    click (event) {
-        console.log("slot click");
+    click () {
         _this.player.inventory.useItem(this.getAttribute('slotKey'));
     }
 

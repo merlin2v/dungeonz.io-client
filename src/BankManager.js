@@ -10,7 +10,7 @@ class BankItem {
         this.catalogueEntry = null;
         this.durability = null;
         this.maxDurability = null;
-        this.dmpLocked = dmpLocked || true;
+        this.dmpLocked = dmpLocked;
     }
 }
 

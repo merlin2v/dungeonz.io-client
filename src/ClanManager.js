@@ -79,7 +79,7 @@ class ClanManager {
         this.members[toPromoteRankIndex] = this.members[toPromoteRankIndex-1];
         // Move the promoted member to the slot above.
         this.members[toPromoteRankIndex-1] = member;
-        console.log("member promoted:", member.displayName, ", to rank:", toPromoteRankIndex-1);
+        //console.log("member promoted:", member.displayName, ", to rank:", toPromoteRankIndex-1);
         // Update the member list, as the order has changed.
         _this.GUI.clanPanel.updateMemberList();
 
@@ -115,13 +115,13 @@ class ClanManager {
         // If there is an id property, then it is for a new member of the clan this player is already in.
         // NOT for when this player is the new member.
         if(data.id !== undefined){
-            console.log("  another player is new clan member");
+            //console.log("  another player is new clan member");
             _this.chat(undefined, "New clan member: " + data.displayName, "#50ff7f");
             this.addMember(data.id, data.displayName);
         }
         // This player is the new member. Set up the clan stuff.
         else {
-            console.log("  this player is the new clan member");
+            //console.log("  this player is the new clan member");
             _this.chat(undefined, "Clan joined!", "#50ff7f");
             // For every slot in the data sent.
             for(let i=0; i<this.maxMembers; i+=1){
@@ -133,8 +133,8 @@ class ClanManager {
             // Find the player's own rank.
             this.findOwnRankIndex();
 
-            _this.GUI.clanPanel.structuresCount.innerText = data.structuresCount + "/" + this.maxStructures;
-            _this.GUI.clanPanel.powerCount.innerText = data.power;
+            _this.GUI.clanPanel.structuresText.innerText = data.structuresCount + "/" + this.maxStructures;
+            _this.GUI.clanPanel.powerText.innerText = data.power;
             // Show the clan icon so they can open the clan panel.
             _this.GUI.clanIcon.style.visibility = "visible";
         }

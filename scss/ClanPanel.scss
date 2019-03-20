@@ -1,28 +1,25 @@
 
-#clan_panel {
-    display: inline-grid;
-    width: 500px;
-    user-select: none;
-}
-
-#clan_name {
-}
-
-#clan_contents {
-    background-color: $colourDB32WhiteOpacity80;
+#clan_inner_cont {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 86% auto;
+    background-color: $colourDB32VeryDarkPurple;
 }
 
 #clan_top_cont {
+    height: 100%;
     display: grid;
-    grid-template-columns: auto 40%;
+    grid-template-columns: 64% auto;
     grid-gap: 12px;
-    padding: 12px;
 }
 
 #clan_member_list {
-    background-color: $colourDB32WhiteOpacity80;
-    height: 300px;
     overflow: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    padding-top: 22px;
+    text-align: center;
+    background-color: $colourDB32SteelGrey;
 }
 
 .clan_member_text {
@@ -31,8 +28,9 @@
     padding: 6px;
     margin: 6px 0 6px 6px;
     &:hover {
-        margin-left: 20px;
         font-weight: bold;
+        filter: brightness(150%);
+        transform: scale(1.1);
     }
 }
 
@@ -41,59 +39,60 @@
     white-space: nowrap;
     padding: 6px;
     margin: 6px 0 6px 6px;
-    background-color: $colourDB32SteelGrey;
+    background-color: $colourDB32DarkGrey;
     color: $colourDB32White;
     &:hover {
-        margin-left: 20px;
         font-weight: bold;
+        filter: brightness(150%);
     }
 }
 
-#clan_details {
-    background-color: $colourDB32WhiteOpacity80;
+#clan_details_cont {
     display: grid;
-    grid-template-columns: 40px auto;
-    grid-template-rows: repeat(3, 32px) auto;
-    grid-gap: 8px;
-    padding: 10px;
+    grid-template-columns: 20% auto;
+    grid-template-rows: repeat(5, 20%);
     align-items: center;
+    justify-items: center;
+    padding: 6px;
+    background-color: $colourDB32IronGrey;
 }
 
 .clan_details_icon {
-    height: 100%;
+    width: 100%;
 }
 
 .clan_details_text {
-    font-size: 12px;
+
 }
 
 #clan_bottom_cont {
     display: grid;
     grid-template-columns: 25% 25% auto 25%;
     grid-gap: 12px;
-    padding: 12px;
-    padding-top: 0;
-    text-align: center;
+    align-items: center;
+    justify-items: center;
+    padding: 8px;
+    padding-top: 26px;
 }
 
-#clan_kick {
-    background-color: $colourDB32Orange;
-}
-
-#clan_promote {
-    background-color: $colourDB32LightBlue;
-}
-
-#clan_leave {
-    background-color: $colourDB32Rose;
+.clan_bottom_button_cont {
+    position: relative;
+    width: 100%;
+    user-select: none;
+    &:hover {
+        filter: brightness(150%);
+        transform: scale(1.1);
+    }
 }
 
 .clan_bottom_button {
-    font-size: 11px;
-    padding: 8px;
-    &:hover {
-        font-weight: bold;
-        transform: scale(1.1);
-        filter: brightness(110%);
-    }
+    width: 100%;
+    left: 50%;
+    top: 50%;
+}
+
+.clan_bottom_text {
+    left: 50%;
+    top: 50%;
+    font-size: 10px;
 }

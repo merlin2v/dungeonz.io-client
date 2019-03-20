@@ -119,6 +119,10 @@ class BankPanel extends PanelTemplate {
 
         this.innerContainer = document.createElement('div');
         this.innerContainer.id = 'bank_inner_cont';
+        this.innerContainer.ondrop = function (event) {
+            // Stop items from being accidentally dropped to the ground if the drag drop wasn't over a valid slot.
+            event.stopPropagation();
+        };
         this.contentsContainer.appendChild(this.innerContainer);
 
         this.tabsContainer = document.createElement('div');

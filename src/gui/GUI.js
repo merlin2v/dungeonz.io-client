@@ -126,12 +126,8 @@ class GUI {
         this.clanIcon.onmouseover =   function(){ game.GUI.clanTooltip.style.visibility = "visible" };
         this.clanIcon.onmouseout =    function(){ game.GUI.clanTooltip.style.visibility = "hidden" };
         this.clanIcon.onclick =       function(){
-            if(game.GUI.clanPanel.container.style.visibility === "visible"){
-                game.GUI.clanPanel.hide();
-            }
-            else {
-                game.GUI.clanPanel.show();
-            }
+            if(game.GUI.clanPanel.isOpen === true) game.GUI.clanPanel.hide();
+            else game.GUI.clanPanel.show();
         };
         this.clanIcon.style.visibility = "hidden";
 

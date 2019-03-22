@@ -451,9 +451,9 @@
             <key type="filename">entities/corpses/corpse-human.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-cotton.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-bar.png</key>
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
-            <key type="filename">entities/pickups/pickup-gold-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-armour.png</key>
             <key type="filename">entities/pickups/pickup-iron-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
@@ -463,6 +463,7 @@
             <key type="filename">entities/pickups/pickup-iron-rod.png</key>
             <key type="filename">entities/pickups/pickup-iron-sheet.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-bar.png</key>
             <key type="filename">entities/pickups/pickup-oak-bow.png</key>
             <key type="filename">entities/pickups/pickup-oak-logs.png</key>
             <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
@@ -482,9 +483,12 @@
             <key type="filename">entities/resource nodes/cotton-inactive.png</key>
             <key type="filename">entities/resource nodes/cotton.png</key>
             <key type="filename">entities/resource nodes/oak-tree.png</key>
+            <key type="filename">entities/resource nodes/ore-clay.png</key>
+            <key type="filename">entities/resource nodes/ore-dungium.png</key>
             <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>
             <key type="filename">entities/resource nodes/ore-iron.png</key>
+            <key type="filename">entities/resource nodes/ore-noctis.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle-inactive.png</key>
             <key type="filename">entities/resource nodes/small-iron-candle.png</key>
             <key type="filename">entities/resource nodes/tree-inactive.png</key>
@@ -623,16 +627,17 @@
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-charter.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-ore.png</key>
             <key type="filename">entities/pickups/pickup-fabric.png</key>
             <key type="filename">entities/pickups/pickup-feathers.png</key>
             <key type="filename">entities/pickups/pickup-furnace.png</key>
             <key type="filename">entities/pickups/pickup-generator.png</key>
-            <key type="filename">entities/pickups/pickup-gold-ore.png</key>
             <key type="filename">entities/pickups/pickup-iron-ore.png</key>
             <key type="filename">entities/pickups/pickup-mage-robe.png</key>
             <key type="filename">entities/pickups/pickup-necromancer-robe.png</key>
             <key type="filename">entities/pickups/pickup-ninja-garb.png</key>
             <key type="filename">entities/pickups/pickup-noctis-armour.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-ore.png</key>
             <key type="filename">entities/pickups/pickup-plain-robe.png</key>
             <key type="filename">entities/pickups/pickup-potionry-lab.png</key>
             <key type="filename">entities/pickups/pickup-wood-door.png</key>
@@ -651,6 +656,7 @@
                 <false/>
             </struct>
             <key type="filename">entities/pickups/pickup-exp-orb.png</key>
+            <key type="filename">entities/pickups/pickup-respawn-orb.png</key>
             <key type="filename">entities/projectiles/proj-vampire-fang.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

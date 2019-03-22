@@ -72,7 +72,6 @@ class InventorySlot {
         _this.GUI.inventoryBar.slots[this.slotKey].icon.style.visibility = "hidden";
         _this.GUI.inventoryBar.slots[this.slotKey].durability.style.visibility = "hidden";
         _this.GUI.inventoryBar.slots[this.slotKey].equipped.style.visibility = "hidden";
-        _this.GUI.inventoryBar.slots[this.slotKey].open.style.visibility = "hidden";
         _this.GUI.inventoryBar.slots[this.slotKey].addButton.style.visibility = "hidden";
 
         // Reset the catalogue entry so it doesn't show up in the tooltip.

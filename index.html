@@ -142,27 +142,6 @@
 
             <div id="inventory_tooltip" class="counter_tooltip generic_tooltip gui_zoomable"></div>
             <img id="inventory_icon" class="gui_icon gui_zoomable" src="assets/img/gui/hud/inventory-icon.png" draggable="false">
-
-            <div id="dungeon_prompt">
-                <div id="dungeon_prompt_top">
-                <span id="dungeon_prompt_info">
-                    <p id="dungeon_prompt_name_header"          class="dungeon_prompt_header"></p>
-                    <p id="dungeon_prompt_name_value"           class="dungeon_prompt_value"></p>
-                    <p id="dungeon_prompt_difficulty_header"    class="dungeon_prompt_header"></p>
-                    <p id="dungeon_prompt_difficulty_value"     class="dungeon_prompt_value"></p>
-                    <p id="dungeon_prompt_glory_cost_header"    class="dungeon_prompt_header"></p>
-                    <p id="dungeon_prompt_glory_cost_value"     class="dungeon_prompt_value"></p>
-                </span>
-                    <span id="dungeon_prompt_warning">
-                    <p id="dungeon_prompt_warning_header"       class="dungeon_prompt_header"></p>
-                    <p id="dungeon_prompt_warning_value"        class="dungeon_prompt_value"></p>
-                </span>
-                </div>
-                <div id="dungeon_prompt_bottom">
-                    <div id="dungeon_prompt_accept"></div>
-                    <div id="dungeon_prompt_decline"></div>
-                </div>
-            </div>
             
             <div id="virtual_dpad">
                 <img id="virtual_dpad_up"    draggable="false" class="virtual_dpad_hover" src="assets/img/gui/hud/virtual-dpad-up-icon.png">
@@ -171,20 +150,13 @@
                 <img id="virtual_dpad_right" draggable="false" class="virtual_dpad_hover" src="assets/img/gui/hud/virtual-dpad-right-icon.png">
             </div>
 
-            <div id="respawn_prompt">
-                <div id="you_died"></div>
-                <span id="respawns_remaining"></span>
-                <span id="respawns_remaining_value"></span>
-                <div id="respawn_button"></div>
-            </div>
+            <div id="respawn_panel" class="centered panel_template_cont"></div>
 
-            <div id="game_over_prompt">
-                <div id="game_over"></div>
-                <span id="game_over_message"></span>
-                <div id="play_again_button"></div>
-            </div>
+            <div id="game_over_panel" class="centered panel_template_cont"></div>
 
             <div id="exit_game_panel" class="centered panel_template_cont"></div>
+
+            <div id="dungeon_panel" class="centered panel_template_cont"></div>
 
             <div id="stats_panel" class="centered panel_template_cont"></div>
 
@@ -192,66 +164,20 @@
 
             <div id="bank_panel" class="centered panel_template_cont"></div>
 
-            <!--<div id="clan_panel" class="panel">
-                <div class="clan_header">
-                    <div id="clan_name" class="panel_name"></div>
-                </div>
-                <div id="clan_contents">
-                    <div id="clan_top_cont">
-                        <div id="clan_member_list"></div>
-                        <div id="clan_details">
-                            <img id="clan_members_icon" class="clan_details_icon" src="assets/img/gui/panels/clan-members-icon.png">
-                            <div id="clan_members_count" class="clan_details_text">0/10</div>
-                            <img id="clan_structures_icon" class="clan_details_icon" src="assets/img/gui/panels/clan-structures-icon.png">
-                            <div id="clan_structures_count" class="clan_details_text">0/50</div>
-                            <img id="clan_power_icon" class="clan_details_icon" src="assets/img/gui/panels/clan-power-icon.png">
-                            <div id="clan_power_count" class="clan_details_text">0</div>
-                        </div>
-                    </div>
-                    <div id="clan_bottom_cont">
-                        <div id="clan_kick" class="clan_bottom_button"></div>
-                        <div id="clan_promote" class="clan_bottom_button"></div>
-                        <div></div>
-                        <div id="clan_leave" class="clan_bottom_button"></div>
-                    </div>
-                </div>
-            </div>-->
+            <div id="clan_panel" class="centered panel_template_cont"></div>
 
-            <div id="clan_panel" class="panel"></div>
-
-            <div id="generator_panel">
-
-            </div>
+            <div id="generator_panel"></div>
 
             <div id="crafting_panel" class="centered panel_template_cont"></div>
 
             <div id="shop_panel" class="centered panel_template_cont"></div>
 
-            <div id="spell_book_panel" class="panel">
-                <div class="panel_header">
-                    <div id="spell_book_panel_name" class="panel_name"></div>
+            <div id="spell_bar">
+                <div id="spell_tooltip">
+                    <div id="spell_tooltip_name"></div>
+                    <div id="spell_tooltip_description"></div>
                 </div>
-                <div id="spell_book_panel_main">
-                    <div id="spell_icons_cont">
-                        <div id="spell_1" class="spell_icon_cont">
-                            <img id="spell_1_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
-                        </div>
-                        <div id="spell_2" class="spell_icon_cont">
-                            <img id="spell_2_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
-                        </div>
-                        <div id="spell_3" class="spell_icon_cont">
-                            <img id="spell_3_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
-                        </div>
-                        <div id="spell_4" class="spell_icon_cont">
-                            <img id="spell_4_icon" src="assets/img/gui/spells/ward-spell-icon.png" class="spell_icon">
-                        </div>
-                    </div>
-                    <div id="spell_info_cont">
-                        <div id="spell_name" class="stat_info_text"></div>
-                        <div id="spell_description" class="stat_info_text"></div>
-                    </div>
-                </div>
-
+                <div id="spell_slots_cont"></div>
             </div>
 
             <div id="hp_energy_bars_cont">
@@ -580,29 +506,6 @@
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');
             document.getElementById('fullscreen_tooltip').innerHTML =   dungeonz.getTextDef('Fullscreen tooltip');
-
-            // Clan panel.
-            document.getElementById('clan_name').innerText =            dungeonz.getTextDef('Clan');
-            document.getElementById('clan_kick').innerText =            dungeonz.getTextDef('Kick clan member');
-            document.getElementById('clan_promote').innerText =         dungeonz.getTextDef('Promote clan member');
-            document.getElementById('clan_leave').innerText =           dungeonz.getTextDef('Leave clan');
-
-            // Dungeon panel.
-            document.getElementById('dungeon_prompt_name_header').innerText =       dungeonz.getTextDef('Dungeon') + ":";
-            document.getElementById('dungeon_prompt_difficulty_header').innerText = dungeonz.getTextDef('Difficulty') + ":";
-            document.getElementById('dungeon_prompt_glory_cost_header').innerText = dungeonz.getTextDef('Glory cost') + ":";
-            document.getElementById('dungeon_prompt_warning_header').innerText =    dungeonz.getTextDef('Enter dungeon warning header');
-            document.getElementById('dungeon_prompt_warning_value').innerText =     dungeonz.getTextDef('Enter dungeon warning message');
-            document.getElementById('dungeon_prompt_accept').innerText =            dungeonz.getTextDef('Enter');
-            document.getElementById('dungeon_prompt_decline').innerText =           dungeonz.getTextDef('Cancel');
-
-            // Respawn panel.
-            document.getElementById('you_died').innerText =                     dungeonz.getTextDef('You died');
-            document.getElementById('respawns_remaining').innerText =           dungeonz.getTextDef('Respawns remaining');
-            document.getElementById('respawn_button').innerText =               dungeonz.getTextDef('Respawn');
-            document.getElementById('game_over').innerText =                    dungeonz.getTextDef('Game over');
-            document.getElementById('game_over_message').innerText =            dungeonz.getTextDef('Game over message');
-            document.getElementById('play_again_button').innerText =            dungeonz.getTextDef('Play again');
 
         }
 

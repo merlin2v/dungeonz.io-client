@@ -398,20 +398,19 @@ eventResponses.change_day_phase = function (data) {
 eventResponses.dungeon_prompt = function (data) {
     //console.log("dungeon_prompt, data:", data);
     _this.adjacentDungeonID = data;
-    _this.GUI.updateDungeonPrompt();
-    _this.GUI.dungeonPrompt.style.visibility = "visible";
+    _this.GUI.dungeonPanel.show();
 };
 
 eventResponses.hit_point_value = function (data) {
     _this.player.hitPoints = data;
     if(_this.player.hitPoints <= 0){
-        // If the player has any respawns left, show the respawn prompt.
+        // If the player has any respawns left, show the respawn panel.
         if(_this.player.respawns > 0){
-            _this.GUI.respawnPrompt.style.visibility = "visible";
+            _this.GUI.respawnPanel.show();
         }
         // No respawns left. Game over...
         else {
-            _this.GUI.gameOverPrompt.style.visibility = "visible";
+            _this.GUI.gameOverPanel.show();
         }
     }
     _this.GUI.updateHitPointCounters();
@@ -456,8 +455,9 @@ eventResponses.player_respawn = function () {
     _this.GUI.updateRespawnsCounter(_this.player.respawns - 1);
     _this.player.hitPoints = _this.player.maxHitPoints;
     _this.player.energy = _this.player.maxEnergy;
-    _this.GUI.respawnPrompt.style.visibility = "hidden";
+    _this.GUI.respawnPanel.hide();
     _this.GUI.updateHitPointCounters();
+    _this.GUI.updateEnergyCounters();
 };
 
 eventResponses.add_entity = function (data) {
@@ -533,7 +533,7 @@ eventResponses.deactivate_holding = function (data) {
     _this.player.holdingItem = false;
     // Hide the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
-    _this.GUI.inventoryBar.slots[data].open.style.visibility = "hidden";
+    _this.GUI.spellBar.hide();
 };
 
 /**
@@ -541,9 +541,8 @@ eventResponses.deactivate_holding = function (data) {
  * @param data - The type number of the spell book being held.
  */
 eventResponses.activate_spell_book = function (data) {
-    _this.GUI.spellBookPanel.changeSpellBook(data[1]);
-    // Show the open button on the inventory slot.
-    _this.GUI.inventoryBar.slots[data[0]].open.style.visibility = "visible";
+    _this.GUI.spellBar.changeSpellBook(data[1]);
+    _this.GUI.spellBar.show();
 };
 
 eventResponses.bank_item_deposited = function (data) {

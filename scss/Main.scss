@@ -11,11 +11,14 @@ sass --watch scss/Main.scss:main.css
 @import "Inventory";
 @import "VirtualDPad";
 @import "CraftingPanel";
+@import "DungeonPanel";
 @import "BankPanel";
-@import "SpellBookPanel";
+@import "SpellBar";
 @import "ExitGamePanel";
+@import "GameOverPanel";
 @import "ClanPanel";
 @import "GeneratorPanel";
+@import "RespawnPanel";
 @import "ShopPanel";
 @import "TasksPanel";
 @import "PanelTemplate";

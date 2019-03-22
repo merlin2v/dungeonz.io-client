@@ -41,6 +41,13 @@
     }
 }
 
+.panel_template_top_corner {
+    left: 100%;
+    top: 0%;
+    width: 36px;
+    user-select: none;
+}
+
 .panel_template_left_corner {
     left: 0%;
     top: 100%;

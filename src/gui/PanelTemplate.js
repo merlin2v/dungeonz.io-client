@@ -6,8 +6,9 @@ class PanelTemplate {
      * @param {Number} height - The height of the main container.
      * @param {String} panelName - The displayed name of the panel.
      * @param {String} panelIconURL - The url path relative to `assets/img/` to the source image to use for the icon.
+     * @param {Boolean} noCloseButton - Should a close button be added to the top right. If not, uses a corner instead.
      */
-    constructor (panelContainer, width, height, panelName, panelIconURL) {
+    constructor (panelContainer, width, height, panelName, panelIconURL, noCloseButton) {
         //console.log("panel container:", panelContainer);
 
         // Is the panel currently open, visible, shown.
@@ -52,13 +53,23 @@ class PanelTemplate {
         this.icon.draggable = false;
         mainContainer.appendChild(this.icon);
 
-        // Add the close button.
-        const closeButton = document.createElement('img');
-        closeButton.className = 'centered panel_template_close_button';
-        closeButton.src = 'assets/img/gui/panels/panel_close_button.png';
-        closeButton.onclick = this.hide.bind(this);
-        closeButton.draggable = false;
-        mainContainer.appendChild(closeButton);
+        if(noCloseButton === true){
+            // Add a top right corner in place of the button.
+            const topCorner = document.createElement('img');
+            topCorner.className = 'centered panel_template_top_corner';
+            topCorner.src = 'assets/img/gui/panels/panel_corner.png';
+            topCorner.draggable = false;
+            mainContainer.appendChild(topCorner);
+        }
+        else {
+            // Add the close button.
+            const closeButton = document.createElement('img');
+            closeButton.className = 'centered panel_template_close_button';
+            closeButton.src = 'assets/img/gui/panels/panel_close_button.png';
+            closeButton.onclick = this.hide.bind(this);
+            closeButton.draggable = false;
+            mainContainer.appendChild(closeButton);
+        }
 
         // Add the bottom corners.
         const leftCorner = document.createElement('img');

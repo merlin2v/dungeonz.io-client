@@ -64,7 +64,7 @@ class ClanPanel extends PanelTemplate {
         bottomContainer.appendChild(kickButtonContainer);
         this.kickButton = document.createElement('img');
         this.kickButton.className = 'centered clan_bottom_button';
-        this.kickButton.src = 'assets/img/gui/panels/kick-button-border-valid.png';
+        this.kickButton.src = 'assets/img/gui/panels/clan-button-border-invalid.png';
         kickButtonContainer.appendChild(this.kickButton);
         const kickText = document.createElement('div');
         kickText.className = 'centered clan_bottom_text';
@@ -77,7 +77,7 @@ class ClanPanel extends PanelTemplate {
         bottomContainer.appendChild(promoteButtonContainer);
         this.promoteButton = document.createElement('img');
         this.promoteButton.className = 'centered clan_bottom_button';
-        this.promoteButton.src = 'assets/img/gui/panels/promote-button-border-valid.png';
+        this.promoteButton.src = 'assets/img/gui/panels/clan-button-border-invalid.png';
         promoteButtonContainer.appendChild(this.promoteButton);
         const promoteText = document.createElement('div');
         promoteText.className = 'centered clan_bottom_text';

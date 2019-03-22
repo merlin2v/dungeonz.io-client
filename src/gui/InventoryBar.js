@@ -11,19 +11,6 @@ class Slot {
         this.durability.className = 'inventory_slot_durability';
         this.durability.draggable = false;
 
-        this.open = document.createElement('img');
-        this.open.src = 'assets/img/gui/hud/open-icon.png';
-        this.open.className = 'inventory_slot_open';
-        //this.open.draggable = false;
-        this.open.onclick = bar.openClick;
-        this.open.onmouseover = bar.openOver;
-        this.open.ondragstart = bar.openStopPropagation;
-        this.open.ondragend = bar.openStopPropagation;
-        this.open.ondragenter = bar.openStopPropagation;
-        this.open.ondragleave = bar.openStopPropagation;
-        this.open.ondragover = bar.openStopPropagation;
-        this.open.ondrop = bar.openStopPropagation;
-
         this.equipped = document.createElement('img');
         this.equipped.src = 'assets/img/gui/hud/clothing-icon.png';
         this.equipped.className = 'inventory_slot_equipped';
@@ -65,7 +52,6 @@ class Slot {
 
         this.container.appendChild(this.icon);
         this.container.appendChild(this.durability);
-        this.container.appendChild(this.open);
         this.container.appendChild(this.equipped);
         this.container.appendChild(this.border);
         this.container.appendChild(this.addButton);
@@ -121,20 +107,6 @@ class InventoryBar {
             if(this.slots.hasOwnProperty(key) === false) continue;
             this.slots[key].addButton.style.visibility = "hidden";
         }
-    }
-
-    openClick (event) {
-        event.stopPropagation();
-        _this.GUI.spellBookPanel.show();
-    }
-
-    openOver (event) {
-        event.stopPropagation();
-    }
-
-    openStopPropagation (event) {
-        event.preventDefault();
-        event.stopPropagation();
     }
 
     mouseDown (event) {

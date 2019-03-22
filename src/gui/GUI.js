@@ -7,9 +7,12 @@ import BankPanel from "./BankPanel";
 import ExitGamePanel from "./ExitGamePanel";
 import ClanPanel from "./ClanPanel";
 //import GeneratorPanel from "./GeneratorPanel";
-import SpellBookPanel from "./SpellBookPanel";
+import SpellBar from "./SpellBar";
 import ShopPanel from "./ShopPanel";
 import TasksPanel from "./TasksPanel";
+import DungeonPanel from "./DungeonPanel";
+import RespawnPanel from "./RespawnPanel";
+import GameOverPanel from "./GameOverPanel";
 
 class GUI {
 
@@ -55,11 +58,6 @@ class GUI {
         this.virtualDPadLeft =          document.getElementById('virtual_dpad_left');
         this.virtualDPadRight =         document.getElementById('virtual_dpad_right');
 
-        this.dungeonPrompt =            document.getElementById('dungeon_prompt');
-        this.respawnPrompt =            document.getElementById('respawn_prompt');
-        this.respawnsRemainingValue =   document.getElementById('respawns_remaining_value');
-        this.respawnButton =            document.getElementById('respawn_button');
-        this.gameOverPrompt =           document.getElementById('game_over_prompt');
         this.playAgainButton =          document.getElementById('play_again_button');
         this.itemTooltipContainer =     document.getElementById('item_tooltip_cont');
         this.itemTooltipName =          document.getElementById('item_name');
@@ -72,16 +70,19 @@ class GUI {
         this.isAnyPanelOpen = false;
 
         this.inventoryBar =     new InventoryBar(this);
+        this.spellBar =         new SpellBar();
         this.settingsBar =      new SettingsBar();
         this.exitGamePanel =    new ExitGamePanel();
         this.statsPanel =       this.addPanel(new StatsPanel());
         this.craftingPanel =    this.addPanel(new CraftingPanel());
         this.bankPanel =        this.addPanel(new BankPanel());
-        this.spellBookPanel =   this.addPanel(new SpellBookPanel());
         this.clanPanel =        this.addPanel(new ClanPanel());
+        this.dungeonPanel =     this.addPanel(new DungeonPanel());
         //this.generatorPanel =   this.addPanel(new GeneratorPanel());
         this.shopPanel =        this.addPanel(new ShopPanel());
         this.tasksPanel =       this.addPanel(new TasksPanel());
+        this.respawnPanel =     this.addPanel(new RespawnPanel());
+        this.gameOverPanel =    this.addPanel(new GameOverPanel());
 
         // Show the GUI.
         this.gui.style.visibility = "visible";
@@ -161,34 +162,6 @@ class GUI {
         this.virtualDPadRight.onmouseup =   game.moveRightReleased;
         this.virtualDPadRight.onmouseout =  game.moveRightReleased;
 
-
-        document.getElementById('dungeon_prompt_accept').onclick = function (event) {
-            // Check if the player has enough glory.
-            if(_this.player.glory < dungeonz.DungeonPrompts[_this.adjacentDungeonID].gloryCost){
-                _this.chat(undefined, dungeonz.getTextDef("Not enough glory warning"), "#ffa54f");
-            }
-            else {
-                // Attempt to enter the dungeon. Send the server the ID of the dungeon instance.
-                window.ws.sendEvent("enter_dungeon", _this.adjacentDungeonID);
-            }
-
-            // Hide the prompt.
-            game.GUI.dungeonPrompt.style.visibility = "hidden";
-        };
-        document.getElementById('dungeon_prompt_decline').onclick = function (event) {
-            // Hide the prompt.
-            game.GUI.dungeonPrompt.style.visibility = "hidden";
-        };
-
-        this.respawnButton.onclick = function (event) {
-            window.ws.sendEvent("respawn");
-        };
-
-        this.playAgainButton.onclick = function (event) {
-            // Refresh the page.
-            location.reload();
-        };
-
         // References to the DOM elements for the variable things.
         this.defenceCounters = [];
         this.hitPointCounters = [];
@@ -201,11 +174,8 @@ class GUI {
         // Set the values for the text based counters (glory, coins).
         this.gloryCounter.innerText = this.game.player.glory;
         this.gloryCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
-        //this.coinsCounter.innerText = this.game.player.coins;
-        //this.coinsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
         this.respawnsCounter.innerText = this.game.player.respawns;
         this.respawnsCounterTransition.addEventListener('webkitAnimationEnd', this.textCounterWebkitAnimationEnd, false);
-        this.respawnsRemainingValue.innerText = this.game.player.respawns;
 
         this.GUIColours = {
             currentlyDragged: "rgba(255, 171, 0, 0.5)",
@@ -403,14 +373,7 @@ class GUI {
         }
         this.game.player.respawns = value;
         this.respawnsCounter.innerText = value;
-        this.respawnsRemainingValue.innerText = value;
-    }
-
-    updateDungeonPrompt () {
-        const prompt = dungeonz.DungeonPrompts[_this.adjacentDungeonID];
-        document.getElementById('dungeon_prompt_name_value').innerText = dungeonz.getTextDef(prompt.nameDefinitionID);
-        document.getElementById('dungeon_prompt_difficulty_value').innerText = dungeonz.getTextDef(prompt.difficulty);
-        document.getElementById('dungeon_prompt_glory_cost_value').innerText = prompt.gloryCost;
+        this.respawnPanel.respawnsText.innerText = value;
     }
 
     makeElementDraggable(handle, container){

@@ -3,7 +3,7 @@ import PanelTemplate from "./PanelTemplate";
 
 class ExitGamePanel extends PanelTemplate {
     constructor () {
-        super(document.getElementById('exit_game_panel'), 440, 420, 'Exit game', 'gui/hud/exit-icon');
+        super(document.getElementById('exit_game_panel'), 440, 420, dungeonz.getTextDef('Exit game panel: name'), 'gui/hud/exit-icon');
 
         const innerContainer = document.createElement('div');
         innerContainer.id = 'exit_inner_cont';
@@ -90,4 +90,4 @@ class ExitGamePanel extends PanelTemplate {
     }
 }
 
-export default  ExitGamePanel;
+export default ExitGamePanel;

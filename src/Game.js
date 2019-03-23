@@ -184,7 +184,7 @@ dungeonz.Game.prototype = {
     },
 
     render: function () {
-        this.game.debug.text(this.game.time.fps, 10, this.game.height / 2, "#00ff00");
+        this.game.debug.text(this.game.time.fps, 10, this.game.height / 2, "#00ff00", '24px Courier');
     },
 
     shutdown: function () {

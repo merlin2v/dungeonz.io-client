@@ -325,6 +325,18 @@
             <key type="filename">entities/characters/prisoner/prisoner-up-1.png</key>
             <key type="filename">entities/characters/prisoner/prisoner-up-2.png</key>
             <key type="filename">entities/characters/prisoner/prisoner-up-3.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-down-1.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-down-2.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-down-3.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-left-1.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-left-2.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-left-3.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-right-1.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-right-2.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-right-3.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-up-1.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-up-2.png</key>
+            <key type="filename">entities/characters/snoovir/snoovir-up-3.png</key>
             <key type="filename">entities/characters/traders/ruler-1.png</key>
             <key type="filename">entities/characters/traders/ruler-2.png</key>
             <key type="filename">entities/characters/traders/trader-basic-1.png</key>
@@ -364,6 +376,18 @@
             <key type="filename">entities/clothes/cloak/cloak-up-1.png</key>
             <key type="filename">entities/clothes/cloak/cloak-up-2.png</key>
             <key type="filename">entities/clothes/cloak/cloak-up-3.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-down-1.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-down-2.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-down-3.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-left-1.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-left-2.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-left-3.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-right-1.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-right-2.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-right-3.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-up-1.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-up-2.png</key>
+            <key type="filename">entities/clothes/dungium armour/dungium-armour-up-3.png</key>
             <key type="filename">entities/clothes/iron armour/iron-armour-down-1.png</key>
             <key type="filename">entities/clothes/iron armour/iron-armour-down-2.png</key>
             <key type="filename">entities/clothes/iron armour/iron-armour-down-3.png</key>
@@ -424,18 +448,6 @@
             <key type="filename">entities/clothes/noctis armour/noctis-armour-up-1.png</key>
             <key type="filename">entities/clothes/noctis armour/noctis-armour-up-2.png</key>
             <key type="filename">entities/clothes/noctis armour/noctis-armour-up-3.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-1.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-2.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-down-3.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-1.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-2.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-left-3.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-1.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-2.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-right-3.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-1.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-2.png</key>
-            <key type="filename">entities/clothes/paladin armour/paladin-armour-up-3.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-down-1.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-down-2.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-down-3.png</key>
@@ -627,6 +639,7 @@
             <key type="filename">entities/pickups/pickup-book-of-souls.png</key>
             <key type="filename">entities/pickups/pickup-charter.png</key>
             <key type="filename">entities/pickups/pickup-cloak.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-armour.png</key>
             <key type="filename">entities/pickups/pickup-dungium-ore.png</key>
             <key type="filename">entities/pickups/pickup-fabric.png</key>
             <key type="filename">entities/pickups/pickup-feathers.png</key>
@@ -710,6 +723,20 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/projectiles/proj-snowball-1.png</key>
+            <key type="filename">entities/projectiles/proj-snowball-2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,2,4,4</rect>
+                <key>scale9Paddings</key>
+                <rect>2,2,4,4</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -721,7 +748,6 @@
             <filename>entities/characters/human base</filename>
             <filename>entities/characters/bat</filename>
             <filename>entities/clothes/cloak</filename>
-            <filename>entities/clothes/paladin armour</filename>
             <filename>entities/characters/effects</filename>
             <filename>entities/characters/bandit</filename>
             <filename>entities/characters/knight</filename>
@@ -742,6 +768,8 @@
             <filename>entities/characters/blood lord</filename>
             <filename>entities/characters/blood priest</filename>
             <filename>entities/clothes/noctis armour</filename>
+            <filename>entities/characters/snoovir</filename>
+            <filename>entities/clothes/dungium armour</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

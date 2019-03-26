@@ -82,7 +82,7 @@ class ShopPanel extends PanelTemplate {
 
 
         this.stockSlots = [];
-        this.maxStock = 30;
+        this.maxStock = 50;
         for(let i=0; i<this.maxStock; i+=1){
             this.stockSlots.push(new StockSlot(this, i));
         }

@@ -96,6 +96,7 @@ import Prisoner                 from './characters/Prisoner'
 import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
 import Ruler                    from './characters/Ruler'
+import Snoovir                  from './characters/Snoovir'
 import ToolMerchant             from './characters/ToolMerchant'
 import Vampire                  from './characters/Vampire'
 import Warrior                  from './characters/Warrior'
@@ -132,6 +133,7 @@ import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupCotton             from './pickups/PickupCotton'
+import PickupDungiumArmour      from './pickups/PickupDungiumArmour'
 import PickupExpOrbArmoury      from './pickups/PickupExpOrbArmoury'
 import PickupExpOrbGathering    from './pickups/PickupExpOrbGathering'
 import PickupExpOrbMagic        from './pickups/PickupExpOrbMagic'
@@ -177,13 +179,14 @@ import PickupYellowKey          from './pickups/PickupYellowKey'
 
 import ProjBloodBolt            from './projectiles/ProjBloodBolt'
 import ProjDeathbind            from './projectiles/ProjDeathbind'
+import ProjFire                 from './projectiles/ProjFire'
 import ProjIronArrow            from './projectiles/ProjIronArrow'
 import ProjIronDagger           from './projectiles/ProjIronDagger'
-import ProjIronSword            from './projectiles/ProjIronSword'
 import ProjIronHammer           from './projectiles/ProjIronHammer'
+import ProjIronSword            from './projectiles/ProjIronSword'
 import ProjPacify               from './projectiles/ProjPacify'
 import ProjShuriken             from './projectiles/ProjShuriken'
-import ProjFire                 from './projectiles/ProjFire'
+import ProjSnowball             from './projectiles/ProjSnowball'
 import ProjSuperFire            from './projectiles/ProjSuperFire'
 import ProjVampireFang          from './projectiles/ProjVampireFang'
 import ProjWind                 from './projectiles/ProjWind'
@@ -209,6 +212,7 @@ const EntitiesList = {
     RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
     Ruler:                  Ruler,
+    Snoovir:                Snoovir,
     ToolMerchant:           ToolMerchant,
     Vampire:                Vampire,
     Warrior:                Warrior,
@@ -242,6 +246,7 @@ const EntitiesList = {
     PickupCharter:          PickupCharter,
     PickupCloak:            PickupCloak,
     PickupCotton:           PickupCotton,
+    PickupDungiumArmour:    PickupDungiumArmour,
     PickupExpOrbArmoury:    PickupExpOrbArmoury,
     PickupExpOrbGathering:  PickupExpOrbGathering,
     PickupExpOrbMagic:      PickupExpOrbMagic,
@@ -287,13 +292,14 @@ const EntitiesList = {
 
     ProjBloodBolt:          ProjBloodBolt,
     ProjDeathbind:          ProjDeathbind,
+    ProjFire:               ProjFire,
     ProjIronArrow:          ProjIronArrow,
     ProjIronDagger:         ProjIronDagger,
-    ProjIronSword:          ProjIronSword,
     ProjIronHammer:         ProjIronHammer,
+    ProjIronSword:          ProjIronSword,
     ProjPacify:             ProjPacify,
     ProjShuriken:           ProjShuriken,
-    ProjFire:               ProjFire,
+    ProjSnowball:           ProjSnowball,
     ProjSuperFire:          ProjSuperFire,
     ProjVampireFang:        ProjVampireFang,
     ProjWind:               ProjWind,

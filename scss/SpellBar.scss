@@ -47,6 +47,7 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    cursor: $cursorHand;
     &:hover {
         filter: brightness(150%);
         transform: scale(1.1);

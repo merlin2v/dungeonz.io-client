@@ -527,6 +527,8 @@ eventResponses.activate_holding = function (data) {
     // Show the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.src = 'assets/img/gui/hud/holding-icon.png';
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "visible";
+    // Change the cursor to the attack icon.
+    _this.GUI.gui.className = "attack_cursor";
 };
 
 eventResponses.deactivate_holding = function (data) {
@@ -534,6 +536,8 @@ eventResponses.deactivate_holding = function (data) {
     // Hide the equipped icon on the inventory slot.
     _this.GUI.inventoryBar.slots[data].equipped.style.visibility = "hidden";
     _this.GUI.spellBar.hide();
+    // Change the cursor to the normal icon.
+    _this.GUI.gui.className = "normal_cursor";
 };
 
 /**

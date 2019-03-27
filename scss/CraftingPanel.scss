@@ -47,9 +47,11 @@
     width: 100%;
 }
 
+// The remove and accept buttons.
 .crafting_button {
     visibility: hidden;
     width: 75%;
+    cursor: $cursorHand;
     &:hover {
         transform: scale(1.2);
         filter: brightness(150%);

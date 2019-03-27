@@ -55,6 +55,7 @@
 
 .bank_tab_button {
     width: 70%;
+    cursor: $cursorHand;
     &:hover {
         transform: scale(1.1);
         filter: brightness(150%);
@@ -78,6 +79,7 @@
     margin: 4px;
     pointer-events: auto;
     user-select: none;
+    cursor: $cursorHand;
     &:hover {
         transform: scale(1.1);
         filter: brightness(150%);

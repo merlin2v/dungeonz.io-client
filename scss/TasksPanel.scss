@@ -52,6 +52,7 @@
     position: relative;
     width: 55%;
     user-select: none;
+    cursor: $cursorHand;
     &:hover {
         filter: brightness(150%);
         transform: scale(1.1);
@@ -83,6 +84,7 @@
     border-width: 4px;
     border-style: solid;
     border-color: $colourDB32VeryDarkPurple;
+    cursor: $cursorHand;
     &:hover {
         filter: brightness(150%);
         transform: scale(1.03);

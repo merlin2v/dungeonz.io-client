@@ -32,6 +32,18 @@
     visibility: hidden;
 }
 
+.normal_cursor {
+    cursor: url(../client/assets/img/gui/hud/normal-cursor.png), auto;
+}
+
+.hand_cursor {
+    cursor: $cursorHand;
+}
+
+.attack_cursor {
+    cursor: url(../client/assets/img/gui/hud/attack-cursor.png), auto;
+}
+
 .gui_icon {
     width: 34px;
     height: 34px;
@@ -63,7 +75,7 @@
     user-select: none;
     font-size: 24px;
     font-weight: bold;
-    color: $colourTextContentWhite;
+    color: $colourDB32White;
 
     -webkit-text-stroke: 1px $colourDB32VeryDarkPurple;
 }

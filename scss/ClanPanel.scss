@@ -31,6 +31,7 @@
     white-space: nowrap;
     padding: 6px;
     margin: 6px 0 6px 6px;
+    cursor: $cursorHand;
     &:hover {
         font-weight: bold;
         filter: brightness(150%);
@@ -45,6 +46,7 @@
     margin: 6px 0 6px 6px;
     background-color: $colourDB32DarkGrey;
     color: $colourDB32White;
+    cursor: $cursorHand;
     &:hover {
         font-weight: bold;
         filter: brightness(150%);
@@ -83,6 +85,7 @@
     position: relative;
     width: 100%;
     user-select: none;
+    cursor: $cursorHand;
     &:hover {
         filter: brightness(150%);
         transform: scale(1.1);

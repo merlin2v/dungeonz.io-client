@@ -96,14 +96,17 @@ dungeonz.Game.prototype = {
 
         this.playerTween = null;
 
+        this.statics = {};
+        this.dynamics = {};
+        this.lightSources = {};
+
         this.tilemap = new Tilemap(this);
+        this.tilemap.loadMap(this.currentBoardName);
         this.clanManager = new ClanManager();
         this.GUI = new GUI(this);
         this.craftingManager = new CraftingManager();
 
-        this.dynamics = {};
         this.dynamicsGroup = this.add.group();
-        this.lightSources = {};
         this.pseudoInteractables = {};
 
         // Make sure the inventory slots are showing the right items.
@@ -259,28 +262,35 @@ dungeonz.Game.prototype = {
         // to be walked into, such as showing the crafting panel for crafting stations.
         if(direction === 'u'){
             const playerNextRow = this.player.row - 1;
+            const playerCol = this.player.col;
             let key,
                 dynamic;
             for(key in this.pseudoInteractables){
                 if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
                 dynamic = this.pseudoInteractables[key];
                 if(dynamic.row === playerNextRow){
-                    if(dynamic.col === this.player.col){
+                    if(dynamic.col === playerCol){
                         dynamic.sprite.interactedByPlayer();
                         return;
                     }
                 }
             }
+            const staticEntity = this.statics[playerNextRow + "-" + this.player.col];
+            // Check there is a static there.
+            if(staticEntity !== undefined){
+                staticEntity.interactedByPlayer();
+            }
         }
         else if(direction === 'd'){
             const playerNextRow = this.player.row + 1;
+            const playerCol = this.player.col;
             let key,
                 dynamic;
             for(key in this.pseudoInteractables){
                 if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
                 dynamic = this.pseudoInteractables[key];
                 if(dynamic.row === playerNextRow){
-                    if(dynamic.col === this.player.col){
+                    if(dynamic.col === playerCol){
                         dynamic.sprite.interactedByPlayer();
                         return;
                     }
@@ -289,12 +299,13 @@ dungeonz.Game.prototype = {
         }
         else if(direction === 'l'){
             const playerNextCol = this.player.col - 1;
+            const playerRow = this.player.row;
             let key,
                 dynamic;
             for(key in this.pseudoInteractables){
                 if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
                 dynamic = this.pseudoInteractables[key];
-                if(dynamic.row === this.player.row){
+                if(dynamic.row === playerRow){
                     if(dynamic.col === playerNextCol){
                         dynamic.sprite.interactedByPlayer();
                         return;
@@ -304,12 +315,13 @@ dungeonz.Game.prototype = {
         }
         else {
             const playerNextCol = this.player.col + 1;
+            const playerRow = this.player.row;
             let key,
                 dynamic;
             for(key in this.pseudoInteractables){
                 if(this.pseudoInteractables.hasOwnProperty(key) === false) continue;
                 dynamic = this.pseudoInteractables[key];
-                if(dynamic.row === this.player.row){
+                if(dynamic.row === playerRow){
                     if(dynamic.col === playerNextCol){
                         dynamic.sprite.interactedByPlayer();
                         return;
@@ -552,7 +564,7 @@ dungeonz.Game.prototype = {
         const row = data.row;
         const col = data.col;
 
-        //console.log("adding entity type:", typeNumber, "at row:", row, ", col:", col, ", config:", data);
+        console.log("adding entity type:", typeNumber, "at row:", row, ", col:", col, ", config:", data);
 
         //console.log("rel col:", this.player.col - col);
 
@@ -571,7 +583,7 @@ dungeonz.Game.prototype = {
             id: id,
             row: row,
             col: col,
-            sprite: new EntityList[EntityTypes[typeNumber]](// <-- figure out this weird offset thing
+            sprite: new EntityList[EntityTypes[typeNumber]](
                 col * dungeonz.TILE_SIZE * GAME_SCALE,
                 row * dungeonz.TILE_SIZE * GAME_SCALE,
                 data)
@@ -590,7 +602,7 @@ dungeonz.Game.prototype = {
         }
 
         if(dynamicSprite.lightDistance !== undefined){
-            this.lightSources[id] = dynamicSprite;
+            this.lightSources[id] = this.dynamics[id];
             this.tilemap.updateDarknessGrid();
         }
 
@@ -632,6 +644,8 @@ dungeonz.Game.prototype = {
      * @param {Number} colOffset
      */
     offsetOtherDynamics (rowOffset, colOffset) {
+        const dynamics = this.dynamics,
+            playerEntityID = this.player.entityId;
         let dynamic;
         let dynamicSprite;
         let playerRowTopViewRange = _this.player.row - dungeonz.VIEW_RANGE;
@@ -639,15 +653,15 @@ dungeonz.Game.prototype = {
         let playerRowBotViewRange = _this.player.row + dungeonz.VIEW_RANGE;
         let playerColRightViewRange = _this.player.col + dungeonz.VIEW_RANGE;
 
-        for(let key in this.dynamics){
+        for(let key in dynamics){
 
-            if(this.dynamics.hasOwnProperty(key) === false) continue;
+            if(dynamics.hasOwnProperty(key) === false) continue;
 
-            dynamic = this.dynamics[key];
+            dynamic = dynamics[key];
             dynamicSprite = dynamic.sprite;
 
             // Skip the player entity's sprite.
-            if(dynamic.id === this.player.entityId) continue;
+            if(dynamic.id === playerEntityID) continue;
 
             // Check if it is within the player view range.
             if(dynamic.row < playerRowTopViewRange
@@ -665,6 +679,46 @@ dungeonz.Game.prototype = {
             }
 
             if(dynamicSprite.onMove !== undefined) dynamicSprite.onMove();
+        }
+    },
+
+    /**
+     * @param {Number} rowOffset
+     * @param {Number} colOffset
+     */
+    offsetStaticTiles (rowOffset, colOffset) {
+        const statics = this.statics;
+        let staticTile;
+        let playerRowTopViewRange = _this.player.row - dungeonz.VIEW_RANGE;
+        let playerColLeftViewRange = _this.player.col - dungeonz.VIEW_RANGE;
+        let playerRowBotViewRange = _this.player.row + dungeonz.VIEW_RANGE;
+        let playerColRightViewRange = _this.player.col + dungeonz.VIEW_RANGE;
+
+        for(let key in statics){
+
+            if(statics.hasOwnProperty(key) === false) continue;
+
+            staticTile = statics[key];
+
+            // Check if it is within the player view range.
+            if(staticTile.row < playerRowTopViewRange
+                || staticTile.row > playerRowBotViewRange
+                || staticTile.col < playerColLeftViewRange
+                || staticTile.col > playerColRightViewRange){
+                // Out of view range. Remove it.
+                staticTile.destroy();
+                // Should have been removed above in destroy, but make sure.
+                delete statics[key];
+                if(staticTile.lightDistance !== 0){
+                    delete this.lightSources[key];
+                    this.tilemap.updateDarknessGrid();
+                }
+                continue;
+            }
+
+            if(staticTile.lightDistance !== 0){
+                _this.tilemap.updateDarknessGrid();
+            }
         }
     },
 

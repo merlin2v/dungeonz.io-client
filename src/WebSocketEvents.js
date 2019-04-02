@@ -174,12 +174,12 @@ eventResponses.world_full = function () {
 };
 
 function tweenCompleteLeft () {
-    _this.tilemap.tileGridBitmapData.move(dungeonz.TILE_SIZE, 0);
+    _this.tilemap.groundGridBitmapData.move(dungeonz.TILE_SIZE, 0);
     _this.tilemap.staticsGridBitmapData.move(dungeonz.TILE_SIZE, 0);
-    _this.tilemap.tileGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.groundGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.updateTileGridEdgeLeft();
+    _this.tilemap.updateGroundGridEdgeLeft();
     _this.tilemap.updateStaticsGridEdgeLeft();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
@@ -187,12 +187,12 @@ function tweenCompleteLeft () {
 }
 
 function tweenCompleteRight () {
-    _this.tilemap.tileGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
+    _this.tilemap.groundGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
     _this.tilemap.staticsGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
-    _this.tilemap.tileGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.groundGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.updateTileGridEdgeRight();
+    _this.tilemap.updateGroundGridEdgeRight();
     _this.tilemap.updateStaticsGridEdgeRight();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
@@ -200,12 +200,12 @@ function tweenCompleteRight () {
 }
 
 function tweenCompleteUp () {
-    _this.tilemap.tileGridBitmapData.move(0, dungeonz.TILE_SIZE);
+    _this.tilemap.groundGridBitmapData.move(0, dungeonz.TILE_SIZE);
     _this.tilemap.staticsGridBitmapData.move(0, dungeonz.TILE_SIZE);
-    _this.tilemap.tileGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.groundGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.updateTileGridEdgeTop();
+    _this.tilemap.updateGroundGridEdgeTop();
     _this.tilemap.updateStaticsGridEdgeTop();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
@@ -213,12 +213,12 @@ function tweenCompleteUp () {
 }
 
 function tweenCompleteDown () {
-    _this.tilemap.tileGridBitmapData.move(0, -dungeonz.TILE_SIZE);
+    _this.tilemap.groundGridBitmapData.move(0, -dungeonz.TILE_SIZE);
     _this.tilemap.staticsGridBitmapData.move(0, -dungeonz.TILE_SIZE);
-    _this.tilemap.tileGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
+    _this.tilemap.groundGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.updateTileGridEdgeBottom();
+    _this.tilemap.updateGroundGridEdgeBottom();
     _this.tilemap.updateStaticsGridEdgeBottom();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
@@ -253,9 +253,12 @@ eventResponses.moved = function (data) {
         }
 
         // Do this AFTER stopping the current player tween, so it can finish with the
-        // previous position (the one that matches the state the tween starter in).
+        // previous position (the one that matches the state the tween starts in).
         _this.player.row = data.row;
         _this.player.col = data.col;
+
+        dynamic.row = data.row;
+        dynamic.col = data.col;
 
         // Tween the player sprite to the target row/col.
         _this.playerTween = _this.add.tween(dynamicSprite).to({
@@ -266,21 +269,25 @@ eventResponses.moved = function (data) {
         // Right.
         if(data.col > origCol){
             _this.offsetOtherDynamics(0, -1);
+            _this.offsetStaticTiles(0, -1);
             _this.playerTween.onComplete.add(tweenCompleteRight);
         }
         // Left.
         else if(data.col < origCol){
             _this.offsetOtherDynamics(0, +1);
+            _this.offsetStaticTiles(0, +1);
             _this.playerTween.onComplete.add(tweenCompleteLeft);
         }
         // Down.
         if(data.row > origRow){
             _this.offsetOtherDynamics(+1, 0);
+            _this.offsetStaticTiles(+1, 0);
             _this.playerTween.onComplete.add(tweenCompleteDown);
         }
         // Up.
         else if(data.row < origRow){
             _this.offsetOtherDynamics(-1, 0);
+            _this.offsetStaticTiles(-1, 0);
             _this.playerTween.onComplete.add(tweenCompleteUp);
         }
 

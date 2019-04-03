@@ -477,6 +477,9 @@ class Tilemap {
     loadMap (boardName) {
         console.log("* Loading map:", boardName);
         this.game.currentBoardName = boardName;
+
+        _this.statics = {};
+
         this.currentMapGroundGrid = dungeonz.mapsData[boardName].groundGrid;
         //console.log("* Ground grid:", this.currentMapGroundGrid);
         this.currentMapStaticsGrid = dungeonz.mapsData[boardName].staticsGrid;

@@ -402,12 +402,6 @@ eventResponses.change_day_phase = function (data) {
     _this.tilemap.updateDarknessGrid();
 };
 
-eventResponses.dungeon_prompt = function (data) {
-    //console.log("dungeon_prompt, data:", data);
-    _this.adjacentDungeonID = data;
-    _this.GUI.dungeonPanel.show();
-};
-
 eventResponses.hit_point_value = function (data) {
     _this.player.hitPoints = data;
     if(_this.player.hitPoints <= 0){
@@ -459,6 +453,7 @@ eventResponses.stop_burn = function (data) {
 };
 
 eventResponses.player_respawn = function () {
+    console.log("player respawn event");
     _this.GUI.updateRespawnsCounter(_this.player.respawns - 1);
     _this.player.hitPoints = _this.player.maxHitPoints;
     _this.player.energy = _this.player.maxEnergy;

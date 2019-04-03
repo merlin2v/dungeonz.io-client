@@ -104,26 +104,26 @@ import ZombieHuman              from './characters/ZombieHuman'
 
 import CorpseHuman              from './corpses/CorpseHuman'
 
-import Anvil                    from './interactables/Anvil'
-import BankChest                from './interactables/BankChest'
-import Charter                  from './interactables/Charter'
-import WoodWall                 from './interactables/WoodWall'
-import Furnace                  from './interactables/Furnace'
-import Generator                from './interactables/Generator'
-import Workbench                from './interactables/Workbench'
-import CottonPlant              from './interactables/CottonPlant'
-import GoldOre                  from './interactables/GoldOre'
-import IronOre                  from './interactables/IronOre'
-import OakTree                  from './interactables/OakTree'
-import WoodDoor                 from './interactables/WoodDoor'
-import WoodDoorLockedBlue       from './interactables/WoodDoorLockedBlue'
-import WoodDoorLockedGreen      from './interactables/WoodDoorLockedGreen'
-import WoodDoorLockedRed        from './interactables/WoodDoorLockedRed'
-import WoodDoorLockedYellow     from './interactables/WoodDoorLockedYellow'
-import SmallIronCandle          from './interactables/SmallIronCandle'
-import Exit                     from './interactables/Exit'
-import DungeonPortal            from './interactables/DungeonPortal'
-import OverworldPortal          from './interactables/OverworldPortal'
+//import Anvil                    from './interactables/Anvil'
+//import BankChest                from './interactables/BankChest'
+//import Charter                  from './interactables/Charter'
+//import WoodWall                 from './interactables/WoodWall'
+//import Furnace                  from './interactables/Furnace'
+//import Generator                from './interactables/Generator'
+//import Workbench                from './interactables/Workbench'
+//import CottonPlant              from './interactables/CottonPlant'
+//import DungiumOre               from './interactables/DungiumOre'
+//import IronOre                  from './interactables/IronOre'
+//import OakTree                  from './interactables/OakTree'
+//import WoodDoor                 from './interactables/WoodDoor'
+//import WoodDoorLockedBlue       from './interactables/WoodDoorLockedBlue'
+//import WoodDoorLockedGreen      from './interactables/WoodDoorLockedGreen'
+//import WoodDoorLockedRed        from './interactables/WoodDoorLockedRed'
+//import WoodDoorLockedYellow     from './interactables/WoodDoorLockedYellow'
+//import SmallIronCandle          from './interactables/SmallIronCandle'
+//import Exit                     from './interactables/Exit'
+//import DungeonPortal            from './interactables/DungeonPortal'
+//import OverworldPortal          from './interactables/OverworldPortal'
 
 import PickupAnvil              from './pickups/PickupAnvil'
 import PickupBankChest          from './pickups/PickupBankChest'
@@ -145,8 +145,8 @@ import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
 import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
-import PickupGoldBar            from './pickups/PickupGoldBar'
-import PickupGoldOre            from './pickups/PickupGoldOre'
+import PickupDungiumBar         from './pickups/PickupDungiumBar'
+import PickupDungiumOre         from './pickups/PickupDungiumOre'
 import PickupGreenKey           from './pickups/PickupGreenKey'
 import PickupIronArmour         from './pickups/PickupIronArmour'
 import PickupIronArrows         from './pickups/PickupIronArrows'
@@ -166,7 +166,6 @@ import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
 import PickupRedKey             from './pickups/PickupRedKey'
-import PickupScrollOfHealing    from './pickups/PickupScrollOfHealing'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
@@ -220,23 +219,23 @@ const EntitiesList = {
 
     CorpseHuman:            CorpseHuman,
 
-    Anvil:                  Anvil,
-    BankChest:              BankChest,
-    Charter:                Charter,
-    WoodWall:               WoodWall,
-    Furnace:                Furnace,
-    Generator:              Generator,
-    Workbench:              Workbench,
-    CottonPlant:            CottonPlant,
-    GoldOre:                GoldOre,
-    IronOre:                IronOre,
-    OakTree:                OakTree,
-    WoodDoor:               WoodDoor,
-    WoodDoorLockedBlue:     WoodDoorLockedBlue,
-    WoodDoorLockedGreen:    WoodDoorLockedGreen,
-    WoodDoorLockedRed:      WoodDoorLockedRed,
-    WoodDoorLockedYellow:   WoodDoorLockedYellow,
-    SmallIronCandle:        SmallIronCandle,
+    //Anvil:                  Anvil,
+    //BankChest:              BankChest,
+    //Charter:                Charter,
+    //WoodWall:               WoodWall,
+    //Furnace:                Furnace,
+    //Generator:              Generator,
+    //Workbench:              Workbench,
+    //CottonPlant:            CottonPlant,
+    //DungiumOre:             DungiumOre,
+    //IronOre:                IronOre,
+    //OakTree:                OakTree,
+    //WoodDoor:               WoodDoor,
+    //WoodDoorLockedBlue:     WoodDoorLockedBlue,
+    //WoodDoorLockedGreen:    WoodDoorLockedGreen,
+    //WoodDoorLockedRed:      WoodDoorLockedRed,
+    //WoodDoorLockedYellow:   WoodDoorLockedYellow,
+    //SmallIronCandle:        SmallIronCandle,
 
     PickupAnvil:            PickupAnvil,
     PickupBankChest:        PickupBankChest,
@@ -258,8 +257,8 @@ const EntitiesList = {
     PickupFireStaff:        PickupFireStaff,
     PickupFurnace:          PickupFurnace,
     PickupGenerator:        PickupGenerator,
-    PickupGoldBar:          PickupGoldBar,
-    PickupGoldOre:          PickupGoldOre,
+    PickupDungiumBar:       PickupDungiumBar,
+    PickupDungiumOre:       PickupDungiumOre,
     PickupGreenKey:         PickupGreenKey,
     PickupIronArmour:       PickupIronArmour,
     PickupIronArrows:       PickupIronArrows,
@@ -279,7 +278,6 @@ const EntitiesList = {
     PickupOakLogs:          PickupOakLogs,
     PickupPlainRobe:        PickupPlainRobe,
     PickupRedKey:           PickupRedKey,
-    PickupScrollOfHealing:  PickupScrollOfHealing,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
     PickupSuperFireStaff:   PickupSuperFireStaff,
@@ -303,10 +301,6 @@ const EntitiesList = {
     ProjSuperFire:          ProjSuperFire,
     ProjVampireFang:        ProjVampireFang,
     ProjWind:               ProjWind,
-
-    Exit:                   Exit,
-    DungeonPortal:          DungeonPortal,
-    OverworldPortal:        OverworldPortal,
 
 };
 

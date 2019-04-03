@@ -35,7 +35,6 @@ class Static {
         // Add this static to the statics list.
         if(_this.statics[this.id] === undefined){
             _this.statics[this.id] = this;
-            console.log("Added to statics list");
         }
         else {
             console.log("* WARNING: Attempting to add static tile, but ID already taken in statics list:", this.id);
@@ -44,11 +43,9 @@ class Static {
     }
 
     destroy () {
-        console.log("Destroying static tile");
         delete _this.statics[this.id];
 
         if(_this.lightSources[this.id] !== undefined){
-            console.log("  removing from light sources list");
             delete _this.lightSources[this.id];
             _this.tilemap.updateDarknessGrid();
         }
@@ -65,10 +62,21 @@ class Portal extends Static {
     }
 }
 
+class DungeonPortal extends Portal {
+    constructor (row, col, tileID, data) {
+        super(row, col, tileID, data);
+        this.dungeonID = data;
+    }
+    interactedByPlayer () {
+        _this.adjacentDungeonID = this.dungeonID;
+        _this.GUI.dungeonPanel.show();
+    }
+}
+
 class Torch extends Static {
     constructor (row, col, tileID, data) {
         super(row, col, tileID, data);
-        this.sprite.lightDistance = 4;
+        this.sprite.lightDistance = 6;
     }
 }
 
@@ -76,17 +84,13 @@ class CraftingStation extends Static {
     constructor (row, col, tileID, data) {
         super(row, col, tileID, data);
 
-        this.stationTypeNumber = data[1];
+        this.stationTypeNumber = data;
     }
 
     interactedByPlayer () {}
 }
 
 class Anvil extends CraftingStation {
-    constructor (row, col, tileID, data) {
-        super(row, col, tileID, data);
-    }
-
     interactedByPlayer () {
         _this.GUI.craftingPanel.show(dungeonz.getTextDef("Anvil"), 'assets/img/gui/panels/anvil.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
@@ -94,13 +98,22 @@ class Anvil extends CraftingStation {
 }
 
 class Furnace extends CraftingStation {
-    constructor (row, col, tileID, data) {
-        super(row, col, tileID, data);
-    }
-
     interactedByPlayer () {
         _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+    }
+}
+
+class Workbench extends CraftingStation {
+    interactedByPlayer () {
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Workbench"), 'assets/img/gui/panels/workbench.png');
+        _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+    }
+}
+
+class BankChest extends Static {
+    interactedByPlayer () {
+        _this.GUI.bankPanel.show();
     }
 }
 
@@ -115,12 +128,22 @@ const TileIDInactiveFrames = {
 const brokenFrame = 144;
 
 const StaticClasses = {
-    45: CraftingStation,
-    147: Portal,    // Dungeon portal (active)
-    211: Portal,     // Overworld portal (active)
+    147: DungeonPortal, // Dungeon portal (active)
+    211: Portal,    // Overworld portal (active)
     // Light wall torches.
     2183: Torch,
     2184: Torch,
+    2185: Torch,
+    2186: Torch,
+    2187: Torch,
+    2188: Torch,
+
+    3022: Anvil,
+    3023: Furnace,
+    3024: Workbench,
+    //3025: PotionryLab,
+    //3026: StorageBox,
+    3027: BankChest,
 };
 
 /**
@@ -137,9 +160,11 @@ function addStaticTile (row, col, tileData) {
     // Use the specific class.
     else {
         const staticTile = new StaticClasses[tileData[0]](row, col, tileData[0], tileData[1]);
-
-        _this.lightSources[staticTile.id] = staticTile;
-        _this.tilemap.updateDarknessGrid();
+        // If this static type emits light, add it to the light sources list.
+        if(staticTile.sprite.lightDistance > 0){
+            _this.lightSources[staticTile.id] = staticTile;
+            _this.tilemap.updateDarknessGrid();
+        }
 
         return staticTile;
     }

@@ -95,7 +95,6 @@ dungeonz.Boot.prototype = {
         this.load.atlasJSONArray('game-atlas',  'assets/img/game-atlas.png',    'assets/img/game-atlas.json');
         this.load.spritesheet('ground-tileset', 'assets/img/ground.png', 16, 16);
         this.load.spritesheet('statics-tileset', 'assets/img/statics.png', 16, 16);
-        this.load.spritesheet('interactables-tileset', 'assets/img/interactables.png', 16, 16);
 
     },
 

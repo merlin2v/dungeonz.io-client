@@ -275,7 +275,7 @@ dungeonz.Game.prototype = {
                     }
                 }
             }
-            const staticEntity = this.statics[playerNextRow + "-" + this.player.col];
+            const staticEntity = this.statics[playerNextRow + "-" + playerCol];
             // Check there is a static there.
             if(staticEntity !== undefined){
                 staticEntity.interactedByPlayer();
@@ -296,6 +296,11 @@ dungeonz.Game.prototype = {
                     }
                 }
             }
+            const staticEntity = this.statics[playerNextRow + "-" + playerCol];
+            // Check there is a static there.
+            if(staticEntity !== undefined){
+                staticEntity.interactedByPlayer();
+            }
         }
         else if(direction === 'l'){
             const playerNextCol = this.player.col - 1;
@@ -312,6 +317,11 @@ dungeonz.Game.prototype = {
                     }
                 }
             }
+            const staticEntity = this.statics[playerRow + "-" + playerNextCol];
+            // Check there is a static there.
+            if(staticEntity !== undefined){
+                staticEntity.interactedByPlayer();
+            }
         }
         else {
             const playerNextCol = this.player.col + 1;
@@ -327,6 +337,11 @@ dungeonz.Game.prototype = {
                         return;
                     }
                 }
+            }
+            const staticEntity = this.statics[playerRow + "-" + playerNextCol];
+            // Check there is a static there.
+            if(staticEntity !== undefined){
+                staticEntity.interactedByPlayer();
             }
         }
 
@@ -564,7 +579,7 @@ dungeonz.Game.prototype = {
         const row = data.row;
         const col = data.col;
 
-        console.log("adding entity type:", typeNumber, "at row:", row, ", col:", col, ", config:", data);
+        //console.log("adding entity type:", typeNumber, "at row:", row, ", col:", col, ", config:", data);
 
         //console.log("rel col:", this.player.col - col);
 

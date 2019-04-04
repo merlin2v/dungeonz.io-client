@@ -95,6 +95,12 @@ dungeonz.Game.prototype = {
         this.nextMoveTime = 0;
 
         this.playerTween = null;
+        this.playerTweenDirections = {
+            u: false,
+            d: false,
+            l: false,
+            r: false
+        };
 
         this.statics = {};
         this.dynamics = {};
@@ -567,13 +573,31 @@ dungeonz.Game.prototype = {
         }, this);
     },
 
+    addEntity (data) {
+        // Sort the statics from the dynamics.
+        if(data.id === undefined){
+            this.addStatic(data);
+        }
+        else {
+            this.addDynamic(data);
+        }
+    },
+
+    addStatic (data) {
+        if(_this.statics[data.row + "-" + data.col] === undefined){
+            // The static is not yet added to the grid. Wait a bit for the current player tween to finish and the edge is loaded.
+            setTimeout(this.tilemap.updateStaticTile.bind(this.tilemap), 500, data.row + "-" + data.col, false);
+        }
+        // TODO might need to add the above here also, in some weird case. wait and see...
+    },
+
     /**
      * @param {Number|String} data.id
      * @param {Number} data.typeNumber
      * @param {Number} data.row
      * @param {Number} data.col
      */
-    addEntity (data) {
+    addDynamic (data) {
         const id = data.id;
         const typeNumber = data.typeNumber;
         const row = data.row;

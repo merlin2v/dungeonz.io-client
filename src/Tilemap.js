@@ -10,6 +10,8 @@ class Tilemap {
         this.mapRows = 0;
         this.mapCols = 0;
 
+        this.pendingStaticTileChanges = [];
+
         this.createGroundGrid();
         this.createStaticsGrid();
         this.createDarknessGrid();
@@ -389,6 +391,33 @@ class Tilemap {
                 staticsGridBitmapData.draw(staticsDrawingSprite, colPosition, row * tileSize);
             }
         }
+    }
+
+    updateStaticTile (tileID, active) {
+        /** @type {Static} */
+        const staticTile = _this.statics[tileID];
+        if(staticTile === undefined) return;
+
+        let staticsGridBitmapData = this.staticsGridBitmapData,
+            staticsDrawingSprite = this.staticsDrawingSprite,
+            tileSize = dungeonz.TILE_SIZE,
+            targetRow = staticTile.row - _this.player.row + dungeonz.VIEW_RANGE,
+            targetCol = staticTile.col - _this.player.col + dungeonz.VIEW_RANGE;
+
+        if(_this.playerTweenDirections.u === true) targetRow -= 1;
+        if(_this.playerTweenDirections.d === true) targetRow += 1;
+        if(_this.playerTweenDirections.l === true) targetCol -= 1;
+        if(_this.playerTweenDirections.r === true) targetCol += 1;
+
+        staticsGridBitmapData.clear(targetCol * tileSize, targetRow * tileSize, tileSize, tileSize);
+        // Redraw the sprite inactive frame at this tile position.
+        if(active === true){
+            staticsDrawingSprite.frame = staticTile.tileID;
+        }
+        else {
+            staticsDrawingSprite.frame = staticTile.inactiveFrame;
+        }
+        staticsGridBitmapData.draw(staticsDrawingSprite, targetCol * tileSize, targetRow * tileSize);
     }
 
     updateDarknessGrid () {

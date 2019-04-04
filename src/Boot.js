@@ -1,6 +1,7 @@
 import TextDefs from '../src/catalogues/TextDefinitions';
 import DungeonPrompts from '../src/catalogues/DungeonPrompts';
 
+import tutorial from '../assets/map/tutorial'
 import overworld from '../assets/map/overworld'
 import dungeon_bandit_hideout from '../assets/map/dungeon-bandit-hideout'
 import dungeon_city_sewers from '../assets/map/dungeon-city-sewers'
@@ -67,20 +68,8 @@ window.windowResize = function () {
     console.log("w: " + window.innerWidth);
     console.log("h: " + window.innerHeight);*/
 
-    //_this.tilemap.tileGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    //_this.tilemap.tileGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-
-    //_this.tilemap.staticsGridGraphic.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    //_this.tilemap.staticsGridGraphic.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-
-    //_this.tilemap.darknessGridGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    //_this.tilemap.darknessGridGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-
     _this.tilemap.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (_this.tilemap.darknessGridGroup.width * 0.5);
     _this.tilemap.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (_this.tilemap.darknessGridGroup.height * 0.5);
-
-    //_this.dynamicsGroup.x = (window.innerWidth * 0.5)  - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
-    //_this.dynamicsGroup.y = (window.innerHeight * 0.5) - (16 * GAME_SCALE * dungeonz.VIEW_DIAMETER * 0.5);
 
 };
 
@@ -118,6 +107,7 @@ dungeonz.Boot.prototype = {
             window.focus();
         }, false);
 
+        dungeonz.mapsData["tutorial"] =                 tutorial;
         dungeonz.mapsData["overworld"] =                overworld;
         dungeonz.mapsData["dungeon-bandit-hideout"] =   dungeon_bandit_hideout;
         dungeonz.mapsData["dungeon-city-sewers"] =      dungeon_city_sewers;

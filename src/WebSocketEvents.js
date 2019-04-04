@@ -178,12 +178,12 @@ function tweenCompleteLeft () {
     _this.tilemap.staticsGridBitmapData.move(dungeonz.TILE_SIZE, 0);
     _this.tilemap.groundGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.x -= dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+    //_this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.updateGroundGridEdgeLeft();
     _this.tilemap.updateStaticsGridEdgeLeft();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
-    //console.log("tween left comp");
+    _this.playerTweenDirections.l = false;
 }
 
 function tweenCompleteRight () {
@@ -191,12 +191,12 @@ function tweenCompleteRight () {
     _this.tilemap.staticsGridBitmapData.move(-dungeonz.TILE_SIZE, 0);
     _this.tilemap.groundGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.x += dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
+    //_this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.updateGroundGridEdgeRight();
     _this.tilemap.updateStaticsGridEdgeRight();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
-    //console.log("tween right comp");
+    _this.playerTweenDirections.r = false;
 }
 
 function tweenCompleteUp () {
@@ -204,12 +204,12 @@ function tweenCompleteUp () {
     _this.tilemap.staticsGridBitmapData.move(0, dungeonz.TILE_SIZE);
     _this.tilemap.groundGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.y -= dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+    //_this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.updateGroundGridEdgeTop();
     _this.tilemap.updateStaticsGridEdgeTop();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
-    //console.log("tween up comp");
+    _this.playerTweenDirections.u = false;
 }
 
 function tweenCompleteDown () {
@@ -217,12 +217,12 @@ function tweenCompleteDown () {
     _this.tilemap.staticsGridBitmapData.move(0, -dungeonz.TILE_SIZE);
     _this.tilemap.groundGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.staticsGridGraphic.y += dungeonz.TILE_SIZE * GAME_SCALE;
-    _this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
+    //_this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
     _this.tilemap.updateGroundGridEdgeBottom();
     _this.tilemap.updateStaticsGridEdgeBottom();
     _this.tilemap.updateDarknessGrid();
     _this.playerTween = null;
-    //console.log("tween down comp");
+    _this.playerTweenDirections.d = false;
 }
 
 eventResponses.moved = function (data) {
@@ -250,6 +250,7 @@ eventResponses.moved = function (data) {
         // Make sure the current tween has stopped, so it finishes with moving the tilemap in that direction correctly.
         if(_this.playerTween !== null){
             _this.playerTween.stop(true);
+            //_this.tilemap.checkPendingStaticTileChanges();
         }
 
         // Do this AFTER stopping the current player tween, so it can finish with the
@@ -271,24 +272,32 @@ eventResponses.moved = function (data) {
             _this.offsetOtherDynamics(0, -1);
             _this.offsetStaticTiles(0, -1);
             _this.playerTween.onComplete.add(tweenCompleteRight);
+            _this.playerTweenDirections.r = true;
+            _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Left.
         else if(data.col < origCol){
             _this.offsetOtherDynamics(0, +1);
             _this.offsetStaticTiles(0, +1);
             _this.playerTween.onComplete.add(tweenCompleteLeft);
+            _this.playerTweenDirections.l = true;
+            _this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Down.
         if(data.row > origRow){
             _this.offsetOtherDynamics(+1, 0);
             _this.offsetStaticTiles(+1, 0);
             _this.playerTween.onComplete.add(tweenCompleteDown);
+            _this.playerTweenDirections.d = true;
+            _this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Up.
         else if(data.row < origRow){
             _this.offsetOtherDynamics(-1, 0);
             _this.offsetStaticTiles(-1, 0);
             _this.playerTween.onComplete.add(tweenCompleteUp);
+            _this.playerTweenDirections.u = true;
+            _this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
         }
 
     }
@@ -453,7 +462,6 @@ eventResponses.stop_burn = function (data) {
 };
 
 eventResponses.player_respawn = function () {
-    console.log("player respawn event");
     _this.GUI.updateRespawnsCounter(_this.player.respawns - 1);
     _this.player.hitPoints = _this.player.maxHitPoints;
     _this.player.energy = _this.player.maxEnergy;
@@ -563,24 +571,12 @@ eventResponses.bank_item_withdrawn = function (data) {
 
 eventResponses.active_state = function (data) {
     //console.log("active state change:", data);
-    // Check the entity id is valid.
-    const dynamic = _this.dynamics[data.id];
-    if(dynamic === undefined) return;
+    _this.tilemap.updateStaticTile(data, true);
+};
 
-    if(data.activeState === true){
-        dynamic.sprite.frameName = dynamic.sprite.activeStateFrame;
-        if(dynamic.sprite.lightDistance !== undefined){
-            dynamic.sprite.lightDistance = dynamic.sprite.defaultLightDistance;
-            _this.tilemap.updateDarknessGrid();
-        }
-    }
-    else {
-        dynamic.sprite.frameName = dynamic.sprite.inactiveStateFrame;
-        if(dynamic.sprite.lightDistance !== undefined){
-            dynamic.sprite.lightDistance = 0;
-            _this.tilemap.updateDarknessGrid();
-        }
-    }
+eventResponses.inactive_state = function (data) {
+    //console.log("inactive state change:", data);
+    _this.tilemap.updateStaticTile(data, false);
 };
 
 eventResponses.change_direction = function (data) {

@@ -13,7 +13,7 @@ class Static {
         this.row = row;
         this.col = col;
         /** @type {Boolean} Is this static in an active state. Only applies to interactables. */
-        this.activeState = true;
+        //this.activeState = true;
         /** @type {Boolean} Is this static in a broken state. Only applies to breakables. */
         this.brokenState = false;
         // Holder for the light distance property. Tilemap.updateDarknessGrid passes it in as a property of a sprite...
@@ -76,7 +76,7 @@ class DungeonPortal extends Portal {
 class Torch extends Static {
     constructor (row, col, tileID, data) {
         super(row, col, tileID, data);
-        this.sprite.lightDistance = 6;
+        this.sprite.lightDistance = 4;
     }
 }
 
@@ -117,15 +117,48 @@ class BankChest extends Static {
     }
 }
 
+/** @type {number} The frame to show when a static is broken. Pile of rubble. */
+const brokenFrame = 144;
 
 /** @type {Object} The frames to use for each interactable type when it is inactive. */
 const TileIDInactiveFrames = {
-    0: 0, // The empty frame.
-    11: 40
-};
+    0: 5,       // The empty frame.
+    11: 40,
 
-/** @type {number} The frame to show when a static is broken. Pile of rubble. */
-const brokenFrame = 144;
+    147: 148,   // Dungeon portal
+    211: 212,   // Overworld portal
+
+    1235: 1236, // Oak tree
+    1299: 1300, // Spruce tree
+    1363: 1364, // Fir tree
+    1427: 1428, // Mangrove tree
+    1491: 1492, // Egaso tree
+    1555: 1556, // Palm tree
+    1237: 1238, // Cotton
+    1301: 1302, // Cactus
+    1365: 1366, // Red mushroom
+    1429: 1430, // Green mushroom
+    1493: 1494, // Blue mushroom
+    1241: 1242, // Clay ore
+    1305: 1242, // Iron ore
+    1369: 1242, // Dungium ore
+    1433: 1242, // Noctis ore
+
+    2324: 2325, // Counter flap
+
+    2767: 2766, // Wood door
+    2768: 2766, // Wood door padlocked
+    2769: 2766, // Wood door locked red
+    2770: 2766, // Wood door locked green
+    2771: 2766, // Wood door locked blue
+    2772: 2766, // Wood door locked yellow
+    2831: 2830, // Metal door
+    2832: 2830, // Metal door padlocked
+    2833: 2830, // Metal door locked red
+    2834: 2830, // Metal door locked green
+    2835: 2830, // Metal door locked blue
+    2836: 2830, // Metal door locked yellow
+};
 
 const StaticClasses = {
     147: DungeonPortal, // Dungeon portal (active)

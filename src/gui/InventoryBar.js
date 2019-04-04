@@ -138,7 +138,6 @@ class InventoryBar {
             _this.player.bankManager.depositItem(this.getAttribute('slotKey'), emptySlotIndex);
         }
         else if(_this.GUI.craftingPanel.isOpen === true){
-            console.log("adding to crafting panel");
             _this.craftingManager.addComponent(this.getAttribute('slotKey'));
         }
 

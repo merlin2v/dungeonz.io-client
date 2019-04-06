@@ -6,7 +6,7 @@ class PanelTemplate {
      * @param {Number} height - The height of the main container.
      * @param {String} panelName - The displayed name of the panel.
      * @param {String} panelIconURL - The url path relative to `assets/img/` to the source image to use for the icon.
-     * @param {Boolean} noCloseButton - Should a close button be added to the top right. If not, uses a corner instead.
+     * @param {Boolean} [noCloseButton=true] - Should a close button be added to the top right. If not, uses a corner instead.
      */
     constructor (panelContainer, width, height, panelName, panelIconURL, noCloseButton) {
         //console.log("panel container:", panelContainer);

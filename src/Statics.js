@@ -37,7 +37,7 @@ class Static {
             _this.statics[this.id] = this;
         }
         else {
-            console.log("* WARNING: Attempting to add static tile, but ID already taken in statics list:", this.id);
+            //console.log("* WARNING: Attempting to add static tile, but ID already taken in statics list:", this.id);
         }
 
     }
@@ -53,6 +53,64 @@ class Static {
 
     interactedByPlayer () {}
 
+}
+
+/**
+ * A list of the GUI triggers by triger name. Multiple GUI trigger entities can have the same name, to group them.
+ * @type {{}}
+ */
+const GUITriggers = {};
+
+class GUITrigger extends Static {
+    constructor (row, col, tileID, data) {
+        super(row, col, tileID, data);
+
+        this.triggerName = data.name;
+        this.panelNameTextDefID = data.panelNameTextDefID;
+        this.contentTextDefID = data.contentTextDefID;
+        this.contentFileName = data.contentFileName;
+        this.panel = _this.GUI[data.panelName];
+        // Don't show the yellow square.
+        this.tileID = 0;
+
+        if(this.panel === undefined){
+            console.log("WARNING: Trigger cannot open invalid GUI panel:", data.panelName);
+        }
+
+        if(GUITriggers[this.triggerName] === undefined){
+            GUITriggers[this.triggerName] = {};
+        }
+
+        GUITriggers[this.triggerName][this.id] = this;
+    }
+
+    static removeTriggerGroup (triggerName) {
+        const triggerGroup = GUITriggers[triggerName];
+        // Remove all of the other triggers in this group.
+        for(let triggerKey in triggerGroup){
+            if(triggerGroup.hasOwnProperty(triggerKey) === false) continue;
+            triggerGroup[triggerKey].destroy();
+        }
+        // Remove the group.
+        delete GUITriggers[triggerName];
+    }
+
+    destroy () {
+        delete GUITriggers[this.triggerName][this.id];
+
+        super.destroy();
+    }
+
+    interactedByPlayer () {
+        // Check the panel is valid. Might have been given the wrong panel name.
+        if(this.panel !== undefined){
+            // Show the GUI panel this trigger opens.
+            this.panel.show(this.panelNameTextDefID, this.contentTextDefID, this.contentFileName);
+        }
+
+        // Remove this trigger and the group it is in.
+        GUITrigger.removeTriggerGroup(this.triggerName);
+    }
 }
 
 class Portal extends Static {
@@ -161,6 +219,7 @@ const TileIDInactiveFrames = {
 };
 
 const StaticClasses = {
+    86: GUITrigger,
     147: DungeonPortal, // Dungeon portal (active)
     211: Portal,    // Overworld portal (active)
     // Light wall torches.
@@ -177,6 +236,7 @@ const StaticClasses = {
     //3025: PotionryLab,
     //3026: StorageBox,
     3027: BankChest,
+
 };
 
 /**

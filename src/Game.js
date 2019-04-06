@@ -177,15 +177,19 @@ dungeonz.Game.prototype = {
             this.nextMoveTime = Date.now() + this.moveDelay;
 
             if(this.moveUpIsDown === true){
+                this.checkPseudoInteractables('u');
                 ws.sendEvent('mv_u');
             }
             if(this.moveDownIsDown === true){
+                this.checkPseudoInteractables('d');
                 ws.sendEvent('mv_d');
             }
             if(this.moveLeftIsDown === true){
+                this.checkPseudoInteractables('l');
                 ws.sendEvent('mv_l');
             }
             if(this.moveRightIsDown === true){
+                this.checkPseudoInteractables('r');
                 ws.sendEvent('mv_r');
             }
 
@@ -229,9 +233,6 @@ dungeonz.Game.prototype = {
         }
 
         this.GUI.gui.style.visibility = "hidden";
-        this.GUI.dungeonPrompt.style.visibility = "hidden";
-        this.GUI.respawnPrompt.style.visibility = "hidden";
-        this.GUI.statsPanel.container.style.visibility = "hidden";
         this.GUI.settingsBar.hide();
         this.GUI.exitGamePanel.hide();
 
@@ -263,6 +264,10 @@ dungeonz.Game.prototype = {
         this.nextMoveTime = Date.now() + this.moveDelay;
     },
 
+    /**
+     * Check any dynamics and statics that do anything when interacted with, such as opening a panel.
+     * @param {String} direction
+     */
     checkPseudoInteractables (direction) {
         // Check if any interactables that cause this client only to do something are about
         // to be walked into, such as showing the crafting panel for crafting stations.

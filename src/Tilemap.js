@@ -450,7 +450,7 @@ class Tilemap {
 
         if(player !== undefined){
             //this.revealDarkness(player.sprite.x, player.sprite.y, 10);
-            this.revealDarkness(_this.player.row, _this.player.col, 10);
+            this.revealDarkness(_this.player.row, _this.player.col, 5);
         }
 
         let key;

@@ -98,6 +98,7 @@ import Rat                      from './characters/Rat'
 import Ruler                    from './characters/Ruler'
 import Snoovir                  from './characters/Snoovir'
 import ToolMerchant             from './characters/ToolMerchant'
+import TutorialMerchant         from './characters/TutorialMerchant'
 import Vampire                  from './characters/Vampire'
 import Warrior                  from './characters/Warrior'
 import ZombieHuman              from './characters/ZombieHuman'
@@ -134,6 +135,9 @@ import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupCotton             from './pickups/PickupCotton'
 import PickupDungiumArmour      from './pickups/PickupDungiumArmour'
+import PickupDungiumBar         from './pickups/PickupDungiumBar'
+import PickupDungiumOre         from './pickups/PickupDungiumOre'
+import PickupEnergyPotion       from './pickups/PickupEnergyPotion'
 import PickupExpOrbArmoury      from './pickups/PickupExpOrbArmoury'
 import PickupExpOrbGathering    from './pickups/PickupExpOrbGathering'
 import PickupExpOrbMagic        from './pickups/PickupExpOrbMagic'
@@ -145,9 +149,8 @@ import PickupFireGem            from './pickups/PickupFireGem'
 import PickupFireStaff          from './pickups/PickupFireStaff'
 import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
-import PickupDungiumBar         from './pickups/PickupDungiumBar'
-import PickupDungiumOre         from './pickups/PickupDungiumOre'
 import PickupGreenKey           from './pickups/PickupGreenKey'
+import PickupHealthPotion       from './pickups/PickupHealthPotion'
 import PickupIronArmour         from './pickups/PickupIronArmour'
 import PickupIronArrows         from './pickups/PickupIronArrows'
 import PickupIronBar            from './pickups/PickupIronBar'
@@ -213,6 +216,7 @@ const EntitiesList = {
     Ruler:                  Ruler,
     Snoovir:                Snoovir,
     ToolMerchant:           ToolMerchant,
+    TutorialMerchant:       TutorialMerchant,
     Vampire:                Vampire,
     Warrior:                Warrior,
     ZombieHuman:            ZombieHuman,

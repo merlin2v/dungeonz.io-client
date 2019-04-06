@@ -167,6 +167,9 @@ eventResponses.join_world_success = function (data) {
     }
 
     _this.state.start('Game', true, false, data);
+
+    // Add the websocket event responses after the game state is started.
+    addGameStateEventResponses();
 };
 
 eventResponses.world_full = function () {
@@ -224,6 +227,8 @@ function tweenCompleteDown () {
     _this.playerTween = null;
     _this.playerTweenDirections.d = false;
 }
+
+function addGameStateEventResponses() {
 
 eventResponses.moved = function (data) {
     //console.log("moved: ", data);
@@ -716,4 +721,6 @@ eventResponses.task_added = function (data) {
     if(_this.GUI === undefined) return;
 
     _this.GUI.tasksPanel.addTask(data.taskID, data.progress);
+};
+
 };

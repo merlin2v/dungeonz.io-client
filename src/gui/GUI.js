@@ -13,6 +13,7 @@ import TasksPanel from "./TasksPanel";
 import DungeonPanel from "./DungeonPanel";
 import RespawnPanel from "./RespawnPanel";
 import GameOverPanel from "./GameOverPanel";
+import HintPanel from "./HintPanel";
 
 class GUI {
 
@@ -81,6 +82,7 @@ class GUI {
         //this.generatorPanel =   this.addPanel(new GeneratorPanel());
         this.shopPanel =        this.addPanel(new ShopPanel());
         this.tasksPanel =       this.addPanel(new TasksPanel());
+        this.hintPanel =        new HintPanel();
         this.respawnPanel =     this.addPanel(new RespawnPanel());
         this.gameOverPanel =    this.addPanel(new GameOverPanel());
 

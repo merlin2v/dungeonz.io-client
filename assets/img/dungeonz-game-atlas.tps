@@ -340,6 +340,7 @@
             <key type="filename">entities/characters/traders/ruler-1.png</key>
             <key type="filename">entities/characters/traders/ruler-2.png</key>
             <key type="filename">entities/characters/traders/trader-basic-1.png</key>
+            <key type="filename">entities/characters/traders/trader-basic-2.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-1.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-2.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-3.png</key>
@@ -497,7 +498,6 @@
             <key type="filename">entities/resource nodes/oak-tree.png</key>
             <key type="filename">entities/resource nodes/ore-clay.png</key>
             <key type="filename">entities/resource nodes/ore-dungium.png</key>
-            <key type="filename">entities/resource nodes/ore-gold.png</key>
             <key type="filename">entities/resource nodes/ore-inactive.png</key>
             <key type="filename">entities/resource nodes/ore-iron.png</key>
             <key type="filename">entities/resource nodes/ore-noctis.png</key>
@@ -592,6 +592,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/characters/traders/tutorial-trader-basic-1.png</key>
+            <key type="filename">entities/characters/traders/tutorial-trader-basic-2.png</key>
+            <key type="filename">entities/characters/traders/tutorial-trader-basic-3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,9,8,17</rect>
+                <key>scale9Paddings</key>
+                <rect>4,9,8,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-anvil.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -619,7 +634,9 @@
                 <false/>
             </struct>
             <key type="filename">entities/pickups/pickup-blue-key.png</key>
+            <key type="filename">entities/pickups/pickup-energy-potion.png</key>
             <key type="filename">entities/pickups/pickup-green-key.png</key>
+            <key type="filename">entities/pickups/pickup-health-potion.png</key>
             <key type="filename">entities/pickups/pickup-red-key.png</key>
             <key type="filename">entities/pickups/pickup-vampire-fang.png</key>
             <key type="filename">entities/pickups/pickup-yellow-key.png</key>

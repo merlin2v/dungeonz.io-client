@@ -168,8 +168,6 @@ eventResponses.join_world_success = function (data) {
 
     _this.state.start('Game', true, false, data);
 
-    // Add the websocket event responses after the game state is started.
-    addGameStateEventResponses();
 };
 
 eventResponses.world_full = function () {
@@ -228,7 +226,8 @@ function tweenCompleteDown () {
     _this.playerTweenDirections.d = false;
 }
 
-function addGameStateEventResponses() {
+window.addGameStateEventResponses = function () {
+    console.log("* Adding game state event responses");
 
 eventResponses.moved = function (data) {
     //console.log("moved: ", data);

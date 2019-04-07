@@ -14,8 +14,7 @@ const Sprite = function (x, y, config) {
     this.baseSprite.animations.add('idle',    ['tutorial-trader-basic-1', 'tutorial-trader-basic-2', 'tutorial-trader-basic-1', 'tutorial-trader-basic-3'],   4, true);
     this.baseSprite.animations.play('idle');
 
-    //this.addDisplayName(dungeonz.getTextDef("Mob name: Merchant"));
-    this.addDisplayName("Merchant");
+    this.addDisplayName(dungeonz.getTextDef("Mob name: Merchant"));
 };
 
 Sprite.prototype = Object.create(Phaser.Sprite.prototype);

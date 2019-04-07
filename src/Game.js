@@ -153,6 +153,7 @@ dungeonz.Game.prototype = {
         }
 
         this.game.world.bringToTop(this.tilemap.darknessGridGroup);
+        this.game.world.bringToTop(this.tilemap.bordersGroup);
 
         this.tilemap.updateDarknessGrid();
 
@@ -170,6 +171,9 @@ dungeonz.Game.prototype = {
         window.addEventListener('mousemove', this.pointerMoveHandler);
 
         //console.log("dynamics: ", this.dynamics);*/
+
+        // Add the websocket event responses after the game state is started.
+        window.addGameStateEventResponses();
     },
 
     update: function () {

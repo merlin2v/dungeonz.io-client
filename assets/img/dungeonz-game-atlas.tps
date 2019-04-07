@@ -462,11 +462,23 @@
             <key type="filename">entities/clothes/plain robe/plain-robe-up-2.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
+            <key type="filename">entities/pickups/icon-bluecap.png</key>
+            <key type="filename">entities/pickups/icon-greencap.png</key>
+            <key type="filename">entities/pickups/icon-redcap.png</key>
+            <key type="filename">entities/pickups/pickup-bluecap.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-cotton.png</key>
             <key type="filename">entities/pickups/pickup-dungium-bar.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-dagger.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-hammer.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-hatchet.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-pickaxe.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-rod.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-sheet.png</key>
+            <key type="filename">entities/pickups/pickup-dungium-sword.png</key>
             <key type="filename">entities/pickups/pickup-fire-gem.png</key>
             <key type="filename">entities/pickups/pickup-fire-staff.png</key>
+            <key type="filename">entities/pickups/pickup-greencap.png</key>
             <key type="filename">entities/pickups/pickup-iron-armour.png</key>
             <key type="filename">entities/pickups/pickup-iron-bar.png</key>
             <key type="filename">entities/pickups/pickup-iron-dagger.png</key>
@@ -477,8 +489,16 @@
             <key type="filename">entities/pickups/pickup-iron-sheet.png</key>
             <key type="filename">entities/pickups/pickup-iron-sword.png</key>
             <key type="filename">entities/pickups/pickup-noctis-bar.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-dagger.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-hammer.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-hatchet.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-pickaxe.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-rod.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-sheet.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-sword.png</key>
             <key type="filename">entities/pickups/pickup-oak-bow.png</key>
             <key type="filename">entities/pickups/pickup-oak-logs.png</key>
+            <key type="filename">entities/pickups/pickup-redcap.png</key>
             <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
             <key type="filename">entities/pickups/pickup-shuriken.png</key>
             <key type="filename">entities/pickups/pickup-string.png</key>
@@ -486,11 +506,17 @@
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
             <key type="filename">entities/projectiles/proj-deathbind.png</key>
+            <key type="filename">entities/projectiles/proj-dungium-arrow.png</key>
+            <key type="filename">entities/projectiles/proj-dungium-dagger.png</key>
+            <key type="filename">entities/projectiles/proj-dungium-hammer.png</key>
             <key type="filename">entities/projectiles/proj-fire.png</key>
             <key type="filename">entities/projectiles/proj-iron-arrow.png</key>
             <key type="filename">entities/projectiles/proj-iron-dagger.png</key>
             <key type="filename">entities/projectiles/proj-iron-hammer.png</key>
             <key type="filename">entities/projectiles/proj-iron-sword.png</key>
+            <key type="filename">entities/projectiles/proj-noctis-arrow.png</key>
+            <key type="filename">entities/projectiles/proj-noctis-dagger.png</key>
+            <key type="filename">entities/projectiles/proj-noctis-hammer.png</key>
             <key type="filename">entities/projectiles/proj-pacify.png</key>
             <key type="filename">entities/projectiles/proj-wind.png</key>
             <key type="filename">entities/resource nodes/cotton-inactive.png</key>
@@ -640,6 +666,8 @@
             <key type="filename">entities/pickups/pickup-red-key.png</key>
             <key type="filename">entities/pickups/pickup-vampire-fang.png</key>
             <key type="filename">entities/pickups/pickup-yellow-key.png</key>
+            <key type="filename">entities/projectiles/proj-dungium-sword.png</key>
+            <key type="filename">entities/projectiles/proj-noctis-sword.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -685,6 +713,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/pickups/pickup-dungium-arrows.png</key>
+            <key type="filename">entities/pickups/pickup-iron-arrows.png</key>
+            <key type="filename">entities/pickups/pickup-noctis-arrows.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/pickups/pickup-exp-orb.png</key>
             <key type="filename">entities/pickups/pickup-respawn-orb.png</key>
             <key type="filename">entities/projectiles/proj-vampire-fang.png</key>
@@ -697,19 +740,6 @@
                 <rect>3,3,5,5</rect>
                 <key>scale9Paddings</key>
                 <rect>3,3,5,5</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">entities/pickups/pickup-iron-arrows.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>6,6,11,11</rect>
-                <key>scale9Paddings</key>
-                <rect>6,6,11,11</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

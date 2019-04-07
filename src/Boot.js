@@ -68,9 +68,14 @@ window.windowResize = function () {
     console.log("w: " + window.innerWidth);
     console.log("h: " + window.innerHeight);*/
 
-    _this.tilemap.darknessGridGroup.cameraOffset.x = (window.innerWidth * 0.5)  - (_this.tilemap.darknessGridGroup.width * 0.5);
-    _this.tilemap.darknessGridGroup.cameraOffset.y = (window.innerHeight * 0.5) - (_this.tilemap.darknessGridGroup.height * 0.5);
+    const tilemap = _this.tilemap;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
 
+    tilemap.darknessGridGroup.cameraOffset.x = (windowWidth * 0.5)  - (tilemap.darknessGridGroup.width * 0.5);
+    tilemap.darknessGridGroup.cameraOffset.y = (windowHeight * 0.5) - (tilemap.darknessGridGroup.height * 0.5);
+
+    tilemap.updateBorders();
 };
 
 dungeonz.Boot = function () {

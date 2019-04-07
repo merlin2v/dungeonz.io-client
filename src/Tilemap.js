@@ -15,6 +15,8 @@ class Tilemap {
         this.createGroundGrid();
         this.createStaticsGrid();
         this.createDarknessGrid();
+
+        this.createBorders();
     }
 
     createGroundGrid () {
@@ -73,6 +75,59 @@ class Tilemap {
 
         this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
         this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
+    }
+
+    createBorders () {
+        this.bordersGroup = this.game.add.group();
+
+        const gridSize = dungeonz.TILE_SCALE * dungeonz.VIEW_DIAMETER + (dungeonz.TILE_SCALE * 2);
+        const thickness = (dungeonz.TILE_SCALE * 2) + 32;
+        // Top.
+        this.topBorderSprite =      this.game.add.sprite(0, 0, 'ground-tileset', this.blackFrame, this.bordersGroup);
+        this.topBorderSprite.width = gridSize;
+        this.topBorderSprite.height = thickness;
+        this.topBorderSprite.anchor.setTo(0.5);
+        this.topBorderSprite.fixedToCamera = true;
+        // Bottom.
+        this.bottomBorderSprite =   this.game.add.sprite(0, 0, 'ground-tileset', this.blackFrame, this.bordersGroup);
+        this.bottomBorderSprite.width = gridSize;
+        this.bottomBorderSprite.height = thickness;
+        this.bottomBorderSprite.anchor.setTo(0.5);
+        this.bottomBorderSprite.fixedToCamera = true;
+        // Left.
+        this.leftBorderSprite =     this.game.add.sprite(0, 0, 'ground-tileset', this.blackFrame, this.bordersGroup);
+        this.leftBorderSprite.height = gridSize;
+        this.leftBorderSprite.width = thickness;
+        this.leftBorderSprite.anchor.setTo(0.5);
+        this.leftBorderSprite.fixedToCamera = true;
+        // Right.
+        this.rightBorderSprite =    this.game.add.sprite(0, 0, 'ground-tileset', this.blackFrame, this.bordersGroup);
+        this.rightBorderSprite.height = gridSize;
+        this.rightBorderSprite.width = thickness;
+        this.rightBorderSprite.anchor.setTo(0.5);
+        this.rightBorderSprite.fixedToCamera = true;
+
+        this.updateBorders();
+    }
+
+    updateBorders () {
+        const halfWindowWidth = window.innerWidth / 2;
+        const halfWindowHeight = window.innerHeight / 2;
+        const gridRangeSize = dungeonz.TILE_SCALE * (dungeonz.VIEW_RANGE+1);
+        const halfTileScale = dungeonz.TILE_SCALE / 2;
+        // When the window resized, set the border covers to be the width/height of the window.
+        // Also move them along to be at the edge of the view range to put them to the edge of the tiled area.
+        this.topBorderSprite.cameraOffset.x = halfWindowWidth;
+        this.topBorderSprite.cameraOffset.y = halfWindowHeight - gridRangeSize + halfTileScale;
+
+        this.bottomBorderSprite.cameraOffset.x = halfWindowWidth;
+        this.bottomBorderSprite.cameraOffset.y = halfWindowHeight + gridRangeSize - halfTileScale;
+
+        this.leftBorderSprite.cameraOffset.x = halfWindowWidth - gridRangeSize + halfTileScale;
+        this.leftBorderSprite.cameraOffset.y = halfWindowHeight;
+
+        this.rightBorderSprite.cameraOffset.x = halfWindowWidth + gridRangeSize - halfTileScale;
+        this.rightBorderSprite.cameraOffset.y = halfWindowHeight;
     }
 
     /**

@@ -92,6 +92,7 @@ import MeleeMerchant            from './characters/MeleeMerchant'
 import Mummy                    from './characters/Mummy'
 import OmniMerchant             from './characters/OmniMerchant'
 import Pharaoh                  from './characters/Pharaoh'
+import PriestMerchant           from './characters/PriestMerchant'
 import Prisoner                 from './characters/Prisoner'
 import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
@@ -128,6 +129,7 @@ import CorpseHuman              from './corpses/CorpseHuman'
 
 import PickupAnvil              from './pickups/PickupAnvil'
 import PickupBankChest          from './pickups/PickupBankChest'
+import PickupBluecap            from './pickups/PickupBluecap'
 import PickupBlueKey            from './pickups/PickupBlueKey'
 import PickupBookOfLight        from './pickups/PickupBookOfLight'
 import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
@@ -142,6 +144,9 @@ import PickupExpOrbArmoury      from './pickups/PickupExpOrbArmoury'
 import PickupExpOrbGathering    from './pickups/PickupExpOrbGathering'
 import PickupExpOrbMagic        from './pickups/PickupExpOrbMagic'
 import PickupExpOrbMelee        from './pickups/PickupExpOrbMelee'
+import PickupExpOrbPotionry     from './pickups/PickupExpOrbPotionry'
+import PickupExpOrbRanged       from './pickups/PickupExpOrbRanged'
+import PickupExpOrbToolery      from './pickups/PickupExpOrbToolery'
 import PickupExpOrbWeaponry     from './pickups/PickupExpOrbWeaponry'
 import PickupFabric             from './pickups/PickupFabric'
 import PickupFeathers           from './pickups/PickupFeathers'
@@ -150,6 +155,7 @@ import PickupFireStaff          from './pickups/PickupFireStaff'
 import PickupFurnace            from './pickups/PickupFurnace'
 import PickupGenerator          from './pickups/PickupGenerator'
 import PickupGreenKey           from './pickups/PickupGreenKey'
+import PickupGreencap           from './pickups/PickupGreencap'
 import PickupHealthPotion       from './pickups/PickupHealthPotion'
 import PickupIronArmour         from './pickups/PickupIronArmour'
 import PickupIronArrows         from './pickups/PickupIronArrows'
@@ -165,9 +171,12 @@ import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
 import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
 import PickupNoctisArmour       from './pickups/PickupNoctisArmour'
+import PickupNoctisBar          from './pickups/PickupNoctisBar'
+import PickupNoctisOre          from './pickups/PickupNoctisOre'
 import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
+import PickupRedcap             from './pickups/PickupRedcap'
 import PickupRedKey             from './pickups/PickupRedKey'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
@@ -210,6 +219,7 @@ const EntitiesList = {
     Mummy:                  Mummy,
     OmniMerchant:           OmniMerchant,
     Pharaoh:                Pharaoh,
+    PriestMerchant:         PriestMerchant,
     Prisoner:               Prisoner,
     RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
@@ -243,6 +253,7 @@ const EntitiesList = {
 
     PickupAnvil:            PickupAnvil,
     PickupBankChest:        PickupBankChest,
+    PickupBluecap:          PickupBluecap,
     PickupBlueKey:          PickupBlueKey,
     PickupBookOfLight:      PickupBookOfLight,
     PickupBookOfSouls:      PickupBookOfSouls,
@@ -250,10 +261,16 @@ const EntitiesList = {
     PickupCloak:            PickupCloak,
     PickupCotton:           PickupCotton,
     PickupDungiumArmour:    PickupDungiumArmour,
+    PickupDungiumBar:       PickupDungiumBar,
+    PickupDungiumOre:       PickupDungiumOre,
+    PickupEnergyPotion:     PickupEnergyPotion,
     PickupExpOrbArmoury:    PickupExpOrbArmoury,
     PickupExpOrbGathering:  PickupExpOrbGathering,
     PickupExpOrbMagic:      PickupExpOrbMagic,
     PickupExpOrbMelee:      PickupExpOrbMelee,
+    PickupExpOrbPotionry:   PickupExpOrbPotionry,
+    PickupExpOrbRanged:     PickupExpOrbRanged,
+    PickupExpOrbToolery:    PickupExpOrbToolery,
     PickupExpOrbWeaponry:   PickupExpOrbWeaponry,
     PickupFabric:           PickupFabric,
     PickupFeathers:         PickupFeathers,
@@ -261,9 +278,9 @@ const EntitiesList = {
     PickupFireStaff:        PickupFireStaff,
     PickupFurnace:          PickupFurnace,
     PickupGenerator:        PickupGenerator,
-    PickupDungiumBar:       PickupDungiumBar,
-    PickupDungiumOre:       PickupDungiumOre,
+    PickupGreencap:         PickupGreencap,
     PickupGreenKey:         PickupGreenKey,
+    PickupHealthPotion:     PickupHealthPotion,
     PickupIronArmour:       PickupIronArmour,
     PickupIronArrows:       PickupIronArrows,
     PickupIronBar:          PickupIronBar,
@@ -278,9 +295,12 @@ const EntitiesList = {
     PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupNinjaGarb:        PickupNinjaGarb,
     PickupNoctisArmour:     PickupNoctisArmour,
+    PickupNoctisBar:        PickupNoctisBar,
+    PickupNoctisOre:        PickupNoctisOre,
     PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
     PickupPlainRobe:        PickupPlainRobe,
+    PickupRedcap:           PickupRedcap,
     PickupRedKey:           PickupRedKey,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,

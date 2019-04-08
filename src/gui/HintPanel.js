@@ -16,7 +16,6 @@ class HintPanel extends PanelTemplate {
 
         this.hintImage = document.createElement('img');
         this.hintImage.id = 'hint_image';
-        this.hintImage.src = 'assets/img/gui/panels/hint gifs/bar-craft-demo.gif';
         mainContainer.appendChild(this.hintImage);
 
     }

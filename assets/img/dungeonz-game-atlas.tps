@@ -191,9 +191,9 @@
             <key type="filename">entities/buildings/dungeon-portal.png</key>
             <key type="filename">entities/buildings/furnace.png</key>
             <key type="filename">entities/buildings/generator.png</key>
+            <key type="filename">entities/buildings/laboratory.png</key>
             <key type="filename">entities/buildings/overworld-portal-inactive.png</key>
             <key type="filename">entities/buildings/overworld-portal.png</key>
-            <key type="filename">entities/buildings/potionry-lab.png</key>
             <key type="filename">entities/buildings/wood-door-inactive.png</key>
             <key type="filename">entities/buildings/wood-door-locked-blue.png</key>
             <key type="filename">entities/buildings/wood-door-locked-green.png</key>
@@ -341,6 +341,8 @@
             <key type="filename">entities/characters/traders/ruler-2.png</key>
             <key type="filename">entities/characters/traders/trader-basic-1.png</key>
             <key type="filename">entities/characters/traders/trader-basic-2.png</key>
+            <key type="filename">entities/characters/traders/trader-priest-1.png</key>
+            <key type="filename">entities/characters/traders/trader-priest-2.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-1.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-2.png</key>
             <key type="filename">entities/characters/vampire/vampire-down-3.png</key>
@@ -462,9 +464,6 @@
             <key type="filename">entities/clothes/plain robe/plain-robe-up-2.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
-            <key type="filename">entities/pickups/icon-bluecap.png</key>
-            <key type="filename">entities/pickups/icon-greencap.png</key>
-            <key type="filename">entities/pickups/icon-redcap.png</key>
             <key type="filename">entities/pickups/pickup-bluecap.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-cotton.png</key>

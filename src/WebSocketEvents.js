@@ -465,6 +465,10 @@ eventResponses.stop_burn = function (data) {
     _this.dynamics[data].sprite.onBurnStop();
 };
 
+eventResponses.respawns_value = function (data) {
+    _this.GUI.updateRespawnsCounter(data);
+};
+
 eventResponses.player_respawn = function () {
     _this.GUI.updateRespawnsCounter(_this.player.respawns - 1);
     _this.player.hitPoints = _this.player.maxHitPoints;

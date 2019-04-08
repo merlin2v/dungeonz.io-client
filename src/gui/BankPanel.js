@@ -31,7 +31,7 @@ class Tab {
 class Slot {
     constructor (bankPanel, slotIndex) {
         this.icon = document.createElement('img');
-        this.icon.src = 'assets/img/gui/items/icon-gold-ore.png';
+        this.icon.src = 'assets/img/gui/items/icon-dungium-ore.png';
         this.icon.className = 'bank_slot_icon';
         this.icon.draggable = false;
 

@@ -159,6 +159,14 @@ class Furnace extends CraftingStation {
     interactedByPlayer () {
         _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        this.sprite.lightDistance = 4;
+    }
+}
+
+class Laboratory extends CraftingStation {
+    interactedByPlayer () {
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Laboratory"), 'assets/img/gui/panels/laboratory.png');
+        _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
     }
 }
 
@@ -222,18 +230,108 @@ const StaticClasses = {
     86: GUITrigger,
     147: DungeonPortal, // Dungeon portal (active)
     211: Portal,    // Overworld portal (active)
-    // Light wall torches.
+    // Light wall torches
     2183: Torch,
     2184: Torch,
     2185: Torch,
     2186: Torch,
     2187: Torch,
     2188: Torch,
+    2247: Torch,
+    2248: Torch,
+    2250: Torch,
+    2251: Torch,
+    2252: Torch,
+    2311: Torch,
+    2313: Torch,
+    2315: Torch,
+    // Dark wall torches
+    2375: Torch,
+    2376: Torch,
+    2377: Torch,
+    2378: Torch,
+    2379: Torch,
+    2380: Torch,
+    2439: Torch,
+    2440: Torch,
+    2442: Torch,
+    2443: Torch,
+    2444: Torch,
+    2503: Torch,
+    2505: Torch,
+    2507: Torch,
+    // Sand wall torches
+    2567: Torch,
+    2568: Torch,
+    2569: Torch,
+    2570: Torch,
+    2571: Torch,
+    2572: Torch,
+    2631: Torch,
+    2632: Torch,
+    2634: Torch,
+    2635: Torch,
+    2636: Torch,
+    2695: Torch,
+    2697: Torch,
+    2699: Torch,
+    // Snow wall torches
+    2759: Torch,
+    2760: Torch,
+    2761: Torch,
+    2762: Torch,
+    2763: Torch,
+    2764: Torch,
+    2823: Torch,
+    2824: Torch,
+    2826: Torch,
+    2827: Torch,
+    2828: Torch,
+    2887: Torch,
+    2889: Torch,
+    2891: Torch,
+    // Light wood torches
+    2951: Torch,
+    2952: Torch,
+    2953: Torch,
+    2954: Torch,
+    2955: Torch,
+    2956: Torch,
+    3015: Torch,
+    3016: Torch,
+    3019: Torch,
+    3079: Torch,
+    3081: Torch,
+    // Medium wood torches
+    3143: Torch,
+    3144: Torch,
+    3145: Torch,
+    3146: Torch,
+    3147: Torch,
+    3148: Torch,
+    3207: Torch,
+    3208: Torch,
+    3211: Torch,
+    3271: Torch,
+    3273: Torch,
+    // Dark wood torches
+    3335: Torch,
+    3336: Torch,
+    3337: Torch,
+    3338: Torch,
+    3339: Torch,
+    3340: Torch,
+    3399: Torch,
+    3400: Torch,
+    3403: Torch,
+    3463: Torch,
+    3465: Torch,
+
 
     3022: Anvil,
     3023: Furnace,
     3024: Workbench,
-    //3025: PotionryLab,
+    3025: Laboratory,
     //3026: StorageBox,
     3027: BankChest,
 

@@ -109,8 +109,6 @@
   line-height: 1.2;
 }
 
-
-
 .home_input {
   position: relative;
   width: 100%;
@@ -287,7 +285,7 @@
 
 #news_cont {
   position: absolute;
-  top: 50%;
+  top: 63%;
   right: 20px;
   transform: translateY(-50%);
   width: 300px;
@@ -343,7 +341,24 @@
   bottom: 10%;
   left: 50%;
   transform: translate(-50%);
-  background-color: orange;
+  border: 12px solid $colourDB32WhiteOpacity80;
+}
+
+#preroll_cont {
+  position: absolute;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5fcde4;
+}
+
+#adblock_warning {
+    position: absolute;
+    z-index: -1;
 }
 
 #dmp_cont {

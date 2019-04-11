@@ -150,30 +150,30 @@ class CraftingStation extends Static {
 
 class Anvil extends CraftingStation {
     interactedByPlayer () {
-        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Anvil"), 'assets/img/gui/panels/anvil.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Anvil"), 'assets/img/gui/panels/anvil.png');
     }
 }
 
 class Furnace extends CraftingStation {
     interactedByPlayer () {
-        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
         this.sprite.lightDistance = 4;
     }
 }
 
 class Laboratory extends CraftingStation {
     interactedByPlayer () {
-        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Laboratory"), 'assets/img/gui/panels/laboratory.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Laboratory"), 'assets/img/gui/panels/laboratory.png');
     }
 }
 
 class Workbench extends CraftingStation {
     interactedByPlayer () {
-        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Workbench"), 'assets/img/gui/panels/workbench.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Workbench"), 'assets/img/gui/panels/workbench.png');
     }
 }
 

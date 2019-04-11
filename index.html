@@ -51,12 +51,50 @@
         new Crate({
             server: '472783630075166751',
             channel: '529389784821399552',
-            shard: 'https://cl2.widgetbot.io',
+            shard: 'https://disweb.deploys.io',
 
             location: ['bottom', 'left'],
             defer: true
         })
     </script>
+
+    <script>
+        var aiptag = aiptag || {};
+        aiptag.cmd = aiptag.cmd || [];
+        aiptag.cmd.display = aiptag.cmd.display || [];	aiptag.cmd.player = aiptag.cmd.player || [];
+        // Show GDPR consent tool
+        aiptag.gdprShowConsentTool = true;
+        // If you use your own GDPR consent tool please set aiptag.gdprConsent = false; if an EU user has declined or not yet accepted marketing cookies, for users outside the EU or for users that accepted the GDPR please use aiptag.gdprConsent = true;
+
+        aiptag.cmd.player.push(function() {
+            adplayer = new aipPlayer({
+                AD_WIDTH: 960,
+                AD_HEIGHT: 540,
+                AD_FULLSCREEN: false,
+                AD_CENTERPLAYER: false,
+                LOADING_TEXT: 'loading advertisement',
+                PREROLL_ELEM: function(){return document.getElementById('preroll')},
+                AIP_COMPLETE: function ()  {
+                    /*******************
+                     ***** WARNING *****
+                     *******************
+                     Please do not remove the PREROLL_ELEM
+                     from the page, it will be hidden automaticly.
+                     If you do want to remove it use the AIP_REMOVE callback.
+                     */
+                    console.log("* Ad completed");
+
+                    _this.GUI.gui.style.display = "block";
+                    _this.canvasContainer.style.display = "block";
+                },
+                AIP_REMOVE: function ()  {
+                    // Here it's save to remove the PREROLL_ELEM from the page.
+                    // But it's not necessary.
+                }
+            });
+        });
+    </script>
+    <script async src="//api.adinplay.com/libs/aiptag/pub/MGK/dungeonz.io/tag.min.js"></script>
 
 </head>
 <body style="margin: 0; overflow:hidden;">
@@ -287,7 +325,16 @@
             <li id="add_translation"        class="language_option" onclick="window.open('https://docs.google.com/spreadsheets/d/1n6jSigPBWrubNQMTz00GsLIh3U8CMtfZH8wMFYmfHaA/edit#gid=0', '_blank');"></li>
         </ul>
 
-        <div id="home_ad_banner"></div>
+        <div id="home_ad_banner">
+            <div id="adblock_warning">
+                <img src="assets/img/misc/adblock-warning.png">
+            </div>
+            <div id='dungeonz-io_300x250'>
+                <script type='text/javascript'>
+                    aiptag.cmd.display.push(function() { aipDisplayTag.display('dungeonz-io_300x250'); });
+                </script>
+            </div>
+        </div>
 
         <div id="play_cont">
             <img id="title_img" src="assets/img/misc/dungeonzio-title.png" alt="Dungeonz.io title">
@@ -363,7 +410,6 @@
         head.appendChild(s);
     </script>
 
-
     <script>
         console.log("- - running index script");
 
@@ -432,7 +478,19 @@
             continuePressed();
         }
 
+        window.startPreRoll = function () {
+            aiptag.cmd.player.push(function() { adplayer.startPreRoll(); });
+            _this.GUI.gui.style.display = "none";
+            _this.canvasContainer.style.display = "none";
+        };
+
         function playPressed () {
+            // If a DMP code has been activated, remove the ads.
+            if(localStorage.getItem('DMP_activated') === true){
+                document.getElementById('home_ad_banner').remove();
+                document.getElementById('preroll').remove();
+            }
+
             const dmpCode = localStorage.getItem('DMP_code');
 
             if(window.newCharacter === true){
@@ -578,7 +636,7 @@
         }
 
         function dmpAcceptPressed () {
-            console.log("dmp accept pressed");
+            //console.log("dmp accept pressed");
             
             const inputElement = document.getElementById('dmp_activate_input');
             const dmpCode = inputElement.value;
@@ -607,6 +665,10 @@
         }
 
     </script>
+
+    <div id="preroll_cont">
+        <div id="preroll"></div>
+    </div>
 
 </body>
 </html>

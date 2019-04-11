@@ -45,10 +45,12 @@ class CraftingManager {
     addComponent (inventorySlotKey) {
         //console.log("adding component, key:", inventorySlotKey);
 
+        const inventory = _this.player.inventory;
+
         // Don't try to add this item if it is already being used as a component.
-        if(_this.player.inventory[inventorySlotKey].craftingComponent !== null) return;
+        if(inventory[inventorySlotKey].craftingComponent !== null) return;
         // Don't try to add this item if there is nothing in that inventory slot.
-        if(_this.player.inventory[inventorySlotKey].catalogueEntry === null) return;
+        if(inventory[inventorySlotKey].catalogueEntry === null) return;
 
         let component;
         // Get the first empty component slot.
@@ -61,14 +63,16 @@ class CraftingManager {
                 component.guiSlot.remove.style.visibility = "visible";
                 component.guiSlot.icon.style.visibility = "visible";
                 component.guiSlot.icon.src = _this.GUI.inventoryBar.slots[inventorySlotKey].icon.src;
-                this.recipeCode += _this.player.inventory[inventorySlotKey].catalogueEntry.typeNumber + '-';
-                _this.player.inventory[inventorySlotKey].craftingComponent = component;
+                this.recipeCode += inventory[inventorySlotKey].catalogueEntry.typeNumber + '-';
+                inventory[inventorySlotKey].craftingComponent = component;
                 // Hide the add item button on the inventory bar.
                 _this.GUI.inventoryBar.slots[inventorySlotKey].addButton.style.visibility = "hidden";
                 // Fade out the item icon on the inventory bar a bit.
-                _this.GUI.inventoryBar.slots[inventorySlotKey].icon.style.opacity = 0.5;
+                _this.GUI.inventoryBar.slots[inventorySlotKey].container.style.opacity = 0.5;
 
                 this.checkRecipeCode();
+
+                _this.GUI.inventoryBar.updateCraftingPanelAddButtons();
                 // Component added. Don't loop the other slots.
                 return;
             }
@@ -88,7 +92,7 @@ class CraftingManager {
         // Show the add item button.
         _this.GUI.inventoryBar.slots[component.occupiedBy].addButton.style.visibility = "visible";
         // Make the item in the inventory full opacity to show it isn't in the craft any more.
-        _this.GUI.inventoryBar.slots[component.occupiedBy].icon.style.opacity = 1;
+        _this.GUI.inventoryBar.slots[component.occupiedBy].container.style.opacity = 1;
         _this.player.inventory[component.occupiedBy].craftingComponent = null;
         component.occupiedBy = null;
 
@@ -103,6 +107,8 @@ class CraftingManager {
         }
 
         this.checkRecipeCode();
+
+        _this.GUI.inventoryBar.updateCraftingPanelAddButtons();
     }
 
     checkRecipeCode () {

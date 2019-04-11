@@ -13,8 +13,8 @@ Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.interactedByPlayer = function () {
-    _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
     _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+    _this.GUI.craftingPanel.show(dungeonz.getTextDef("Furnace"), 'assets/img/gui/panels/furnace.png');
 };
 
 Sprite.prototype.onMove = function () {

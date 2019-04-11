@@ -167,6 +167,7 @@ eventResponses.join_world_success = function (data) {
     }
 
     _this.state.start('Game', true, false, data);
+    console.log("* End of join world success");
 
 };
 
@@ -476,6 +477,10 @@ eventResponses.player_respawn = function () {
     _this.GUI.respawnPanel.hide();
     _this.GUI.updateHitPointCounters();
     _this.GUI.updateEnergyCounters();
+    // If a DMP code hasn't been activated, show a video ad.
+    if(localStorage.getItem('DMP_activated') !== true){
+        window.startPreRoll();
+    }
 };
 
 eventResponses.add_entity = function (data) {

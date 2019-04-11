@@ -14,7 +14,6 @@ const Sprite = function (x, y, config) {
     this.baseSprite.animations.add('idle',    ['trader-basic-1',   'trader-basic-2'],   2, true);
     this.baseSprite.animations.play('idle');
 
-    //this.addDisplayName(dungeonz.getTextDef("Mob name: Magic merchant")); TODO
     this.addDisplayName("Omni merchant");
 };
 

@@ -1,4 +1,6 @@
 
+import RecipeCatalogue from '../catalogues/CraftingRecipes'
+
 class Slot {
     constructor (slotKey, bar) {
         this.icon = document.createElement('img');
@@ -66,6 +68,7 @@ class Slot {
         }
         else if(_this.GUI.craftingPanel.isOpen === true){
             this.addButton.style.visibility = "visible";
+            _this.GUI.inventoryBar.updateCraftingPanelAddButtons();
         }
         // None of them are open, hide the add button.
         else {
@@ -106,6 +109,64 @@ class InventoryBar {
         for(let key in this.slots){
             if(this.slots.hasOwnProperty(key) === false) continue;
             this.slots[key].addButton.style.visibility = "hidden";
+        }
+    }
+
+    /**
+     * Update the inventory add buttons while he crafting panel is open, to show only the buttons
+     * for items that can be added to make a valid item.
+     */
+    updateCraftingPanelAddButtons () {
+        const stationTypeNumber = _this.craftingManager.stationTypeNumber;
+        const inventory = _this.player.inventory;
+        let codeSoFar = _this.craftingManager.recipeCode;
+        let codeSoFarItemsLength = (codeSoFar.match(/-/g) || []).length;
+        let slot;
+        let catalogueEntry;
+        let itemTypeNumber;
+        let stationRecipes = RecipeCatalogue[stationTypeNumber];
+
+        let getSubstring = function (string, targetLength) {
+            let substring = '';
+            let dashesFound = 0;
+            for(let i=0; i<string.length; i+=1){
+                substring += string[i];
+                if(string[i] === '-'){
+                    dashesFound += 1;
+                }
+                if(dashesFound === targetLength) return substring;
+            }
+            return null;
+        };
+
+        const nextRecipes = [];
+        // Get all of the recipe codes of the length of the code so far. Don't need to do this every time for each slot.
+        for(let recipeKey in stationRecipes){
+            if(stationRecipes.hasOwnProperty(recipeKey) === false) continue;
+            nextRecipes.push(getSubstring(recipeKey, codeSoFarItemsLength+1));
+        }
+
+        for(let key in this.slots){
+            if(this.slots.hasOwnProperty(key) === false) continue;
+            slot = this.slots[key];
+            catalogueEntry = inventory[slot.addButton.getAttribute('slotKey')].catalogueEntry;
+            // Ignore empty slots.
+            if(catalogueEntry === null) continue;
+            itemTypeNumber = catalogueEntry.typeNumber;
+            let isValid = false;
+
+            slot.addButton.style.visibility = "hidden";
+
+            const nextCode = codeSoFar + itemTypeNumber + '-';
+            // Need to check all recipes (until a match is found) in this station type.
+            for(let i=0; i<nextRecipes.length; i+=1){
+                // Check if the recipe code matches a part of a valid recipe.
+                if(nextCode === nextRecipes[i]){
+                    isValid = true;
+                    slot.addButton.style.visibility = "visible";
+                    break;
+                }
+            }
         }
     }
 

@@ -137,8 +137,16 @@ import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupCotton             from './pickups/PickupCotton'
 import PickupDungiumArmour      from './pickups/PickupDungiumArmour'
+import PickupDungiumArrows      from './pickups/PickupDungiumArrows'
 import PickupDungiumBar         from './pickups/PickupDungiumBar'
+import PickupDungiumDagger      from './pickups/PickupDungiumDagger'
+import PickupDungiumHammer      from './pickups/PickupDungiumHammer'
+import PickupDungiumHatchet     from './pickups/PickupDungiumHatchet'
 import PickupDungiumOre         from './pickups/PickupDungiumOre'
+import PickupDungiumPickaxe     from './pickups/PickupDungiumPickaxe'
+import PickupDungiumRod         from './pickups/PickupDungiumRod'
+import PickupDungiumSheet       from './pickups/PickupDungiumSheet'
+import PickupDungiumSword       from './pickups/PickupDungiumSword'
 import PickupEnergyPotion       from './pickups/PickupEnergyPotion'
 import PickupExpOrbArmoury      from './pickups/PickupExpOrbArmoury'
 import PickupExpOrbGathering    from './pickups/PickupExpOrbGathering'
@@ -171,8 +179,16 @@ import PickupMageRobe           from './pickups/PickupMageRobe'
 import PickupNecromancerRobe    from './pickups/PickupNecromancerRobe'
 import PickupNinjaGarb          from './pickups/PickupNinjaGarb'
 import PickupNoctisArmour       from './pickups/PickupNoctisArmour'
+import PickupNoctisArrows       from './pickups/PickupNoctisArrows'
 import PickupNoctisBar          from './pickups/PickupNoctisBar'
+import PickupNoctisDagger       from './pickups/PickupNoctisDagger'
+import PickupNoctisHammer       from './pickups/PickupNoctisHammer'
+import PickupNoctisHatchet      from './pickups/PickupNoctisHatchet'
 import PickupNoctisOre          from './pickups/PickupNoctisOre'
+import PickupNoctisPickaxe      from './pickups/PickupNoctisPickaxe'
+import PickupNoctisRod          from './pickups/PickupNoctisRod'
+import PickupNoctisSheet        from './pickups/PickupNoctisSheet'
+import PickupNoctisSword        from './pickups/PickupNoctisSword'
 import PickupOakBow             from './pickups/PickupOakBow'
 import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
@@ -190,11 +206,19 @@ import PickupYellowKey          from './pickups/PickupYellowKey'
 
 import ProjBloodBolt            from './projectiles/ProjBloodBolt'
 import ProjDeathbind            from './projectiles/ProjDeathbind'
+import ProjDungiumArrow         from './projectiles/ProjDungiumArrow'
+import ProjDungiumDagger        from './projectiles/ProjDungiumDagger'
+import ProjDungiumHammer        from './projectiles/ProjDungiumHammer'
+import ProjDungiumSword         from './projectiles/ProjDungiumSword'
 import ProjFire                 from './projectiles/ProjFire'
 import ProjIronArrow            from './projectiles/ProjIronArrow'
 import ProjIronDagger           from './projectiles/ProjIronDagger'
 import ProjIronHammer           from './projectiles/ProjIronHammer'
 import ProjIronSword            from './projectiles/ProjIronSword'
+import ProjNoctisArrow          from './projectiles/ProjNoctisArrow'
+import ProjNoctisDagger         from './projectiles/ProjNoctisDagger'
+import ProjNoctisHammer         from './projectiles/ProjNoctisHammer'
+import ProjNoctisSword          from './projectiles/ProjNoctisSword'
 import ProjPacify               from './projectiles/ProjPacify'
 import ProjShuriken             from './projectiles/ProjShuriken'
 import ProjSnowball             from './projectiles/ProjSnowball'
@@ -261,8 +285,16 @@ const EntitiesList = {
     PickupCloak:            PickupCloak,
     PickupCotton:           PickupCotton,
     PickupDungiumArmour:    PickupDungiumArmour,
+    PickupDungiumArrows:    PickupDungiumArrows,
     PickupDungiumBar:       PickupDungiumBar,
+    PickupDungiumDagger:    PickupDungiumDagger,
+    PickupDungiumHammer:    PickupDungiumHammer,
+    PickupDungiumHatchet:   PickupDungiumHatchet,
     PickupDungiumOre:       PickupDungiumOre,
+    PickupDungiumPickaxe:   PickupDungiumPickaxe,
+    PickupDungiumRod:       PickupDungiumRod,
+    PickupDungiumSheet:     PickupDungiumSheet,
+    PickupDungiumSword:     PickupDungiumSword,
     PickupEnergyPotion:     PickupEnergyPotion,
     PickupExpOrbArmoury:    PickupExpOrbArmoury,
     PickupExpOrbGathering:  PickupExpOrbGathering,
@@ -295,8 +327,16 @@ const EntitiesList = {
     PickupNecromancerRobe:  PickupNecromancerRobe,
     PickupNinjaGarb:        PickupNinjaGarb,
     PickupNoctisArmour:     PickupNoctisArmour,
+    PickupNoctisArrows:     PickupNoctisArrows,
     PickupNoctisBar:        PickupNoctisBar,
+    PickupNoctisDagger:     PickupNoctisDagger,
+    PickupNoctisHammer:     PickupNoctisHammer,
+    PickupNoctisHatchet:    PickupNoctisHatchet,
     PickupNoctisOre:        PickupNoctisOre,
+    PickupNoctisPickaxe:    PickupNoctisPickaxe,
+    PickupNoctisRod:        PickupNoctisRod,
+    PickupNoctisSheet:      PickupNoctisSheet,
+    PickupNoctisSword:      PickupNoctisSword,
     PickupOakBow:           PickupOakBow,
     PickupOakLogs:          PickupOakLogs,
     PickupPlainRobe:        PickupPlainRobe,
@@ -314,11 +354,19 @@ const EntitiesList = {
 
     ProjBloodBolt:          ProjBloodBolt,
     ProjDeathbind:          ProjDeathbind,
+    ProjDungiumArrow:       ProjDungiumArrow,
+    ProjDungiumDagger:      ProjDungiumDagger,
+    ProjDungiumHammer:      ProjDungiumHammer,
+    ProjDungiumSword:       ProjDungiumSword,
     ProjFire:               ProjFire,
     ProjIronArrow:          ProjIronArrow,
     ProjIronDagger:         ProjIronDagger,
     ProjIronHammer:         ProjIronHammer,
     ProjIronSword:          ProjIronSword,
+    ProjNoctisArrow:        ProjNoctisArrow,
+    ProjNoctisDagger:       ProjNoctisDagger,
+    ProjNoctisHammer:       ProjNoctisHammer,
+    ProjNoctisSword:        ProjNoctisSword,
     ProjPacify:             ProjPacify,
     ProjShuriken:           ProjShuriken,
     ProjSnowball:           ProjSnowball,

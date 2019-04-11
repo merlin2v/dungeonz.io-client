@@ -106,11 +106,11 @@ dungeonz.Game.prototype = {
         this.dynamics = {};
         this.lightSources = {};
 
-        this.tilemap = new Tilemap(this);
-        this.tilemap.loadMap(this.currentBoardName);
         this.clanManager = new ClanManager();
         this.GUI = new GUI(this);
         this.craftingManager = new CraftingManager();
+        this.tilemap = new Tilemap(this);
+        this.tilemap.loadMap(this.currentBoardName);
 
         this.dynamicsGroup = this.add.group();
         this.pseudoInteractables = {};

@@ -17,8 +17,8 @@ Sprite.prototype.interactedByPlayer = function () {
     if(_this.clanManager.ownRankIndex === null) ws.sendEvent("clan_join");
     // Open the base crafting panel.
     else{
-        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Base"), 'assets/img/gui/panels/clan-structures-icon.png');
         _this.craftingManager.stationTypeNumber = this.stationTypeNumber;
+        _this.GUI.craftingPanel.show(dungeonz.getTextDef("Base"), 'assets/img/gui/panels/clan-structures-icon.png');
     }
 };
 

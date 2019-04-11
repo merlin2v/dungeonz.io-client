@@ -134,8 +134,8 @@ class CraftingPanel extends PanelTemplate {
         // Clear any existing recipe code.
         _this.craftingManager.recipeCode = '';
 
-        // Show the add buttons on the inventory bar.
-        _this.GUI.inventoryBar.showAddButtons();
+        // Show the valid buttons on the inventory bar.
+        _this.GUI.inventoryBar.updateCraftingPanelAddButtons();
     }
 
     hide () {

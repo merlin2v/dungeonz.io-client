@@ -3,8 +3,9 @@ import DungeonPrompts from '../src/catalogues/DungeonPrompts';
 
 import tutorial from '../assets/map/tutorial'
 import overworld from '../assets/map/overworld'
-import dungeon_bandit_hideout from '../assets/map/dungeon-bandit-hideout'
 import dungeon_city_sewers from '../assets/map/dungeon-city-sewers'
+import dungeon_knight_training_arena from '../assets/map/dungeon-knight-training-arena'
+import dungeon_bandit_hideout from '../assets/map/dungeon-bandit-hideout'
 import dungeon_west_pyramid from '../assets/map/dungeon-west-pyramid'
 import dungeon_east_pyramid from '../assets/map/dungeon-east-pyramid'
 import dungeon_blood_halls from '../assets/map/dungeon-blood-halls'
@@ -73,8 +74,8 @@ window.windowResize = function () {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
 
-    tilemap.darknessGridGroup.cameraOffset.x = (windowWidth * 0.5)  - (tilemap.darknessGridGroup.width * 0.5);
-    tilemap.darknessGridGroup.cameraOffset.y = (windowHeight * 0.5) - (tilemap.darknessGridGroup.height * 0.5);
+    //TODO tilemap.darknessGridGroup.cameraOffset.x = (windowWidth * 0.5)  - (tilemap.darknessGridGroup.width * 0.5);
+    //tilemap.darknessGridGroup.cameraOffset.y = (windowHeight * 0.5) - (tilemap.darknessGridGroup.height * 0.5);
 
     tilemap.updateBorders();
 };
@@ -113,13 +114,14 @@ dungeonz.Boot.prototype = {
             window.focus();
         }, false);
 
-        dungeonz.mapsData["tutorial"] =                 tutorial;
-        dungeonz.mapsData["overworld"] =                overworld;
-        dungeonz.mapsData["dungeon-bandit-hideout"] =   dungeon_bandit_hideout;
-        dungeonz.mapsData["dungeon-city-sewers"] =      dungeon_city_sewers;
-        dungeonz.mapsData["dungeon-west-pyramid"] =     dungeon_west_pyramid;
-        dungeonz.mapsData["dungeon-east-pyramid"] =     dungeon_east_pyramid;
-        dungeonz.mapsData["dungeon-blood-halls"] =      dungeon_blood_halls;
+        dungeonz.mapsData["tutorial"] =                     tutorial;
+        dungeonz.mapsData["overworld"] =                    overworld;
+        dungeonz.mapsData["dungeon-city-sewers"] =          dungeon_city_sewers;
+        dungeonz.mapsData["dungeon-knight-training-arena"] =dungeon_knight_training_arena;
+        dungeonz.mapsData["dungeon-bandit-hideout"] =       dungeon_bandit_hideout;
+        dungeonz.mapsData["dungeon-west-pyramid"] =         dungeon_west_pyramid;
+        dungeonz.mapsData["dungeon-east-pyramid"] =         dungeon_east_pyramid;
+        dungeonz.mapsData["dungeon-blood-halls"] =          dungeon_blood_halls;
 
         //console.log("maps data:");
         //console.log(dungeonz.mapsData);
@@ -130,7 +132,10 @@ dungeonz.Boot.prototype = {
 
         dungeonz.virtualDPadEnabled = !_this.game.device.desktop;
 
-        //this.game.add.plugin(Phaser.Plugin.Debug);
+        if(localStorage.getItem('debug_mode') === "true"){
+            this.game.add.plugin(Phaser.Plugin.Debug);
+            console.log("* Starting in debug mode.");
+        }
 
         // Enable advanced timing for the FPS counter.
         this.game.time.advancedTiming = true;

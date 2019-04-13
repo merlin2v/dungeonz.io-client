@@ -553,6 +553,18 @@
             <key type="filename">entities/characters/bat/bat-up-1.png</key>
             <key type="filename">entities/characters/bat/bat-up-2.png</key>
             <key type="filename">entities/characters/bat/bat-up-3.png</key>
+            <key type="filename">entities/characters/hawk/hawk-down-1.png</key>
+            <key type="filename">entities/characters/hawk/hawk-down-2.png</key>
+            <key type="filename">entities/characters/hawk/hawk-down-3.png</key>
+            <key type="filename">entities/characters/hawk/hawk-left-1.png</key>
+            <key type="filename">entities/characters/hawk/hawk-left-2.png</key>
+            <key type="filename">entities/characters/hawk/hawk-left-3.png</key>
+            <key type="filename">entities/characters/hawk/hawk-right-1.png</key>
+            <key type="filename">entities/characters/hawk/hawk-right-2.png</key>
+            <key type="filename">entities/characters/hawk/hawk-right-3.png</key>
+            <key type="filename">entities/characters/hawk/hawk-up-1.png</key>
+            <key type="filename">entities/characters/hawk/hawk-up-2.png</key>
+            <key type="filename">entities/characters/hawk/hawk-up-3.png</key>
             <key type="filename">entities/characters/rat/rat-down-2.png</key>
             <key type="filename">entities/characters/rat/rat-down-3.png</key>
             <key type="filename">entities/characters/rat/rat-left-2.png</key>
@@ -816,6 +828,7 @@
             <filename>entities/clothes/noctis armour</filename>
             <filename>entities/characters/snoovir</filename>
             <filename>entities/clothes/dungium armour</filename>
+            <filename>entities/characters/hawk</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

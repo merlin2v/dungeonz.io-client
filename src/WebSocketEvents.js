@@ -82,8 +82,11 @@ window.connectToGameServer = function () {
     ws.onclose = function () {
         console.log('* Disconnected from game server.');
         window.ws = false;
-        // Reload the page.
-        location.reload();
+        // Make it reload after a few seconds.
+        setTimeout(function () {
+            // Reload the page.
+            location.reload();
+        }, 6000);
     };
 
     ws.onerror = function (error) {
@@ -278,7 +281,7 @@ eventResponses.moved = function (data) {
             _this.offsetStaticTiles(0, -1);
             _this.playerTween.onComplete.add(tweenCompleteRight);
             _this.playerTweenDirections.r = true;
-            _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
+            // TODO _this.tilemap.darknessGridGroup.x += dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Left.
         else if(data.col < origCol){
@@ -286,7 +289,7 @@ eventResponses.moved = function (data) {
             _this.offsetStaticTiles(0, +1);
             _this.playerTween.onComplete.add(tweenCompleteLeft);
             _this.playerTweenDirections.l = true;
-            _this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
+            //_this.tilemap.darknessGridGroup.x -= dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Down.
         if(data.row > origRow){
@@ -294,7 +297,7 @@ eventResponses.moved = function (data) {
             _this.offsetStaticTiles(+1, 0);
             _this.playerTween.onComplete.add(tweenCompleteDown);
             _this.playerTweenDirections.d = true;
-            _this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
+            //_this.tilemap.darknessGridGroup.y += dungeonz.TILE_SIZE * GAME_SCALE;
         }
         // Up.
         else if(data.row < origRow){
@@ -302,7 +305,7 @@ eventResponses.moved = function (data) {
             _this.offsetStaticTiles(-1, 0);
             _this.playerTween.onComplete.add(tweenCompleteUp);
             _this.playerTweenDirections.u = true;
-            _this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
+            //_this.tilemap.darknessGridGroup.y -= dungeonz.TILE_SIZE * GAME_SCALE;
         }
 
     }
@@ -357,7 +360,7 @@ eventResponses.change_board = function (data) {
     _this.player.row = data.playerRow;
     _this.player.col = data.playerCol;
 
-    if(_this.boardAlwaysNight === false){
+    /* TODO if(_this.boardAlwaysNight === false){
         // Make the darkness layer invisible during day time.
         if(_this.dayPhase === _this.DayPhases.Day){
             let row,
@@ -370,7 +373,7 @@ eventResponses.change_board = function (data) {
                 }
             }
         }
-    }
+    }*/
 
     _this.tilemap.loadMap(data.boardName);
 
@@ -459,10 +462,12 @@ eventResponses.damage = function (data) {
 };
 
 eventResponses.start_burn = function (data) {
+    if(_this.dynamics[data] === undefined) return;
     _this.dynamics[data].sprite.onBurnStart();
 };
 
 eventResponses.stop_burn = function (data) {
+    if(_this.dynamics[data] === undefined) return;
     _this.dynamics[data].sprite.onBurnStop();
 };
 

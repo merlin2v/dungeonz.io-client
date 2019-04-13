@@ -1,1 +1,13 @@
-- no changes made yet.
+13/04/2019 - Update 1
+- New dungeon: Knight training arena
+- Dungeon bosses now appear slightly larger than normal creatures.
+- Disabled darkness for now until I can update the client engine, due to major FPS decrease during night for some users.
+- Respawn orb can now be dropped/picked up.
+- Updated credits page.
+- The "Could not connect to server" warning is now clearer to see.
+- Added a debug mode that can be activated by entering localStorage.setItem('debug_mode', true); into the browser console.
+- Fixed claim invalid task server crash.
+12/04/2019 - Hotfix:
+- Fixed server crash when suiciding from eating greencaps.
+- Fixed bug where if you die, the respawn panel would close if you tried to move while dead.
+11/04/2019 - Launch.

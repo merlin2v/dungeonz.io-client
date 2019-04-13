@@ -84,7 +84,9 @@ import Bat                      from './characters/Bat'
 import BloodLord                from './characters/BloodLord'
 import BloodPriest              from './characters/BloodPriest'
 import Citizen                  from './characters/Citizen'
+import Commander                from './characters/Commander'
 import CryptWarden              from './characters/CryptWarden'
+import Hawk                     from './characters/Hawk'
 import Innkeeper                from './characters/Innkeeper'
 import Knight                   from './characters/Knight'
 import MagicMerchant            from './characters/MagicMerchant'
@@ -194,6 +196,7 @@ import PickupOakLogs            from './pickups/PickupOakLogs'
 import PickupPlainRobe          from './pickups/PickupPlainRobe'
 import PickupRedcap             from './pickups/PickupRedcap'
 import PickupRedKey             from './pickups/PickupRedKey'
+import PickupRespawnOrb         from './pickups/PickupRespawnOrb'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
@@ -235,7 +238,9 @@ const EntitiesList = {
     BloodLord:              BloodLord,
     BloodPriest:            BloodPriest,
     Citizen:                Citizen,
+    Commander:              Commander,
     CryptWarden:            CryptWarden,
+    Hawk:                   Hawk,
     Innkeeper:              Innkeeper,
     Knight:                 Knight,
     MagicMerchant:          MagicMerchant,
@@ -342,6 +347,7 @@ const EntitiesList = {
     PickupPlainRobe:        PickupPlainRobe,
     PickupRedcap:           PickupRedcap,
     PickupRedKey:           PickupRedKey,
+    PickupRespawnOrb:       PickupRespawnOrb,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
     PickupSuperFireStaff:   PickupSuperFireStaff,

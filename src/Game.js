@@ -152,7 +152,7 @@ dungeonz.Game.prototype = {
             this.addEntity(this.dynamicsData[i]);
         }
 
-        this.game.world.bringToTop(this.tilemap.darknessGridGroup);
+        //this.game.world.bringToTop(this.tilemap.darknessGridGroup);
         this.game.world.bringToTop(this.tilemap.bordersGroup);
 
         this.tilemap.updateDarknessGrid();

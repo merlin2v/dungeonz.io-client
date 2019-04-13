@@ -14,7 +14,7 @@ class Tilemap {
 
         this.createGroundGrid();
         this.createStaticsGrid();
-        this.createDarknessGrid();
+        //this.createDarknessGrid();
 
         this.createBorders();
     }
@@ -477,7 +477,8 @@ class Tilemap {
 
     updateDarknessGrid () {
         //console.log("update darkness grid");
-        let player = this.game.dynamics[this.game.player.entityId],
+        // TODO add darkness back
+        /*let player = this.game.dynamics[this.game.player.entityId],
             lightSources = this.game.lightSources,
             darknessGrid = this.darknessGrid,
             darknessValue = 0,
@@ -499,7 +500,7 @@ class Tilemap {
             col;
         for(row=0; row<viewDiameter; row+=1){
             for(col=0; col<viewDiameter; col+=1){
-                darknessGrid[row][col].alpha = darknessValue
+                darknessGrid[row][col].alpha = darknessValue;
             }
         }
 
@@ -517,12 +518,13 @@ class Tilemap {
                 //this.revealDarkness(lightSource.x, lightSource.y, lightSource.lightDistance);
                 this.revealDarkness(lightSource.row, lightSource.col, lightSource.sprite.lightDistance);
             }
-        }
+        }*/
     }
 
     revealDarkness (rowIn, colIn, radius) {
         // TODO: figure out daytime darkness for dark areas, caves etc.
-        const radiusPlusOne = radius + 1;
+        // TODO add darkness back
+        /*const radiusPlusOne = radius + 1;
         let rowOffset = -radius,
             colOffset = -radius,
             row = (Math.floor(rowIn) + dungeonz.VIEW_RANGE) - _this.player.row,
@@ -555,7 +557,7 @@ class Tilemap {
                     }
                 }
             }
-        }
+        }*/
     }
 
     loadMap (boardName) {
@@ -592,8 +594,8 @@ class Tilemap {
         this.staticsGridGraphic.x = this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
         this.staticsGridGraphic.y = this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5);
 
-        this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
-        this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
+        //TODO: add darkness back this.darknessGridGroup.x = (this.game.player.col * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.width * 0.5);
+        //TODO: add darkness back this.darknessGridGroup.y = (this.game.player.row * dungeonz.TILE_SCALE + (dungeonz.TILE_SCALE * 0.5)) - (this.darknessGridGroup.height * 0.5);
 
         this.updateGroundGrid();
         this.updateStaticsGrid();

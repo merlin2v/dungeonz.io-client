@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="assets/img/misc/home-icon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
-    <meta name="description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
+    <meta name="description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons. By Wayward Worlds.">
     <meta name="keywords" content="game,io,multiplayer,roguelike,MMO,dungeon,online,games,gaming">
     <meta name="format-detection" content="telephone=no">
     <meta name="HandheldFriendly" content="true" />
@@ -21,21 +21,21 @@
     <meta name="viewport" content="width=device-width initial-scale=0.5 maximum-scale=1 user-scalable=yes minimal-ui" />
 
     <meta property="og:title" content="Dungeonz.io">
-    <meta property="og:url" content="http://waywardworlds.com/games/dungeonz/">
+    <meta property="og:url" content="https://dungeonz.io/">
     <meta property="og:type" content="game">
-    <meta property="og:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
-    <meta property="og:image" content="http://waywardworlds.com/games/dungeonz/assets/img/misc/banner-melee-magic.png">
+    <meta property="og:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons. By Wayward Worlds.">
+    <meta property="og:image" content="http://dungeonz.io/assets/img/misc/share-banner.png">
     <meta property="og:image:width" content="1032">
     <meta property="og:image:height" content="679">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@waywardworlds">
     <meta property="twitter:creator" content="@waywardworlds">
-    <meta property="twitter:url" content="http://waywardworlds.com/games/dungeonz/">
+    <meta property="twitter:url" content="https://dungeonz.io/">
     <meta property="twitter:title" content="Dungeonz.io">
-    <meta property="twitter:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons.">
-    <meta property="twitter:image" content="http://waywardworlds.com/games/dungeonz/assets/img/misc/banner-melee-magic.png">
-    <meta property="twitter:image:alt" content="A scene from the game with a player character standing in a town.">
+    <meta property="twitter:description" content="Dungeonz.io, the free to play massively multiplayer online roguelike io game. Fight with and against other players to gather resources, craft items, train skills and fight monsters to clear dungeons. By Wayward Worlds.">
+    <meta property="twitter:image" content="http://dungeonz.io/assets/img/misc/share-banner.png">
+    <meta property="twitter:image:alt" content="A scene from the game with players fighting monsters.">
 
     <!--<script src="src/lib/phaser.min.js"></script>-->
     <script src="src/lib/phaser.js"></script>
@@ -46,6 +46,16 @@
     <link rel="stylesheet" href="main.css" type="text/css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111760957-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111760957-3');
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
         new Crate({
@@ -98,7 +108,7 @@
 
 </head>
 <body style="margin: 0; overflow:hidden;">
-    <img id="background_img" src="assets/img/misc/main-background-test-2.gif">
+    <img id="background_img" src="assets/img/misc/home-background.gif">
     <div id="game_cont" class="press_start_font">
         <div id="game_canvas"></div>
         <div id="gui_cont" class="normal_cursor">
@@ -168,10 +178,10 @@
                     <div id="fullscreen_tooltip"    class="generic_tooltip bottom_right_tooltip"></div>
                     <img id="fullscreen_icon"       class="gui_icon hand_cursor" src="assets/img/gui/hud/fullscreen-icon.png" draggable="false">
                 </div>
-                <div class="inline_cont">
+                <!--<div class="inline_cont">
                     <div id="quick_turn_tooltip"    class="generic_tooltip bottom_right_tooltip"></div>
                     <img id="quick_turn_icon"       class="gui_icon hand_cursor" src="assets/img/gui/hud/turn-icon.png" draggable="false">
-                </div>
+                </div>-->
                 <div class="inline_cont">
                     <div id="settings_tooltip"      class="generic_tooltip bottom_right_tooltip"></div>
                     <img id="settings_icon"         class="gui_icon hand_cursor" src="assets/img/gui/hud/settings-icon.png" draggable="false">
@@ -293,8 +303,12 @@
             </div>
         </div>
 
-        <div id="credits" onclick="window.open('/dungeonz/client/credits', '_blank');">
+        <div id="credits" onclick="window.open('/credits', '_blank');">
             Credits
+        </div>
+
+        <div id="partners_button" onclick="document.getElementById('partners_cont').style.visibility = 'visible';">
+            Partners
         </div>
 
         <div id="controls" class="instructions_border">
@@ -307,11 +321,11 @@
             <img class="controls_image" src="assets/img/misc/controls-select-item.png">
             <p id="controls_select_item"></p>
         </div>
-        <div id="news_cont" onclick="window.open('/games/dungeonz/changelog.txt', '_blank');">
+        <div id="news_cont" onclick="window.open('/changelog.txt', '_blank');">
             <h1 id="news_header">News</h1>
-            <p id="news_date">12/34/2056</p>
-            <p id="news_title">Goblin raiders</p>
-            <img id="news_image" src="assets/img/misc/dungeonz-08-08-2018.PNG">
+            <p id="news_date">11/04/2019</p>
+            <p id="news_title">Launch</p>
+            <img id="news_image" src="assets/img/misc/news-11-04-2019.PNG">
         </div>
 
         <ul id="language_list">
@@ -361,6 +375,17 @@
     </div>
 
     <div id="main_tooltip" class="press_start_font"></div>
+
+    <div id="partners_cont" class="press_start_font">
+        <div id="partners_close" onclick="document.getElementById('partners_cont').style.visibility = 'hidden';">x</div>
+        <div id="partners_header">Thanks to our partners</div>
+        <a href="http://www.addictinggames.com" target="_blank">
+            <img id="addicting_games_logo" src="assets/img/misc/addicting-games-logo.webp">
+        </a>
+        <p>
+            Dungeonz.io is available on <a href="http://www.addictinggames.com" target="_blank">Addicting Games</a>, home of the largest collection of free online games, including car, puzzle, shooting games, and more! We are also listed at <a href="http://iogames.space" target="_blank">IO Games</a> which has all the latest multi-player games like BuildRoyale.io and Devast.io.
+        </p>
+    </div>
 
     <div id="dmp_cont" class="press_start_font">
         <div id="dmp_close" onclick="document.getElementById('dmp_cont').style.visibility = 'hidden';">x</div>
@@ -561,7 +586,7 @@
             document.getElementById('exit_tooltip').innerHTML =         dungeonz.getTextDef('Exit tooltip');
             document.getElementById('respawns_tooltip').innerHTML =     dungeonz.getTextDef('Respawns tooltip');
             document.getElementById('settings_tooltip').innerHTML =     dungeonz.getTextDef('Settings tooltip');
-            document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
+            //document.getElementById('quick_turn_tooltip').innerHTML =   dungeonz.getTextDef('Quick turn tooltip');
             document.getElementById('audio_tooltip').innerHTML =        dungeonz.getTextDef('Audio tooltip');
             document.getElementById('gui_zoom_tooltip').innerHTML =     dungeonz.getTextDef('GUI zoom tooltip');
             document.getElementById('virtual_dpad_tooltip').innerHTML = dungeonz.getTextDef('Virtual D pad tooltip');

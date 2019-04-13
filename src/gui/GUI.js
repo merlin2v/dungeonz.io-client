@@ -83,8 +83,8 @@ class GUI {
         this.shopPanel =        this.addPanel(new ShopPanel());
         this.tasksPanel =       this.addPanel(new TasksPanel());
         this.hintPanel =        new HintPanel();
-        this.respawnPanel =     this.addPanel(new RespawnPanel());
-        this.gameOverPanel =    this.addPanel(new GameOverPanel());
+        this.respawnPanel =     new RespawnPanel();
+        this.gameOverPanel =    new GameOverPanel();
 
         // Show the GUI.
         this.gui.style.visibility = "visible";

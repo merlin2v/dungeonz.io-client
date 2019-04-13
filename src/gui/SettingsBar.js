@@ -18,15 +18,15 @@ class SettingsBar {
         this.fullscreenIcon =       document.getElementById('fullscreen_icon');
 
         this.settingsTooltip =      document.getElementById('settings_tooltip');
-        this.quickTurnTooltip =     document.getElementById('quick_turn_tooltip');
+        //this.quickTurnTooltip =     document.getElementById('quick_turn_tooltip');
         this.audioTooltip =         document.getElementById('audio_tooltip');
         this.guiZoomTooltip =       document.getElementById('gui_zoom_tooltip');
         this.virtualDPadTooltip =   document.getElementById('virtual_dpad_tooltip');
         this.fullscreenTooltip =    document.getElementById('fullscreen_tooltip');
 
         // Check if the quick turn setting is on when the game starts. Show faded if it isn't.
-        if(dungeonz.quickTurnEnabled === true) this.quickTurnIcon.style.opacity = '1';
-        else this.quickTurnIcon.style.opacity = '0.5';
+        //if(dungeonz.quickTurnEnabled === true) this.quickTurnIcon.style.opacity = '1';
+        //else this.quickTurnIcon.style.opacity = '0.5';
 
         this.settingsIcon.onmouseover = function(){ settingsBar.settingsTooltip.style.visibility = "visible" };
         this.settingsIcon.onmouseout =  function(){ settingsBar.settingsTooltip.style.visibility = "hidden" };
@@ -39,7 +39,7 @@ class SettingsBar {
             }
         };
 
-        this.quickTurnIcon.onmouseover =function(){ settingsBar.quickTurnTooltip.style.visibility = "visible" };
+        /*this.quickTurnIcon.onmouseover =function(){ settingsBar.quickTurnTooltip.style.visibility = "visible" };
         this.quickTurnIcon.onmouseout = function(){ settingsBar.quickTurnTooltip.style.visibility = "hidden" };
         this.quickTurnIcon.onclick =    function(){
             if(dungeonz.quickTurnEnabled === true){
@@ -50,7 +50,7 @@ class SettingsBar {
                 dungeonz.quickTurnEnabled = true;
                 settingsBar.quickTurnIcon.style.opacity = '1';
             }
-        };
+        };*/
 
         this.audioIcon.onmouseover =    function(){ settingsBar.audioTooltip.style.visibility = "visible" };
         this.audioIcon.onmouseout =     function(){ settingsBar.audioTooltip.style.visibility = "hidden" };
@@ -173,7 +173,7 @@ class SettingsBar {
 
     show () {
         this.settingsIcon.style.opacity = '0.5';
-        this.quickTurnIcon.style.visibility = "visible";
+        //this.quickTurnIcon.style.visibility = "visible";
         this.audioIcon.style.visibility = "visible";
         this.audioMinusIcon.style.visibility = "visible";
         this.audioPlusIcon.style.visibility = "visible";
@@ -188,7 +188,7 @@ class SettingsBar {
 
     hide () {
         this.settingsIcon.style.opacity = '1';
-        this.quickTurnIcon.style.visibility = "hidden";
+        //this.quickTurnIcon.style.visibility = "hidden";
         this.audioIcon.style.visibility = "hidden";
         this.audioMinusIcon.style.visibility = "hidden";
         this.audioPlusIcon.style.visibility = "hidden";

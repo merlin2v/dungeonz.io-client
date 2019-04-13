@@ -11,8 +11,8 @@
 
     const game = new Phaser.Game(100, 100, renderer, '', null, true, false);
 
-    game.state.add('Boot',              dungeonz.Boot);
     game.state.add('Game',              dungeonz.Game);
+    game.state.add('Boot',              dungeonz.Boot);
 
     game.state.start('Boot');
 

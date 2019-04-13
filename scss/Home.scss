@@ -158,25 +158,19 @@
 
 #warning_message {
   text-align: center;
-  color: $colourDB32Orange;
+  color: $colourDB32Red;
+  background-color: $colourDB32White;
   font-size: 24px;
   font-weight: bold;
-  -webkit-text-stroke: 0.1px $colourDB32White;
+  padding: 10px;
   visibility: hidden;
 }
 
 #background_img {
-  image-rendering: unset;
+  image-rendering: pixelated;
   position: absolute;
   height: 100%;
-  /*width: 100vw;
-  height: 56.25vw;
-  max-height: 100vh;
-  max-width: 177.78vh;*/
-
   margin: auto;
-  //margin-left: auto;
-  //margin-right: auto;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
@@ -334,6 +328,61 @@
   }
 }
 
+#partners_button {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    height: 5%;
+    background-color: $colourDB32White;
+    padding: 6px;
+    line-height: 5vh;
+    user-select: none;
+    &:hover {
+        transform: scale(1.1);
+        filter: brightness(110%);
+    }
+}
+
+#partners_cont {
+    position: absolute;
+    overflow: auto;
+    display: inline-block;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 100%;
+    background-color: $colourDB32White;
+    user-select: none;
+    visibility: hidden;
+}
+
+#partners_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 13px;
+    font-size: 22px;
+    background-color: $colourDB32White;
+    &:hover {
+        background-color: $colourDB32SteelGrey;
+    }
+}
+
+#partners_header {
+    background-color: $colourDB32Red;
+    color: $colourDB32White;
+    padding: 24px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#addicting_games_logo {
+    width: 75%;
+    padding: 10px;
+}
+
 #home_ad_banner {
   position: absolute;
   width: 300px;
@@ -353,7 +402,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #5fcde4;
+  background-color: $colourDB32Black;
 }
 
 #adblock_warning {

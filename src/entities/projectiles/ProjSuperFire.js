@@ -5,7 +5,7 @@ const Sprite = function (x, y, config) {
     this.centered = true;
 
     this.angle = this.directionAngles[config.direction] || this.directionAngles.l;
-    this.scale.setTo(GAME_SCALE);
+    this.scale.setTo(GAME_SCALE * 1.2);
     this.alpha = 0.9;
 };
 

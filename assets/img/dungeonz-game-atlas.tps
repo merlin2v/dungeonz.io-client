@@ -253,6 +253,14 @@
             <key type="filename">entities/characters/crypt warden/crypt-warden-up-3.png</key>
             <key type="filename">entities/characters/effects/burn-effect-1.png</key>
             <key type="filename">entities/characters/effects/burn-effect-2.png</key>
+            <key type="filename">entities/characters/effects/cured-effect-1.png</key>
+            <key type="filename">entities/characters/effects/cured-effect-2.png</key>
+            <key type="filename">entities/characters/effects/energy-regen-effect-1.png</key>
+            <key type="filename">entities/characters/effects/energy-regen-effect-2.png</key>
+            <key type="filename">entities/characters/effects/health-regen-effect-1.png</key>
+            <key type="filename">entities/characters/effects/health-regen-effect-2.png</key>
+            <key type="filename">entities/characters/effects/poison-effect-1.png</key>
+            <key type="filename">entities/characters/effects/poison-effect-2.png</key>
             <key type="filename">entities/characters/human base/human-down-1.png</key>
             <key type="filename">entities/characters/human base/human-down-2.png</key>
             <key type="filename">entities/characters/human base/human-down-3.png</key>
@@ -464,6 +472,8 @@
             <key type="filename">entities/clothes/plain robe/plain-robe-up-2.png</key>
             <key type="filename">entities/clothes/plain robe/plain-robe-up-3.png</key>
             <key type="filename">entities/corpses/corpse-human.png</key>
+            <key type="filename">entities/pickups/pickup-blood-gem.png</key>
+            <key type="filename">entities/pickups/pickup-blood-staff.png</key>
             <key type="filename">entities/pickups/pickup-bluecap.png</key>
             <key type="filename">entities/pickups/pickup-chest.png</key>
             <key type="filename">entities/pickups/pickup-cotton.png</key>
@@ -501,7 +511,10 @@
             <key type="filename">entities/pickups/pickup-scroll-of-healing.png</key>
             <key type="filename">entities/pickups/pickup-shuriken.png</key>
             <key type="filename">entities/pickups/pickup-string.png</key>
+            <key type="filename">entities/pickups/pickup-super-blood-staff.png</key>
             <key type="filename">entities/pickups/pickup-super-fire-staff.png</key>
+            <key type="filename">entities/pickups/pickup-super-wind-staff.png</key>
+            <key type="filename">entities/pickups/pickup-wind-gem.png</key>
             <key type="filename">entities/pickups/pickup-wind-staff.png</key>
             <key type="filename">entities/pickups/pickup-wood-plank.png</key>
             <key type="filename">entities/projectiles/proj-deathbind.png</key>
@@ -601,6 +614,30 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">entities/characters/goblin/goblin-down-1.png</key>
+            <key type="filename">entities/characters/goblin/goblin-down-2.png</key>
+            <key type="filename">entities/characters/goblin/goblin-down-3.png</key>
+            <key type="filename">entities/characters/goblin/goblin-left-1.png</key>
+            <key type="filename">entities/characters/goblin/goblin-left-2.png</key>
+            <key type="filename">entities/characters/goblin/goblin-left-3.png</key>
+            <key type="filename">entities/characters/goblin/goblin-right-1.png</key>
+            <key type="filename">entities/characters/goblin/goblin-right-2.png</key>
+            <key type="filename">entities/characters/goblin/goblin-right-3.png</key>
+            <key type="filename">entities/characters/goblin/goblin-up-1.png</key>
+            <key type="filename">entities/characters/goblin/goblin-up-2.png</key>
+            <key type="filename">entities/characters/goblin/goblin-up-3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,5,8,9</rect>
+                <key>scale9Paddings</key>
+                <rect>4,5,8,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">entities/characters/rat/rat-down-1.png</key>
             <key type="filename">entities/characters/rat/rat-up-1.png</key>
             <struct type="IndividualSpriteSettings">
@@ -626,6 +663,31 @@
                 <rect>9,5,18,9</rect>
                 <key>scale9Paddings</key>
                 <rect>9,5,18,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-down-1.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-down-2.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-down-3.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-left-1.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-left-2.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-left-3.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-right-1.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-right-2.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-right-3.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-up-1.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-up-2.png</key>
+            <key type="filename">entities/characters/sand scamp/sand-scamp-up-3.png</key>
+            <key type="filename">entities/pickups/pickup-bank-chest.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,4,9,9</rect>
+                <key>scale9Paddings</key>
+                <rect>4,4,9,9</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -657,20 +719,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">entities/pickups/pickup-bank-chest.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>4,4,9,9</rect>
-                <key>scale9Paddings</key>
-                <rect>4,4,9,9</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">entities/pickups/pickup-blue-key.png</key>
+            <key type="filename">entities/pickups/pickup-cure-potion.png</key>
             <key type="filename">entities/pickups/pickup-energy-potion.png</key>
             <key type="filename">entities/pickups/pickup-green-key.png</key>
             <key type="filename">entities/pickups/pickup-health-potion.png</key>
@@ -829,6 +879,8 @@
             <filename>entities/characters/snoovir</filename>
             <filename>entities/clothes/dungium armour</filename>
             <filename>entities/characters/hawk</filename>
+            <filename>entities/characters/sand scamp</filename>
+            <filename>entities/characters/goblin</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

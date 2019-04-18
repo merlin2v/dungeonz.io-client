@@ -1,3 +1,50 @@
+18/04/2019 - Update 3
+New:
+- Added a status effects system, which are conditions that do something over a period of time
+    - Burning: Medium damage over a short time. Caused by walking through lava, or hit by fire.
+    - Poisoned: Low damage over a slightly longer time. Caused by walking through sewage.
+    - Cured: Makes you immune to poison for a while.
+    - Health regeneration: Heals slowly over time. Caused by walking through a blood pool, or using a health potion.
+        - Health potions no longer give instant HP. A "blood pool" is the light red stuff found in the Blood halls dungeon on the vampire island.
+    - Energy regeneration: Restores energy over time. Caused by using an energy potion.
+- Cure potion. Removes poison effect and makes you immune to it for a while.
+- Wind gem: Used to craft items with a wind effect.
+- Super wind staff: Shoots wind that shoots more wind.
+- Blood gem: Used to craft items with a lifesteal effect.
+- Blood staff: Shoots a projectile that steals health when it hits. Costs health to use.
+- Super blood staff: Shoots a lifesteal bolt that shoots more lifesteal bolts.
+- Added floor spike traps to certain dungeons.
+- Added a tool merchant to the west desert town.
+- Some creatures can now drop multiple items. Most basic/weak creatures still only drop 1 item, but some now drop 2 or more.
+
+Bugs:
+- Fixed vampires (Vampire, Blood priest, Blood lord) not counting towards "Kill vampires" task completion.
+- Fixed armour being damaged when attacked by another player in the safe zone.
+- Fixed a pickup not appearing on the ground when an iron rod is dropped.
+- Merchants can no longer be killed.
+- Removed the "Kill snoovirs" task as they cannot be found yet.
+- Removed the clay ore rocks as it cannot be mined yet.
+- Fixed dungium pickaxe and noctis pickaxe not giving gathering exp when used.
+- The bank in the west desert town and in the vampire island town are now safe zones. Caution: Players can not damage you there, but creatures still can!
+
+Balance:
+- Dungium hatchet and pickaxe now have a base durability of 300 (was 100, like iron).
+- Noctis hatchet and pickaxe now have a base durability of 200 (was 100, like iron) (Dungium is meant to have higher durability, but has less offensive bonuses than noctis).
+- Increased the base durability of all arrow types to 25 (was 20).
+- Added lava to the vampire island cave.
+- More varied drops from more creatures now, especially better drops for bosses.
+- Removed fire gem and super fire staff from the magic shop.
+- Increased the price of potions from innkeepers to 150 (was 100).
+
+
+15/04/2019 - Update 2
+- Fixed the overworld portals in dungeons not appearing as active when the boss is defeated.
+- Fixed some items having an invalid or infinite durability.
+- Added hawk
+- Added goblin
+- Added sand scamp
+
+
 13/04/2019 - Update 1
 - New dungeon: Knight training arena
 - Dungeon bosses now appear slightly larger than normal creatures.

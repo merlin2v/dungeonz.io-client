@@ -174,6 +174,8 @@ dungeonz.Game.prototype = {
 
         // Add the websocket event responses after the game state is started.
         window.addGameStateEventResponses();
+
+        window.startPreRoll();
     },
 
     update: function () {

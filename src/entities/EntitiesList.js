@@ -86,6 +86,7 @@ import BloodPriest              from './characters/BloodPriest'
 import Citizen                  from './characters/Citizen'
 import Commander                from './characters/Commander'
 import CryptWarden              from './characters/CryptWarden'
+import Goblin                   from './characters/Goblin'
 import Hawk                     from './characters/Hawk'
 import Innkeeper                from './characters/Innkeeper'
 import Knight                   from './characters/Knight'
@@ -99,6 +100,7 @@ import Prisoner                 from './characters/Prisoner'
 import RangedMerchant           from './characters/RangedMerchant'
 import Rat                      from './characters/Rat'
 import Ruler                    from './characters/Ruler'
+import SandScamp                from './characters/SandScamp'
 import Snoovir                  from './characters/Snoovir'
 import ToolMerchant             from './characters/ToolMerchant'
 import TutorialMerchant         from './characters/TutorialMerchant'
@@ -131,6 +133,8 @@ import CorpseHuman              from './corpses/CorpseHuman'
 
 import PickupAnvil              from './pickups/PickupAnvil'
 import PickupBankChest          from './pickups/PickupBankChest'
+import PickupBloodGem           from './pickups/PickupBloodGem'
+import PickupBloodStaff         from './pickups/PickupBloodStaff'
 import PickupBluecap            from './pickups/PickupBluecap'
 import PickupBlueKey            from './pickups/PickupBlueKey'
 import PickupBookOfLight        from './pickups/PickupBookOfLight'
@@ -138,6 +142,7 @@ import PickupBookOfSouls        from './pickups/PickupBookOfSouls'
 import PickupCharter            from './pickups/PickupCharter'
 import PickupCloak              from './pickups/PickupCloak'
 import PickupCotton             from './pickups/PickupCotton'
+import PickupCurePotion         from './pickups/PickupCurePotion'
 import PickupDungiumArmour      from './pickups/PickupDungiumArmour'
 import PickupDungiumArrows      from './pickups/PickupDungiumArrows'
 import PickupDungiumBar         from './pickups/PickupDungiumBar'
@@ -175,6 +180,7 @@ import PickupIronHammer         from './pickups/PickupIronHammer'
 import PickupIronHatchet        from './pickups/PickupIronHatchet'
 import PickupIronOre            from './pickups/PickupIronOre'
 import PickupIronPickaxe        from './pickups/PickupIronPickaxe'
+import PickupIronRod            from './pickups/PickupIronRod'
 import PickupIronSheet          from './pickups/PickupIronSheet'
 import PickupIronSword          from './pickups/PickupIronSword'
 import PickupMageRobe           from './pickups/PickupMageRobe'
@@ -199,8 +205,11 @@ import PickupRedKey             from './pickups/PickupRedKey'
 import PickupRespawnOrb         from './pickups/PickupRespawnOrb'
 import PickupShuriken           from './pickups/PickupShuriken'
 import PickupString             from './pickups/PickupString'
+import PickupSuperBloodStaff    from './pickups/PickupSuperBloodStaff'
 import PickupSuperFireStaff     from './pickups/PickupSuperFireStaff'
+import PickupSuperWindStaff     from './pickups/PickupSuperWindStaff'
 import PickupVampireFang        from './pickups/PickupVampireFang'
+import PickupWindGem            from './pickups/PickupWindGem'
 import PickupWindStaff          from './pickups/PickupWindStaff'
 import PickupWoodDoor           from './pickups/PickupWoodDoor'
 import PickupWoodWall           from './pickups/PickupWoodWall'
@@ -225,7 +234,9 @@ import ProjNoctisSword          from './projectiles/ProjNoctisSword'
 import ProjPacify               from './projectiles/ProjPacify'
 import ProjShuriken             from './projectiles/ProjShuriken'
 import ProjSnowball             from './projectiles/ProjSnowball'
+import ProjSuperBloodBolt       from './projectiles/ProjSuperBloodBolt'
 import ProjSuperFire            from './projectiles/ProjSuperFire'
+import ProjSuperWind            from './projectiles/ProjSuperWind'
 import ProjVampireFang          from './projectiles/ProjVampireFang'
 import ProjWind                 from './projectiles/ProjWind'
 
@@ -240,6 +251,7 @@ const EntitiesList = {
     Citizen:                Citizen,
     Commander:              Commander,
     CryptWarden:            CryptWarden,
+    Goblin:                 Goblin,
     Hawk:                   Hawk,
     Innkeeper:              Innkeeper,
     Knight:                 Knight,
@@ -253,6 +265,7 @@ const EntitiesList = {
     RangedMerchant:         RangedMerchant,
     Rat:                    Rat,
     Ruler:                  Ruler,
+    SandScamp:              SandScamp,
     Snoovir:                Snoovir,
     ToolMerchant:           ToolMerchant,
     TutorialMerchant:       TutorialMerchant,
@@ -282,6 +295,8 @@ const EntitiesList = {
 
     PickupAnvil:            PickupAnvil,
     PickupBankChest:        PickupBankChest,
+    PickupBloodGem:         PickupBloodGem,
+    PickupBloodStaff:       PickupBloodStaff,
     PickupBluecap:          PickupBluecap,
     PickupBlueKey:          PickupBlueKey,
     PickupBookOfLight:      PickupBookOfLight,
@@ -289,6 +304,7 @@ const EntitiesList = {
     PickupCharter:          PickupCharter,
     PickupCloak:            PickupCloak,
     PickupCotton:           PickupCotton,
+    PickupCurePotion:       PickupCurePotion,
     PickupDungiumArmour:    PickupDungiumArmour,
     PickupDungiumArrows:    PickupDungiumArrows,
     PickupDungiumBar:       PickupDungiumBar,
@@ -326,6 +342,7 @@ const EntitiesList = {
     PickupIronHatchet:      PickupIronHatchet,
     PickupIronOre:          PickupIronOre,
     PickupIronPickaxe:      PickupIronPickaxe,
+    PickupIronRod:          PickupIronRod,
     PickupIronSheet:        PickupIronSheet,
     PickupIronSword:        PickupIronSword,
     PickupMageRobe:         PickupMageRobe,
@@ -350,8 +367,11 @@ const EntitiesList = {
     PickupRespawnOrb:       PickupRespawnOrb,
     PickupShuriken:         PickupShuriken,
     PickupString:           PickupString,
+    PickupSuperBloodStaff:  PickupSuperBloodStaff,
     PickupSuperFireStaff:   PickupSuperFireStaff,
+    PickupSuperWindStaff:   PickupSuperWindStaff,
     PickupVampireFang:      PickupVampireFang,
+    PickupWindGem:          PickupWindGem,
     PickupWindStaff:        PickupWindStaff,
     PickupWoodDoor:         PickupWoodDoor,
     PickupWoodWall:         PickupWoodWall,
@@ -376,7 +396,9 @@ const EntitiesList = {
     ProjPacify:             ProjPacify,
     ProjShuriken:           ProjShuriken,
     ProjSnowball:           ProjSnowball,
+    ProjSuperBloodBolt:     ProjSuperBloodBolt,
     ProjSuperFire:          ProjSuperFire,
+    ProjSuperWind:          ProjSuperWind,
     ProjVampireFang:        ProjVampireFang,
     ProjWind:               ProjWind,
 

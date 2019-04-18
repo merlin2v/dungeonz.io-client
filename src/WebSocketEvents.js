@@ -461,14 +461,54 @@ eventResponses.damage = function (data) {
     _this.dynamics[data.id].sprite.onHitPointsModified(data.amount);
 };
 
-eventResponses.start_burn = function (data) {
+eventResponses.effect_start_burn = function (data) {
     if(_this.dynamics[data] === undefined) return;
     _this.dynamics[data].sprite.onBurnStart();
 };
 
-eventResponses.stop_burn = function (data) {
+eventResponses.effect_stop_burn = function (data) {
     if(_this.dynamics[data] === undefined) return;
     _this.dynamics[data].sprite.onBurnStop();
+};
+
+eventResponses.effect_start_poison = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onPoisonStart();
+};
+
+eventResponses.effect_stop_poison = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onPoisonStop();
+};
+
+eventResponses.effect_start_health_regen = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onHealthRegenStart();
+};
+
+eventResponses.effect_stop_health_regen = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onHealthRegenStop();
+};
+
+eventResponses.effect_start_energy_regen = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onEnergyRegenStart();
+};
+
+eventResponses.effect_stop_energy_regen = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onEnergyRegenStop();
+};
+
+eventResponses.effect_start_cured = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onCuredStart();
+};
+
+eventResponses.effect_stop_cured = function (data) {
+    if(_this.dynamics[data] === undefined) return;
+    _this.dynamics[data].sprite.onCuredStop();
 };
 
 eventResponses.respawns_value = function (data) {
@@ -482,10 +522,7 @@ eventResponses.player_respawn = function () {
     _this.GUI.respawnPanel.hide();
     _this.GUI.updateHitPointCounters();
     _this.GUI.updateEnergyCounters();
-    // If a DMP code hasn't been activated, show a video ad.
-    if(localStorage.getItem('DMP_activated') !== true){
-        window.startPreRoll();
-    }
+    window.startPreRoll();
 };
 
 eventResponses.add_entity = function (data) {

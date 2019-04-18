@@ -41,7 +41,7 @@
     <script src="src/lib/phaser.js"></script>
     <script src="src/lib/phaser-debug.js"></script>
 
-    <script src="dist/main.js"></script>
+    <script src="dist/main5.js"></script>
 
     <link rel="stylesheet" href="main.css" type="text/css"/>
 
@@ -385,6 +385,9 @@
         <p>
             Dungeonz.io is available on <a href="http://www.addictinggames.com" target="_blank">Addicting Games</a>, home of the largest collection of free online games, including car, puzzle, shooting games, and more! We are also listed at <a href="http://iogames.space" target="_blank">IO Games</a> which has all the latest multi-player games like BuildRoyale.io and Devast.io.
         </p>
+        <a href="https://x1p.com/" target="_blank">
+            <img id="x1p_logo" src="assets/img/misc/x1p-logo.png" title="best .io games" alt="best .io games">
+        </a>
     </div>
 
     <div id="dmp_cont" class="press_start_font">
@@ -504,9 +507,13 @@
         }
 
         window.startPreRoll = function () {
-            aiptag.cmd.player.push(function() { adplayer.startPreRoll(); });
-            _this.GUI.gui.style.display = "none";
-            _this.canvasContainer.style.display = "none";
+            // If a DMP code hasn't been activated, show a video ad.
+            if(localStorage.getItem('DMP_activated') !== "true"){
+                console.log("* DMP not activated, showing ad.");
+                aiptag.cmd.player.push(function() { adplayer.startPreRoll(); });
+                _this.GUI.gui.style.display = "none";
+                _this.canvasContainer.style.display = "none";
+            }
         };
 
         function playPressed () {

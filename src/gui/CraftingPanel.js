@@ -43,7 +43,7 @@ class ComponentSlot {
 class CraftingPanel extends PanelTemplate {
 
     constructor () {
-        super(document.getElementById('crafting_panel'), 500, 180, "Crafting", 'entities/gui/panels/anvil');
+        super(document.getElementById('crafting_panel'), 500, 180, "Crafting", 'gui/panels/anvil');
 
         const panel = this;
 

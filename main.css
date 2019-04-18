@@ -156,21 +156,18 @@ sass --watch scss/Main.scss:main.css
 
 #warning_message {
   text-align: center;
-  color: #df7126;
+  color: #ac3232;
+  background-color: #ffffff;
   font-size: 24px;
   font-weight: bold;
-  -webkit-text-stroke: 0.1px #ffffff;
+  padding: 10px;
   visibility: hidden;
 }
 
 #background_img {
-  image-rendering: unset;
+  image-rendering: pixelated;
   position: absolute;
   height: 100%;
-  /*width: 100vw;
-  height: 56.25vw;
-  max-height: 100vh;
-  max-width: 177.78vh;*/
   margin: auto;
   left: 50%;
   transform: translateX(-50%);
@@ -277,7 +274,7 @@ sass --watch scss/Main.scss:main.css
 
 #news_cont {
   position: absolute;
-  top: 50%;
+  top: 63%;
   right: 20px;
   transform: translateY(-50%);
   width: 300px;
@@ -320,6 +317,61 @@ sass --watch scss/Main.scss:main.css
   filter: brightness(110%);
 }
 
+#partners_button {
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  height: 5%;
+  background-color: #ffffff;
+  padding: 6px;
+  line-height: 5vh;
+  user-select: none;
+}
+#partners_button:hover {
+  transform: scale(1.1);
+  filter: brightness(110%);
+}
+
+#partners_cont {
+  position: absolute;
+  overflow: auto;
+  display: inline-block;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 100%;
+  background-color: #ffffff;
+  user-select: none;
+  visibility: hidden;
+}
+
+#partners_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 13px;
+  font-size: 22px;
+  background-color: #ffffff;
+}
+#partners_close:hover {
+  background-color: #9badb7;
+}
+
+#partners_header {
+  background-color: #ac3232;
+  color: #ffffff;
+  padding: 24px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#addicting_games_logo {
+  width: 75%;
+  padding: 10px;
+}
+
 #home_ad_banner {
   position: absolute;
   width: 300px;
@@ -327,7 +379,24 @@ sass --watch scss/Main.scss:main.css
   bottom: 10%;
   left: 50%;
   transform: translate(-50%);
-  background-color: orange;
+  border: 12px solid rgba(255, 255, 255, 0.8);
+}
+
+#preroll_cont {
+  position: absolute;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+}
+
+#adblock_warning {
+  position: absolute;
+  z-index: -1;
 }
 
 #dmp_cont {
@@ -460,6 +529,18 @@ sass --watch scss/Main.scss:main.css
   visibility: hidden;
 }
 
+.normal_cursor {
+  cursor: url(./assets/img/gui/hud/normal-cursor.png), auto;
+}
+
+.hand_cursor {
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+
+.attack_cursor {
+  cursor: url(./assets/img/gui/hud/attack-cursor.png), auto;
+}
+
 .gui_icon {
   width: 34px;
   height: 34px;
@@ -488,7 +569,7 @@ sass --watch scss/Main.scss:main.css
   user-select: none;
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  color: #ffffff;
   -webkit-text-stroke: 1px #222034;
 }
 
@@ -584,38 +665,53 @@ sass --watch scss/Main.scss:main.css
 }
 
 #stats_panel {
-  display: inline-grid;
+  visibility: hidden;
 }
 
-#stats_panel_main {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#stats_icons_cont {
+#stats_inner_cont {
+  background-color: #222034;
+  height: 100%;
   display: grid;
-  grid-template-columns: 48px 48px 48px 48px 48px 48px;
-  grid-template-rows: 48px 48px;
+  grid-template-columns: 32% auto;
   grid-gap: 12px;
+}
+
+#stat_icons_cont {
+  background-color: #847e87;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(5, 20%);
+  align-items: center;
+  justify-items: center;
   padding: 10px;
 }
 
+.stat_icon_cont_cont {
+  height: 100%;
+}
+
 .stat_icon_cont {
-  border-radius: 14px;
+  border: 6px solid #222034;
+  text-align: center;
+  background-color: #ffffff;
+  height: 68%;
+  margin: 13px;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .stat_icon_cont:hover {
-  -webkit-filter: brightness(150%);
+  filter: brightness(150%);
+  transform: scale(1.2);
 }
 
 .stat_icon {
-  width: 48px;
-  height: 48px;
+  height: 100%;
 }
 
-#stats_info_cont {
-  position: absolute;
+#stat_info_cont {
   text-align: center;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: 18px;
+  background-color: #9badb7;
 }
 
 #stat_name {
@@ -645,9 +741,9 @@ sass --watch scss/Main.scss:main.css
 }
 
 .generic_tooltip {
-  color: #3f3f74;
+  color: #ffffff;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #222034;
   line-height: 1.2;
   padding: 8px;
   z-index: 1000;
@@ -676,6 +772,26 @@ sass --watch scss/Main.scss:main.css
   width: 400px;
   right: 0px;
   transform: translateY(-100%);
+}
+
+#hitpoint_cont {
+  position: relative;
+}
+
+#hitpoint_tooltip {
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#energy_cont {
+  position: relative;
+}
+
+#energy_tooltip {
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 #inventory_tooltip {
@@ -730,39 +846,6 @@ sass --watch scss/Main.scss:main.css
   visibility: hidden;
 }
 
-#respawn_prompt {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  font-family: "Press Start 2P";
-  letter-spacing: 0.1em;
-  color: #3f3f74;
-  padding: 10px;
-  visibility: hidden;
-}
-
-#you_died {
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-#respawn_button {
-  background-color: #d95763;
-  left: 50%;
-  margin: 8px;
-  padding: 20px;
-  font-weight: bolder;
-  font-size: 20px;
-  color: #ffffff;
-}
-
-#respawn_button:hover {
-  background-color: #ac3232;
-}
-
 #game_over_prompt {
   position: absolute;
   left: 50%;
@@ -806,89 +889,6 @@ sass --watch scss/Main.scss:main.css
   background-color: #6abe30;
 }
 
-#dungeon_prompt {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  text-align: center;
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-family: "Press Start 2P";
-  letter-spacing: 0.1em;
-  padding: 8px;
-  padding-bottom: 16px;
-  visibility: hidden;
-}
-
-#dungeon_prompt_top {
-  width: 100%;
-  display: inline-block;
-}
-
-#dungeon_prompt_info {
-  width: 45%;
-  height: 100%;
-  float: left;
-  margin: 4px 4px 4px 4px;
-  background-color: #37946e;
-  padding-top: 8px;
-}
-
-#dungeon_prompt_warning {
-  width: 45%;
-  height: 100%;
-  float: right;
-  margin: 4px 4px 4px 4px;
-  background-color: #d95763;
-  padding-top: 8px;
-}
-
-#dungeon_prompt_bottom {
-  width: 100%;
-  height: 30px;
-  margin: 4px 4px 4px 4px;
-  display: inline-block;
-}
-
-#dungeon_prompt_accept {
-  width: 45%;
-  float: left;
-  background-color: #37946e;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-weight: bolder;
-  white-space: nowrap;
-}
-
-#dungeon_prompt_accept:hover {
-  background-color: #6abe30;
-}
-
-#dungeon_prompt_decline {
-  width: 45%;
-  float: right;
-  background-color: #d95763;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-weight: bolder;
-  white-space: nowrap;
-}
-
-#dungeon_prompt_decline:hover {
-  background-color: #ac3232;
-}
-
-.dungeon_prompt_header {
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
-}
-
-.dungeon_prompt_value {
-  margin-top: 0;
-  padding-top: 0;
-}
-
 #inventory_bar {
   position: absolute;
   display: inline-grid;
@@ -905,6 +905,7 @@ sass --watch scss/Main.scss:main.css
   border-radius: 10px;
   pointer-events: auto;
   user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .inventory_slot:hover {
   filter: brightness(120%);
@@ -918,17 +919,16 @@ sass --watch scss/Main.scss:main.css
   pointer-events: none;
 }
 
-.inventory_slot_open {
+.inventory_slot_add_button {
   position: absolute;
-  bottom: 56px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28px;
-  object-fit: contain;
-  visibility: hidden;
+  width: 48px;
+  height: 48px;
+  bottom: 54px;
+  pointer-events: auto;
 }
-.inventory_slot_open:hover {
-  -webkit-filter: brightness(150%);
+.inventory_slot_add_button:hover {
+  filter: brightness(120%);
+  transform: scale(1.1);
 }
 
 .inventory_slot_equipped {
@@ -960,26 +960,27 @@ sass --watch scss/Main.scss:main.css
 #inventory_message {
   position: absolute;
   width: 100%;
-  bottom: 80px;
+  bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   font-size: 24px;
   color: #ffffff;
-  -webkit-text-stroke: 1.8px #222034;
+  background-color: #222034;
+  padding: 10px;
   user-select: none;
 }
 
 #item_tooltip_cont {
   position: absolute;
   visibility: hidden;
-  bottom: 100px;
+  bottom: 146px;
   left: 50%;
   width: 75%;
   transform: translateX(-50%);
   text-align: center;
-  color: #3f3f74;
-  background-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  background-color: #222034;
   padding: 8px;
   user-select: none;
   pointer-events: none;
@@ -1043,66 +1044,160 @@ sass --watch scss/Main.scss:main.css
 }
 
 #crafting_panel {
-  display: inline-grid;
+  visibility: hidden;
+}
+
+#crafting_inner_cont {
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-template-rows: 50% 50%;
+  align-items: center;
+  justify-items: center;
+  padding: 12px;
+  padding-top: 33px;
 }
 
 #crafting_tooltip {
-  left: 224px;
-}
-
-#crafting_panel_main {
-  display: inline-flex;
-}
-
-#crafting_components_bar {
-  display: inline-grid;
-  grid-template-columns: repeat(5, 56px);
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#craft_result_cont {
-  display: inline-flex;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.component_slot_add {
+  visibility: hidden;
   position: absolute;
-  width: 48px;
-  height: 48px;
-  bottom: 47px;
+  max-width: 250px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  background-color: #222034;
+  padding: 6px;
+  top: 0%;
+  transform: translate(-100%, 0%);
+  left: 0%;
+}
+
+.crafting_component_slot_cont {
+  background-color: #696a6a;
+  width: 72%;
+  border: 6px solid #222034;
+}
+.crafting_component_slot_cont:hover {
+  transform: scale(1.1);
+  filter: brightness(150%);
+}
+
+.crafting_component_slot_icon {
+  visibility: hidden;
+  width: 100%;
+}
+
+#crafting_arrow_icon {
+  width: 100%;
+}
+
+.crafting_button {
+  visibility: hidden;
+  width: 75%;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+.crafting_button:hover {
+  transform: scale(1.2);
+  filter: brightness(150%);
+}
+
+#dungeon_panel {
   visibility: hidden;
 }
-.component_slot_add:hover {
-  -webkit-filter: brightness(150%);
+
+#dungeon_inner_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 10% auto 10%;
+  grid-gap: 12px;
+  text-align: center;
 }
 
-.component_slot_remove {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  top: 42px;
-  visibility: hidden;
-}
-.component_slot_remove:hover {
-  -webkit-filter: brightness(150%);
-}
-
-#craft_result_accept {
-  top: 54px;
+#dungeon_name {
+  background-color: #847e87;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  align-items: end;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-#crafting_spacer {
-  width: 40px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+#dungeon_info_cont {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-gap: 12px;
+}
+
+#dungeon_details_cont {
+  background-color: #9badb7;
+  display: grid;
+  grid-template-rows: repeat(6, 20%);
+  align-items: center;
+}
+
+.dungeon_details_heading {
+  font-weight: bold;
+  font-size: 15px;
+  align-self: end;
+}
+
+#dungeon_cost_cont {
+  display: grid;
+  grid-template-columns: 15% auto;
+  align-items: center;
+}
+
+#dungeon_cost_icon {
+  width: 100%;
+  padding-left: 40px;
+}
+
+#dungeon_warning_cont {
+  display: grid;
+  background-color: #d95763;
+}
+
+#dungeon_warning_heading {
+  font-weight: bold;
+  font-size: 18px;
+  align-self: center;
+}
+
+#dungeon_bottom_cont {
+  position: relative;
+}
+
+#dungeon_enter_button_cont {
+  height: 120%;
+  left: 50%;
   top: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+#dungeon_enter_button_cont:hover {
+  filter: brightness(150%);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
-#craft_result {
-  padding: 10px;
+#dungeon_enter_button {
+  height: 100%;
+  left: 50%;
+  top: 50%;
+}
+
+#dungeon_enter_text {
+  left: 50%;
+  top: 50%;
+  font-size: 16px;
+  color: #222034;
+}
+
+#bank_panel {
+  visibility: hidden;
 }
 
 #bank_tooltip {
@@ -1157,6 +1252,7 @@ sass --watch scss/Main.scss:main.css
 
 .bank_tab_button {
   width: 70%;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .bank_tab_button:hover {
   transform: scale(1.1);
@@ -1180,6 +1276,7 @@ sass --watch scss/Main.scss:main.css
   margin: 4px;
   pointer-events: auto;
   user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .bank_slot_cont:hover {
   transform: scale(1.1);
@@ -1201,169 +1298,234 @@ sass --watch scss/Main.scss:main.css
   pointer-events: none;
 }
 
-#spell_book_panel {
-  display: inline-grid;
-}
-
-#spell_book_panel_tooltip {
-  left: 280px;
-  bottom: -34px;
-}
-
-#spell_book_panel_name {
-  width: 260px;
-  font-size: 18px;
-}
-
-#spell_book_panel_main {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#spell_icons_cont {
-  display: grid;
-  grid-template-columns: repeat(4, 64px);
-  grid-template-rows: 64px;
-  grid-gap: 32px;
-  padding: 20px;
-}
-
-.spell_icon_cont {
-  border-radius: 14px;
-}
-.spell_icon_cont:hover {
-  -webkit-filter: brightness(150%);
-}
-
-.spell_icon {
-  width: 100%;
-  height: 100%;
-  background-color: #639bff;
-}
-
-#spell_info_cont {
+#spell_bar {
+  visibility: hidden;
   position: absolute;
-  text-align: center;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding-bottom: 12px;
+  width: 400px;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#spell_name {
+#spell_slots_cont {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  align-items: center;
+  justify-items: center;
+}
+
+#spell_tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 120%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #ffffff;
+  background-color: #222034;
+  padding: 8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+#spell_tooltip_name {
   font-weight: bolder;
   font-size: 28px;
 }
 
-#spell_description {
+#spell_tooltip_description {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-#exit_game_panel {
-  display: inline-grid;
-}
-
-#exit_game_panel_name {
+.spell_slot_cont {
+  position: relative;
   width: 70%;
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+.spell_slot_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
 }
 
-#exit_game_panel_main {
-  width: 300px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+.spell_slot_icon {
+  position: absolute;
+  width: 60%;
   user-select: none;
 }
 
-.exit_game_panel_info {
-  padding: 10px;
+.spell_slot_border {
+  position: absolute;
+  width: 80%;
+  user-select: none;
+}
+
+#exit_game_panel {
+  visibility: hidden;
+}
+
+#exit_inner_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: auto 10% 12% 30% 12%;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+#exit_top_info_cont {
+  background-color: #9badb7;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+#exit_code_cont {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #222034;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.exit_button_cont {
+  position: relative;
+  height: 100%;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+.exit_button_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
+}
+
+.exit_button {
+  height: 100%;
+}
+
+#exit_bottom_info_cont {
+  background-color: #d95763;
+  width: 100%;
+  height: 100%;
+}
+
+#exit_warning_heading {
+  padding-top: 6px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#exit_warning_text {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+.exit_button_text {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 14px;
   font-weight: bold;
+  color: #222034;
 }
 
-#exit_game_panel_info_2 {
-  padding-top: 0px;
-  font-size: 12px;
+#game_over_panel {
+  visibility: hidden;
 }
 
-#exit_game_panel_code {
-  background-color: #ffffff;
-  cursor: pointer;
+#game_over_inner_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60% auto;
+  grid-gap: 12px;
   text-align: center;
-  color: #ac3232;
-  font-size: 90%;
+}
+
+#game_over_main_cont {
+  background-color: #d95763;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+#game_over_info {
+  font-size: 14px;
   font-weight: bold;
   padding: 10px;
-  margin: 10px;
-  line-height: 26px;
-}
-#exit_game_panel_code:hover {
-  font-size: 100%;
 }
 
-#exit_game_panel_buttons_cont {
-  display: grid;
-  grid-template-columns: 45% 10% 45%;
-}
-
-#exit_game_panel_save_button_cont {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#exit_game_panel_exit_button_cont {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.exit_game_panel_button {
+#game_over_bottom_cont {
   position: relative;
-  margin: 10px;
-  text-align: center;
+}
+
+#game_over_button_cont {
+  height: 80%;
+  left: 50%;
+  top: 50%;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+#game_over_button_cont:hover {
+  filter: brightness(150%);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+#game_over_button {
+  height: 100%;
+  left: 50%;
+  top: 50%;
+}
+
+#game_over_text {
+  left: 50%;
+  top: 50%;
+  font-size: 16px;
   font-weight: bold;
   color: #222034;
-  user-select: none;
-}
-
-#exit_game_panel_save_button {
-  background-color: #d9a066;
-  line-height: 22px;
-  font-size: 90%;
-}
-#exit_game_panel_save_button:hover {
-  background-color: #eec39a;
-  font-size: 100%;
-}
-
-#exit_game_panel_exit_button {
-  background-color: #d95763;
-  line-height: 22px;
-  font-size: 90%;
-}
-#exit_game_panel_exit_button:hover {
-  background-color: #df7126;
-  font-size: 100%;
 }
 
 #clan_panel {
-  display: inline-grid;
-  width: 500px;
-  user-select: none;
+  visibility: hidden;
 }
 
-#clan_contents {
-  background-color: rgba(255, 255, 255, 0.8);
+#clan_inner_cont {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 86% auto;
+  background-color: #222034;
 }
 
 #clan_top_cont {
+  height: 100%;
   display: grid;
-  grid-template-columns: auto 40%;
+  grid-template-columns: 64% auto;
   grid-gap: 12px;
-  padding: 12px;
 }
 
 #clan_member_list {
-  background-color: rgba(255, 255, 255, 0.8);
-  height: 300px;
   overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  padding-top: 22px;
+  text-align: center;
+  background-color: #9badb7;
 }
 
 .clan_member_text {
@@ -1371,10 +1533,12 @@ sass --watch scss/Main.scss:main.css
   white-space: nowrap;
   padding: 6px;
   margin: 6px 0 6px 6px;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .clan_member_text:hover {
-  margin-left: 20px;
   font-weight: bold;
+  filter: brightness(150%);
+  transform: scale(1.1);
 }
 
 .clan_member_text_selected {
@@ -1382,121 +1546,148 @@ sass --watch scss/Main.scss:main.css
   white-space: nowrap;
   padding: 6px;
   margin: 6px 0 6px 6px;
-  background-color: #9badb7;
+  background-color: #595652;
   color: #ffffff;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .clan_member_text_selected:hover {
-  margin-left: 20px;
   font-weight: bold;
+  filter: brightness(150%);
 }
 
-#clan_details {
-  background-color: rgba(255, 255, 255, 0.8);
+#clan_details_cont {
   display: grid;
-  grid-template-columns: 40px auto;
-  grid-template-rows: repeat(3, 32px) auto;
-  grid-gap: 8px;
-  padding: 10px;
+  grid-template-columns: 20% auto;
+  grid-template-rows: repeat(5, 20%);
   align-items: center;
+  justify-items: center;
+  padding: 6px;
+  background-color: #847e87;
 }
 
 .clan_details_icon {
-  height: 100%;
-}
-
-.clan_details_text {
-  font-size: 12px;
+  width: 100%;
 }
 
 #clan_bottom_cont {
   display: grid;
   grid-template-columns: 25% 25% auto 25%;
   grid-gap: 12px;
-  padding: 12px;
-  padding-top: 0;
-  text-align: center;
+  align-items: center;
+  justify-items: center;
+  padding: 8px;
+  padding-top: 26px;
 }
 
-#clan_kick {
-  background-color: #df7126;
+.clan_bottom_button_cont {
+  position: relative;
+  width: 100%;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
-
-#clan_promote {
-  background-color: #639bff;
-}
-
-#clan_leave {
-  background-color: #d95763;
+.clan_bottom_button_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
 }
 
 .clan_bottom_button {
-  font-size: 11px;
-  padding: 8px;
-}
-.clan_bottom_button:hover {
-  font-weight: bold;
-  transform: scale(1.1);
-  filter: brightness(110%);
-}
-
-#stats_panel {
-  display: inline-grid;
-}
-
-#stats_panel_main {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#stats_icons_cont {
-  display: grid;
-  grid-template-columns: 48px 48px 48px 48px 48px 48px;
-  grid-template-rows: 48px 48px;
-  grid-gap: 12px;
-  padding: 10px;
-}
-
-.stat_icon_cont {
-  border-radius: 14px;
-}
-.stat_icon_cont:hover {
-  -webkit-filter: brightness(150%);
-}
-
-.stat_icon {
-  width: 48px;
-  height: 48px;
-}
-
-#stats_info_cont {
-  position: absolute;
-  text-align: center;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  left: 50%;
+  top: 50%;
 }
 
-#stat_name {
-  font-weight: bolder;
-  font-size: 28px;
+.clan_bottom_text {
+  left: 50%;
+  top: 50%;
+  font-size: 10px;
 }
 
-#stat_description {
-  padding-left: 10px;
-  padding-right: 10px;
+#hint_panel {
+  visibility: hidden;
 }
 
-#stat_level_counter {
-  font-weight: bold;
+#hint_main_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+#hint_text {
   font-size: 22px;
-  padding-top: 10px;
-}
-
-#stat_exp_counter {
   font-weight: bold;
+  color: #ffffff;
   padding: 10px;
+  padding-top: 30px;
 }
 
-.stat_info_text {
-  font-size: 13px;
+#hint_image {
+  width: 90%;
+  border: 26px #222034 solid;
+}
+
+#respawn_panel {
+  visibility: hidden;
+}
+
+#respawn_inner_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60% auto;
+  grid-gap: 12px;
+  text-align: center;
+}
+
+#respawn_main_cont {
+  background-color: #9badb7;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+#respawn_info {
+  align-self: end;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#respawns_value_text {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#respawn_bottom_cont {
+  position: relative;
+}
+
+#respawn_button_cont {
+  height: 80%;
+  left: 50%;
+  top: 50%;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+#respawn_button_cont:hover {
+  filter: brightness(150%);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+#respawn_button {
+  height: 100%;
+  left: 50%;
+  top: 50%;
+}
+
+#respawn_text {
+  left: 50%;
+  top: 50%;
+  font-size: 16px;
+  font-weight: bold;
   color: #222034;
 }
 
@@ -1541,6 +1732,7 @@ sass --watch scss/Main.scss:main.css
   user-select: none;
   margin: 8px;
   border: 4px solid #222034;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .shop_item_cont:hover {
   filter: brightness(150%);
@@ -1578,6 +1770,7 @@ sass --watch scss/Main.scss:main.css
   left: 50%;
   top: 50%;
   user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .shop_buy_button_cont:hover {
   filter: brightness(150%);
@@ -1598,57 +1791,108 @@ sass --watch scss/Main.scss:main.css
 }
 
 #tasks_panel {
-  display: inline-grid;
-  width: 600px;
-  user-select: none;
-}
-
-#tasks_name {
-  width: 43%;
-  font-size: 18px;
+  visibility: hidden;
 }
 
 #tasks_panel_tooltip {
-  left: 276px;
-}
-
-#tasks_contents {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#tasks_subheaders {
-  display: grid;
-  grid-template-columns: 36% 18% auto;
-  height: 46px;
+  position: absolute;
+  width: 150px;
+  color: #ffffff;
   text-align: center;
-  align-items: center;
+  font-size: 12px;
+  background-color: #222034;
+  padding: 6px;
+  top: 50%;
+  transform: translate(-100%, 0%);
+  left: 50%;
+}
+
+#tasks_inner_cont {
+  background-color: #222034;
+  height: 100%;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: 10% auto 10%;
+}
+
+#tasks_headings_cont {
+  background-color: #847e87;
+  display: grid;
+  grid-template-columns: 28% 41% auto;
+  text-align: center;
+  align-items: end;
+  justify-items: center;
   grid-gap: 16px;
   font-weight: bold;
-  margin-bottom: -8px;
 }
 
-#tasks_list {
-  height: 300px;
-  padding: 8px;
-  padding-top: 0px;
+#tasks_list_cont {
+  background-color: #9badb7;
   overflow: auto;
 }
 
+#tasks_bottom_cont {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: auto 50%;
+}
+
+.tasks_bottom_button_cont {
+  position: relative;
+  width: 55%;
+  user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
+}
+.tasks_bottom_button_cont:hover {
+  filter: brightness(150%);
+  transform: scale(1.1);
+}
+
+.tasks_bottom_button {
+  width: 100%;
+  left: 50%;
+  top: 50%;
+}
+
+.tasks_bottom_text {
+  left: 50%;
+  top: 50%;
+  font-size: 14px;
+  color: #222034;
+}
+
 .task_slot_cont {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #222034;
   display: grid;
   grid-template-columns: 42% 18% auto;
   text-align: center;
   align-items: center;
-  grid-gap: 8px;
+  grid-gap: 4px;
   font-size: 14px;
   margin: 8px;
+  border-width: 4px;
   border-style: solid;
-  border-width: 0;
+  border-color: #222034;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .task_slot_cont:hover {
   filter: brightness(150%);
   transform: scale(1.03);
+}
+
+.task_slot_cell {
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task_slot_task_name {
+  height: auto;
+  padding: 7px;
 }
 
 .task_reward_cont {
@@ -1657,6 +1901,11 @@ sass --watch scss/Main.scss:main.css
   grid-gap: 4px;
   align-items: center;
   justify-items: center;
+}
+
+.task_reward_item_cont {
+  position: relative;
+  width: 100%;
 }
 
 .task_reward_item {
@@ -1671,29 +1920,6 @@ sass --watch scss/Main.scss:main.css
 .task_glory_icon {
   width: 80%;
   pointer-events: none;
-}
-
-#tasks_bottom_cont {
-  display: grid;
-  grid-template-columns: auto 50%;
-  text-align: center;
-}
-
-#tasks_claim_button_cont {
-  visibility: hidden;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-}
-
-#tasks_claim_button {
-  background-color: #6abe30;
-  line-height: 22px;
-  font-size: 90%;
-  padding: 6px;
-}
-#tasks_claim_button:hover {
-  background-color: #99e550;
-  font-size: 100%;
 }
 
 .panel_template_cont {
@@ -1729,10 +1955,18 @@ sass --watch scss/Main.scss:main.css
   top: 0%;
   width: 52px;
   user-select: none;
+  cursor: url(./assets/img/gui/hud/hand-cursor.png) 8 0, auto;
 }
 .panel_template_close_button:hover {
   transform: translate(-50%, -50%) scale(1.1);
   filter: brightness(150%);
+}
+
+.panel_template_top_corner {
+  left: 100%;
+  top: 0%;
+  width: 36px;
+  user-select: none;
 }
 
 .panel_template_left_corner {
@@ -1792,7 +2026,7 @@ sass --watch scss/Main.scss:main.css
 }
 
 body {
-  background-color: #222034;
+  background-color: #000000;
 }
 
 img {

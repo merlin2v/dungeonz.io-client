@@ -23,8 +23,32 @@ const Sprite = function (x, y, config) {
 
     //this.chatTexts = [];
 
+    this.energyRegenEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'energy-regen-effect-1');
+    this.energyRegenEffect.animations.add('effect', ['energy-regen-effect-1', 'energy-regen-effect-2'], 2, true);
+    this.energyRegenEffect.anchor.set(0.5);
+    this.addChild(this.energyRegenEffect);
+    this.energyRegenEffect.visible = false;
+
+    this.healthRegenEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'health-regen-effect-1');
+    this.healthRegenEffect.animations.add('effect', ['health-regen-effect-1', 'health-regen-effect-2'], 2, true);
+    this.healthRegenEffect.anchor.set(0.5);
+    this.addChild(this.healthRegenEffect);
+    this.healthRegenEffect.visible = false;
+
+    this.curedEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'cured-effect-1');
+    this.curedEffect.animations.add('effect', ['cured-effect-1', 'cured-effect-2'], 2, true);
+    this.curedEffect.anchor.set(0.5);
+    this.addChild(this.curedEffect);
+    this.curedEffect.visible = false;
+
+    this.poisonEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'poison-effect-1');
+    this.poisonEffect.animations.add('effect', ['poison-effect-1', 'poison-effect-2'], 2, true);
+    this.poisonEffect.anchor.set(0.5);
+    this.addChild(this.poisonEffect);
+    this.poisonEffect.visible = false;
+
     this.burnEffect = _this.add.sprite(dungeonz.TILE_SIZE / 2, dungeonz.TILE_SIZE / 2, 'game-atlas', 'burn-effect-1');
-    this.burnEffect.animations.add('burn', ['burn-effect-1', 'burn-effect-2'], 2, true);
+    this.burnEffect.animations.add('effect', ['burn-effect-1', 'burn-effect-2'], 2, true);
     this.burnEffect.anchor.set(0.5);
     this.addChild(this.burnEffect);
     this.burnEffect.visible = false;
@@ -63,12 +87,53 @@ Sprite.prototype.onChangeDirection = function () {
 
 Sprite.prototype.onBurnStart = function () {
     this.burnEffect.visible = true;
-    this.burnEffect.animations.play('burn');
+    this.burnEffect.animations.play('effect');
 };
 
 Sprite.prototype.onBurnStop = function () {
     this.burnEffect.visible = false;
     this.burnEffect.animations.stop(null, true);
 };
+
+Sprite.prototype.onPoisonStart = function () {
+    this.poisonEffect.visible = true;
+    this.poisonEffect.animations.play('effect');
+};
+
+Sprite.prototype.onPoisonStop = function () {
+    this.poisonEffect.visible = false;
+    this.poisonEffect.animations.stop(null, true);
+};
+
+Sprite.prototype.onHealthRegenStart = function () {
+    this.healthRegenEffect.visible = true;
+    this.healthRegenEffect.animations.play('effect');
+};
+
+Sprite.prototype.onHealthRegenStop = function () {
+    this.healthRegenEffect.visible = false;
+    this.healthRegenEffect.animations.stop(null, true);
+};
+
+Sprite.prototype.onEnergyRegenStart = function () {
+    this.energyRegenEffect.visible = true;
+    this.energyRegenEffect.animations.play('effect');
+};
+
+Sprite.prototype.onEnergyRegenStop = function () {
+    this.energyRegenEffect.visible = false;
+    this.energyRegenEffect.animations.stop(null, true);
+};
+
+Sprite.prototype.onCuredStart = function () {
+    this.curedEffect.visible = true;
+    this.curedEffect.animations.play('effect');
+};
+
+Sprite.prototype.onCuredStop = function () {
+    this.curedEffect.visible = false;
+    this.curedEffect.animations.stop(null, true);
+};
+
 
 export default Sprite;

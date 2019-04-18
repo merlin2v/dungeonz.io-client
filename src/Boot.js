@@ -55,7 +55,10 @@ window.dungeonz = {
             return dungeonz.TextDefs['English'][definitionID];
         }
         else {
-            return text;
+            // Check if the text def is even defined.
+            if(text === undefined) return '???';
+            // Return the text, in the selected language.
+            else return text;
         }
     }
 };
@@ -88,7 +91,7 @@ dungeonz.Boot.prototype = {
 
     preload: function () {
 
-        this.load.atlasJSONArray('game-atlas',  'assets/img/game-atlas.png',    'assets/img/game-atlas.json');
+        this.load.atlasJSONArray('game-atlas',  'assets/img/game-atlas-2.png',    'assets/img/game-atlas-2.json');
         this.load.spritesheet('ground-tileset', 'assets/img/ground.png', 16, 16);
         this.load.spritesheet('statics-tileset', 'assets/img/statics.png', 16, 16);
 

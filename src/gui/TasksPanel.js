@@ -14,7 +14,9 @@ class TaskSlot {
 
         this.taskName = document.createElement('div');
         this.taskName.className = 'task_slot_cell task_slot_task_name';
-        this.taskName.innerText = dungeonz.getTextDef("Task: " + task.textDefIDName) || task.textDefIDName;
+        let textName = dungeonz.getTextDef("Task: " + task.textDefIDName);
+        if(textName === '???') textName = task.textDefIDName;
+        this.taskName.innerText = textName;
 
         this.progress = document.createElement('div');
         this.progress.className = 'task_slot_cell';

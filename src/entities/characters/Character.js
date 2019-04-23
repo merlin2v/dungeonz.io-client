@@ -8,7 +8,7 @@ const Sprite = function (x, y, config) {
 
     this.entityId = config.id;
     this.direction = config.direction;
-    this.nameColor = config.nameColor;
+    this.displayNameColor = config.nameColor;
 
     let frame = undefined;
     if(this.baseFrames !== undefined){

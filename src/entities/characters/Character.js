@@ -8,8 +8,8 @@ const Sprite = function (x, y, config) {
 
     this.entityId = config.id;
     this.direction = config.direction;
-    this.displayNameColor = config.nameColor;
-
+    this.displayNameColor = config.displayNameColor;//can be undefined or an object with an optional 'fill' and 'stroke' property 
+                                                    //    to be set as any color string value Phaser can take 
     let frame = undefined;
     if(this.baseFrames !== undefined){
         frame = this.baseFrames[config.direction] || this.baseFrames.d;

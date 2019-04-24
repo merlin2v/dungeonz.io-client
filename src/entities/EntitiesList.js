@@ -66,9 +66,9 @@ Phaser.Sprite.prototype.addDisplayName = function (displayName) {
     this.displayName = _this.add.text(dungeonz.TILE_SIZE / 2, 4, displayName, {
         font: "20px Press Start 2P",
         align: "center",
-        fill: "#f5f5f5",
-        stroke: "#000000",
-        strokeThickness: 5
+        fill: (this.displayNameColor&&this.displayNameColor.fill)?this.displayNameColor.fill:"#f5f5f5",
+        stroke: (this.displayNameColor&&this.displayNameColor.stroke)?this.displayNameColor.stroke:"#000000",
+        strokeThickness: (this.displayNameColor&&this.displayNameColor.strokeThickness)?this.displayNameColor.strokeThickness:5
     });
     this.displayName.anchor.set(0.5, 1);
     this.displayName.scale.set(0.25);
